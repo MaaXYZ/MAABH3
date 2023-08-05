@@ -11,7 +11,13 @@
 _欢迎大佬们来带带~_
 
 1. 更新子模块 `git submodule update --init --recursive`
-2. 使用 Visual Studio 编译 `source/cli/MAABH3_CLI.sln`
+2. 下载Maa Framework的库文件
+
+```bash
+python MaaFrameworkLoad.py
+```
+
+3. 使用 Visual Studio 编译 `source/cli/MAABH3_CLI.sln`
 4. `tools/CropRoi` 是个小工具，可以用来裁剪图片和获取 ROI
 
 ## Join us
