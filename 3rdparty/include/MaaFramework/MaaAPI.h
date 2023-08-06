@@ -83,13 +83,24 @@ extern "C"
     MaaBool MAA_FRAMEWORK_API MaaSetTaskParam(MaaInstanceHandle inst, MaaTaskId id, MaaJsonString param);
 
     MaaStatus MAA_FRAMEWORK_API MaaTaskStatus(MaaInstanceHandle inst, MaaTaskId id);
-    MaaStatus MAA_FRAMEWORK_API MaaTaskWait(MaaInstanceHandle inst, MaaTaskId id);
+    MaaStatus MAA_FRAMEWORK_API MaaWaitTask(MaaInstanceHandle inst, MaaTaskId id);
     MaaBool MAA_FRAMEWORK_API MaaTaskAllFinished(MaaInstanceHandle inst);
 
     void MAA_FRAMEWORK_API MaaStop(MaaInstanceHandle inst);
 
     MaaResourceHandle MAA_FRAMEWORK_API MaaGetResource(MaaInstanceHandle inst);
     MaaControllerHandle MAA_FRAMEWORK_API MaaGetController(MaaInstanceHandle inst);
+
+    /* SyncContext */
+
+    MaaBool MAA_FRAMEWORK_API MaaSyncContextRunTask(MaaSyncContextHandle sync_context, MaaString task,
+                                                    MaaJsonString param);
+    void MAA_FRAMEWORK_API MaaSyncContextClick(MaaSyncContextHandle sync_context, int32_t x, int32_t y);
+    void MAA_FRAMEWORK_API MaaSyncContextSwipe(MaaSyncContextHandle sync_context, int32_t* x_steps_buff,
+                                               int32_t* y_steps_buff, int32_t* step_delay_buff, MaaSize buff_size);
+    MaaSize MAA_FRAMEWORK_API MaaSyncContextScreencap(MaaSyncContextHandle sync_context, void* buff, MaaSize buff_size);
+    MaaSize MAA_FRAMEWORK_API MaaSyncContextGetTaskResult(MaaSyncContextHandle sync_context, MaaString task, char* buff,
+                                                          MaaSize buff_size);
 
 #ifdef __cplusplus
 }

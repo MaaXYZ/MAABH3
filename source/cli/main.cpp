@@ -59,7 +59,7 @@ int main(int argc, char** argv)
     MaaBindResource(maa_handle, resource_handle);
     MaaBindController(maa_handle, controller_handle);
     int height = 720;
-    MaaControllerSetOption(controller_handle, MaaCtrlOption_ScreenshotTargetLongSide, reinterpret_cast<void*>(&height), sizeof(int));
+    MaaControllerSetOption(controller_handle, MaaCtrlOption_ScreenshotTargetShortSide, reinterpret_cast<void*>(&height), sizeof(int));
 
     auto resource_id = MaaResourcePostResource(resource_handle, resource_dir.c_str());
     auto connection_id = MaaControllerPostConnection(controller_handle);
@@ -84,7 +84,7 @@ int main(int argc, char** argv)
     for (const auto& task : tasks) {
         task_id = MaaPostTask(maa_handle, task.type.c_str(), task.param.to_string().c_str());
     }
-    MaaTaskWait(maa_handle, task_id);
+    MaaWaitTask(maa_handle, task_id);
 
     destroy();
 
