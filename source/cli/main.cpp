@@ -95,7 +95,7 @@ void print_help()
 {
 	std::cout <<
 		R"(MAA BH3 CLI, 
-Github: https://github.com/dongwlin/MAABH3
+Github: https://github.com/MaaAssistantArknights/MAABH3
 
 Usage: MAABH3.exe [adb_path] [adb_address] [task_name]...
 
