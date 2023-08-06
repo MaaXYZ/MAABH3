@@ -1,0 +1,225 @@
+{
+    "StartUp": {
+        "next": [
+            "HomeFlag",
+            "Sub_StartUp"
+        ]
+    },
+    "Sub_StartUp": {
+        "is_sub": true,
+        "next": [
+            "HomeFlag",
+            "Sub_HomeButton",
+            "Sub_BackButton",
+            "Sub_ObtainedAwards",
+            "Sub_DailyLoginReward",
+            "StartGame",
+            "CloseAnnouncement",
+            "GameLoading",
+            "StartBH3",
+            "Stop"
+        ],
+        "editor_info": {
+            "path": "/startup.json/"
+        }
+    },
+    "StartBH3": {
+        "action": "StartApp",
+        "package": "com.miHoYo.bh3.bilibili/com.miHoYo.overridenativeactivity.OverrideNativeActivity",
+        "editor_info": {
+            "path": "/startup.json/"
+        }
+    },
+    "RestartBH3": {
+        "action": "StopApp",
+        "package": "com.miHoYo.bh3.bilibili",
+        "next": [
+            "StartBH3",
+            "GameLoading",
+            "StartGame",
+            "CloseAnnouncement"
+        ]
+    },
+    "GameLoading": {
+        "recognition": "TemplateMatch",
+        "template": "StartUp/GameLoading.png",
+        "roi": [
+            521,
+            6,
+            233,
+            126
+        ],
+        "timeout": 6000,
+        "timeout_next": [
+            "RestartBH3"
+        ],
+        "next": [
+            "GameLoading",
+            "StartGame",
+            "CloseAnnouncement"
+        ],
+        "editor_info": {
+            "path": "/startup.json/"
+        }
+    },
+    "GameIdentifying": {
+        "recognition": "TemplateMatch",
+        "template": "StartUp/GameIdentifying.png",
+        "roi": [
+            517,
+            8,
+            246,
+            123
+        ],
+        "timeout": 60000,
+        "next": [
+            "StartGame",
+            "GameIdentifying",
+            "Sub_BackButton",
+            "Sub_ObtainedAwards",
+            "Sub_DailyLoginReward",
+            "CloseAnnouncement",
+            "HomeFlag"
+        ]
+    },
+    "CloseAnnouncement": {
+        "recognition": "TemplateMatch",
+        "template": "StartUp/CloseAnnouncement.png",
+        "roi": [
+            1171,
+            0,
+            109,
+            133
+        ],
+        "action": "Click",
+        "next": [
+            "HomeFlag",
+            "StartGame",
+            "CloseAnnouncement"
+        ],
+        "editor_info": {
+            "path": "/startup.json/"
+        }
+    },
+    "StartGame": {
+        "recognition": "OCR",
+        "template": "StartUp/StartGame.png",
+        "action": "Click",
+        "next": [
+            "Sub_BackButton",
+            "Sub_ObtainedAwards",
+            "Sub_DailyLoginReward",
+            "HomeFlag",
+            "StartGame",
+            "GameIdentifying",
+            "CloseAnnouncement"
+        ],
+        "editor_info": {
+            "path": "/startup.json/"
+        },
+        "roi": [
+            458,
+            458,
+            325,
+            138
+        ],
+        "text": [
+            "点击",
+            "任意处",
+            "进入",
+            "游戏"
+        ]
+    },
+    "HomeFlag": {
+        "recognition": "TemplateMatch",
+        "template": "StartUp/HomeFlag.png",
+        "roi": [
+            1129,
+            584,
+            141,
+            136
+        ],
+        "editor_info": {
+            "path": "/startup.json/"
+        }
+    },
+    "Sub_BackButton": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": [
+            "StartUp/BackButton.png"
+        ],
+        "roi": [
+            0,
+            0,
+            180,
+            133
+        ],
+        "action": "Click",
+        "editor_info": {
+            "path": "/startup.json/"
+        }
+    },
+    "Sub_HomeButton": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": [
+            "StartUp/HomeButton.png"
+        ],
+        "roi": [
+            126,
+            0,
+            212,
+            134
+        ],
+        "action": "Click",
+        "editor_info": {
+            "path": "/startup.json/"
+        }
+    },
+    "Stop": {
+        "editor_info": {
+            "path": "/startup.json/"
+        }
+    },
+    "Sub_DailyLoginReward": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "StartUp/DailyLoginReward.png",
+        "roi": [
+            619,
+            0,
+            219,
+            139
+        ],
+        "next": [
+            "CollectDailyLoginReward"
+        ],
+        "editor_info": {
+            "path": "/startup.json/"
+        }
+    },
+    "CollectDailyLoginReward": {
+        "recognition": "TemplateMatch",
+        "template": "StartUp/CollectDailyLoginReward.png",
+        "roi": [
+            641,
+            608,
+            208,
+            112
+        ],
+        "action": "Click"
+    },
+    "Sub_ObtainedAwards": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "StartUp/ObtainedAward.png",
+        "roi": [
+            537,
+            463,
+            201,
+            136
+        ],
+        "action": "Click"
+    }
+}

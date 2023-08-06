@@ -50,7 +50,7 @@ int main(int argc, char** argv)
     std::string resource_dir = (cur_dir / "resource").string();
     std::string adb_config = read_adb_config(cur_dir);
 
-    MaaSetGlobalOption(MaaGlobalOption_Logging, (void*)debug_dir.c_str(), debug_dir.size());
+    MaaSetGlobalOption(MaaGlobalOption_DebugMode, (void*)debug_dir.c_str(), debug_dir.size());
 
     auto maa_handle = MaaCreate(nullptr, nullptr);
     auto resource_handle = MaaResourceCreate(nullptr, nullptr);
@@ -153,8 +153,9 @@ bool proc_argv(int argc, char** argv, std::string& adb, std::string& adb_address
             << std::endl
             << "Please select a task: " << std::endl
             << std::endl
-            << "1. Homeland\n"
-               "2. Awards\n"
+            << "1. StartUp\n"
+               "2. Homeland\n"
+               "3. Awards\n"
             << std::endl
             << std::endl
             << "Please enter the task numbers to be executed: "
@@ -177,9 +178,12 @@ bool proc_argv(int argc, char** argv, std::string& adb, std::string& adb_address
 
             switch (id) {
             case 1:
-                task_obj.type = "Homeland";
+                task_obj.type = "StartUp";
                 break;
             case 2:
+                task_obj.type = "Homeland";
+                break;
+            case 3:
                 task_obj.type = "Awards";
                 break;
 
@@ -235,7 +239,7 @@ void save_config(const std::string& adb, const std::string& adb_address, const T
         tasks_array.emplace(std::move(task_obj));
     }
     config["tasks"] = std::move(tasks_array);
-    config["tasks_Doc"] = "要执行的任务 StartBH3, Homeland, Awards";
+    config["tasks_Doc"] = "要执行的任务 StartUp, Homeland, Awards";
 
     config["touch"] = (ctrl_type & MaaAdbControllerType_Touch_Mask) >> 0;
     config["touch_Doc"] = "点击方式：1: Adb, 2: MiniTouch, 3: MaaTouch";
