@@ -51,8 +51,10 @@ int main(int argc, char** argv)
     std::string adb_config = read_adb_config(cur_dir);
 
     MaaSetGlobalOption(MaaGlobalOption_Logging, (void*)debug_dir.c_str(), debug_dir.size());
+#if MAA_DEBUG
     bool t = true;
     MaaSetGlobalOption(MaaGlobalOption_DebugMode, (void*)&t, sizeof(bool));
+#endif
 
     auto maa_handle = MaaCreate(nullptr, nullptr);
     auto resource_handle = MaaResourceCreate(nullptr, nullptr);
