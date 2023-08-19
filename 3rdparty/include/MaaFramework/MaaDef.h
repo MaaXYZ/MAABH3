@@ -89,6 +89,8 @@ enum MaaInstOptionEnum
 typedef int32_t MaaAdbControllerType;
 enum MaaAdbControllerTypeEnum
 {
+    MaaAdbControllerType_Invalid = 0,
+
     MaaAdbControllerType_Touch_Adb = 1,
     MaaAdbControllerType_Touch_MiniTouch = 2,
     MaaAdbControllerType_Touch_MaaTouch = 3,
@@ -121,13 +123,13 @@ typedef MaaAPICallback MaaControllerCallback;
 typedef MaaAPICallback MaaInstanceCallback;
 
 struct MaaCustomControllerAPI;
-typedef MaaCustomControllerAPI* MaaCustomControllerHandle;
+typedef struct MaaCustomControllerAPI* MaaCustomControllerHandle;
 
 struct MaaCustomRecognizerAPI;
-typedef MaaCustomRecognizerAPI* MaaCustomRecognizerHandle;
+typedef struct MaaCustomRecognizerAPI* MaaCustomRecognizerHandle;
 
 struct MaaCustomActionAPI;
-typedef MaaCustomActionAPI* MaaCustomActionHandle;
+typedef struct MaaCustomActionAPI* MaaCustomActionHandle;
 
 struct MaaSyncContextAPI;
-typedef MaaSyncContextAPI* MaaSyncContextHandle;
+typedef struct MaaSyncContextAPI* MaaSyncContextHandle;

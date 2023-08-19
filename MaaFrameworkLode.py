@@ -125,8 +125,9 @@ def main():
     else:
         target_triplet = detect_host_triplet()
     print("about to download prebuilt dependency libraries for", target_triplet)
-    download_url = get_browser_download_url("MaaAssistantArknights", "MaaFramework", "v0.3.5", target_triplet)
-    filename = download_zip(download_url, "MaaFramework", "v0.3.5")
+    release_tag = "v0.3.6"
+    download_url = get_browser_download_url("MaaAssistantArknights", "MaaFramework", release_tag, target_triplet)
+    filename = download_zip(download_url, "MaaFramework", release_tag)
     extract_zip(filename)
     bin_dir = Path(basedir, "3rdparty/bin")
     bin_dir.mkdir(parents=True, exist_ok=True)
