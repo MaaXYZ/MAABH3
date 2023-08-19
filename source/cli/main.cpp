@@ -17,7 +17,7 @@ struct Task
 using TaskList = std::vector<Task>;
 
 void print_help();
-bool proc_argv(int argc, char** argv, std::string& adb, std::string& adb_address, TaskList& tasks,
+bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string& adb_address, TaskList& tasks,
 	MaaAdbControllerType& ctrl_type);
 void save_config(const std::string& adb, const std::string& adb_address, const TaskList& tasks,
 	MaaAdbControllerType ctrl_type);
@@ -28,12 +28,13 @@ int main(int argc, char** argv)
 {
 	print_help();
 
+    bool debug = false;
 	std::string adb = "adb";
 	std::string adb_address = "127.0.0.1:7555";
 	TaskList tasks;
 	MaaAdbControllerType control_type = 0;
 
-    bool proced = proc_argv(argc, argv, adb, adb_address, tasks, control_type);
+    bool proced = proc_argv(argc, argv, debug, adb, adb_address, tasks, control_type);
     if (!proced) {
         std::cout << "Failed to parse argv" << std::endl;
         pause();
@@ -51,10 +52,7 @@ int main(int argc, char** argv)
     std::string adb_config = read_adb_config(cur_dir);
 
     MaaSetGlobalOption(MaaGlobalOption_Logging, (void*)debug_dir.c_str(), debug_dir.size());
-#if MAA_DEBUG
-    bool t = true;
-    MaaSetGlobalOption(MaaGlobalOption_DebugMode, (void*)&t, sizeof(bool));
-#endif
+    MaaSetGlobalOption(MaaGlobalOption_DebugMode, (void*)&debug, sizeof(bool));
 
     auto maa_handle = MaaCreate(nullptr, nullptr);
     auto resource_handle = MaaResourceCreate(nullptr, nullptr);
@@ -109,7 +107,7 @@ Welcome to come and create a GUI for us! :)
 )" << std::endl;
 }
 
-bool proc_argv(int argc, char** argv, std::string& adb, std::string& adb_address, TaskList& tasks,
+bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string& adb_address, TaskList& tasks,
     MaaAdbControllerType& ctrl_type)
 {
     int touch = 1;
@@ -121,6 +119,7 @@ bool proc_argv(int argc, char** argv, std::string& adb, std::string& adb_address
     if (auto config_opt = json::open("config.json")) {
         auto& confing = *config_opt;
 
+        debug = confing["debug"].as_boolean();
         adb = confing["adb"].as_string();
         adb_address = confing["adb_address"].as_string();
 
@@ -229,6 +228,7 @@ void save_config(const std::string& adb, const std::string& adb_address, const T
     MaaAdbControllerType ctrl_type)
 {
     json::value config;
+    config["debug"] = false;
     config["adb"] = adb;
     config["adb_Doc"] = "adb.exe 所在路径，相对绝对均可";
     config["adb_address"] = adb_address;
