@@ -1,43 +1,47 @@
 {
-    "StartUp": {
-        "next": [
-            "HomeFlag",
-            "Sub_StartUp"
-        ]
-    },
     "Sub_StartUp": {
         "is_sub": true,
         "next": [
-            "HomeFlag",
             "Sub_HomeButton",
             "Sub_BackButton",
             "Sub_ObtainedAwards",
-            "Sub_DailyLoginReward",
+            "Sub_CollectDailyLoginReward",
+            "Download",
+            "CloseVersionAnnouncement",
             "StartGame",
+            "GameIdentifying",
             "CloseAnnouncement",
             "GameLoading",
-            "StartBH3",
-            "Stop"
+            "HomeFlag",
+            "Sub_StartBH3"
         ],
         "editor_info": {
             "path": "/startup.json/"
         }
     },
-    "StartBH3": {
+    "Sub_StartBH3": {
+        "is_sub": true,
         "action": "StartApp",
-        "package": "com.miHoYo.bh3.bilibili/com.miHoYo.overridenativeactivity.OverrideNativeActivity",
+        "package_doc": "set in code.",
         "editor_info": {
             "path": "/startup.json/"
         }
     },
     "RestartBH3": {
         "action": "StopApp",
-        "package": "com.miHoYo.bh3.bilibili",
+        "package_doc": "set in code.",
         "next": [
-            "StartBH3",
-            "GameLoading",
+            "Sub_HomeButton",
+            "Sub_BackButton",
+            "Sub_ObtainedAwards",
+            "Sub_CollectDailyLoginReward",
+            "Download",
             "StartGame",
-            "CloseAnnouncement"
+            "GameIdentifying",
+            "CloseAnnouncement",
+            "GameLoading",
+            "HomeFlag",
+            "Sub_StartBH3"
         ]
     },
     "GameLoading": {
@@ -49,13 +53,15 @@
             233,
             126
         ],
-        "timeout": 6000,
+        "timeout": 12000,
         "timeout_next": [
             "RestartBH3"
         ],
         "next": [
+            "Download",
             "GameLoading",
             "StartGame",
+            "GameIdentifying",
             "CloseAnnouncement"
         ],
         "editor_info": {
@@ -71,15 +77,18 @@
             246,
             123
         ],
-        "timeout": 60000,
         "next": [
             "StartGame",
             "GameIdentifying",
             "Sub_BackButton",
             "Sub_ObtainedAwards",
-            "Sub_DailyLoginReward",
+            "Sub_CollectDailyLoginReward",
             "CloseAnnouncement",
             "HomeFlag"
+        ],
+        "timeout": 12000,
+        "timeout_next": [
+            "RestartBH3"
         ]
     },
     "CloseAnnouncement": {
@@ -93,9 +102,8 @@
         ],
         "action": "Click",
         "next": [
-            "HomeFlag",
-            "StartGame",
-            "CloseAnnouncement"
+            "CloseAnnouncement",
+            "HomeFlag"
         ],
         "editor_info": {
             "path": "/startup.json/"
@@ -103,16 +111,16 @@
     },
     "StartGame": {
         "recognition": "OCR",
-        "template": "StartUp/StartGame.png",
         "action": "Click",
         "next": [
             "Sub_BackButton",
             "Sub_ObtainedAwards",
-            "Sub_DailyLoginReward",
-            "HomeFlag",
+            "Sub_CollectDailyLoginReward",
+            "CloseVersionAnnouncement",
             "StartGame",
             "GameIdentifying",
-            "CloseAnnouncement"
+            "CloseAnnouncement",
+            "HomeFlag"
         ],
         "editor_info": {
             "path": "/startup.json/"
@@ -133,6 +141,7 @@
     "HomeFlag": {
         "recognition": "TemplateMatch",
         "template": "StartUp/HomeFlag.png",
+        "threshold": 0.8,
         "roi": [
             1129,
             584,
@@ -182,44 +191,129 @@
             "path": "/startup.json/"
         }
     },
-    "Sub_DailyLoginReward": {
+    "Sub_CollectDailyLoginReward": {
         "is_sub": true,
-        "recognition": "TemplateMatch",
-        "template": "StartUp/DailyLoginReward.png",
-        "roi": [
-            619,
-            0,
-            219,
-            139
-        ],
-        "next": [
-            "CollectDailyLoginReward"
-        ],
-        "editor_info": {
-            "path": "/startup.json/"
-        }
-    },
-    "CollectDailyLoginReward": {
         "recognition": "TemplateMatch",
         "template": "StartUp/CollectDailyLoginReward.png",
         "roi": [
-            641,
-            608,
-            208,
-            112
+            0,
+            457,
+            1280,
+            263
         ],
         "action": "Click"
     },
     "Sub_ObtainedAwards": {
         "is_sub": true,
         "recognition": "TemplateMatch",
-        "template": "StartUp/ObtainedAward.png",
+        "template": "StartUp/Confirm.png",
         "roi": [
-            537,
-            463,
-            201,
-            136
+            556,
+            438,
+            167,
+            137
         ],
-        "action": "Click"
+        "action": "Click",
+        "post_wait_freezes": {
+            "time": 500,
+            "target": [
+                550,
+                0,
+                247,
+                53
+            ]
+        }
+    },
+    "Download": {
+        "recognition": "TemplateMatch",
+        "template": "StartUp/Download.png",
+        "roi": [
+            523,
+            121,
+            234,
+            154
+        ],
+        "next": [
+            "DownloadConfirm"
+        ]
+    },
+    "DownloadConfirm": {
+        "recognition": "TemplateMatch",
+        "template": "StartUp/Confirm.png",
+        "roi": [
+            556,
+            438,
+            167,
+            137
+        ],
+        "action": "Click",
+        "next":[
+            "Downloading",
+            "Download"
+        ]
+    },
+    "Downloading": {
+        "recognition": "OCR",
+        "text": [
+            "下载中"
+        ],
+        "roi": [
+            1067,
+            593,
+            169,
+            127
+        ],
+        "next": [
+            "Downloading",
+            "Downloaded"
+        ]
+    },
+    "Downloaded": {
+        "recognition": "OCR",
+        "text": [
+            "下载完成"
+        ],
+        "roi": [
+            1049,
+            594,
+            186,
+            126
+        ],
+        "next": [
+            "DownloadedConfirm"
+        ]
+    },
+    "DownloadedConfirm": {
+        "recognition": "TemplateMatch",
+        "template": "StartUp/Confirm.png",
+        "roi": [
+            563,
+            357,
+            156,
+            129
+        ],
+        "action": "Click",
+        "next": [
+            "StartGame",
+            "GameIdentifying",
+            "CloseAnnouncement"
+        ]
+    },
+    "CloseVersionAnnouncement": {
+        "recognition": "TemplateMatch",
+        "template": "StartUp/CloseVersionAnnouncement.png",
+        "roi": [
+            1054,
+            86,
+            141,
+            138
+        ],
+        "action": "Click",
+        "next": [
+            "CloseVersionAnnouncement",
+            "StartGame",
+            "GameIdentifying",
+            "CloseAnnouncement"
+        ]
     }
 }
