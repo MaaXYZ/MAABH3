@@ -78,6 +78,7 @@
             123
         ],
         "next": [
+            "CloseVersionAnnouncement",
             "StartGame",
             "GameIdentifying",
             "Sub_BackButton",
