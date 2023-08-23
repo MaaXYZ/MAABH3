@@ -1,0 +1,90 @@
+{
+    "Homeland": {
+        "next": [
+            "EnterHomeland",
+            "CollectGold",
+            "CollectAP"
+        ],
+        "editor_info": {
+            "path": "/homeland.json/"
+        }
+    },
+    "EnterHomeland": {
+        "recognition": "OCR",
+        "text": [
+            "家园"
+        ],
+        "roi": [
+            1005,
+            610,
+            155,
+            110
+        ],
+        "action": "Click",
+        "next": [
+            "CollectGold",
+            "CollectAP"
+        ]
+    },
+    "CollectGold": {
+        "recognition": "TemplateMatch",
+        "template": "Homeland/CollectGold.png",
+        "roi": [
+            286,
+            69,
+            141,
+            146
+        ],
+        "action": "Click",
+        "next": [
+            "CollectAP"
+        ]
+    },
+    "CollectAP": {
+        "recognition": "TemplateMatch",
+        "template": "Homeland/CollectAP.png",
+        "roi": [
+            124,
+            68,
+            146,
+            155
+        ],
+        "action": "Click",
+        "next": [
+            "CollectAPButton"
+        ]
+    },
+    "CollectAPButton": {
+        "recognition": "TemplateMatch",
+        "template": "Homeland/CollectAPButton.png",
+        "roi": [
+            650,
+            496,
+            215,
+            130
+        ],
+        "action": "Click"
+    },
+    "EnterStorySweep": {
+        "recognition": "TemplateMatch",
+        "template": "Homeland/EnterStorySweep.png",
+        "roi": [
+            743,
+            596,
+            161,
+            124
+        ],
+        "action": "Click"
+    },
+    "EnterQuest": {
+        "recognition": "TemplateMatch",
+        "template": "Homeland/EnterQuest.png",
+        "roi": [
+            905,
+            595,
+            160,
+            125
+        ],
+        "action": "Click"
+    }
+}
