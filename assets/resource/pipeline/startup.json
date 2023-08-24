@@ -53,7 +53,7 @@
             233,
             126
         ],
-        "timeout": 12000,
+        "timeout": 60000,
         "timeout_next": [
             "RestartBH3"
         ],
@@ -63,6 +63,10 @@
             "StartGame",
             "GameIdentifying",
             "CloseAnnouncement"
+        ],
+        "timeout": 5000,
+        "timeout_next": [
+            "RestartBH3"
         ],
         "editor_info": {
             "path": "/startup.json/"
@@ -87,7 +91,7 @@
             "CloseAnnouncement",
             "HomeFlag"
         ],
-        "timeout": 12000,
+        "timeout": 60000,
         "timeout_next": [
             "RestartBH3"
         ]
@@ -123,6 +127,9 @@
             "CloseAnnouncement",
             "HomeFlag"
         ],
+        "timeout_next": [
+            "RestartBH3"
+        ],
         "editor_info": {
             "path": "/startup.json/"
         },
@@ -133,10 +140,8 @@
             138
         ],
         "text": [
-            "点击",
-            "任意处",
-            "进入",
-            "游戏"
+            "点击任意处",
+            "进入游戏"
         ]
     },
     "HomeFlag": {
