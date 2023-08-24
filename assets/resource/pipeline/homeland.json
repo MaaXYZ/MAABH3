@@ -3,7 +3,8 @@
         "next": [
             "EnterHomeland",
             "CollectGold",
-            "CollectAP"
+            "CollectAP",
+            "Sub_StartUp"
         ],
         "editor_info": {
             "path": "/homeland.json/"
@@ -22,8 +23,10 @@
         ],
         "action": "Click",
         "next": [
+            "EnterHomeland",
             "CollectGold",
-            "CollectAP"
+            "CollectAP",
+            "Sub_StartUp"
         ]
     },
     "CollectGold": {
@@ -37,6 +40,7 @@
         ],
         "action": "Click",
         "next": [
+            "CollectGold",
             "CollectAP"
         ]
     },
@@ -51,6 +55,7 @@
         ],
         "action": "Click",
         "next": [
+            "CollectAP",
             "CollectAPButton"
         ]
     },
@@ -62,17 +67,6 @@
             496,
             215,
             130
-        ],
-        "action": "Click"
-    },
-    "EnterStorySweep": {
-        "recognition": "TemplateMatch",
-        "template": "Homeland/EnterStorySweep.png",
-        "roi": [
-            743,
-            596,
-            161,
-            124
         ],
         "action": "Click"
     },
