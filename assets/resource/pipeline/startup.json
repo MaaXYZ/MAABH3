@@ -240,7 +240,12 @@
             154
         ],
         "next": [
-            "DownloadConfirm"
+            "DownloadConfirm",
+            "Downloading",
+            "Checking",
+            "Downloaded",
+            "DownloadedConfirm",
+            "Download"
         ]
     },
     "DownloadConfirm": {
@@ -255,6 +260,9 @@
         "action": "Click",
         "next":[
             "Downloading",
+            "Checking",
+            "Downloaded",
+            "DownloadedConfirm",
             "Download"
         ]
     },
@@ -271,7 +279,26 @@
         ],
         "next": [
             "Downloading",
-            "Downloaded"
+            "Checking",
+            "Downloaded",
+            "DownloadedConfirm"
+        ]
+    },
+    "Checking": {
+        "recognition": "OCR",
+        "text": [
+            "校验中"
+        ],
+        "roi": [
+            1067,
+            593,
+            168,
+            127
+        ],
+        "next": [
+            "Checking",
+            "Downloaded",
+            "DownloadedConfirm"
         ]
     },
     "Downloaded": {
