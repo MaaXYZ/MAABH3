@@ -68,7 +68,42 @@
             215,
             130
         ],
-        "action": "Click"
+        "action": "Click",
+        "next": [
+            "CollectAPButton",
+            "APMax"
+        ]
+    },
+    "APMax": {
+        "recognition": "OCR",
+        "text": [
+            "已经达到",
+            "体力",
+            "上限"
+        ],
+        "roi": [
+            461,
+            289,
+            359,
+            138
+        ],
+        "next": [
+            "CloseCollectAP"
+        ]
+    },
+    "CloseCollectAP": {
+        "recognition": "TemplateMatch",
+        "template": "Homeland/CloseCollectAP.png",
+        "roi": [
+            1017,
+            58,
+            137,
+            138
+        ],
+        "action": "Click",
+        "next": [
+            "CloseCollectAP"
+        ]
     },
     "EnterQuest": {
         "recognition": "TemplateMatch",
