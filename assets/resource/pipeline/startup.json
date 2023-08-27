@@ -64,10 +64,6 @@
             "GameIdentifying",
             "CloseAnnouncement"
         ],
-        "timeout": 5000,
-        "timeout_next": [
-            "RestartBH3"
-        ],
         "editor_info": {
             "path": "/startup.json/"
         }
@@ -127,6 +123,7 @@
             "CloseAnnouncement",
             "HomeFlag"
         ],
+        "timeout": 5000,
         "timeout_next": [
             "RestartBH3"
         ],
