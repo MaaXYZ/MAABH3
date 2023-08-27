@@ -167,7 +167,7 @@
     },
     "QuestConfirm": {
         "recognition": "TemplateMatch",
-        "template": "Homeland/QuestConfirm.png",
+        "template": "Homeland/Confirm.png",
         "roi": [
             560,
             478,
