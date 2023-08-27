@@ -4,6 +4,7 @@
             "EnterHomeland",
             "CollectGold",
             "CollectAP",
+            "EnterQuest",
             "Sub_StartUp"
         ],
         "editor_info": {
@@ -26,6 +27,7 @@
             "EnterHomeland",
             "CollectGold",
             "CollectAP",
+            "EnterQuest",
             "Sub_StartUp"
         ]
     },
@@ -41,7 +43,8 @@
         "action": "Click",
         "next": [
             "CollectGold",
-            "CollectAP"
+            "CollectAP",
+            "EnterQuest"
         ]
     },
     "CollectAP": {
@@ -56,7 +59,8 @@
         "action": "Click",
         "next": [
             "CollectAP",
-            "CollectAPButton"
+            "CollectAPButton",
+            "EnterQuest"
         ]
     },
     "CollectAPButton": {
@@ -70,8 +74,9 @@
         ],
         "action": "Click",
         "next": [
+            "APMax",
             "CollectAPButton",
-            "APMax"
+            "EnterQuest"
         ]
     },
     "APMax": {
@@ -88,7 +93,8 @@
             138
         ],
         "next": [
-            "CloseCollectAP"
+            "CloseCollectAP",
+            "EnterQuest"
         ]
     },
     "CloseCollectAP": {
@@ -102,7 +108,8 @@
         ],
         "action": "Click",
         "next": [
-            "CloseCollectAP"
+            "CloseCollectAP",
+            "EnterQuest"
         ]
     },
     "EnterQuest": {
@@ -114,6 +121,202 @@
             160,
             125
         ],
-        "action": "Click"
+        "action": "Click",
+        "next": [
+            "EnterQuest",
+            "QuestConfirm",
+            "QuestUnfold",
+            "QuestCompleted",
+            "QuestNeed"
+        ]
+    },
+    "QuestUnfold": {
+        "recognition": "TemplateMatch",
+        "template": "Homeland/QuestUnfold.png",
+        "roi": [
+            1185,
+            293,
+            95,
+            135
+        ],
+        "action": "Click",
+        "next": [
+            "QuestUnfold",
+            "QuestConfirm",
+            "QuestCompleted",
+            "QuestNeed"
+        ]
+    },
+    "QuestCompleted": {
+        "recognition": "OCR",
+        "text": [
+            "完成"
+        ],
+        "roi": [
+            834,
+            0,
+            446,
+            720
+        ],
+        "action": "Click",
+        "next": [
+            "QuestConfirm",
+            "QuestCompleted",
+            "QuestNeed"
+        ]
+    },
+    "QuestConfirm": {
+        "recognition": "TemplateMatch",
+        "template": "Homeland/QuestConfirm.png",
+        "roi": [
+            560,
+            478,
+            159,
+            133
+        ],
+        "action": "Click",
+        "next": [
+            "QuestConfirm",
+            "QuestCompleted",
+            "QuestNeed",
+            "QuestNoNeed"
+        ]
+    },
+    "QuestNeed": {
+        "recognition": "OCR",
+        "text": [
+            "需要"
+        ],
+        "roi": [
+            1134,
+            0,
+            55,
+            720
+        ],
+        "action": "Click",
+        "next": [
+            "OneClickDispatch"
+        ]
+    },
+    "QuestNoNeed": {
+        "recognition": "OCR",
+        "text": [
+            "需要"
+        ],
+        "roi": [
+            1134,
+            0,
+            55,
+            720
+        ],
+        "inverse": true
+    },
+    "OneClickDispatch": {
+        "recognition": "TemplateMatch",
+        "template": "Homeland/OneClickDispatch.png",
+        "roi": [
+            763,
+            606,
+            219,
+            114
+        ],
+        "action": "Click",
+        "next": [
+            "NoEligibleRoles",
+            "StartQuest"
+        ]
+    },
+    "NoEligibleRoles": {
+        "recognition": "OCR",
+        "text": [
+            "没有找到",
+            "合适的",
+            "推荐女武神"
+        ],
+        "roi": [
+            395,
+            284,
+            489,
+            145
+        ],
+        "action": "Click",
+        "next": [
+            "QuestRefresh"
+        ]
+    },
+    "QuestRefresh": {
+        "recognition": "TemplateMatch",
+        "template": "Homeland/QuestRefresh.png",
+        "roi": [
+            1117,
+            0,
+            163,
+            132
+        ],
+        "action": "Click",
+        "next": [
+            "NotEnoughRefreshes",
+            "OneClickDispatch"
+        ]
+    },
+    "NotEnoughRefreshes": {
+        "recognition": "OCR",
+        "text": [
+            "今日剩余",
+            "刷新",
+            "次数",
+            "不足"
+        ],
+        "roi": [
+            427,
+            286,
+            425,
+            143
+        ],
+        "action": "Click",
+        "next": [
+            "NextQuest",
+            "EndQuest"
+        ]
+    },
+    "NextQuest": {
+        "recognition": "TemplateMatch",
+        "template": "Homeland/NextQuest.png",
+        "roi": [
+            1157,
+            293,
+            123,
+            134
+        ],
+        "action": "Click",
+        "next": [
+            "OneClickDispatch"
+        ]
+    },
+    "EndQuest": {
+        "recognition": "TemplateMatch",
+        "template": "Homeland/NextQuest.png",
+        "roi": [
+            1157,
+            293,
+            123,
+            134
+        ],
+        "inverse": true
+    },
+    "StartQuest": {
+        "recognition": "TemplateMatch",
+        "template": "Homeland/StartQuest.png",
+        "roi": [
+            1028,
+            610,
+            220,
+            110
+        ],
+        "action": "Click",
+        "next": [
+            "QuestNeed",
+            "QuestNoNeed"
+        ]
     }
 }
