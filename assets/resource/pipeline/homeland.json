@@ -302,7 +302,11 @@
             123,
             134
         ],
-        "inverse": true
+        "inverse": true,
+        "next": [
+            "HomelandFlag",
+            "Sub_BackButton"
+        ]
     },
     "StartQuest": {
         "recognition": "TemplateMatch",
@@ -317,6 +321,19 @@
         "next": [
             "QuestNeed",
             "QuestNoNeed"
+        ]
+    },
+    "HomelandFlag": {
+        "recognition": "TemplateMatch",
+        "template": "Homeland/HomelandFlag.png",
+        "roi": [
+            479,
+            72,
+            176,
+            136
+        ],
+        "next": [
+            "StorySweep"
         ]
     }
 }

@@ -1,0 +1,146 @@
+{
+    "StorySweep": {
+        "next": [
+            "EnterStorySweep"
+        ]
+    },
+    "EnterStorySweep": {
+        "recognition": "TemplateMatch",
+        "template": "StorySweep/EnterStorySweep.png",
+        "roi": [
+            743,
+            596,
+            161,
+            124
+        ],
+        "action": "Click",
+        "next": [
+            "FragmentConfirm",
+            "FragmentCompleted",
+            "SwitchToMaterialPage",
+            "MaterialConfirm",
+            "MaterialCompleted",
+            "MaterialNoCompleted"
+        ]
+    },
+    "Sub_SwitchToFragmentPage": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "StorySweep/SwitchToFragmentPage.png",
+        "roi": [
+            1038,
+            36,
+            222,
+            141
+        ],
+        "action": "Click"
+    },
+    "Sub_SwitchToMaterialPage": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "StorySweep/SwitchToMaterialPage.png",
+        "roi": [
+            1038,
+            117,
+            225,
+            138
+        ],
+        "action": "Click"
+    },
+    "FragmentCompleted": {
+        "recognition": "OCR",
+        "text": [
+            "完成远征"
+        ],
+        "roi": [
+            838,
+            137,
+            203,
+            573
+        ],
+        "action": "Click",
+        "next": [
+            "FragmentConfirm",
+            "FragmentCompleted",
+            "SwitchToMaterialPage"
+        ]
+    },
+    "FragmentConfirm": {
+        "recognition": "TemplateMatch",
+        "template": "Homeland/Confirm.png",
+        "roi": [
+            560,
+            478,
+            159,
+            133
+        ],
+        "action": "Click",
+        "next": [
+            "FragmentConfirm",
+            "FragmentCompleted",
+            "SwitchToMaterialPage"
+        ]
+    },
+    "SwitchToMaterialPage": {
+        "recognition": "TemplateMatch",
+        "template": "StorySweep/SwitchToMaterialPage.png",
+        "roi": [
+            1038,
+            117,
+            225,
+            138
+        ],
+        "action": "Click",
+        "next": [
+            "MaterialConfirm",
+            "MaterialCompleted",
+            "MaterialNoCompleted"
+        ]
+    },
+    "MaterialCompleted": {
+        "recognition": "OCR",
+        "text": [
+            "完成远征"
+        ],
+        "roi": [
+            838,
+            137,
+            203,
+            573
+        ],
+        "next": [
+            "MaterialConfirm",
+            "MaterialCompleted",
+            "MaterialNoCompleted"
+        ]
+    },
+    "MaterialNoCompleted": {
+        "recognition": "OCR",
+        "text": [
+            "完成远征"
+        ],
+        "roi": [
+            838,
+            137,
+            203,
+            573
+        ],
+        "inverse": true
+    },
+    "MaterialConfirm": {
+        "recognition": "TemplateMatch",
+        "template": "Homeland/Confirm.png",
+        "roi": [
+            560,
+            478,
+            159,
+            133
+        ],
+        "action": "Click",
+        "next": [
+            "MaterialConfirm",
+            "MaterialCompleted",
+            "MaterialNoCompleted"
+        ]
+    }
+}
