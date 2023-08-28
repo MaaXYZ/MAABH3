@@ -127,7 +127,8 @@
             "QuestConfirm",
             "QuestUnfold",
             "QuestCompleted",
-            "QuestNeed"
+            "QuestNeed",
+            "QuestNoNeed"
         ]
     },
     "QuestUnfold": {
@@ -144,7 +145,8 @@
             "QuestUnfold",
             "QuestConfirm",
             "QuestCompleted",
-            "QuestNeed"
+            "QuestNeed",
+            "QuestNoNeed"
         ]
     },
     "QuestCompleted": {
@@ -162,7 +164,8 @@
         "next": [
             "QuestConfirm",
             "QuestCompleted",
-            "QuestNeed"
+            "QuestNeed",
+            "QuestNoNeed"
         ]
     },
     "QuestConfirm": {
@@ -209,7 +212,10 @@
             55,
             720
         ],
-        "inverse": true
+        "inverse": true,
+        "next": [
+            "StorySweep"
+        ]
     },
     "OneClickDispatch": {
         "recognition": "TemplateMatch",
@@ -304,8 +310,7 @@
         ],
         "inverse": true,
         "next": [
-            "HomelandFlag",
-            "Sub_BackButton"
+            "StorySweep"
         ]
     },
     "StartQuest": {
@@ -321,19 +326,6 @@
         "next": [
             "QuestNeed",
             "QuestNoNeed"
-        ]
-    },
-    "HomelandFlag": {
-        "recognition": "TemplateMatch",
-        "template": "Homeland/HomelandFlag.png",
-        "roi": [
-            479,
-            72,
-            176,
-            136
-        ],
-        "next": [
-            "StorySweep"
         ]
     }
 }
