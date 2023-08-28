@@ -1,7 +1,27 @@
 {
     "StorySweep": {
         "next": [
-            "EnterStorySweep"
+            "StorySweepEnterHomeland",
+            "EnterStorySweep",
+            "Sub_StartUp"
+        ]
+    },
+    "StorySweepEnterHomeland": {
+        "recognition": "OCR",
+        "text": [
+            "家园"
+        ],
+        "roi": [
+            1005,
+            610,
+            155,
+            110
+        ],
+        "action": "Click",
+        "next": [
+            "StorySweepEnterHomeland",
+            "EnterStorySweep",
+            "Sub_StartUp"
         ]
     },
     "EnterStorySweep": {
@@ -59,6 +79,7 @@
             573
         ],
         "action": "Click",
+        "post_wait_freezes": 200,
         "next": [
             "FragmentConfirm",
             "FragmentCompleted",
