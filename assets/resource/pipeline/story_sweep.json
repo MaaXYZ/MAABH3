@@ -128,6 +128,7 @@
             203,
             573
         ],
+        "action": "Click",
         "next": [
             "MaterialConfirm",
             "MaterialCompleted",
