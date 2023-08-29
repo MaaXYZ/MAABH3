@@ -1,6 +1,11 @@
 {
     "Homeland": {
         "next": [
+            "Sub_HomeButton",
+            "Sub_BackButton",
+            "Sub_ObtainedAwards",
+            "Sub_CollectDailyLoginReward",
+            "Sub_CloseAnnouncement",
             "EnterHomeland",
             "CollectGold",
             "CollectAP",
