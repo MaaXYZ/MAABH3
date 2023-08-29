@@ -45,6 +45,7 @@
     },
     "Sub_SwitchToFragmentPage": {
         "is_sub": true,
+        "enabled": false,
         "recognition": "TemplateMatch",
         "template": "StorySweep/SwitchToFragmentPage.png",
         "roi": [
@@ -57,6 +58,7 @@
     },
     "Sub_SwitchToMaterialPage": {
         "is_sub": true,
+        "enabled": false,
         "recognition": "TemplateMatch",
         "template": "StorySweep/SwitchToMaterialPage.png",
         "roi": [
@@ -146,7 +148,12 @@
             203,
             573
         ],
-        "inverse": true
+        "inverse": true,
+        "next": [
+            "Sub_SwitchToFragmentPage",
+            "RandomStorySweep",
+            "NoIdleStorySweep"
+        ]
     },
     "MaterialConfirm": {
         "recognition": "TemplateMatch",
@@ -162,6 +169,114 @@
             "MaterialConfirm",
             "MaterialCompleted",
             "MaterialNoCompleted"
+        ]
+    },
+    "RandomStorySweep": {
+        "recognition": "OCR",
+        "text": [
+            "开始远征"
+        ],
+        "roi": [
+            838,
+            137,
+            203,
+            573
+        ],
+        "action": "Click",
+        "next": [
+            "StorySweepOneClickDispatch",
+            "StartStorySweep",
+            "NoIdleStorySweep"
+        ]
+    },
+    "NoIdleStorySweep": {
+        "recognition": "OCR",
+        "text": [
+            "开始远征"
+        ],
+        "roi": [
+            838,
+            137,
+            203,
+            573
+        ],
+        "inverse": true,
+        "action": "Swipe",
+        "begin": [
+            400,
+            610,
+            190,
+            55
+        ],
+        "end": [
+            400,
+            210,
+            166,
+            40
+        ],
+        "duration": 1000,
+        "next": [
+            "RandomStorySweep",
+            "StorySweepOneClickDispatch",
+            "StartStorySweep",
+            "NoIdleStorySweep"
+        ]
+    },
+    "StorySweepOneClickDispatch": {
+        "recognition": "TemplateMatch",
+        "template": "Homeland/OneClickDispatch.png",
+        "roi": [
+            680,
+            583,
+            224,
+            136
+        ],
+        "action": "Click",
+        "next": [
+            "StartStorySweep",
+            "StorySweepConsumptionLimit"
+        ]
+    },
+    "StartStorySweep": {
+        "recognition": "TemplateMatch",
+        "template": "StorySweep/StartStorySweep.png",
+        "roi": [
+            996,
+            584,
+            217,
+            133
+        ],
+        "action": "Click",
+        "post_wait_freezes": {
+            "time": 200,
+            "target": [
+                426,
+                155,
+                170,
+                552
+            ]
+        },
+        "next": [
+            "RandomStorySweep",
+            "StorySweepConsumptionLimit",
+            "StorySweepOneClickDispatch",
+            "StartStorySweep",
+            "NoIdleStorySweep"
+        ]
+    },
+    "StorySweepConsumptionLimit": {
+        "recognition": "OCR",
+        "text": [
+            "已达到",
+            "今日远征作战",
+            "消耗体力上限",
+            "无法排遣"
+        ],
+        "roi": [
+            269,
+            290,
+            745,
+            138
         ]
     }
 }
