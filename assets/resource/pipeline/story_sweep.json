@@ -37,10 +37,7 @@
         "next": [
             "FragmentConfirm",
             "FragmentCompleted",
-            "SwitchToMaterialPage",
-            "MaterialConfirm",
-            "MaterialCompleted",
-            "MaterialNoCompleted"
+            "SwitchToMaterialPage"
         ]
     },
     "Sub_SwitchToFragmentPage": {
