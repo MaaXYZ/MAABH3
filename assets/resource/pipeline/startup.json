@@ -153,40 +153,6 @@
             "path": "/startup.json/"
         }
     },
-    "Sub_BackButton": {
-        "is_sub": true,
-        "recognition": "TemplateMatch",
-        "template": [
-            "StartUp/BackButton.png"
-        ],
-        "roi": [
-            0,
-            0,
-            180,
-            133
-        ],
-        "action": "Click",
-        "editor_info": {
-            "path": "/startup.json/"
-        }
-    },
-    "Sub_HomeButton": {
-        "is_sub": true,
-        "recognition": "TemplateMatch",
-        "template": [
-            "StartUp/HomeButton.png"
-        ],
-        "roi": [
-            126,
-            0,
-            212,
-            134
-        ],
-        "action": "Click",
-        "editor_info": {
-            "path": "/startup.json/"
-        }
-    },
     "Stop": {
         "editor_info": {
             "path": "/startup.json/"

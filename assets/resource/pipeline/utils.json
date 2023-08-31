@@ -1,0 +1,43 @@
+{
+    "$schema": "../pipeline.schema.json",
+    "Sub_BackButton": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": [
+            "Utils/BackButton.png"
+        ], 
+        "roi": [
+            0,
+            0,
+            180,
+            133
+        ],
+        "action": "Click"
+    },
+    "Sub_HomeButton": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": [
+            "Utils/HomeButton.png"
+        ],
+        "roi": [
+            126,
+            0,
+            212,
+            134
+        ],
+        "action": "Click"
+    },
+    "Sub_CloseDialogBox": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Utils/CloseDialogBox.png",
+        "roi": [
+            640,
+            0,
+            640,
+            720
+        ],
+        "action": "Click"
+    }
+}
