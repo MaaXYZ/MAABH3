@@ -234,7 +234,8 @@
         "action": "Click",
         "next": [
             "NoEligibleRoles",
-            "StartQuest"
+            "StartQuest",
+            "NotEnoughRiceBalls"
         ]
     },
     "NoEligibleRoles": {
@@ -274,9 +275,7 @@
         "recognition": "OCR",
         "text": [
             "今日剩余",
-            "刷新",
-            "次数",
-            "不足"
+            "刷新次数不足"
         ],
         "roi": [
             427,
@@ -329,8 +328,26 @@
         ],
         "action": "Click",
         "next": [
+            "NotEnoughRiceBalls",
             "QuestNeed",
             "QuestNoNeed"
+        ]
+    },
+    "NotEnoughRiceBalls": {
+        "recognition": "OCR",
+        "text": [
+            "饭团不足",
+            "无法排遣",
+            "请稍后尝试"
+        ],
+        "roi": [
+            362,
+            287,
+            558,
+            141
+        ],
+        "next": [
+            "StorySweep"
         ]
     }
 }
