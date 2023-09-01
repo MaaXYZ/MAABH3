@@ -1,9 +1,235 @@
 {
+    "$schema": "../pipeline.schema.json",
     "Awards": {
         "next": [
+            "EnterAwards",
+            "Sub_StartUp"
         ],
         "editor_info": {
             "path": "/awards.json/"
         }
+    },
+    "EnterAwards": {
+        "recognition": "OCR",
+        "text": [
+            "任务"
+        ],
+        "roi": [
+            92,
+            115,
+            54,
+            34
+        ],
+        "target": [
+            30,
+            108,
+            40,
+            32
+        ],
+        "action": "Click",
+        "next": [
+            "CombatMissionOneClickCollection",
+            "NoDailyPracticeRewards",
+            "DailyPracticeRewards_100",
+            "DailyPracticeRewards_200",
+            "DailyPracticeRewards_300",
+            "DailyPracticeRewards_450",
+            "DailyPracticeRewards_600",
+            "EnterAwards",
+            "Sub_CombatMissionPageFlag"
+        ]
+    },
+    "Sub_CombatMissionPageFlag": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Awards/CombatMissionPageFlag.png",
+        "roi": [
+            35,
+            64,
+            213,
+            143
+        ],
+        "action": "Click"
+    },
+    "CombatMissionOneClickCollection": {
+        "recognition": "TemplateMatch",
+        "template": "Awards/CombatMissionOneClickCollection.png",
+        "threshold": 0.85,
+        "roi": [
+            1055,
+            53,
+            225,
+            135
+        ],
+        "action": "Click",
+        "next": [
+            "Sub_CloseDialogBox",
+            "CombatMissionOneClickCollection",
+            "NoDailyPracticeRewards",
+            "DailyPracticeRewards_100",
+            "DailyPracticeRewards_200",
+            "DailyPracticeRewards_300",
+            "DailyPracticeRewards_450",
+            "DailyPracticeRewards_600"
+        ]
+    },
+    "DailyPracticeRewards_100": {
+        "recognition": "TemplateMatch",
+        "template": "Awards/DailyPracticeRewardsOk.png",
+        "inverse": true,
+        "roi": [
+            485,
+            637,
+            52,
+            67
+        ],
+        "action": "Click",
+        "target": [
+            485,
+            637,
+            52,
+            67
+        ],
+        "next": [
+            "DailyPracticeRewardsPreview",
+            "Sub_CloseDialogBox",
+            "DailyPracticeRewards_200",
+            "DailyPracticeRewards_300",
+            "DailyPracticeRewards_450",
+            "DailyPracticeRewards_600",
+            "Sub_BackButton",
+            "HomeFlag"
+        ]
+    },
+    "DailyPracticeRewards_200": {
+        "recognition": "TemplateMatch",
+        "template": "Awards/DailyPracticeRewardsOk.png",
+        "inverse": true,
+        "roi": [
+            660,
+            636,
+            57,
+            69
+        ],
+        "action": "Click",
+        "target": [
+            660,
+            636,
+            57,
+            69
+        ],
+        "next": [
+            "DailyPracticeRewardsPreview",
+            "Sub_CloseDialogBox",
+            "DailyPracticeRewards_300",
+            "DailyPracticeRewards_450",
+            "DailyPracticeRewards_600",
+            "Sub_BackButton",
+            "HomeFlag"
+        ]
+    },
+    "DailyPracticeRewards_300": {
+        "recognition": "TemplateMatch",
+        "template": "Awards/DailyPracticeRewardsOk.png",
+        "inverse": true,
+        "roi": [
+            837,
+            637,
+            54,
+            69
+        ],
+        "action": "Click",
+        "target": [
+            837,
+            637,
+            54,
+            69
+        ],
+        "next": [
+            "DailyPracticeRewardsPreview",
+            "Sub_CloseDialogBox",
+            "DailyPracticeRewards_450",
+            "DailyPracticeRewards_600",
+            "Sub_BackButton",
+            "HomeFlag"
+        ]
+    },
+    "DailyPracticeRewards_450": {
+        "recognition": "TemplateMatch",
+        "template": "Awards/DailyPracticeRewardsOk.png",
+        "inverse": true,
+        "roi": [
+            1013,
+            636,
+            53,
+            67
+        ],
+        "action": "Click",
+        "target": [
+            1013,
+            636,
+            53,
+            67
+        ],
+        "next": [
+            "DailyPracticeRewardsPreview",
+            "Sub_CloseDialogBox",
+            "DailyPracticeRewards_600",
+            "Sub_BackButton",
+            "HomeFlag"
+        ]
+    },
+    "DailyPracticeRewards_600": {
+        "recognition": "TemplateMatch",
+        "template": "Awards/DailyPracticeRewardsOk.png",
+        "inverse": true,
+        "roi": [
+            1187,
+            636,
+            55,
+            66
+        ],
+        "action": "Click",
+        "target": [
+            1187,
+            636,
+            55,
+            66
+        ],
+        "next": [
+            "DailyPracticeRewardsPreview",
+            "Sub_CloseDialogBox",
+            "Sub_BackButton",
+            "HomeFlag"
+        ]
+    },
+    "DailyPracticeRewardsPreview": {
+        "recognition": "TemplateMatch",
+        "template": "Awards/DailyPracticeRewardsPreview.png",
+        "roi": [
+            442,
+            94,
+            398,
+            143
+        ],
+        "next": [
+            "Sub_CloseDialogBox",
+            "Sub_BackButton",
+            "HomeFlag"
+        ]
+    },
+    "NoDailyPracticeRewards": {
+        "recognition": "TemplateMatch",
+        "template": "Awards/NoDailyPracticeRewards.png",
+        "roi": [
+            439,
+            597,
+            585,
+            123
+        ],
+        "next": [
+            "Sub_BackButton",
+            "HomeFlag"
+        ]
     }
 }
