@@ -1,0 +1,121 @@
+{
+    "$schema": "../pipeline.schema.json",
+    "MaterialEvent": {
+        "next": [
+            "EnterAttack",
+            "Sub_StartUp"
+        ]
+    },
+    "EnterAttack": {
+        "recognition": "TemplateMatch",
+        "template": "MaterialEvent/EnterAttack.png",
+        "roi": [
+            1025,
+            77,
+            167,
+            163
+        ],
+        "action": "Click",
+        "post_wait_freezes": {
+            "time": 200,
+            "target": [
+                0,
+                0,
+                340,
+                80
+            ]
+        },
+        "next": [
+            "EnterMaterialEvent",
+            "Sub_AttackPageFlag"
+        ]
+    },
+    "Sub_AttackPageFlag": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "MaterialEvent/AttackPageFlag.png",
+        "roi": [
+            0,
+            122,
+            135,
+            166
+        ],
+        "action": "Click"
+    },
+    "EnterMaterialEvent": {
+        "recognition": "TemplateMatch",
+        "template": "MaterialEvent/EnterMaterialEvent.png",
+        "roi": [
+            903,
+            356,
+            366,
+            307
+        ],
+        "action": "Click",
+        "next": [
+            "OneClickBurdenReduction",
+            "Sub_MaterialActivitiesPageFlag",
+            "NoOneClickBurdenReduction"
+        ]
+    },
+    "Sub_MaterialActivitiesPageFlag": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "MaterialEvent/MaterialActivitiesPageFlag.png",
+        "roi": [
+            0,
+            162,
+            137,
+            216
+        ],
+        "action": "Click"
+    },
+    "OneClickBurdenReduction": {
+        "recognition": "TemplateMatch",
+        "template": "MaterialEvent/OneClickBurdenReduction.png",
+        "roi": [
+            1037,
+            598,
+            243,
+            122
+        ],
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "next": [
+            "BurdenReduction",
+            "OneClickBurdenReduction"
+        ]
+    },
+    "NoOneClickBurdenReduction": {
+        "recognition": "TemplateMatch",
+        "template": "MaterialEvent/OneClickBurdenReduction.png",
+        "roi": [
+            1037,
+            598,
+            243,
+            122
+        ],
+        "inverse": true,
+        "next": [
+            "Sub_HomeButton",
+            "HomeFlag"
+        ]
+    },
+    "BurdenReduction": {
+        "recognition": "TemplateMatch",
+        "template": "MaterialEvent/BurdenReduction.png",
+        "roi": [
+            558,
+            462,
+            162,
+            135
+        ],
+        "action": "Click",
+        "next": [
+            "BurdenReduction",
+            "Sub_CloseDialogBox",
+            "Sub_HomeButton",
+            "HomeFlag"
+        ]
+    }
+}
