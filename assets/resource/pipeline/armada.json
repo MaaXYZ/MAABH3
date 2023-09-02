@@ -1,0 +1,105 @@
+{
+    "$schema": "../pipeline.schema.json",
+    "Armada": {
+        "next": [
+            "EnterArmada",
+            "Sub_StartUp"
+        ]
+    },
+    "EnterArmada": {
+        "recognition": "OCR",
+        "text": [
+            "舰团"
+        ],
+        "roi": [
+            879,
+            661,
+            54,
+            29
+        ],
+        "action": "Click",
+        "next": [
+            "EnterArmada",
+            "EnterCommissiuonedRecovery"
+        ]
+    },
+    "EnterCommissionedRecovery": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/EnterCommissionedRecovery.png",
+        "roi": [
+            390,
+            583,
+            215,
+            137
+        ],
+        "action": "Click",
+        "next": [
+            "EnterCommissionedRecovery",
+            "ApplyForANewCommission"
+        ]
+    },
+    "ApplyForANewCommission": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/ApplyForANewCommission.png",
+        "roi": [
+            37,
+            577,
+            239,
+            141
+        ],
+        "action": "Click",
+        "next": [
+            "ApplyForANewCommission",
+            "AcceptNewCommission"
+        ]
+    },
+    "AcceptNewCommission": {
+        "recognition": "OCR",
+        "text": [
+            "接受"
+        ],
+        "roi": [
+            1018,
+            154,
+            211,
+            560
+        ],
+        "action": "Click",
+        "next": [
+            "AcceptNewCommission",
+            "CommissionSubmitButton"
+        ]
+    },
+    "CommissionSubmitButton": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/CommissionSubmitButton.png",
+        "roi": [
+            860,
+            579,
+            171,
+            141
+        ],
+        "action": "Click",
+        "next": [
+            "CommissionSubmitButton",
+            "SubmitCommission"
+        ]
+    },
+    "SubmitCommission": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/SubmitCommission.png",
+        "roi": [
+            696,
+            492,
+            230,
+            141
+        ],
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "next": [
+            "SubmitCommission",
+            "Sub_CloseDialogBox",
+            "CommissionSubmitButton"
+        ]
+    }
+}
