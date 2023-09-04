@@ -33,10 +33,11 @@ def detect_host_triplet():
     return f"{system}-{machine}"
 
 def split_asset_name(name: str):
-    remainder, tag_suffix =  name.rsplit("-", 1)
+    tmp = name.split("-", 1)[1]
+    system, machine, tag_suffix =  tmp.split("-", 2)
     tag = tag_suffix.rsplit(".", 1)[0]
-    if remainder:
-        target = remainder.split("-", 1)[1]
+    if system and machine:
+        target = f"{system}-{machine}"
         if target:
             return target, tag
     return None, None
