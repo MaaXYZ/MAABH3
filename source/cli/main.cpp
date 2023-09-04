@@ -1,4 +1,5 @@
 ﻿#include <MaaFramework/MaaAPI.h>
+#include <MaaToolKit/MaaToolKitAPI.h>
 #include <meojson/json.hpp>
 
 #include <filesystem>
