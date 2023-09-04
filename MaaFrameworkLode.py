@@ -45,6 +45,7 @@ def get_browser_download_url(repo_owner: str, repo_name: str, release_tag: str, 
     url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/releases/tags/{release_tag}"
     req = urllib.request.Request(url)
     token = os.environ.get("GH_TOKEN", os.environ.get("GITHUB_TOKEN", None))
+    resp = None
     for _ in range(5):
         if token:
             req.add_header("Authorization", f"Bearer {token}")
@@ -66,7 +67,12 @@ def get_browser_download_url(repo_owner: str, repo_name: str, release_tag: str, 
                 continue
             elif e.status == 404:
                 print("resource not found")
+            else:
+                resp = None
             raise    
+    if resp is None:
+        return None
+    
     release_data = json.loads(resp.read())
     assets = release_data.get("assets")
     if assets:
@@ -127,6 +133,9 @@ def main():
     print("about to download prebuilt dependency libraries for", target_triplet)
     release_tag = "v0.3.6"
     download_url = get_browser_download_url("MaaAssistantArknights", "MaaFramework", release_tag, target_triplet)
+    if download_url is None:
+        print("assets does not exist")
+        return
     filename = download_zip(download_url, "MaaFramework", release_tag)
     extract_zip(filename)
     bin_dir = Path(basedir, "3rdparty/bin")
