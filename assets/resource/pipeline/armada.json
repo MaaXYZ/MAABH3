@@ -20,7 +20,7 @@
         "action": "Click",
         "next": [
             "EnterArmada",
-            "EnterCommissiuonedRecovery"
+            "EnterCommissionedRecovery"
         ]
     },
     "EnterCommissionedRecovery": {
