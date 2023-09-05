@@ -1,0 +1,94 @@
+name: build cli
+
+on:
+  push:
+    tags:
+      - 'v*'
+    branches:
+      - '**'
+    paths:
+      - '.github/workflows/ci.yml'
+      - 'source/cli/**'
+      - 'assets/**'
+      - 'MaaFrameworkDownloader.py'
+  pull_request:
+    branches:
+      - '**'
+    paths:
+      - '.github/workflows/ci.yml'
+      - 'source/cli/**'
+      - 'assets/**'
+      - 'MaaFrameworkDownloader.py'
+  workflow_dispatch:
+
+jobs:
+  meta:
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.set_tag.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v3
+      - id: set_tag
+        run: |
+          echo tag=$(git describe --tags --match "v*" ${{ github.ref }} || git rev-parse --short HEAD) | tee -a $GITHUB_OUTPUT
+
+  windows:
+    needs: meta
+    strategy:
+      matrix:
+        include:
+          - msbuild_target: x64
+            lowercase_target: x64
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - name: Update resource version
+        run: |
+          python3 .github/update_resource_version.py assets/resource/properties.json ${{ needs.meta.outputs.tag }}
+          
+      - name: Download MaaFramework
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 MaaFrameworkDownloader.py
+
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1
+
+      - name: Build MAA
+        run: |
+          MSBUILD source/cli/MAABH3_CLI.sln /t:rebuild /p:Configuration="Release" /p:Platform="${{ matrix.msbuild_target }}" /m /p:MAA_VERSION="${{ needs.meta.outputs.tag }}"
+
+      - name: Install
+        shell: bash
+        run: |
+          cd source/cli/${{ matrix.msbuild_target }}/Release
+          mkdir -p install
+          cp -r resource MaaAgentBinary *.exe *.dll install
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: MAABH3-win-${{ matrix.msbuild_target }}
+          path: source/cli/${{ matrix.msbuild_target }}/Release/install
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [meta, windows]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          path: assets
+      - run: |
+          cd assets
+          for f in *; do
+            (cd $f && zip -r ../$f-${{ needs.meta.outputs.tag }}.zip .)
+          done
+      - uses: softprops/action-gh-release@v1
+        with:
+          files: assets/*
+          tag_name: ${{ needs.meta.outputs.tag }}
