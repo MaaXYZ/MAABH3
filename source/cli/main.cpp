@@ -208,8 +208,8 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
             << std::endl
             << "Please select tasks: " << std::endl
             << std::endl
-            << "1. StartUp\n"
-               "2. Homeland\n"
+            << "1. Homeland\n"
+               "2. MaterialEvent\n"
                "3. Awards\n"
             << std::endl
             << std::endl
@@ -231,10 +231,10 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
 
             switch (id) {
             case 1:
-                task_obj.type = "StartUp";
+                task_obj.type = "Homeland";
                 break;
             case 2:
-                task_obj.type = "Homeland";
+                task_obj.type = "MaterialEvent";
                 break;
             case 3:
                 task_obj.type = "Awards";
