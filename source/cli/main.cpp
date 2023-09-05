@@ -134,6 +134,11 @@ bool app_package_activity(int client_type, std::string& package, std::string& ac
         package = "com.miHoYo.bh3.bilibili";
         activity = "com.miHoYo.bh3.bilibili/com.miHoYo.overridenativeactivity.OverrideNativeActivity";
         break;
+    case 3:
+        // "2. Vivo\n"
+        package = "com.miHoYo.bh3.vivo";
+        activity = "com.miHoYo.bh3.vivo/com.miHoYo.overridenativeactivity.OverrideNativeActivity";
+        break;
     default:
         return false;
     }
@@ -193,6 +198,7 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
             << std::endl
             << "1. Official(CN)\n"
                "2. Bilibili\n"
+               "3. Vivo\n" 
             << std::endl
             << std::endl
             << "Please enter the client type number: "
@@ -200,7 +206,7 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
         std::string client_type_tmp;
         std::getline(std::cin, client_type_tmp);
         client_type = std::stoi(client_type_tmp);
-        if (client_type < 1 || client_type > 2) {
+        if (client_type < 1 || client_type > 3) {
             std::cout << "Unknown client type: " << client_type << std::endl;
             return false;
         }
@@ -284,7 +290,7 @@ void save_config(const std::string& adb, const std::string& adb_address, const i
     config["adb_address"] = adb_address;
     config["adb_address_Doc"] = "adb 连接地址，例如 127.0.0.1:7555";
     config["client_type"] = client_type;
-    config["client_type_Doc"] = "客户端类型：1: 官服, 2: Bilibili服";
+    config["client_type_Doc"] = "客户端类型：1: 官服, 2: Bilibili服, 3: Vivo服";
 
     json::value tasks_array;
     for (auto& task : tasks) {
