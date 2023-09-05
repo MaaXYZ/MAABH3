@@ -38,7 +38,7 @@ _欢迎大佬们来带带~_
 2. 下载Maa Framework的库文件
 
 ```bash
-python MaaFrameworkLoad.py
+python MaaFrameworkDownloader.py
 ```
 
 3. 使用 Visual Studio 编译 `source/cli/MAABH3_CLI.sln`
