@@ -28,6 +28,7 @@
         ],
         "action": "Click",
         "next": [
+            "Sub_CombatMissionPageFlag",
             "CombatMissionOneClickCollection",
             "NoDailyPracticeRewards",
             "DailyPracticeRewards_100",
@@ -35,8 +36,7 @@
             "DailyPracticeRewards_300",
             "DailyPracticeRewards_450",
             "DailyPracticeRewards_600",
-            "EnterAwards",
-            "Sub_CombatMissionPageFlag"
+            "EnterAwards"
         ]
     },
     "Sub_CombatMissionPageFlag": {
