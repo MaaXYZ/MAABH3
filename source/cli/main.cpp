@@ -21,6 +21,7 @@ void print_help();
 bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string& adb_address, int& client_type, TaskList& tasks,
 	MaaAdbControllerType& ctrl_type);
 bool app_package_activity(int client_type, std::string& package, std::string& activity);
+json::value homeland_param();
 void save_config(const std::string& adb, const std::string& adb_address, const int& client_type, const TaskList& tasks,
 	MaaAdbControllerType ctrl_type);
 std::string read_adb_config(const std::filesystem::path& cur_dir);
@@ -146,6 +147,19 @@ bool app_package_activity(int client_type, std::string& package, std::string& ac
     return true;
 }
 
+json::value homeland_param()
+{
+    json::value param;
+    auto& diff = param["diff_task"];
+    auto& doc = diff["Sub_SwitchToFragmentPage"]["doc"];
+    auto& enabled = diff["Sub_SwitchToFragmentPage"]["enabled"];
+
+    doc = "切换刷最近碎片；默认false，刷最近材料";
+    enabled = false;
+
+    return param;
+}
+
 bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string& adb_address, int& client_type, TaskList& tasks,
     MaaAdbControllerType& ctrl_type)
 {
@@ -238,6 +252,7 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
             switch (id) {
             case 1:
                 task_obj.type = "Homeland";
+                task_obj.param = homeland_param();
                 break;
             case 2:
                 task_obj.type = "MaterialEvent";
