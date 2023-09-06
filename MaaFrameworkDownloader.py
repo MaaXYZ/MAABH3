@@ -81,6 +81,8 @@ def get_browser_download_url(repo_owner: str, repo_name: str, release_tag: str, 
             asset_name = asset.get("name")
             asset_url = asset.get("browser_download_url")
             if asset.get("content_type") == "application/zip":
+                if asset_name == f"MAA-nupkgs-{release_tag}.zip":
+                    continue
                 target, _ = split_asset_name(asset_name)
                 if target == target_triplet:
                     return asset_url
