@@ -76,7 +76,7 @@ int main(int argc, char** argv)
     MaaControllerSetOption(controller_handle, MaaCtrlOption_DefaultAppPackageEntry, (void*)activity.c_str(), activity.size());
     MaaControllerSetOption(controller_handle, MaaCtrlOption_DefaultAppPackage, (void*)package.c_str(), package.size());
 
-    auto resource_id = MaaResourcePostResource(resource_handle, resource_dir.c_str());
+    auto resource_id = MaaResourcePostPath(resource_handle, resource_dir.c_str());
     auto connection_id = MaaControllerPostConnection(controller_handle);
 
     MaaResourceWait(resource_handle, resource_id);

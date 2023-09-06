@@ -3,6 +3,11 @@
 #include "MaaPort.h"
 #include <stdint.h>
 
+struct MaaStringBuffer;
+typedef struct MaaStringBuffer* MaaStringBufferHandle;
+struct MaaImageBuffer;
+typedef struct MaaImageBuffer* MaaImageBufferHandle;
+
 struct MaaResourceAPI;
 typedef struct MaaResourceAPI* MaaResourceHandle;
 struct MaaControllerAPI;
@@ -14,8 +19,7 @@ typedef uint8_t MaaBool;
 typedef uint64_t MaaSize;
 #define MaaNullSize ((MaaSize)-1)
 
-typedef const char* MaaString;
-typedef MaaString MaaJsonString;
+typedef const char* MaaStringView;
 
 typedef int32_t MaaStatus;
 enum MaaStatusEnum
@@ -117,7 +121,7 @@ enum MaaAdbControllerTypeEnum
 
 typedef void* MaaCallbackTransparentArg;
 
-typedef void (*MaaAPICallback)(MaaString msg, MaaJsonString details_json, MaaCallbackTransparentArg callback_arg);
+typedef void (*MaaAPICallback)(MaaStringView msg, MaaStringView details_json, MaaCallbackTransparentArg callback_arg);
 typedef MaaAPICallback MaaResourceCallback;
 typedef MaaAPICallback MaaControllerCallback;
 typedef MaaAPICallback MaaInstanceCallback;
@@ -133,3 +137,20 @@ typedef struct MaaCustomActionAPI* MaaCustomActionHandle;
 
 struct MaaSyncContextAPI;
 typedef struct MaaSyncContextAPI* MaaSyncContextHandle;
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
+    typedef struct MaaRect
+    {
+        int32_t x;
+        int32_t y;
+        int32_t width;
+        int32_t height;
+    }* MaaRectHandle;
+
+#ifdef __cplusplus
+}
+#endif
