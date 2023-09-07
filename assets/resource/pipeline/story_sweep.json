@@ -257,6 +257,7 @@
         },
         "next": [
             "RandomStorySweep",
+            "StorySweepNotEnoughAP",
             "StorySweepConsumptionLimit",
             "StorySweepOneClickDispatch",
             "StartStorySweep",
@@ -268,14 +269,56 @@
         "text": [
             "已达到",
             "今日远征作战",
-            "消耗体力上限",
-            "无法排遣"
+            "消耗体力上限"
         ],
         "roi": [
             269,
             290,
             745,
             138
+        ]
+    },
+    "StorySweepNotEnoughAP": {
+        "recognition": "OCR",
+        "text": [
+            "远征作战派遣",
+            "所需体力不足"
+        ],
+        "roi": [
+            312,
+            286,
+            658,
+            145
+        ],
+        "action": "Click",
+        "next": [
+            "StorySweepNotEnoughAPToGetStoredAP",
+            "StartStorySweep",
+            "RandomStorySweep",
+            "StorySweepConsumptionLimit",
+            "StorySweepOneClickDispatch",
+            "StartStorySweep",
+            "NoIdleStorySweep",
+            "stop"
+        ]
+    },
+    "StorySweepNotEnoughAPToGetStoredAP": {
+        "recognition": "TemplateMatch",
+        "template": "Homeland/CollectAPButton.png",
+        "roi": [
+            647,
+            492,
+            221,
+            137
+        ],
+        "action": "Click",
+        "next": [
+            "StartStorySweep",
+            "RandomStorySweep",
+            "StorySweepConsumptionLimit",
+            "StorySweepOneClickDispatch",
+            "StartStorySweep",
+            "NoIdleStorySweep"
         ]
     }
 }
