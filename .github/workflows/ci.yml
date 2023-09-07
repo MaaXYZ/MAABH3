@@ -1,5 +1,8 @@
 name: build cli
 
+permissions:
+  contents: write
+
 on:
   push:
     tags:
