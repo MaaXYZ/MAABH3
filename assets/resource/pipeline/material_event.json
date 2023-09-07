@@ -113,6 +113,44 @@
         "action": "Click",
         "next": [
             "BurdenReduction",
+            "MaterialEventNotEnoughAP",
+            "Sub_CloseDialogBox",
+            "Sub_HomeButton",
+            "HomeFlag"
+        ]
+    },
+    "MaterialEventNotEnoughAP": {
+        "recognition": "OCR",
+        "text": [
+            "没有足够体力"
+        ],
+        "roi": [
+            488,
+            285,
+            302,
+            145
+        ],
+        "action": "Click",
+        "next": [
+            "MaterialEventNotEnoughAPToGetStoredAP",
+            "BurdenReduction",
+            "Sub_CloseDialogBox",
+            "Sub_HomeButton",
+            "HomeFlag"
+        ]
+    },
+    "MaterialEventNotEnoughAPToGetStoredAP": {
+        "recognition": "TemplateMatch",
+        "template": "Homeland/CollectAPButton.png",
+        "roi": [
+            647,
+            492,
+            221,
+            137
+        ],
+        "action": "Click",
+        "next": [
+            "BurdenReduction",
             "Sub_CloseDialogBox",
             "Sub_HomeButton",
             "HomeFlag"
