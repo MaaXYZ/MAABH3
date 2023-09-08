@@ -20,7 +20,7 @@ using TaskList = std::vector<Task>;
 void print_help();
 bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string& adb_address, int& client_type, TaskList& tasks,
 	MaaAdbControllerType& ctrl_type);
-bool app_package_activity(int client_type, std::string& package, std::string& activity);
+bool app_package_and_activity(int client_type, std::string& package, std::string& activity);
 json::value homeland_param();
 void save_config(const std::string& adb, const std::string& adb_address, const int& client_type, const TaskList& tasks,
 	MaaAdbControllerType ctrl_type);
@@ -46,7 +46,7 @@ int main(int argc, char** argv)
         pause();
         return -1;
     }
-    bool identified = app_package_activity(client_type, package, activity);
+    bool identified = app_package_and_activity(client_type, package, activity);
     if (!identified) {
         std::cout << "Failed to identify the client type" << std::endl;
         pause();
@@ -121,7 +121,7 @@ Welcome to come and create a GUI for us! :)
 )" << std::endl;
 }
 
-bool app_package_activity(int client_type, std::string& package, std::string& activity)
+bool app_package_and_activity(int client_type, std::string& package, std::string& activity)
 {
     switch (client_type)
     {
