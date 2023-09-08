@@ -190,6 +190,7 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
                 task_obj.name = "MyTask" + std::to_string(index++);
             }
             else {
+                task_obj.enabled = task.get("enabled", true);
                 task_obj.type = task["type"].as_string();
                 task_obj.name = task["name"].as_string();
                 task_obj.param = task["param"];
