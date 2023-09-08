@@ -134,7 +134,7 @@ def main():
     else:
         target_triplet = detect_host_triplet()
     print("about to download prebuilt dependency libraries for", target_triplet)
-    release_tag = "v0.5.0"
+    release_tag = "v0.5.1"
     download_url = get_browser_download_url("MaaAssistantArknights", "MaaFramework", release_tag, target_triplet)
     if download_url is None:
         print("assets does not exist")
