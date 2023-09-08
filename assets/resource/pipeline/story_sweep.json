@@ -291,6 +291,7 @@
             145
         ],
         "action": "Click",
+        "post_wait_freezes": 200,
         "next": [
             "StorySweepNotEnoughAPToGetStoredAP",
             "StartStorySweep",
