@@ -230,7 +230,8 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
             << std::endl
             << "1. Homeland\n"
                "2. MaterialEvent\n"
-               "3. Awards\n"
+               "3. Armada\n"
+               "4. Awards\n"
             << std::endl
             << std::endl
             << "Please enter the task numbers to be executed: "
@@ -258,6 +259,9 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
                 task_obj.type = "MaterialEvent";
                 break;
             case 3:
+                task_obj.type = "Armada";
+                break;
+            case 4:
                 task_obj.type = "Awards";
                 break;
 
