@@ -11,6 +11,7 @@ struct Task
 {
 	std::string name;
 	std::string type;
+    bool enabled = true;
 	json::value param = json::object();
 };
 
@@ -98,6 +99,10 @@ int main(int argc, char** argv)
 
     MaaTaskId task_id = 0;
     for (const auto& task : tasks) {
+        if (!task.enabled)
+        {
+            continue;
+        }
         task_id = MaaPostTask(maa_handle, task.type.c_str(), task.param.to_string().c_str());
     }
     MaaWaitTask(maa_handle, task_id);
@@ -289,6 +294,7 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
         for (auto& task_name : task_names) {
             for (auto& task : all_tasks) {
                 if (task.name == task_name) {
+                    task.enabled = true;
                     tasks.emplace_back(task);
                     break;
                 }
@@ -314,6 +320,7 @@ void save_config(const std::string& adb, const std::string& adb_address, const i
     json::value tasks_array;
     for (auto& task : tasks) {
         json::value task_obj;
+        task_obj["enabled"] = task.enabled;
         task_obj["type"] = task.type;
         task_obj["name"] = task.name;
         task_obj["param"] = task.param;
