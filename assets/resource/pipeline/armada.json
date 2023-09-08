@@ -35,12 +35,19 @@
         "action": "Click",
         "next": [
             "EnterCommissionedRecovery",
-            "ApplyForANewCommission"
+            "ApplyForANewCommission",
+            "AcceptNewCommission",
+            "CommissionItem",
+            "CommissionItemBuyMax",
+            "CommissionItemBuy",
+            "CommissionSubmitButton",
+            "CommissionNoSubmitButton"
         ]
     },
     "ApplyForANewCommission": {
         "recognition": "TemplateMatch",
         "template": "Armada/ApplyForANewCommission.png",
+        "threshold": 0.9,
         "roi": [
             37,
             577,
@@ -50,7 +57,11 @@
         "action": "Click",
         "next": [
             "ApplyForANewCommission",
-            "AcceptNewCommission"
+            "AcceptNewCommission",
+            "CommissionItem",
+            "CommissionItemBuyMax",
+            "CommissionItemBuy",
+            "CommissionSubmitButton"
         ]
     },
     "AcceptNewCommission": {
@@ -67,12 +78,65 @@
         "action": "Click",
         "next": [
             "AcceptNewCommission",
+            "CommissionItem",
+            "CommissionItemBuyMax",
+            "CommissionItemBuy",
             "CommissionSubmitButton"
+        ]
+    },
+    "CommissionItem": {
+        "recognition": "TemplateMatch",
+        "green_mask": true,
+        "template": "Armada/CommissionItem.png",
+        "roi": [
+            7,
+            112,
+            248,
+            248
+        ],
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "next": [
+            "CommissionItemBuyMax",
+            "CommissionItemBuy",
+            "CommissionSubmitButton"
+        ]
+    },
+    "CommissionItemBuyMax": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/CommissionItemBuyMax.png",
+        "roi": [
+            565,
+            500,
+            158,
+            133
+        ],
+        "action": "Click",
+        "next": [
+            "CommissionItemBuy",
+            "CommissionSubmitButton"
+        ]
+    },
+    "CommissionItemBuy": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/CommissionItemBuy.png",
+        "roi": [
+            872,
+            494,
+            167,
+            145
+        ],
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "next": [
+            "CommissionSubmitButton",
+            "SubmitCommission"
         ]
     },
     "CommissionSubmitButton": {
         "recognition": "TemplateMatch",
         "template": "Armada/CommissionSubmitButton.png",
+        "threshold": 0.95,
         "roi": [
             860,
             579,
@@ -83,6 +147,17 @@
         "next": [
             "CommissionSubmitButton",
             "SubmitCommission"
+        ]
+    },
+    "CommissionNoSubmitButton": {
+        "inverse": true,
+        "recognition": "TemplateMatch",
+        "template": "Armada/CommissionSubmitButton.png",
+        "roi": [
+            860,
+            579,
+            171,
+            141
         ]
     },
     "SubmitCommission": {
@@ -99,7 +174,8 @@
         "next": [
             "SubmitCommission",
             "Sub_CloseDialogBox",
-            "CommissionSubmitButton"
+            "CommissionSubmitButton",
+            "CommissionNoSubmitButton"
         ]
     }
 }
