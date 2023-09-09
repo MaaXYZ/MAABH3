@@ -257,6 +257,7 @@
         },
         "next": [
             "RandomStorySweep",
+            "StorySweepNotEnoughNumberOfLevels",
             "StorySweepNotEnoughAP",
             "StorySweepConsumptionLimit",
             "StorySweepOneClickDispatch",
@@ -281,7 +282,6 @@
     "StorySweepNotEnoughAP": {
         "recognition": "OCR",
         "text": [
-            "远征作战派遣",
             "所需体力不足"
         ],
         "roi": [
@@ -320,6 +320,22 @@
             "StorySweepOneClickDispatch",
             "StartStorySweep",
             "NoIdleStorySweep"
+        ]
+    },
+    "StorySweepNotEnoughNumberOfLevels": {
+        "recognition": "OCR",
+        "text": [
+            "所需关卡次数不足"
+        ],
+        "roi": [
+            312,
+            286,
+            658,
+            145
+        ],
+        "action": "Click",
+        "next": [
+            "stop"
         ]
     }
 }
