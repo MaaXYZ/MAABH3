@@ -3,7 +3,7 @@
         "next": [
             "StorySweepEnterHomeland",
             "EnterStorySweep",
-            "Sub_StartUp"
+            "Sub_BackButton"
         ]
     },
     "StorySweepEnterHomeland": {
@@ -18,6 +18,15 @@
             110
         ],
         "action": "Click",
+        "post_wait_freezes": {
+            "time": 200,
+            "target": [
+                0,
+                400,
+                380,
+                320
+            ]
+        },
         "next": [
             "StorySweepEnterHomeland",
             "EnterStorySweep",
