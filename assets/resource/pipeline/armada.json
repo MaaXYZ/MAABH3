@@ -177,6 +177,9 @@
         "next": [
             "SubmitCommission",
             "Sub_CloseDialogBox",
+            "CommissionItem",
+            "CommissionItemBuyMax",
+            "CommissionItemBuy",
             "CommissionSubmitButton",
             "CommissionNoSubmitButton"
         ]
