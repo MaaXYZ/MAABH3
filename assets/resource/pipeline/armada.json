@@ -158,6 +158,9 @@
             579,
             171,
             141
+        ],
+        "next": [
+            "EnterArmadaPrizePoolPage"
         ]
     },
     "SubmitCommission": {
@@ -176,6 +179,48 @@
             "Sub_CloseDialogBox",
             "CommissionSubmitButton",
             "CommissionNoSubmitButton"
+        ]
+    },
+    "EnterArmadaPrizePoolPage": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/EnterArmadaPrizePoolPage.png",
+        "roi": [
+            1095,
+            161,
+            185,
+            137
+        ],
+        "action": "Click",
+        "next": [
+            "ArmadaPrizePoolReceive",
+            "Sub_CloseDialogBox",
+            "ArmadaPrizePoolViewLastAssignment"
+        ]
+    },
+    "ArmadaPrizePoolReceive": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/ArmadaPrizePoolReceive.png",
+        "roi": [
+            828,
+            580,
+            168,
+            137
+        ],
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "next": [
+            "Sub_CloseDialogBox",
+            "ArmadaPrizePoolViewLastAssignment"
+        ]
+    },
+    "ArmadaPrizePoolViewLastAssignment": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/ArmadaPrizePoolViewLastAssignment.png",
+        "roi": [
+            778,
+            579,
+            268,
+            137
         ]
     }
 }
