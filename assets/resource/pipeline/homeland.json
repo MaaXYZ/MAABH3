@@ -38,7 +38,10 @@
     },
     "CollectGold": {
         "recognition": "TemplateMatch",
-        "template": "Homeland/CollectGold.png",
+        "template": [
+            "Homeland/CollectGold.png",
+            "Homeland/CollectGoldMax.png"
+        ],
         "roi": [
             286,
             69,
