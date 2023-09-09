@@ -33,7 +33,7 @@
 
 ## How to build
 
-**如果你要编译源码才看这节，否则直接 [下载]() （暂时没有下载链接）  即可**
+**如果你要编译源码才看这节，否则直接 [下载](https://github.com/MaaAssistantArknights/MAABH3/releases) 即可**
 
 _欢迎大佬们来带带~_
 
