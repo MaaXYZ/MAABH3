@@ -36,8 +36,8 @@ int main(int argc, char** argv)
 	std::string adb = "adb";
 	std::string adb_address = "127.0.0.1:7555";
     int client_type = 1;
-    std::string package = "com.miHoYo.bh3";
-    std::string activity = "com.miHoYo.bh3/com.miHoYo.overridenativeactivity.OverrideNativeActivity";
+    std::string package = "com.miHoYo.enterprise.NGHSoD";
+    std::string activity = "com.miHoYo.enterprise.NGHSoD/com.miHoYo.overridenativeactivity.OverrideNativeActivity";
 	TaskList tasks;
 	MaaAdbControllerType control_type = 0;
 
@@ -132,8 +132,8 @@ bool app_package_and_activity(int client_type, std::string& package, std::string
     {
     case 1:
         // "1. Official(CN)\n"
-        package = "com.miHoYo.bh3";
-        activity = "com.miHoYo.bh3/com.miHoYo.overridenativeactivity.OverrideNativeActivity";
+        package = "com.miHoYo.enterprise.NGHSoD";
+        activity = "com.miHoYo.enterprise.NGHSoD/com.miHoYo.overridenativeactivity.OverrideNativeActivity";
         break;
     case 2:
         // "2. Bilibili\n"
