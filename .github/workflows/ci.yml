@@ -34,6 +34,19 @@ jobs:
       - id: set_tag
         run: |
           echo tag=$(git describe --tags --match "v*" ${{ github.ref }} || git rev-parse --short HEAD) | tee -a $GITHUB_OUTPUT
+      
+      - if: ${{ startsWith(github.ref, 'refs/tags/v') }}
+        run: |
+          this_tag=${{ steps.set_tag.outputs.tag }}
+          last_tag=$(git describe --tags --match "v*" --abbrev=0 --exclude='${{ steps.set_tag.outputs.tag }}')
+          echo >> CHANGELOG.md
+          echo "**Full Changelog**: [$last_tag -> $this_tag](https://github.com/MaaAssistantArknights/MAABH3/compare/${last_tag}...${this_tag})" >> CHANGELOG.md
+
+      - uses: actions/upload-artifact@v3
+        if: ${{ startsWith(github.ref, 'refs/tags/v') }}
+        with:
+          name: changelog
+          path: CHANGELOG.md
 
   windows:
     needs: meta
@@ -87,11 +100,13 @@ jobs:
         with:
           path: assets
       - run: |
+          mv -vf assets/changelog/* .
           cd assets
           for f in *; do
             (cd $f && zip -r ../$f-${{ needs.meta.outputs.tag }}.zip .)
           done
       - uses: softprops/action-gh-release@v1
         with:
+          body_path: CHANGELOG.md
           files: assets/*
           tag_name: ${{ needs.meta.outputs.tag }}
