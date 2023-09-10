@@ -163,6 +163,23 @@
             "EnterArmadaPrizePoolPage"
         ]
     },
+    "CommossionLimit": {
+        "recognition": "OCR",
+        "text": [
+            "回收委托次数已经耗尽"
+        ],
+        "roi": [
+            361,
+            287,
+            539,
+            142
+        ],
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "next": [
+            "EnterArmadaPrizePoolPage"
+        ]
+    },
     "SubmitCommission": {
         "recognition": "TemplateMatch",
         "template": "Armada/SubmitCommission.png",
@@ -175,6 +192,7 @@
         "action": "Click",
         "post_wait_freezes": 200,
         "next": [
+            "CommossionLimit",
             "SubmitCommission",
             "Sub_CloseDialogBox",
             "CommissionItem",
