@@ -26,8 +26,25 @@
             ]
         },
         "next": [
+            "TipsForDownloadAudioResources",
             "EnterMaterialEvent",
             "Sub_AttackPageFlag"
+        ]
+    },
+    "TipsForDownloadAudioResources": {
+        "recognition": "OCR",
+        "text": [
+            "即将下载相关音频资源"
+        ],
+        "roi": [
+            298,
+            232,
+            669,
+            143
+        ],
+        "next": [
+            "Sub_CancelButton",
+            "EnterAttack"
         ]
     },
     "Sub_AttackPageFlag": {

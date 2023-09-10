@@ -28,6 +28,18 @@
         ],
         "action": "Click"
     },
+    "Sub_CancelButton": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Utils/CancelButton.png",
+        "roi": [
+            422,
+            351,
+            164,
+            139
+        ],
+        "action": "Click"
+    },
     "Sub_CloseDialogBox": {
         "is_sub": true,
         "recognition": "TemplateMatch",
