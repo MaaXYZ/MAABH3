@@ -99,7 +99,8 @@
         "next": [
             "CommissionItemBuyMax",
             "CommissionItemBuy",
-            "CommissionSubmitButton"
+            "CommissionSubmitButton",
+            "CommissionItem"
         ]
     },
     "CommissionItemBuyMax": {
