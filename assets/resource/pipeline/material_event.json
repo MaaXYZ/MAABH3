@@ -148,9 +148,9 @@
             145
         ],
         "action": "Click",
+        "post_wait_freezes": 200,
         "next": [
             "MaterialEventNotEnoughAPToGetStoredAP",
-            "BurdenReduction",
             "Sub_CloseDialogBox",
             "Sub_HomeButton",
             "HomeFlag"
