@@ -1,6 +1,6 @@
-﻿#include <MaaFramework/MaaAPI.h>
-#include <MaaToolKit/MaaToolKitAPI.h>
-#include <meojson/json.hpp>
+﻿#include "MaaFramework/MaaAPI.h"
+#include "MaaToolKit/MaaToolKitAPI.h"
+#include "meojson/json.hpp"
 
 #include <filesystem>
 #include <fstream>
@@ -26,7 +26,7 @@ json::value homeland_param();
 void save_config(const std::string& adb, const std::string& adb_address, const int& client_type, const TaskList& tasks,
 	MaaAdbControllerType ctrl_type);
 std::string read_adb_config(const std::filesystem::path& cur_dir);
-void pause();
+void mpause();
 
 int main(int argc, char** argv)
 {
@@ -44,18 +44,18 @@ int main(int argc, char** argv)
     bool proced = proc_argv(argc, argv, debug, adb, adb_address, client_type, tasks, control_type);
     if (!proced) {
         std::cout << "Failed to parse argv" << std::endl;
-        pause();
+        mpause();
         return -1;
     }
     bool identified = app_package_and_activity(client_type, package, activity);
     if (!identified) {
         std::cout << "Failed to identify the client type" << std::endl;
-        pause();
+        mpause();
         return -1;
     }
     if (tasks.empty()) {
         std::cout << "Task empty" << std::endl;
-        pause();
+        mpause();
         return -1;
     }
 
@@ -93,7 +93,7 @@ int main(int argc, char** argv)
     if (!MaaInited(maa_handle)) {
         destroy();
         std::cout << "Failed to init Maa instance, a connection error or resource file corruption occurred, please refer to the log." << std::endl;
-        pause();
+        mpause();
         return -1;
     }
 
@@ -360,7 +360,7 @@ std::string read_adb_config(const std::filesystem::path& cur_dir)
     return buffer.str();
 }
 
-void pause()
+void mpause()
 {
     std::ignore = getchar();
 }

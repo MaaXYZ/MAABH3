@@ -1,0 +1,45 @@
+{
+    "version": 5,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 21,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "NinjaMulti",
+            "displayName": "Ninja MultiConfig",
+            "description": "Ninja MultiConfig",
+            "generator": "Ninja Multi-Config",
+            "binaryDir": "${sourceDir}/build"
+        },
+        {
+            "name": "MSVC 2022",
+            "displayName": "MSVC 2022",
+            "description": "MSVC 2022",
+            "generator": "Visual Studio 17 2022",
+            "binaryDir": "${sourceDir}/build",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "MSVC 2022 ARM",
+            "displayName": "MSVC 2022 ARM",
+            "description": "MSVC 2022 ARM",
+            "generator": "Visual Studio 17 2022",
+            "binaryDir": "${sourceDir}/build",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            },
+            "architecture": {
+                "strategy": "set",
+                "value": "ARM64"
+            }
+        }
+    ]
+}
