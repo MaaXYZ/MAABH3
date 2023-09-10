@@ -92,6 +92,24 @@
             67
         ],
         "next": [
+            "DailyPracticeRewardsNotReceive_100",
+            "DailyPracticeRewardsPreview",
+            "Sub_CloseDialogBox",
+            "Sub_BackButton",
+            "HomeFlag"
+        ]
+    },
+    "DailyPracticeRewardsNotReceive_100": {
+        "recognition": "TemplateMatch",
+        "template": "Awards/DailyPracticeRewardsNotReceive.png",
+        "roi": [
+            485,
+            637,
+            52,
+            67
+        ],
+        "next": [
+            "DailyPracticeRewards_100",
             "DailyPracticeRewardsPreview",
             "Sub_CloseDialogBox",
             "Sub_BackButton",
@@ -116,6 +134,24 @@
             69
         ],
         "next": [
+            "DailyPracticeRewardsNotReceive_200",
+            "DailyPracticeRewardsPreview",
+            "Sub_CloseDialogBox",
+            "Sub_BackButton",
+            "HomeFlag"
+        ]
+    },
+    "DailyPracticeRewardsNotReceive_200": {
+        "recognition": "TemplateMatch",
+        "template": "Awards/DailyPracticeRewardsNotReceive.png",
+        "roi": [
+            660,
+            636,
+            57,
+            69
+        ],
+        "next": [
+            "DailyPracticeRewards_200",
             "DailyPracticeRewardsPreview",
             "Sub_CloseDialogBox",
             "Sub_BackButton",
@@ -140,6 +176,24 @@
             69
         ],
         "next": [
+            "DailyPracticeRewardsNotReceive_300",
+            "DailyPracticeRewardsPreview",
+            "Sub_CloseDialogBox",
+            "Sub_BackButton",
+            "HomeFlag"
+        ]
+    },
+    "DailyPracticeRewardsNotReceive_300": {
+        "recognition": "TemplateMatch",
+        "template": "Awards/DailyPracticeRewardsNotReceive.png",
+        "roi": [
+            837,
+            637,
+            54,
+            69
+        ],
+        "next": [
+            "DailyPracticeRewards_300",
             "DailyPracticeRewardsPreview",
             "Sub_CloseDialogBox",
             "Sub_BackButton",
@@ -164,6 +218,24 @@
             67
         ],
         "next": [
+            "DailyPracticeRewardsNotReceive_450",
+            "DailyPracticeRewardsPreview",
+            "Sub_CloseDialogBox",
+            "Sub_BackButton",
+            "HomeFlag"
+        ]
+    },
+    "DailyPracticeRewardsNotReceive_450": {
+        "recognition": "TemplateMatch",
+        "template": "Awards/DailyPracticeRewardsNotReceive.png",
+        "roi": [
+            1013,
+            636,
+            53,
+            67
+        ],
+        "next": [
+            "DailyPracticeRewards_450",
             "DailyPracticeRewardsPreview",
             "Sub_CloseDialogBox",
             "Sub_BackButton",
@@ -188,6 +260,24 @@
             66
         ],
         "next": [
+            "DailyPracticeRewardsNotReceive_600",
+            "DailyPracticeRewardsPreview",
+            "Sub_CloseDialogBox",
+            "Sub_BackButton",
+            "HomeFlag"
+        ]
+    },
+    "DailyPracticeRewardsNotReceive_600": {
+        "recognition": "TemplateMatch",
+        "template": "Awards/DailyPracticeRewardsNotReceive.png",
+        "roi": [
+            1187,
+            636,
+            55,
+            66
+        ],
+        "next": [
+            "DailyPracticeRewards_600",
             "DailyPracticeRewardsPreview",
             "Sub_CloseDialogBox",
             "Sub_BackButton",
