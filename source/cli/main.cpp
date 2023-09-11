@@ -171,8 +171,7 @@ bool match_adb_address(const std::string& adb_address, MaaSize& index, const Maa
 
 void print_device_list(const MaaSize& device_size) {
     for (MaaSize i = 0; i < device_size; i++) {
-        std::cout << i << ". " << MaaToolKitGetDeviceName(i) << " (" << MaaToolKitGetDeviceAdbSerial(i) << ")"
-                  << std::endl;
+        std::cout << "  " << i << ". " << MaaToolKitGetDeviceName(i) << " (" << MaaToolKitGetDeviceAdbSerial(i) << ")\n";
     }
 }
 
@@ -196,6 +195,7 @@ MaaSize get_device_index(const MaaSize& device_size)
                       << std::endl;
             continue;
         }
+        std::cout << std::endl;
         break;
     }
     return index;
@@ -257,12 +257,12 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
     }
     else {
         std::cout << std::endl
-            << "Please select client type: " << std::endl
+            << "Please select client type: "
             << std::endl
-            << "1. Official(CN)\n"
-               "2. Bilibili\n"
-               "3. Vivo\n" 
             << std::endl
+            << "  1. Official(CN)\n"
+               "  2. Bilibili\n"
+               "  3. Vivo\n" 
             << std::endl
             << "Please enter the client type number: "
             << std::endl;
@@ -275,13 +275,13 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
         }
         std::cout << std::endl
             << std::endl
-            << "Please select tasks: " << std::endl
+            << "Please select tasks: "
             << std::endl
-            << "1. Homeland\n"
-               "2. MaterialEvent\n"
-               "3. Armada\n"
-               "4. Awards\n"
             << std::endl
+            << "  1. Homeland\n"
+               "  2. MaterialEvent\n"
+               "  3. Armada\n"
+               "  4. Awards\n"
             << std::endl
             << "Please enter the task numbers to be executed: "
             << std::endl;
@@ -384,19 +384,6 @@ void save_config(const std::string& adb, const std::string& adb_address, const i
     std::ofstream ofs("config.json", std::ios::out);
     ofs << config;
     ofs.close();
-}
-
-std::string read_adb_config(const std::filesystem::path& cur_dir)
-{
-    std::ifstream ifs(cur_dir / "resource" / "controller_config.json", std::ios::in);
-    if (!ifs.is_open()) {
-        std::cout << "Can't open controller_config.json" << std::endl;
-        exit(1);
-    }
-
-    std::stringstream buffer;
-    buffer << ifs.rdbuf();
-    return buffer.str();
 }
 
 void mpause()
