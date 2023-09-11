@@ -2,17 +2,24 @@
 
 int main(int argc, char** argv)
 {
+    MaaToolKitInit();
+
 	print_help();
 
     bool debug = false;
-	std::string adb = "adb";
-	std::string adb_address = "127.0.0.1:7555";
+	std::string adb;
+	std::string adb_address;
     int client_type = 1;
     std::string package = "com.miHoYo.enterprise.NGHSoD";
     std::string activity = "com.miHoYo.enterprise.NGHSoD/com.miHoYo.overridenativeactivity.OverrideNativeActivity";
 	TaskList tasks;
 	MaaAdbControllerType control_type = 0;
 
+    auto device_size = scanning_devices();
+    if (device_size == 0) {
+        mpause();
+        return -1;
+    }
     bool proced = proc_argv(argc, argv, debug, adb, adb_address, client_type, tasks, control_type);
     if (!proced) {
         std::cout << "Failed to parse argv" << std::endl;
@@ -31,10 +38,22 @@ int main(int argc, char** argv)
         return -1;
     }
 
+    bool matched = false;
+    int kIndex = -1;
+    if (!adb.empty() && !adb_address.empty()) {
+        matched = match_adb_address(adb_address, kIndex, device_size);
+    }
+    if (!matched) {
+        kIndex = get_device_index(device_size);
+        adb = MaaToolKitGetDeviceAdbPath(kIndex);
+        adb_address = MaaToolKitGetDeviceAdbSerial(kIndex);
+        save_config(adb, adb_address, client_type, tasks, control_type);
+    }
+
     const auto cur_dir = std::filesystem::path(argv[0]).parent_path();
     std::string debug_dir = (cur_dir / "debug").string();
     std::string resource_dir = (cur_dir / "resource").string();
-    std::string adb_config = read_adb_config(cur_dir);
+    std::string adb_config = MaaToolKitGetDeviceAdbConfig(kIndex);
 
     MaaSetGlobalOption(MaaGlobalOption_Logging, (void*)debug_dir.c_str(), debug_dir.size());
     MaaSetGlobalOption(MaaGlobalOption_DebugMode, (void*)&debug, sizeof(bool));
@@ -60,6 +79,7 @@ int main(int argc, char** argv)
         MaaDestroy(maa_handle);
         MaaResourceDestroy(resource_handle);
         MaaControllerDestroy(controller_handle);
+        MaaToolKitUninit();
     };
 
     if (!MaaInited(maa_handle)) {
@@ -98,6 +118,20 @@ Welcome to come and create a GUI for us! :)
 )" << std::endl;
 }
 
+MaaSize scanning_devices()
+{
+    std::cout << "Scanning for Devices..." << std::endl;
+    auto device_size = MaaToolKitFindDevice();
+    if (device_size == 0) {
+        std::cout << "No Devices Found" << std::endl;
+        return 0;
+    }
+    std::cout << "Scanning Finished"
+              << std::endl
+              << std::endl;
+    return device_size;
+}
+
 bool app_package_and_activity(int client_type, std::string& package, std::string& activity)
 {
     switch (client_type)
@@ -122,6 +156,50 @@ bool app_package_and_activity(int client_type, std::string& package, std::string
     }
 
     return true;
+}
+
+bool match_adb_address(const std::string& adb_address, int& index, const MaaSize& device_size)
+{
+    for (int i = 0; i < device_size; i++) {
+        if (adb_address == MaaToolKitGetDeviceAdbSerial(i)) {
+            index = i;
+            return true;
+        }
+    }
+    index = -1;
+    return false;
+}
+
+void print_device_list(const MaaSize& device_size) {
+    for (int i = 0; i < device_size; i++) {
+        std::cout << i << ". " << MaaToolKitGetDeviceName(i) << " (" << MaaToolKitGetDeviceAdbSerial(i) << ")"
+                  << std::endl;
+    }
+}
+
+int get_device_index(const MaaSize& device_size)
+{
+    int index;
+    while (true) {
+        std::cout << std::endl
+                  << "Please Select a Device to Connect:"
+                  << std::endl
+                  << std::endl;
+        print_device_list(device_size);
+        std::cout << std::endl
+                  << "Please Enter the Device Number:" 
+                  << std::endl;
+        std::cin >> index;
+        if (index < 0 || index > device_size) {
+            std::cout << std::endl
+                      << "Unknown Device Number: " << index 
+                      << std::endl
+                      << std::endl;
+            continue;
+        }
+        break;
+    }
+    return index;
 }
 
 json::value homeland_param()
@@ -180,15 +258,6 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
     }
     else {
         std::cout << std::endl
-            << std::endl
-            << "Please enter the adb path: " << std::endl;
-        std::getline(std::cin, adb);
-        std::cout << std::endl
-            << std::endl
-            << "Please enter the adb address: " << std::endl;
-        std::getline(std::cin, adb_address);
-        std::cout << std::endl
-            << std::endl
             << "Please select client type: " << std::endl
             << std::endl
             << "1. Official(CN)\n"
@@ -254,7 +323,6 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
         }
 
         ctrl_type = touch << 0 | key << 8 | screencap << 16;
-        save_config(adb, adb_address, client_type, tasks, ctrl_type);
     }
 
     if (argc >= 3) {
