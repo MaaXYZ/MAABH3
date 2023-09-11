@@ -249,6 +249,7 @@ jobs:
           path: assets
       - run: |
           mv -vf assets/changelog/* .
+          rm -rf assets/changelog
           cd assets
           for f in *; do
             (cd $f && zip -r ../$f-${{ needs.meta.outputs.tag }}.zip .)
