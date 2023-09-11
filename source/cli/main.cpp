@@ -189,7 +189,7 @@ MaaSize get_device_index(const MaaSize& device_size)
                   << "Please Enter the Device Number:" 
                   << std::endl;
         std::cin >> index;
-        if (index < 0 || index > device_size) {
+        if (index > device_size) {
             std::cout << std::endl
                       << "Unknown Device Number: " << index 
                       << std::endl
