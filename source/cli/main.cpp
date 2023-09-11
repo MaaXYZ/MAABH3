@@ -39,7 +39,7 @@ int main(int argc, char** argv)
     }
 
     bool matched = false;
-    int kIndex = -1;
+    MaaSize kIndex = 0;
     if (!adb.empty() && !adb_address.empty()) {
         matched = match_adb_address(adb_address, kIndex, device_size);
     }
@@ -158,28 +158,27 @@ bool app_package_and_activity(int client_type, std::string& package, std::string
     return true;
 }
 
-bool match_adb_address(const std::string& adb_address, int& index, const MaaSize& device_size)
+bool match_adb_address(const std::string& adb_address, MaaSize& index, const MaaSize& device_size)
 {
-    for (int i = 0; i < device_size; i++) {
+    for (MaaSize i = 0; i < device_size; i++) {
         if (adb_address == MaaToolKitGetDeviceAdbSerial(i)) {
             index = i;
             return true;
         }
     }
-    index = -1;
     return false;
 }
 
 void print_device_list(const MaaSize& device_size) {
-    for (int i = 0; i < device_size; i++) {
+    for (MaaSize i = 0; i < device_size; i++) {
         std::cout << i << ". " << MaaToolKitGetDeviceName(i) << " (" << MaaToolKitGetDeviceAdbSerial(i) << ")"
                   << std::endl;
     }
 }
 
-int get_device_index(const MaaSize& device_size)
+MaaSize get_device_index(const MaaSize& device_size)
 {
-    int index;
+    MaaSize index;
     while (true) {
         std::cout << std::endl
                   << "Please Select a Device to Connect:"

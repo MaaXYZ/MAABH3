@@ -28,11 +28,11 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
 
 bool app_package_and_activity(int client_type, std::string& package, std::string& activity);
 
-bool match_adb_address(const std::string& adb_address, int& index , const MaaSize& device_size);
+bool match_adb_address(const std::string& adb_address, MaaSize& index , const MaaSize& device_size);
 
 void print_device_list(const MaaSize& device_size);
 
-int get_device_index(const MaaSize& device_size);
+MaaSize get_device_index(const MaaSize& device_size);
 
 json::value homeland_param();
 
