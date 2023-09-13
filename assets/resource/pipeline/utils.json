@@ -14,6 +14,20 @@
         ],
         "action": "Click"
     },
+    "Sub_BackText": {
+        "is_sub": true,
+        "recognition": "OCR",
+        "text": [
+            "返回"
+        ],
+        "roi": [
+            0,
+            0,
+            220,
+            160
+        ],
+        "action": "Click"
+    },
     "Sub_HomeButton": {
         "is_sub": true,
         "recognition": "TemplateMatch",

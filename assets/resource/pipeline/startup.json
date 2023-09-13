@@ -4,6 +4,7 @@
         "next": [
             "Sub_HomeButton",
             "Sub_BackButton",
+            "Sub_BackText",
             "Sub_ObtainedAwards",
             "Sub_CollectDailyLoginReward",
             "Download",
@@ -33,6 +34,7 @@
         "next": [
             "Sub_HomeButton",
             "Sub_BackButton",
+            "Sub_BackText",
             "Sub_ObtainedAwards",
             "Sub_CollectDailyLoginReward",
             "Download",
@@ -83,6 +85,7 @@
             "StartGame",
             "GameIdentifying",
             "Sub_BackButton",
+            "Sub_BackText",
             "Sub_ObtainedAwards",
             "Sub_CollectDailyLoginReward",
             "Sub_CloseAnnouncement",
@@ -113,6 +116,7 @@
         "action": "Click",
         "next": [
             "Sub_BackButton",
+            "Sub_BackText",
             "Sub_ObtainedAwards",
             "Sub_CollectDailyLoginReward",
             "CloseVersionAnnouncement",
