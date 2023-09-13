@@ -243,6 +243,363 @@
             579,
             268,
             137
+        ],
+        "next": [
+            "BackToArmadaPage"
+        ]
+    },
+    "BackToArmadaPage": {
+        "recognition": "TemplateMatch",
+        "template": "Utils/BackButton.png",
+        "roi": [
+            0,
+            0,
+            180,
+            133
+        ],
+        "action": "Click",
+        "post_wait_freezes": {
+            "time": 200,
+            "target": [
+                0,
+                600,
+                300,
+                110
+            ]
+        },
+        "next": [
+            "EnterArmadaContribution"
+        ]
+    },
+    "EnterArmadaContribution":{
+        "recognition": "TemplateMatch",
+        "template": "Armada/EnterArmadaContribution.png",
+        "roi": [
+            832,
+            586,
+            212,
+            133
+        ],
+        "action": "Click",
+        "post_wait_freezes": {
+            "time": 200,
+            "target": [
+                0,
+                0,
+                420,
+                330
+            ]
+        },
+        "next": [
+            "ReceiveContributionRewards_0",
+            "ReceiveContributionRewards_1200",
+            "ReceiveContributionRewards_2500",
+            "ReceiveContributionRewards_3700",
+            "ReceiveContributionRewards_5000",
+            "ReceivedContributionRewards_5000",
+            "ReceivedContributionRewards_3700",
+            "ReceivedContributionRewards_2500",
+            "ReceivedContributionRewards_1200",
+            "ReceivedContributionRewards_0"        
+        ]
+    },
+    "ReceiveContributionRewards_0": {
+        "recognition": "TemplateMatch",
+        "inverse": true,
+        "template": "Armada/ReceivedContributionRewards.png",
+        "green_mask": true,
+        "roi": [
+            26,
+            644,
+            96,
+            67
+        ],
+        "next": [
+            "NotReachContributionProgress_0",
+            "ReachContributionProgress_0"
+        ]
+    },
+    "ReceivedContributionRewards_0": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/ReceivedContributionRewards.png",
+        "green_mask": true,
+        "roi": [
+            26,
+            644,
+            96,
+            67
+        ],
+        "next": [
+            "ReceiveContributionRewards_1200",
+            "ReceivedContributionRewards_1200"
+        ]
+    },
+    "NotReachContributionProgress_0": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/NotReachContributionProgress.png",
+        "green_mask": true,
+        "roi": [
+            199,
+            630,
+            47,
+            44
+        ],
+        "next": [
+            "stop"
+        ]
+    },
+    "ReachContributionProgress_0": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/ReachContributionProgress.png",
+        "roi": [
+            199,
+            630,
+            47,
+            44
+        ],
+        "action": "Click",
+        "next": [
+            "Sub_CloseDialogBox",
+            "stop"
+        ]
+    },
+    "ReceiveContributionRewards_1200": {
+        "recognition": "TemplateMatch",
+        "inverse": true,
+        "template": "Armada/ReceivedContributionRewards.png",
+        "green_mask": true,
+        "roi": [
+            19,
+            523,
+            109,
+            85
+        ],
+        "next": [
+            "NotReachContributionProgress_1200",
+            "ReachContributionProgress_1200"
+        ]
+    },
+    "ReceivedContributionRewards_1200": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/ReceivedContributionRewards.png",
+        "green_mask": true,
+        "roi": [
+            19,
+            523,
+            109,
+            85
+        ],
+        "next": [
+            "ReceiveContributionRewards_2500",
+            "ReceivedContributionRewards_2500"
+        ]
+    },
+    "NotReachContributionProgress_1200": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/NotReachContributionProgress.png",
+        "green_mask": true,
+        "roi": [
+            206,
+            517,
+            36,
+            42
+        ],
+        "next": [
+            "stop"
+        ]
+    },
+    "ReachContributionProgress_1200": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/ReachContributionProgress.png",
+        "roi": [
+            206,
+            517,
+            36,
+            42
+        ],
+        "action": "Click",
+        "next": [
+            "Sub_CloseDialogBox",
+            "stop"
+        ]
+    },
+    "ReceiveContributionRewards_2500": {
+        "recognition": "TemplateMatch",
+        "inverse": true,
+        "template": "Armada/ReceivedContributionRewards.png",
+        "green_mask": true,
+        "roi": [
+            17,
+            410,
+            114,
+            85
+        ],
+        "next": [
+            "NotReachContributionProgress_2500",
+            "ReachContributionProgress_2500"
+        ]
+    },
+    "ReceivedContributionRewards_2500": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/ReceivedContributionRewards.png",
+        "green_mask": true,
+        "roi": [
+            17,
+            410,
+            114,
+            85
+        ],
+        "next": [
+            "ReceiveContributionRewards_3700",
+            "ReceivedContributionRewards_3700"
+        ]
+    },
+    "NotReachContributionProgress_2500": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/NotReachContributionProgress.png",
+        "green_mask": true,
+        "roi": [
+            206,
+            409,
+            34,
+            37
+        ],
+        "next": [
+            "stop"
+        ]
+    },
+    "ReachContributionProgress_2500": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/ReachContributionProgress.png",
+        "roi": [
+            206,
+            409,
+            34,
+            37
+        ],
+        "action": "Click",
+        "next": [
+            "Sub_CloseDialogBox",
+            "stop"
+        ]
+    },
+    "ReceiveContributionRewards_3700": {
+        "recognition": "TemplateMatch",
+        "inverse": true,
+        "template": "Armada/ReceivedContributionRewards.png",
+        "green_mask": true,
+        "roi": [
+            18,
+            294,
+            111,
+            88
+        ],
+        "next": [
+            "NotReachContributionProgress_3700",
+            "ReachContributionProgress_3700"
+        ]
+    },
+    "ReceivedContributionRewards_3700": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/ReceivedContributionRewards.png",
+        "green_mask": true,
+        "roi": [
+            18,
+            294,
+            111,
+            88
+        ],
+        "next": [
+            "ReceiveContributionRewards_5000",
+            "ReceivedContributionRewards_5000"
+        ]
+    },
+    "NotReachContributionProgress_3700": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/NotReachContributionProgress.png",
+        "green_mask": true,
+        "roi": [
+            207,
+            298,
+            34,
+            37
+        ],
+        "next": [
+            "stop"
+        ]
+    },
+    "ReachContributionProgress_3700": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/ReachContributionProgress.png",
+        "roi": [
+            207,
+            298,
+            34,
+            37
+        ],
+        "action": "Click",
+        "next": [
+            "Sub_CloseDialogBox",
+            "stop"
+        ]
+    },
+    "ReceiveContributionRewards_5000": {
+        "recognition": "TemplateMatch",
+        "inverse": true,
+        "template": "Armada/ReceivedContributionRewards.png",
+        "green_mask": true,
+        "roi": [
+            19,
+            187,
+            110,
+            83
+        ],
+        "next": [
+            "NotReachContributionProgress_5000",
+            "ReachContributionProgress_5000"
+        ]
+    },
+    "ReceivedContributionRewards_5000": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/ReceivedContributionRewards.png",
+        "green_mask": true,
+        "roi": [
+            19,
+            187,
+            110,
+            83
+        ],
+        "next": [
+            "stop"
+        ]
+    },
+    "NotReachContributionProgress_5000": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/NotReachContributionProgress.png",
+        "green_mask": true,
+        "roi": [
+            207,
+            187,
+            35,
+            36
+        ],
+        "next": [
+            "stop"
+        ]
+    },
+    "ReachContributionProgress_5000": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/ReachContributionProgress.png",
+        "roi": [
+            207,
+            187,
+            35,
+            36
+        ],
+        "action": "Click",
+        "next": [
+            "Sub_CloseDialogBox",
+            "stop"
         ]
     }
 }
