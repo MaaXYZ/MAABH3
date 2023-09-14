@@ -109,8 +109,8 @@
             67
         ],
         "next": [
-            "DailyPracticeRewards_100",
             "DailyPracticeRewardsPreview",
+            "DailyPracticeRewards_100",
             "Sub_CloseDialogBox",
             "Sub_BackButton",
             "HomeFlag"
@@ -151,8 +151,8 @@
             69
         ],
         "next": [
-            "DailyPracticeRewards_200",
             "DailyPracticeRewardsPreview",
+            "DailyPracticeRewards_200",
             "Sub_CloseDialogBox",
             "Sub_BackButton",
             "HomeFlag"
@@ -193,8 +193,8 @@
             69
         ],
         "next": [
-            "DailyPracticeRewards_300",
             "DailyPracticeRewardsPreview",
+            "DailyPracticeRewards_300",
             "Sub_CloseDialogBox",
             "Sub_BackButton",
             "HomeFlag"
@@ -235,8 +235,8 @@
             67
         ],
         "next": [
-            "DailyPracticeRewards_450",
             "DailyPracticeRewardsPreview",
+            "DailyPracticeRewards_450",
             "Sub_CloseDialogBox",
             "Sub_BackButton",
             "HomeFlag"
@@ -277,8 +277,8 @@
             66
         ],
         "next": [
-            "DailyPracticeRewards_600",
             "DailyPracticeRewardsPreview",
+            "DailyPracticeRewards_600",
             "Sub_CloseDialogBox",
             "Sub_BackButton",
             "HomeFlag"
