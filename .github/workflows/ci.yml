@@ -111,7 +111,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: MAABH3-win-${{ matrix.arch }}
-          path: "install/share"
+          path: "install"
 
   ubuntu:
     needs: meta
@@ -180,7 +180,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: MAABH3-linux-${{ matrix.arch }}
-          path: "install/share"
+          path: "install"
 
   macos:
     needs: meta
@@ -237,7 +237,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: MAABH3-macos-${{ matrix.arch }}
-          path: "install/share"
+          path: "install"
 
   release:
     if: ${{ needs.meta.outputs.is_release == 'true' }}
