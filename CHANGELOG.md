@@ -1,13 +1,10 @@
-## v0.2.1
-
-### 新增
-
-- 领取舰团贡献奖励 @dongwlin
+## v0.2.2
 
 ### 修复
 
-- 修复误入活动页面卡住的问题 @dongwlin
+- 修复卡领没达到的每日历练值奖励的问题 @dongwlin
+- 修复完成委托回收后返回舰团页有时没点到的问题 @dongwlin
 
 ### 其他
 
-- Update README.md @dongwlin
+- 适配 MaaFramework v0.6.0 @dongwlin
