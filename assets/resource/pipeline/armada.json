@@ -268,7 +268,8 @@
             ]
         },
         "next": [
-            "EnterArmadaContribution"
+            "EnterArmadaContribution",
+            "BackToArmadaPage"
         ]
     },
     "EnterArmadaContribution":{
