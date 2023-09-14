@@ -13,4 +13,4 @@ target_link_libraries(MAABH3_CLI PRIVATE MaaFramework MaaToolKit)
 
 add_dependencies(MAABH3_CLI AssetsResource)
 
-install(TARGETS MAABH3_CLI RUNTIME DESTINATION share)
+install(TARGETS MAABH3_CLI RUNTIME DESTINATION .)
