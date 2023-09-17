@@ -216,7 +216,8 @@
         "next": [
             "ArmadaPrizePoolReceive",
             "Sub_CloseDialogBox",
-            "ArmadaPrizePoolViewLastAssignment"
+            "ArmadaPrizePoolViewLastAssignment",
+            "EnterArmadaPrizePoolPage"
         ]
     },
     "ArmadaPrizePoolReceive": {
