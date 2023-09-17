@@ -19,12 +19,23 @@ struct Task
 
 using TaskList = std::vector<Task>;
 
+struct AfterTask
+{
+    std::string type;
+    bool enabled = true;
+    json::value param = json::object();
+};
+
 void print_help();
 
 MaaSize scanning_devices();
 
+json::value homeland_param();
+
+json::value end_to_do_param();
+
 bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string& adb_address, int& client_type,
-               TaskList& tasks, MaaAdbControllerType& ctrl_type);
+               TaskList& tasks, AfterTask& after_task, MaaAdbControllerType& ctrl_type);
 
 bool app_package_and_activity(int client_type, std::string& package, std::string& activity);
 
@@ -33,8 +44,6 @@ bool match_adb_address(const std::string& adb_address, MaaSize& index , const Ma
 void print_device_list(const MaaSize& device_size);
 
 MaaSize get_device_index(const MaaSize& device_size);
-
-json::value homeland_param();
 
 void save_config(const std::string& adb, const std::string& adb_address, const int& client_type, const TaskList& tasks,
                  MaaAdbControllerType ctrl_type);

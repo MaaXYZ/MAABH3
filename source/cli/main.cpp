@@ -13,6 +13,7 @@ int main(int argc, char** argv)
     std::string package = "com.miHoYo.enterprise.NGHSoD";
     std::string activity = "com.miHoYo.enterprise.NGHSoD/com.miHoYo.overridenativeactivity.OverrideNativeActivity";
 	TaskList tasks;
+    AfterTask after_task;
 	MaaAdbControllerType control_type = 0;
 
     auto device_size = scanning_devices();
@@ -20,7 +21,7 @@ int main(int argc, char** argv)
         mpause();
         return -1;
     }
-    bool proced = proc_argv(argc, argv, debug, adb, adb_address, client_type, tasks, control_type);
+    bool proced = proc_argv(argc, argv, debug, adb, adb_address, client_type, tasks, after_task, control_type);
     if (!proced) {
         std::cout << "Failed to parse argv" << std::endl;
         mpause();
@@ -98,6 +99,11 @@ int main(int argc, char** argv)
         task_id = MaaPostTask(maa_handle, task.type.c_str(), task.param.to_string().c_str());
     }
     MaaWaitTask(maa_handle, task_id);
+
+    if (after_task.enabled && !after_task.type.empty()) {
+        task_id = MaaPostTask(maa_handle, after_task.type.c_str(), after_task.param.to_string().c_str());
+        MaaWaitTask(maa_handle, task_id);
+    }
 
     destroy();
 
@@ -214,8 +220,20 @@ json::value homeland_param()
     return param;
 }
 
-bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string& adb_address, int& client_type, TaskList& tasks,
-    MaaAdbControllerType& ctrl_type)
+json::value end_to_do_param() {
+    json::value param;
+    auto& diff = param["diff_task"];
+    auto& close_bh3 = diff["CloseBH3"]["enabled"];
+    auto& close_bh3_doc = diff["CloseBH3"]["doc"];
+
+    close_bh3 = false;
+    close_bh3_doc = "关闭崩坏3；默认false";
+
+    return param;
+}
+
+bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string& adb_address, int& client_type,
+               TaskList& tasks, AfterTask& after_task, MaaAdbControllerType& ctrl_type)
 {
     int touch = 1;
     int key = 1;
@@ -249,6 +267,11 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
             }
             tasks.emplace_back(task_obj);
         }
+
+        after_task.enabled = confing["tasks_completion_after"].get("enabled", false);
+        after_task.type = confing["tasks_completion_after"]["type"].as_string();
+        after_task.param = confing["tasks_completion_after"]["param"];
+
         touch = confing.get("touch", touch);
         key = confing.get("key", key);
         screencap = confing.get("screencap", screencap);
@@ -369,8 +392,17 @@ void save_config(const std::string& adb, const std::string& adb_address, const i
         task_obj["param"] = task.param;
         tasks_array.emplace(std::move(task_obj));
     }
+
     config["tasks"] = std::move(tasks_array);
     config["tasks_Doc"] = "要执行的任务 StartUp, Homeland, Awards";
+
+    json::value after_task;
+    after_task["enabled"] = false;
+    after_task["type"] = "EndToDo";
+    after_task["param"] = end_to_do_param();
+
+    config["tasks_completion_after"] = std::move(after_task);
+    config["tasks_completion_after_Doc"] = "任务完成后执行的操作";
 
     config["touch"] = (ctrl_type & MaaAdbControllerType_Touch_Mask) >> 0;
     config["touch_Doc"] = "点击方式：1: Adb, 2: MiniTouch, 3: MaaTouch";

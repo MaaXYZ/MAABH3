@@ -1,0 +1,12 @@
+{
+    "EndToDo": {
+        "next": [
+            "CloseBH3",
+            "stop"
+        ]
+    },
+    "CloseBH3": {
+        "enabled": false,
+        "action": "StopApp"
+    }
+}
