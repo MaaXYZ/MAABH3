@@ -394,7 +394,7 @@ void save_config(const std::string& adb, const std::string& adb_address, const i
     }
 
     config["tasks"] = std::move(tasks_array);
-    config["tasks_Doc"] = "要执行的任务 StartUp, Homeland, Awards";
+    config["tasks_Doc"] = "要执行的任务 Homeland, MaterialEvent, Armada, Awards";
 
     json::value after_task;
     after_task["enabled"] = false;
