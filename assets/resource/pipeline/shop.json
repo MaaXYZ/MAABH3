@@ -1,0 +1,153 @@
+{
+    "$schema": "../pipeline.schema.json",
+    "Shop": {
+        "next": [
+            "EnterSupplyPage",
+            "Sub_StartUp"
+        ]
+    },
+    "EnterSupplyPage": {
+        "recognition": "TemplateMatch",
+        "template": "Shop/EnterSupplyPage.png",
+        "roi": [
+            1012,
+            389,
+            184,
+            140
+        ],
+        "action": "Click",
+        "next": [
+            "EnterShopPage"
+        ]
+    },
+    "EnterShopPage": {
+        "recognition": "TemplateMatch",
+        "template": "Shop/EnterShopPage.png",
+        "roi": [
+            157,
+            484,
+            213,
+            135
+        ],
+        "action": "Click",
+        "next": [
+            "LogisticsTerminalBuyCharacterFragmentByGold",
+            "EnterShopPage"
+        ]
+    },
+    "LogisticsTerminalBuyCharacterFragmentByGold": {
+        "recognition": "TemplateMatch",
+        "template": "Shop/LogisticsTerminalPage.png",
+        "roi": [
+            61,
+            131,
+            204,
+            134
+        ],
+        "next": [
+            "LogisticsTerminalCharacterFragmentFlag",
+            "LogisticsTerminalNotCharacterFragmentFlag"
+        ]
+    },
+    "LogisticsTerminalCharacterFragmentFlag": {
+        "recognition": "TemplateMatch",
+        "template": "Shop/LogisticsTerminalCharacterFragmentFlag.png",
+        "roi": [
+            232,
+            138,
+            139,
+            140
+        ],
+        "next": [
+            "LogisticsTerminalBuyCharacterFragmentByGoldFlag",
+            "LogisticsTerminalNotBuyCharacterFragmentByGoldFlag"
+        ]
+    },
+    "LogisticsTerminalNotCharacterFragmentFlag": {
+        "recognition": "TemplateMatch",
+        "inverse": true,
+        "template": "Shop/LogisticsTerminalCharacterFragmentFlag.png",
+        "roi": [
+            232,
+            138,
+            139,
+            140
+        ],
+        "next": [
+            "stop"
+        ]
+    },
+    "LogisticsTerminalBuyCharacterFragmentByGoldFlag": {
+        "recognition": "TemplateMatch",
+        "template": "Shop/LogisticsTerminalBuyCharacterFragmentByGoldFlag.png",
+        "roi": [
+            246,
+            373,
+            133,
+            136
+        ],
+        "action": "Click",
+        "next": [
+            "LogisticsTerminalCharacterFragmentFlag",
+            "LogisticsTerminalBuyCharacterFragmentByGoldDo"
+        ]
+    },
+    "LogisticsTerminalNotBuyCharacterFragmentByGoldFlag": {
+        "recognition": "TemplateMatch",
+        "inverse": true,
+        "template": "Shop/LogisticsTerminalBuyCharacterFragmentByGoldFlag.png",
+        "roi": [
+            246,
+            373,
+            133,
+            136
+        ],
+        "action": "Click",
+        "next": [
+            "stop"
+        ]
+    },
+    "LogisticsTerminalBuyCharacterFragmentByGoldDo": {
+        "recognition": "TemplateMatch",
+        "template": "Shop/LogisticsTerminalBuyCharacterFragmentByGoldFlag.png",
+        "roi": [
+            757,
+            496,
+            135,
+            140
+        ],
+        "action": "Click",
+        "next": [
+            "LogisticsTerminalBuyCharacterFragmentByGoldSuccess",
+            "LogisticsTerminalBuyCharacterFragmentByGoldDone",
+            "LogisticsTerminalBuyCharacterFragmentByGoldDo"
+        ]
+    },
+    "LogisticsTerminalBuyCharacterFragmentByGoldSuccess": {
+        "recognition": "OCR",
+        "text": "您已购买成功",
+        "roi": [
+            490,
+            288,
+            302,
+            140
+        ],
+        "action": "Click",
+        "next": [
+            "stop"
+        ]
+    },
+    "LogisticsTerminalBuyCharacterFragmentByGoldDone": {
+        "recognition": "TemplateMatch",
+        "template": "Shop/LogisticsTerminalBuyCharacterFragmentByGoldDone.png",
+        "roi": [
+            262,
+            372,
+            179,
+            135
+        ],
+        "next": [
+            "stop"
+        ]
+    }
+}

@@ -304,7 +304,8 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
             << "  1. Homeland\n"
                "  2. MaterialEvent\n"
                "  3. Armada\n"
-               "  4. Awards\n"
+               "  4. Shop\n"
+               "  5. Awards\n"
             << std::endl
             << "Please enter the task numbers to be executed: "
             << std::endl;
@@ -334,6 +335,9 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
                 task_obj.type = "Armada";
                 break;
             case 4:
+                task_obj.type = "Shop";
+                break;
+            case 5:
                 task_obj.type = "Awards";
                 break;
 
@@ -394,7 +398,7 @@ void save_config(const std::string& adb, const std::string& adb_address, const i
     }
 
     config["tasks"] = std::move(tasks_array);
-    config["tasks_Doc"] = "要执行的任务 Homeland, MaterialEvent, Armada, Awards";
+    config["tasks_Doc"] = "要执行的任务 Homeland, MaterialEvent, Armada, Shop, Awards";
 
     json::value after_task;
     after_task["enabled"] = false;
