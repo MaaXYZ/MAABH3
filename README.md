@@ -71,6 +71,8 @@ _欢迎大佬们来带带~_
 
 吹水 QQ 群：672372860
 
+开发 QQ 群：566868495
+
 ## 其他
 
 * 芝士[MAA1999](https://github.com/MaaAssistantArknights/MAA1999)，基于MAA全新架构的 亿韭韭韭 小助手。
