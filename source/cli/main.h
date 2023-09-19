@@ -28,6 +28,8 @@ struct AfterTask
 
 void print_help();
 
+void print_version();
+
 MaaSize scanning_devices();
 
 json::value homeland_param();
