@@ -1,15 +1,14 @@
 import cv2
 import os
-
+from typing import List, Tuple
 
 print("Usage:\n"
       "Put the 16:9 images under ./src, and run this script, it will be auto converted to 720p.\n"
       "Drag mouse to select ROI, press 'S' to save, press 'Q' to quit.\n"
       "The cropped images will be saved in ./dst\n")
 
-
 # 初始化参考点列表和布尔值标志：是否正在执行裁剪
-refPt = []
+refPt: List[Tuple[int, int]] = []
 cropping = False
 
 
@@ -18,8 +17,9 @@ cropping = False
 # -x x坐标
 # -y y坐标
 # -flages params 其他参数
-def click_and_crop(event, x, y, flags, param):
+def click_and_crop(event: int, x: int, y: int, *args) -> None:
     # 获取全局变量的引用
+
     global refPt, cropping
 
     # 如果鼠标左被单击，记录（x,y）坐标并显示裁剪正在进行
@@ -45,7 +45,7 @@ cv2.namedWindow("image")
 cv2.setMouseCallback("image", click_and_crop)
 
 for filename in os.listdir("./src"):
-    if not filename.endswith(".png"):
+    if not (filename.endswith(".png") or filename.endswith(".jpg")):
         continue
 
     print("src:", filename)
@@ -58,7 +58,7 @@ for filename in os.listdir("./src"):
         dsize_height = std_height
     else:
         dsize_width = std_width
-        dsize_height = int(std_width / cur_ratio) 
+        dsize_height = int(std_width / cur_ratio)
 
     dsize = (dsize_width, dsize_height)
     image = cv2.resize(image, dsize, interpolation=cv2.INTER_AREA)
@@ -85,9 +85,9 @@ for filename in os.listdir("./src"):
         horizontal_expansion = 100
         vertical_expansion = 100
 
-        filename_x: int = (int)(left - horizontal_expansion / 2)
+        filename_x: int = int(left - horizontal_expansion / 2)
         filename_x = max(filename_x, 0)
-        filename_y: int = (int)(top - vertical_expansion / 2)
+        filename_y: int = int(top - vertical_expansion / 2)
         filename_y = max(filename_y, 0)
         filename_w: int = (right - left) + horizontal_expansion
         if filename_x + filename_w > dsize_width:
@@ -104,7 +104,7 @@ for filename in os.listdir("./src"):
 
         cv2.imwrite(f'./dst/{dst_filename}', roi)
 
-    refPt = []
+    refPt: List[Tuple[int, int]] = []
     cropping = False
 
 # 关闭所有打开的窗口
