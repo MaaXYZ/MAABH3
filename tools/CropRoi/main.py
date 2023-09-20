@@ -49,16 +49,16 @@ for filename in os.listdir("./src"):
         continue
 
     print("src:", filename)
-    image = cv2.imread("./src/" + filename)
+    image = cv2.imread(f"./src/{filename}")
 
     cur_ratio = image.shape[1] / image.shape[0]
 
-    if cur_ratio >= std_ratio:  # 说明是宽屏或默认16:9，按照高度计算缩放
-        dsize_width: int = (int)(cur_ratio * std_height)
-        dsize_height: int = std_height
-    else:                       # 否则可能是偏正方形的屏幕，按宽度计算
-        dsize_width: int = std_width
-        dsize_height: int = std_width / cur_ratio
+    if cur_ratio >= std_ratio:
+        dsize_width = int(cur_ratio * std_height)
+        dsize_height = std_height
+    else:
+        dsize_width = std_width
+        dsize_height = int(std_width / cur_ratio) 
 
     dsize = (dsize_width, dsize_height)
     image = cv2.resize(image, dsize, interpolation=cv2.INTER_AREA)
@@ -86,11 +86,9 @@ for filename in os.listdir("./src"):
         vertical_expansion = 100
 
         filename_x: int = (int)(left - horizontal_expansion / 2)
-        if filename_x < 0:
-            filename_x = 0
+        filename_x = max(filename_x, 0)
         filename_y: int = (int)(top - vertical_expansion / 2)
-        if filename_y < 0:
-            filename_y = 0
+        filename_y = max(filename_y, 0)
         filename_w: int = (right - left) + horizontal_expansion
         if filename_x + filename_w > dsize_width:
             filename_w = dsize_width - filename_x
@@ -104,7 +102,7 @@ for filename in os.listdir("./src"):
         print(f"original roi: {left}, {top}, {right - left}, {bottom - top}, \n"
               f"amplified roi: {filename_x}, {filename_y}, {filename_w}, {filename_h}\n\n")
 
-        cv2.imwrite('./dst/' + dst_filename, roi)
+        cv2.imwrite(f'./dst/{dst_filename}', roi)
 
     refPt = []
     cropping = False
