@@ -305,7 +305,7 @@
         "next": [
             "StorySweepNotEnoughAPToGetStoredAP",
             "StorySweepConsumptionLimit",
-            "stop"
+            "Stop"
         ]
     },
     "StorySweepNotEnoughAPToGetStoredAP": {
@@ -339,7 +339,7 @@
         ],
         "action": "Click",
         "next": [
-            "stop"
+            "Stop"
         ]
     }
 }

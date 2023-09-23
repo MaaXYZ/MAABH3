@@ -74,7 +74,7 @@
             140
         ],
         "next": [
-            "stop"
+            "Stop"
         ]
     },
     "LogisticsTerminalBuyCharacterFragmentByGoldFlag": {
@@ -104,7 +104,7 @@
         ],
         "action": "Click",
         "next": [
-            "stop"
+            "Stop"
         ]
     },
     "LogisticsTerminalBuyCharacterFragmentByGoldDo": {
@@ -134,7 +134,7 @@
         ],
         "action": "Click",
         "next": [
-            "stop"
+            "Stop"
         ]
     },
     "LogisticsTerminalBuyCharacterFragmentByGoldDone": {
@@ -147,7 +147,7 @@
             135
         ],
         "next": [
-            "stop"
+            "Stop"
         ]
     }
 }

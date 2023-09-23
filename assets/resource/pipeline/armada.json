@@ -347,7 +347,7 @@
             44
         ],
         "next": [
-            "stop"
+            "Stop"
         ]
     },
     "ReachContributionProgress_0": {
@@ -362,7 +362,7 @@
         "action": "Click",
         "next": [
             "Sub_CloseDialogBox",
-            "stop"
+            "Stop"
         ]
     },
     "ReceiveContributionRewards_1200": {
@@ -407,7 +407,7 @@
             42
         ],
         "next": [
-            "stop"
+            "Stop"
         ]
     },
     "ReachContributionProgress_1200": {
@@ -422,7 +422,7 @@
         "action": "Click",
         "next": [
             "Sub_CloseDialogBox",
-            "stop"
+            "Stop"
         ]
     },
     "ReceiveContributionRewards_2500": {
@@ -467,7 +467,7 @@
             37
         ],
         "next": [
-            "stop"
+            "Stop"
         ]
     },
     "ReachContributionProgress_2500": {
@@ -482,7 +482,7 @@
         "action": "Click",
         "next": [
             "Sub_CloseDialogBox",
-            "stop"
+            "Stop"
         ]
     },
     "ReceiveContributionRewards_3700": {
@@ -527,7 +527,7 @@
             37
         ],
         "next": [
-            "stop"
+            "Stop"
         ]
     },
     "ReachContributionProgress_3700": {
@@ -542,7 +542,7 @@
         "action": "Click",
         "next": [
             "Sub_CloseDialogBox",
-            "stop"
+            "Stop"
         ]
     },
     "ReceiveContributionRewards_5000": {
@@ -572,7 +572,7 @@
             83
         ],
         "next": [
-            "stop"
+            "Stop"
         ]
     },
     "NotReachContributionProgress_5000": {
@@ -586,7 +586,7 @@
             36
         ],
         "next": [
-            "stop"
+            "Stop"
         ]
     },
     "ReachContributionProgress_5000": {
@@ -601,7 +601,7 @@
         "action": "Click",
         "next": [
             "Sub_CloseDialogBox",
-            "stop"
+            "Stop"
         ]
     }
 }

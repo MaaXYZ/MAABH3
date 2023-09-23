@@ -140,7 +140,6 @@
             136
         ]
     },
-    "Stop": {},
     "Sub_CollectDailyLoginReward": {
         "is_sub": true,
         "recognition": "TemplateMatch",
