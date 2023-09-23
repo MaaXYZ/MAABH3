@@ -1,4 +1,5 @@
 {
+    "$schema": "../pipeline.schema.json",
     "EndToDo": {
         "next": [
             "CloseBH3",

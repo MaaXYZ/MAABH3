@@ -1,4 +1,5 @@
 {
+    "$schema": "../pipeline.schema.json",
     "Sub_StartUp": {
         "is_sub": true,
         "next": [
@@ -15,18 +16,12 @@
             "GameLoading",
             "HomeFlag",
             "Sub_StartBH3"
-        ],
-        "editor_info": {
-            "path": "/startup.json/"
-        }
+        ]
     },
     "Sub_StartBH3": {
         "is_sub": true,
         "action": "StartApp",
-        "package_doc": "set in code.",
-        "editor_info": {
-            "path": "/startup.json/"
-        }
+        "package_doc": "set in code."
     },
     "RestartBH3": {
         "action": "StopApp",
@@ -66,10 +61,7 @@
             "GameIdentifying",
             "Sub_CloseAnnouncement",
             "HomeFlag"
-        ],
-        "editor_info": {
-            "path": "/startup.json/"
-        }
+        ]
     },
     "GameIdentifying": {
         "recognition": "TemplateMatch",
@@ -106,10 +98,7 @@
             109,
             133
         ],
-        "action": "Click",
-        "editor_info": {
-            "path": "/startup.json/"
-        }
+        "action": "Click"
     },
     "StartGame": {
         "recognition": "OCR",
@@ -129,9 +118,6 @@
         "timeout_next": [
             "RestartBH3"
         ],
-        "editor_info": {
-            "path": "/startup.json/"
-        },
         "roi": [
             458,
             458,
@@ -152,16 +138,9 @@
             584,
             141,
             136
-        ],
-        "editor_info": {
-            "path": "/startup.json/"
-        }
+        ]
     },
-    "Stop": {
-        "editor_info": {
-            "path": "/startup.json/"
-        }
-    },
+    "Stop": {},
     "Sub_CollectDailyLoginReward": {
         "is_sub": true,
         "recognition": "TemplateMatch",

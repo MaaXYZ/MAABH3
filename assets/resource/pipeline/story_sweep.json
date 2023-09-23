@@ -1,4 +1,5 @@
 {
+    "$schema": "../pipeline.schema.json",
     "StorySweep": {
         "next": [
             "StorySweepEnterHomeland",

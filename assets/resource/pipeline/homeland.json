@@ -1,4 +1,5 @@
 {
+    "$schema": "../pipeline.schema.json",
     "Homeland": {
         "next": [
             "Sub_HomeButton",
@@ -11,10 +12,7 @@
             "CollectAP",
             "EnterQuest",
             "Sub_StartUp"
-        ],
-        "editor_info": {
-            "path": "/homeland.json/"
-        }
+        ]
     },
     "EnterHomeland": {
         "recognition": "OCR",

@@ -4,10 +4,7 @@
         "next": [
             "EnterAwards",
             "Sub_StartUp"
-        ],
-        "editor_info": {
-            "path": "/awards.json/"
-        }
+        ]
     },
     "EnterAwards": {
         "recognition": "OCR",
