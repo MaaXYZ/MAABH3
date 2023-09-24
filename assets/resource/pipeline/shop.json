@@ -32,6 +32,7 @@
         "action": "Click",
         "next": [
             "LogisticsTerminalBuyCharacterFragmentByGold",
+            "VirtualShopBuyTimePassBy1StarStone",
             "EnterShopPage"
         ]
     },
@@ -134,12 +135,110 @@
         ],
         "action": "Click",
         "next": [
+            "VirtualShopBuyTimePassBy1StarStone",
             "Stop"
         ]
     },
     "LogisticsTerminalBuyCharacterFragmentByGoldDone": {
         "recognition": "TemplateMatch",
-        "template": "Shop/LogisticsTerminalBuyCharacterFragmentByGoldDone.png",
+        "template": "Shop/SoldOut.png",
+        "roi": [
+            262,
+            372,
+            179,
+            135
+        ],
+        "next": [
+            "VirtualShopBuyTimePassBy1StarStone",
+            "Stop"
+        ]
+    },
+    "VirtualShopBuyTimePassBy1StarStone": {
+        "recognition": "TemplateMatch",
+        "template": "Shop/LogisticsTerminalPage.png",
+        "next": [
+            "EnterActivityPage",
+            "EnterVirtualShopPage"
+        ]
+    },
+    "EnterActivityPage": {
+        "recognition": "TemplateMatch",
+        "template": "Shop/EnterActivityPage.png",
+        "roi": [
+            61,
+            509,
+            203,
+            133
+        ],
+        "action": "Click",
+        "next": [
+            "EnterVirtualShopPage",
+            "EnterActivityPage"
+        ]
+    },
+    "EnterVirtualShopPage": {
+        "recognition": "TemplateMatch",
+        "template": "Shop/EnterVirtualShopPage.png",
+        "roi": [
+            62,
+            440,
+            201,
+            130
+        ],
+        "action": "Click",
+        "next": [
+            "VirtualShop1StarStoneFlag",
+            "Stop"
+        ]
+    },
+    "VirtualShop1StarStoneFlag": {
+        "recognition": "TemplateMatch",
+        "template": "Shop/VirtualShop1StarStoneFlag.png",
+        "roi": [
+            273,
+            371,
+            172,
+            142
+        ],
+        "action": "Click",
+        "next": [
+            "VirtualShopBuyTimePassBy1StarStoneDo",
+            "VirtualShop1StarStoneFlag"
+        ]
+    },
+    "VirtualShopBuyTimePassBy1StarStoneDo": {
+        "recognition": "TemplateMatch",
+        "template": "Shop/VirtualShop1StarStoneFlag",
+        "roi": [
+            781,
+            495,
+            161,
+            145
+        ],
+        "action": "Click",
+        "next": [
+            "VirtualShopBuyTimePassBy1StarStoneSuccess",
+            "VirtualShopBuyTimePassBy1StarStoneDone",
+            "VirtualShopBuyTimePassBy1StarStoneDo"
+        ]
+    },
+    "VirtualShopBuyTimePassBy1StarStoneSuccess": {
+        "recognition": "OCR",
+        "text": "您已购买成功",
+        "roi": [
+            490,
+            288,
+            302,
+            140
+        ],
+        "action": "Click",
+        "next": [
+            "Stop"
+        ]
+    },
+    "VirtualShopBuyTimePassBy1StarStoneDone": {
+        "recognition": "TemplateMatch",
+        "template": "Shop/SoldOut.png",
         "roi": [
             262,
             372,
