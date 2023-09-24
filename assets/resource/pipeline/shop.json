@@ -75,6 +75,7 @@
             140
         ],
         "next": [
+            "VirtualShopBuyTimePassBy1StarStone",
             "Stop"
         ]
     },
@@ -105,6 +106,7 @@
         ],
         "action": "Click",
         "next": [
+            "VirtualShopBuyTimePassBy1StarStone",
             "Stop"
         ]
     },
@@ -157,13 +159,13 @@
         "recognition": "TemplateMatch",
         "template": "Shop/LogisticsTerminalPage.png",
         "next": [
-            "EnterActivityPage",
+            "EnterActivityShopPage",
             "EnterVirtualShopPage"
         ]
     },
-    "EnterActivityPage": {
+    "EnterActivityShopPage": {
         "recognition": "TemplateMatch",
-        "template": "Shop/EnterActivityPage.png",
+        "template": "Shop/EnterActivityShopPage.png",
         "roi": [
             61,
             509,
@@ -173,7 +175,7 @@
         "action": "Click",
         "next": [
             "EnterVirtualShopPage",
-            "EnterActivityPage"
+            "EnterActivityShopPage"
         ]
     },
     "EnterVirtualShopPage": {
@@ -208,7 +210,7 @@
     },
     "VirtualShopBuyTimePassBy1StarStoneDo": {
         "recognition": "TemplateMatch",
-        "template": "Shop/VirtualShop1StarStoneFlag",
+        "template": "Shop/VirtualShop1StarStoneFlag.png",
         "roi": [
             781,
             495,
