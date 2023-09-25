@@ -13,6 +13,7 @@
             "StartGame",
             "GameIdentifying",
             "Sub_CloseAnnouncement",
+            "Sub_CloseActivityAnnouncement",
             "GameLoading",
             "HomeFlag",
             "Sub_StartBH3"
@@ -36,6 +37,7 @@
             "StartGame",
             "GameIdentifying",
             "Sub_CloseAnnouncement",
+            "Sub_CloseActivityAnnouncement",
             "GameLoading",
             "HomeFlag",
             "Sub_StartBH3"
@@ -60,6 +62,7 @@
             "StartGame",
             "GameIdentifying",
             "Sub_CloseAnnouncement",
+            "Sub_CloseActivityAnnouncement",
             "HomeFlag"
         ]
     },
@@ -81,6 +84,7 @@
             "Sub_ObtainedAwards",
             "Sub_CollectDailyLoginReward",
             "Sub_CloseAnnouncement",
+            "Sub_CloseActivityAnnouncement",
             "HomeFlag"
         ],
         "timeout": 60000,
@@ -112,6 +116,7 @@
             "StartGame",
             "GameIdentifying",
             "Sub_CloseAnnouncement",
+            "Sub_CloseActivityAnnouncement",
             "HomeFlag"
         ],
         "timeout": 5000,
@@ -273,6 +278,7 @@
             "StartGame",
             "GameIdentifying",
             "Sub_CloseAnnouncement",
+            "Sub_CloseActivityAnnouncement",
             "HomeFlag"
         ]
     },
@@ -291,7 +297,23 @@
             "StartGame",
             "GameIdentifying",
             "Sub_CloseAnnouncement",
+            "Sub_CloseActivityAnnouncement",
             "HomeFlag"
         ]
+    },
+    "Sub_CloseActivityAnnouncement": {
+        "recognition": "OCR",
+        "text": "点击空白区域关闭",
+        "roi": [
+            514,
+            603,
+            251,
+            117
+        ],
+        "pre_wait_freezes": {
+            "time": 500,
+            "target": "Sub_CloseActivityAnnouncement"
+        },
+        "action": "Click"
     }
 }
