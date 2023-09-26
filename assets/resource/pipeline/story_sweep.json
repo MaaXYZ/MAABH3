@@ -225,7 +225,15 @@
             40
         ],
         "duration": 1000,
-        "post_wait_freezes": 200,
+        "post_wait_freezes": {
+            "time": 200,
+            "target": [
+                1061,
+                69,
+                210,
+                158
+            ]
+        },
         "next": [
             "SelectFirstStorySweep",
             "StorySweepOneClickDispatch",
