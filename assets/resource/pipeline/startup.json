@@ -14,6 +14,7 @@
             "GameIdentifying",
             "Sub_CloseAnnouncement",
             "Sub_CloseActivityAnnouncement",
+            "Sub_AiPromptFlag",
             "GameLoading",
             "HomeFlag",
             "Sub_StartBH3"
@@ -38,6 +39,7 @@
             "GameIdentifying",
             "Sub_CloseAnnouncement",
             "Sub_CloseActivityAnnouncement",
+            "Sub_AiPromptFlag",
             "GameLoading",
             "HomeFlag",
             "Sub_StartBH3"
@@ -63,6 +65,7 @@
             "GameIdentifying",
             "Sub_CloseAnnouncement",
             "Sub_CloseActivityAnnouncement",
+            "Sub_AiPromptFlag",
             "HomeFlag"
         ]
     },
@@ -85,6 +88,7 @@
             "Sub_CollectDailyLoginReward",
             "Sub_CloseAnnouncement",
             "Sub_CloseActivityAnnouncement",
+            "Sub_AiPromptFlag",
             "HomeFlag"
         ],
         "timeout": 60000,
@@ -117,6 +121,7 @@
             "GameIdentifying",
             "Sub_CloseAnnouncement",
             "Sub_CloseActivityAnnouncement",
+            "Sub_AiPromptFlag",
             "HomeFlag"
         ],
         "timeout": 5000,
@@ -279,6 +284,7 @@
             "GameIdentifying",
             "Sub_CloseAnnouncement",
             "Sub_CloseActivityAnnouncement",
+            "Sub_AiPromptFlag",
             "HomeFlag"
         ]
     },
@@ -296,8 +302,11 @@
             "CloseVersionAnnouncement",
             "StartGame",
             "GameIdentifying",
+            "Sub_BackButton",
+            "Sub_BackText",
             "Sub_CloseAnnouncement",
             "Sub_CloseActivityAnnouncement",
+            "Sub_AiPromptFlag",
             "HomeFlag"
         ]
     },
@@ -316,5 +325,27 @@
             "target": "Sub_CloseActivityAnnouncement"
         },
         "action": "Click"
+    },
+    "Sub_AiPromptFlag": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "StartUp/AiPromptFlag.png",
+        "roi": [
+            1030,
+            479,
+            171,
+            182
+        ],
+        "pre_wait_freezes": {
+            "time": 500,
+            "target": "Sub_AiPromptFlag"
+        },
+        "action": "Click",
+        "target": [
+            1063,
+            131,
+            77,
+            82
+        ]
     }
 }
