@@ -190,6 +190,7 @@
         "action": "Click",
         "next": [
             "MirageStore1AsteriteFlag",
+            "EnterMirageStorePage",
             "Stop"
         ]
     },
