@@ -52,4 +52,6 @@ void save_config(const std::string& adb, const std::string& adb_address, const i
 
 std::string read_adb_config(const std::filesystem::path& cur_dir);
 
+std::string TaskStatus(MaaStatus status);
+
 void mpause();

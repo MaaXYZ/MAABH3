@@ -97,14 +97,24 @@ int main(int argc, char** argv)
         {
             continue;
         }
+        std::cout << task.type << " Start" << std::endl;
         task_id = MaaPostTask(maa_handle, task.type.c_str(), task.param.to_string().c_str());
+        std::cout << task.type << " Running..." << std::endl;
+        auto end_status = MaaWaitTask(maa_handle, task_id);
+        std::cout << task.type << " End" << std::endl 
+                  << task.type << " Result: " << TaskStatus(end_status) << std::endl;
     }
-    MaaWaitTask(maa_handle, task_id);
 
     if (after_task.enabled && !after_task.type.empty()) {
+        std::cout << "EndTask Start" << std::endl;
         task_id = MaaPostTask(maa_handle, after_task.type.c_str(), after_task.param.to_string().c_str());
-        MaaWaitTask(maa_handle, task_id);
+        std::cout << "EndTask Running..." << std::endl;
+        auto end_status = MaaWaitTask(maa_handle, task_id);
+        std::cout << "EndTask End" << std::endl 
+                  << "EndTask Result: " << TaskStatus(end_status) << std::endl;
     }
+
+    std::cout << std::endl << "All Tasks Over" << std::endl;
 
     destroy();
 
@@ -428,6 +438,31 @@ void save_config(const std::string& adb, const std::string& adb_address, const i
     std::ofstream ofs("config.json", std::ios::out);
     ofs << config;
     ofs.close();
+}
+
+std::string TaskStatus(MaaStatus status) {
+    std::string task_status;
+    switch (status) {
+    case MaaStatus_Invalid:
+        task_status = "Invalid";
+        break;
+    case MaaStatus_Pending:
+        task_status = "Pending";
+        break;
+    case MaaStatus_Running:
+        task_status = "Running";
+        break;
+    case MaaStatus_Success:
+        task_status = "Success";
+        break;
+    case MaaStatus_Failed:
+        task_status = "Failed";
+        break;
+    default:
+        task_status = "Unkown";
+        break;
+    }
+    return task_status;
 }
 
 void mpause()
