@@ -2,10 +2,12 @@ import cv2
 import os
 from typing import List, Tuple
 
-print("Usage:\n"
-      "Put the 16:9 images under ./src, and run this script, it will be auto converted to 720p.\n"
-      "Drag mouse to select ROI, press 'S' to save, press 'Q' to quit.\n"
-      "The cropped images will be saved in ./dst\n")
+print(
+    "Usage:\n"
+    "Put the 16:9 images under ./src, and run this script, it will be auto converted to 720p.\n"
+    "Drag mouse to select ROI, press 'S' to save, press 'Q' to quit.\n"
+    "The cropped images will be saved in ./dst\n"
+)
 
 # 初始化参考点列表和布尔值标志：是否正在执行裁剪
 refPt: List[Tuple[int, int]] = []
@@ -26,6 +28,13 @@ def click_and_crop(event: int, x: int, y: int, *args) -> None:
     if event == cv2.EVENT_LBUTTONDOWN:
         refPt = [(x, y)]
         cropping = True
+    # 检测鼠标是否移动
+    elif event == cv2.EVENT_MOUSEMOVE:
+        if cropping:
+            # 创建图像副本以绘制动态矩形
+            draw = image.copy()
+            cv2.rectangle(draw, refPt[0], (x, y), (0, 255, 0), 2)
+            cv2.imshow("image", draw)
     # 检测鼠标左键是否释放
     elif event == cv2.EVENT_LBUTTONUP:
         # 记录结束（x,y）坐标，并显示裁剪结束
@@ -73,36 +82,37 @@ for filename in os.listdir("./src"):
 
     # 如果参考点列表里有俩个点，则裁剪区域并展示
     if len(refPt) == 2:
-        if refPt[0][0] > refPt[1][0] or refPt[0][1] > refPt[1][1]:
-            refPt[0], refPt[1] = refPt[1], refPt[0]
-        left = refPt[0][0]
-        right = refPt[1][0]
-        top = refPt[0][1]
-        bottom = refPt[1][1]
+        pt1, pt2 = sorted(refPt)
+
+        left, top = pt1
+        right, bottom = pt2
 
         roi = image[top:bottom, left:right]
 
         horizontal_expansion = 100
         vertical_expansion = 100
 
-        filename_x: int = int(left - horizontal_expansion / 2)
-        filename_x = max(filename_x, 0)
-        filename_y: int = int(top - vertical_expansion / 2)
-        filename_y = max(filename_y, 0)
-        filename_w: int = (right - left) + horizontal_expansion
-        if filename_x + filename_w > dsize_width:
-            filename_w = dsize_width - filename_x
-        filename_h: int = (bottom - top) + vertical_expansion
-        if filename_y + filename_h > dsize_height:
-            filename_h = dsize_height - filename_y
+        # 计算扩展后的左上角坐标，并确保不超出图像边界
+        filename_x = max(0, left - horizontal_expansion // 2)
+        filename_y = max(0, top - vertical_expansion // 2)
 
-        dst_filename: str = f'{filename}_{filename_x},{filename_y},{filename_w},{filename_h}.png'
-        print('dst:', dst_filename)
+        # 计算扩展后的宽度和高度，并进行边界检查
+        filename_w = min(
+            dsize_width - filename_x, (right - left) + horizontal_expansion
+        )
+        filename_h = min(dsize_height - filename_y, (bottom - top) + vertical_expansion)
 
-        print(f"original roi: {left}, {top}, {right - left}, {bottom - top}, \n"
-              f"amplified roi: {filename_x}, {filename_y}, {filename_w}, {filename_h}\n\n")
+        dst_filename: str = (
+            f"{filename}_{filename_x},{filename_y},{filename_w},{filename_h}.png"
+        )
+        print("dst:", dst_filename)
 
-        cv2.imwrite(f'./dst/{dst_filename}', roi)
+        print(
+            f"original roi: {left}, {top}, {right - left}, {bottom - top}, \n"
+            f"amplified roi: {filename_x}, {filename_y}, {filename_w}, {filename_h}\n\n"
+        )
+
+        cv2.imwrite(f"./dst/{dst_filename}", roi)
 
     refPt: List[Tuple[int, int]] = []
     cropping = False
