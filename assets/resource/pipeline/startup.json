@@ -302,6 +302,7 @@
         ]
     },
     "Sub_CloseActivityAnnouncement": {
+        "is_sub": true,
         "recognition": "OCR",
         "text": "点击空白区域关闭",
         "roi": [
