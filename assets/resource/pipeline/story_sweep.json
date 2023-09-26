@@ -160,7 +160,7 @@
         "inverse": true,
         "next": [
             "Sub_SwitchToFragmentPage",
-            "RandomStorySweep",
+            "SelectFirstStorySweep",
             "NoIdleStorySweep"
         ]
     },
@@ -180,7 +180,7 @@
             "MaterialNoCompleted"
         ]
     },
-    "RandomStorySweep": {
+    "SelectFirstStorySweep": {
         "recognition": "OCR",
         "text": [
             "开始远征"
@@ -195,7 +195,8 @@
         "next": [
             "StorySweepOneClickDispatch",
             "StartStorySweep",
-            "NoIdleStorySweep"
+            "NoIdleStorySweep",
+            "SelectFirstStorySweep"
         ]
     },
     "NoIdleStorySweep": {
@@ -224,8 +225,9 @@
             40
         ],
         "duration": 1000,
+        "post_wait_freezes": 200,
         "next": [
-            "RandomStorySweep",
+            "SelectFirstStorySweep",
             "StorySweepOneClickDispatch",
             "StartStorySweep",
             "NoIdleStorySweep"
@@ -266,7 +268,7 @@
             ]
         },
         "next": [
-            "RandomStorySweep",
+            "SelectFirstStorySweep",
             "StorySweepNotEnoughNumberOfLevels",
             "StorySweepNotEnoughAP",
             "StorySweepConsumptionLimit",
@@ -320,7 +322,7 @@
         "action": "Click",
         "next": [
             "StartStorySweep",
-            "RandomStorySweep",
+            "SelectFirstStorySweep",
             "StorySweepConsumptionLimit",
             "StorySweepOneClickDispatch",
             "NoIdleStorySweep"
