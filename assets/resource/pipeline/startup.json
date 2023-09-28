@@ -17,6 +17,7 @@
             "Sub_AiPromptFlag",
             "GameLoading",
             "HomeFlag",
+            "MiHoYoLogo",
             "Sub_StartBH3"
         ]
     },
@@ -35,6 +36,7 @@
             "Sub_ObtainedAwards",
             "Sub_CollectDailyLoginReward",
             "Download",
+            "CloseVersionAnnouncement",
             "StartGame",
             "GameIdentifying",
             "Sub_CloseAnnouncement",
@@ -42,6 +44,51 @@
             "Sub_AiPromptFlag",
             "GameLoading",
             "HomeFlag",
+            "MiHoYoLogo",
+            "Sub_StartBH3"
+        ]
+    },
+    "MiHoYoLogo": {
+        "recognition": "TemplateMatch",
+        "template": "StartUp/MiHoYoLogo.png",
+        "roi": [
+            414,
+            218,
+            452,
+            218
+        ],
+        "next": "NoMiHoYoLogo",
+        "timeout": 20000,
+        "timeout_next": [
+            "RestartBH3"
+        ]
+    },
+    "NoMiHoYoLogo": {
+        "inverse": true,
+        "recognition": "TemplateMatch",
+        "template": "StartUp/MiHoYoLogo.png",
+        "roi": [
+            414,
+            218,
+            452,
+            218
+        ],
+        "next": [
+            "Sub_HomeButton",
+            "Sub_BackButton",
+            "Sub_BackText",
+            "Sub_ObtainedAwards",
+            "Sub_CollectDailyLoginReward",
+            "Download",
+            "CloseVersionAnnouncement",
+            "StartGame",
+            "GameIdentifying",
+            "Sub_CloseAnnouncement",
+            "Sub_CloseActivityAnnouncement",
+            "Sub_AiPromptFlag",
+            "GameLoading",
+            "HomeFlag",
+            "MiHoYoLogo",
             "Sub_StartBH3"
         ]
     },
@@ -54,10 +101,6 @@
             233,
             126
         ],
-        "timeout": 60000,
-        "timeout_next": [
-            "RestartBH3"
-        ],
         "next": [
             "Download",
             "GameLoading",
@@ -67,6 +110,10 @@
             "Sub_CloseActivityAnnouncement",
             "Sub_AiPromptFlag",
             "HomeFlag"
+        ],
+        "timeout": 30000,
+        "timeout_next": [
+            "RestartBH3"
         ]
     },
     "GameIdentifying": {
@@ -91,7 +138,7 @@
             "Sub_AiPromptFlag",
             "HomeFlag"
         ],
-        "timeout": 60000,
+        "timeout": 30000,
         "timeout_next": [
             "RestartBH3"
         ]
@@ -124,7 +171,7 @@
             "Sub_AiPromptFlag",
             "HomeFlag"
         ],
-        "timeout": 5000,
+        "timeout": 10000,
         "timeout_next": [
             "RestartBH3"
         ],
