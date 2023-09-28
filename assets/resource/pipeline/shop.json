@@ -33,6 +33,7 @@
         "next": [
             "LogisticsTerminalBuyCharacterFragmentByGold",
             "MirageStoreBuyTimeSwirlPassesBy1Asterite",
+            "Sub_CloseDialogBox",
             "EnterShopPage"
         ]
     },
