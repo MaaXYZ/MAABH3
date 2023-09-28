@@ -19,8 +19,8 @@
         ],
         "action": "Click",
         "next": [
-            "EnterArmada",
-            "EnterCommissionedRecovery"
+            "EnterCommissionedRecovery",
+            "EnterArmada"
         ]
     },
     "EnterCommissionedRecovery": {
