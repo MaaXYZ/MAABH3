@@ -14,6 +14,8 @@
             "GameIdentifying",
             "Sub_CloseAnnouncement",
             "Sub_CloseActivityAnnouncement",
+            "Sub_SuperstringDimensionSettlement",
+            "Sub_AbyssSettlement",
             "Sub_AiPromptFlag",
             "GameLoading",
             "HomeFlag",
@@ -41,6 +43,8 @@
             "GameIdentifying",
             "Sub_CloseAnnouncement",
             "Sub_CloseActivityAnnouncement",
+            "Sub_SuperstringDimensionSettlement",
+            "Sub_AbyssSettlement",
             "Sub_AiPromptFlag",
             "GameLoading",
             "HomeFlag",
@@ -85,6 +89,8 @@
             "GameIdentifying",
             "Sub_CloseAnnouncement",
             "Sub_CloseActivityAnnouncement",
+            "Sub_SuperstringDimensionSettlement",
+            "Sub_AbyssSettlement",
             "Sub_AiPromptFlag",
             "GameLoading",
             "HomeFlag",
@@ -108,6 +114,8 @@
             "GameIdentifying",
             "Sub_CloseAnnouncement",
             "Sub_CloseActivityAnnouncement",
+            "Sub_SuperstringDimensionSettlement",
+            "Sub_AbyssSettlement",
             "Sub_AiPromptFlag",
             "HomeFlag"
         ],
@@ -135,6 +143,8 @@
             "Sub_CollectDailyLoginReward",
             "Sub_CloseAnnouncement",
             "Sub_CloseActivityAnnouncement",
+            "Sub_SuperstringDimensionSettlement",
+            "Sub_AbyssSettlement",
             "Sub_AiPromptFlag",
             "HomeFlag"
         ],
@@ -168,6 +178,8 @@
             "GameIdentifying",
             "Sub_CloseAnnouncement",
             "Sub_CloseActivityAnnouncement",
+            "Sub_SuperstringDimensionSettlement",
+            "Sub_AbyssSettlement",
             "Sub_AiPromptFlag",
             "HomeFlag"
         ],
@@ -331,6 +343,8 @@
             "GameIdentifying",
             "Sub_CloseAnnouncement",
             "Sub_CloseActivityAnnouncement",
+            "Sub_SuperstringDimensionSettlement",
+            "Sub_AbyssSettlement",
             "Sub_AiPromptFlag",
             "HomeFlag"
         ]
@@ -353,6 +367,8 @@
             "Sub_BackText",
             "Sub_CloseAnnouncement",
             "Sub_CloseActivityAnnouncement",
+            "Sub_SuperstringDimensionSettlement",
+            "Sub_AbyssSettlement",
             "Sub_AiPromptFlag",
             "HomeFlag"
         ]
@@ -393,6 +409,50 @@
             131,
             77,
             82
+        ]
+    },
+    "Sub_SuperstringDimensionSettlement": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "StartUp/SuperstringDimensionSettlement.png",
+        "roi": [
+            431,
+            78,
+            426,
+            162
+        ],
+        "pre_wait_freezes": {
+            "time": 200,
+            "target": "Sub_SuperstringDimensionSettlement"
+        },
+        "action": "Click",
+        "target": [
+            619,
+            635,
+            142,
+            69
+        ]
+    },
+    "Sub_AbyssSettlement": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "StartUp/AbyssSettlement.png",
+        "roi": [
+            389,
+            133,
+            512,
+            174
+        ],
+        "pre_wait_freezes": {
+            "time": 200,
+            "target": "Sub_AbyssSettlement"
+        },
+        "action": "Click",
+        "target": [
+            619,
+            635,
+            142,
+            69
         ]
     }
 }
