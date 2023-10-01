@@ -127,7 +127,7 @@ void print_help()
 		R"(MAA BH3 CLI, 
 Github: https://github.com/MaaAssistantArknights/MAABH3
 
-Usage: MAABH3.exe [adb_path] [adb_address] [task_name]...
+Usage: MAABH3_CLI.exe [adb_path] [adb_address] [task_name]...
 
 Modify config.json to configure tasks.
 
