@@ -2,39 +2,25 @@
     "$schema": "../pipeline.schema.json",
     "Shop": {
         "next": [
-            "EnterSupplyPage",
+            "DailyShopPageFlag",
+            "Sub_EnterShopPage",
+            "Sub_EnterSupplyPage",
             "Sub_StartUp"
         ]
     },
-    "EnterSupplyPage": {
+    "DailyShopPageFlag": {
         "recognition": "TemplateMatch",
-        "template": "Shop/EnterSupplyPage.png",
+        "template": "Shop/DailyShopPageFlag.png",
         "roi": [
-            1012,
-            389,
-            184,
-            140
+            63,
+            53,
+            201,
+            138
         ],
-        "action": "Click",
-        "next": [
-            "EnterShopPage"
-        ]
-    },
-    "EnterShopPage": {
-        "recognition": "TemplateMatch",
-        "template": "Shop/EnterShopPage.png",
-        "roi": [
-            157,
-            484,
-            213,
-            135
-        ],
-        "action": "Click",
         "next": [
             "LogisticsTerminalBuyCharacterFragmentByGold",
             "MirageStoreBuyTimeSwirlPassesBy1Asterite",
-            "Sub_CloseDialogBox",
-            "EnterShopPage"
+            "Sub_CloseDialogBox"
         ]
     },
     "LogisticsTerminalBuyCharacterFragmentByGold": {
@@ -160,38 +146,9 @@
         "recognition": "TemplateMatch",
         "template": "Shop/LogisticsTerminalPage.png",
         "next": [
-            "EnterActivityShopPage",
-            "EnterMirageStorePage"
-        ]
-    },
-    "EnterActivityShopPage": {
-        "recognition": "TemplateMatch",
-        "template": "Shop/EnterActivityShopPage.png",
-        "roi": [
-            61,
-            509,
-            203,
-            133
-        ],
-        "action": "Click",
-        "next": [
-            "EnterMirageStorePage",
-            "EnterActivityShopPage"
-        ]
-    },
-    "EnterMirageStorePage": {
-        "recognition": "TemplateMatch",
-        "template": "Shop/EnterMirageStorePage.png",
-        "roi": [
-            62,
-            440,
-            201,
-            130
-        ],
-        "action": "Click",
-        "next": [
             "MirageStore1AsteriteFlag",
-            "EnterMirageStorePage",
+            "Sub_EnterMirageStorePage",
+            "Sub_EnterActivityShopPage",
             "Stop"
         ]
     },

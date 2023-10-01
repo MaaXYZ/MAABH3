@@ -1,0 +1,27 @@
+{
+    "$schema": "../../pipeline.schema.json",
+    "Sub_EnterErrandsPage": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Navigation/Dorm/EnterErrandsPage.png",
+        "roi": [
+            905,
+            595,
+            160,
+            125
+        ],
+        "action": "Click"
+    },
+    "Sub_EnterExpeditionsPage": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Navigation/Dorm/EnterExpeditionsPage.png",
+        "roi": [
+            743,
+            596,
+            161,
+            124
+        ],
+        "action": "Click"
+    }
+}

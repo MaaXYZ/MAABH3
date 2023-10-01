@@ -1,0 +1,259 @@
+{
+    "$schema": "../../pipeline.schema.json",
+    "Commissions": {
+        "next": [
+            "CommissionsPageFlag",
+            "Sub_EnterCommissionsPage",
+            "Sub_EnterArmadaPage",
+            "Sub_BackButton"
+        ]
+    },
+    "CommissionsPageFlag": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/CommissionsPageFlag.png",
+        "roi": [
+            0,
+            62,
+            129,
+            127
+        ],
+        "next": [
+            "ApplyForANewCommission",
+            "AcceptNewCommission",
+            "CommissionItem",
+            "CommissionItemBuyMax",
+            "CommissionItemBuy",
+            "CommissionSubmitButton",
+            "CommissionNoneSubmitButton"
+        ]
+    },
+    "ApplyForANewCommission": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/ApplyForANewCommission.png",
+        "threshold": 0.9,
+        "roi": [
+            37,
+            577,
+            239,
+            141
+        ],
+        "action": "Click",
+        "next": [
+            "ApplyForANewCommission",
+            "AcceptNewCommission",
+            "CommissionItem",
+            "CommissionItemBuyMax",
+            "CommissionItemBuy",
+            "CommissionSubmitButton"
+        ]
+    },
+    "AcceptNewCommission": {
+        "recognition": "OCR",
+        "text": [
+            "接受"
+        ],
+        "roi": [
+            1018,
+            154,
+            211,
+            560
+        ],
+        "action": "Click",
+        "next": [
+            "AcceptNewCommission",
+            "CommissionItem",
+            "CommissionItemBuyMax",
+            "CommissionItemBuy",
+            "CommissionSubmitButton"
+        ]
+    },
+    "CommissionItem": {
+        "recognition": "TemplateMatch",
+        "green_mask": true,
+        "template": "Armada/CommissionItem.png",
+        "roi": [
+            7,
+            112,
+            248,
+            248
+        ],
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "next": [
+            "CommissionItemBuyMax",
+            "CommissionItemBuy",
+            "CommissionSubmitButton",
+            "CommissionItem"
+        ]
+    },
+    "CommissionItemBuyMax": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/CommissionItemBuyMax.png",
+        "roi": [
+            565,
+            500,
+            158,
+            133
+        ],
+        "action": "Click",
+        "next": [
+            "CommissionItemBuy",
+            "CommissionSubmitButton"
+        ]
+    },
+    "CommissionItemBuy": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/CommissionItemBuy.png",
+        "roi": [
+            872,
+            494,
+            167,
+            145
+        ],
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "next": [
+            "CommissionSubmitButton",
+            "SubmitCommission"
+        ]
+    },
+    "CommissionSubmitButton": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/CommissionSubmitButton.png",
+        "threshold": 0.95,
+        "roi": [
+            860,
+            579,
+            171,
+            141
+        ],
+        "action": "Click",
+        "next": [
+            "CommissionSubmitButton",
+            "SubmitCommission"
+        ]
+    },
+    "CommissionNoneSubmitButton": {
+        "inverse": true,
+        "recognition": "TemplateMatch",
+        "template": "Armada/CommissionSubmitButton.png",
+        "roi": [
+            860,
+            579,
+            171,
+            141
+        ],
+        "next": [
+            "CommissionsRewardsPageFlag",
+            "Sub_EnterCommissionsRewardsPage"
+        ]
+    },
+    "CommossionLimit": {
+        "recognition": "OCR",
+        "text": [
+            "回收委托次数已经耗尽"
+        ],
+        "roi": [
+            361,
+            287,
+            539,
+            142
+        ],
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "next": [
+            "CommissionsRewardsPageFlag",
+            "Sub_EnterCommissionsRewardsPage"
+        ]
+    },
+    "SubmitCommission": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/SubmitCommission.png",
+        "roi": [
+            696,
+            492,
+            230,
+            141
+        ],
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "next": [
+            "CommossionLimit",
+            "SubmitCommission",
+            "Sub_CloseDialogBox",
+            "CommissionItem",
+            "CommissionItemBuyMax",
+            "CommissionItemBuy",
+            "CommissionSubmitButton",
+            "CommissionNoneSubmitButton"
+        ]
+    },
+    "CommissionsRewardsPageFlag": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/CommissionsRewardsPageFlag.png",
+        "roi": [
+            0,
+            60,
+            131,
+            131
+        ],
+        "next": [
+            "CommissionsRewardsClaim",
+            "Sub_CloseDialogBox",
+            "CommissionsRewardsLastDistribution"
+        ]
+    },
+    "CommissionsRewardsClaim": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/CommissionsRewardsClaim.png",
+        "roi": [
+            828,
+            580,
+            168,
+            137
+        ],
+        "action": "Click",
+        "post_wait_freezes": 200,
+        "next": [
+            "Sub_CloseDialogBox",
+            "CommissionsRewardsLastDistribution"
+        ]
+    },
+    "CommissionsRewardsLastDistribution": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/CommissionsRewardsLastDistribution.png",
+        "roi": [
+            778,
+            579,
+            268,
+            137
+        ],
+        "next": [
+            "BackToArmadaPage"
+        ]
+    },
+    "BackToArmadaPage": {
+        "recognition": "TemplateMatch",
+        "template": "Utils/BackButton.png",
+        "roi": [
+            0,
+            0,
+            180,
+            133
+        ],
+        "action": "Click",
+        "post_wait_freezes": {
+            "time": 200,
+            "target": [
+                0,
+                600,
+                300,
+                110
+            ]
+        },
+        "next": [
+            "Contributions",
+            "Stop"
+        ]
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "$schema": "../../pipeline.schema.json",
+    "Sub_EnterUniversalMiragePage": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Navigation/ChallengeEvent/EnterUniversalMiragePage.png",
+        "roi": [
+            646,
+            72,
+            264,
+            144
+        ],
+        "action": "Click"
+    }
+}

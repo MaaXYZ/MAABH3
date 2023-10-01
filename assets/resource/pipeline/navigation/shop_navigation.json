@@ -1,0 +1,27 @@
+{
+    "$schema": "../../pipeline.schema.json",
+    "Sub_EnterActivityShopPage": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Navigation/Shop/EnterActivityShopPage.png",
+        "roi": [
+            61,
+            509,
+            203,
+            133
+        ],
+        "action": "Click"
+    },
+    "Sub_EnterMirageStorePage": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Navigation/Shop/EnterMirageStorePage.png",
+        "roi": [
+            62,
+            440,
+            201,
+            130
+        ],
+        "action": "Click"
+    }
+}

@@ -225,7 +225,7 @@ MaaSize get_device_index(const MaaSize& device_size)
     return index;
 }
 
-json::value homeland_param()
+json::value dorm_param()
 {
     json::value param;
     auto& diff = param["diff_task"];
@@ -319,7 +319,7 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
             << "Please select tasks: "
             << std::endl
             << std::endl
-            << "  1. Homeland\n"
+            << "  1. Dorm\n"
                "  2. MaterialEvent\n"
                "  3. Armada\n"
                "  4. Shop\n"
@@ -343,8 +343,8 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
 
             switch (id) {
             case 1:
-                task_obj.type = "Homeland";
-                task_obj.param = homeland_param();
+                task_obj.type = "Dorm";
+                task_obj.param = dorm_param();
                 break;
             case 2:
                 task_obj.type = "MaterialEvent";

@@ -1,0 +1,36 @@
+{
+    "$schema": "../../pipeline.schema.json",
+    "Sub_EnterCommissionsPage": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Navigation/Armada/EnterCommissionsPage.png",
+        "roi": [
+            390,
+            583,
+            215,
+            137
+        ],
+        "action": "Click"
+    },
+    "Sub_EnterContributionsPage":{
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Navigation/Armada/EnterArmadaContribution.png",
+        "roi": [
+            832,
+            586,
+            212,
+            133
+        ],
+        "action": "Click",
+        "post_wait_freezes": {
+            "time": 200,
+            "target": [
+                0,
+                0,
+                420,
+                330
+            ]
+        }
+    }
+}

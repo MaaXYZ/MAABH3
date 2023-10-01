@@ -1,0 +1,25 @@
+{
+    "$schema": "../../pipeline.schema.json",
+    "Armada": {
+        "next": [
+            "ArmadaPageFlag",
+            "Sub_EnterArmadaPage",
+            "Sub_StartUp"
+        ]
+    },
+    "ArmadaPageFlag": {
+        "recognition": "TemplateMatch",
+        "template": "Armada/ArmadaPageFlag.png",
+        "roi": [
+            0,
+            599,
+            168,
+            121
+        ],
+        "next": [
+            "Commissions",
+            "Contributions",
+            "Stop"
+        ]
+    }
+}

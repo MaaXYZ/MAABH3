@@ -1,0 +1,94 @@
+{
+    "$schema": "../../pipeline.schema.json",
+    "Sub_EnterAttackPage": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Navigation/Home/EnterAttackPage.png",
+        "roi": [
+            1025,
+            77,
+            167,
+            163
+        ],
+        "action": "Click",
+        "post_wait_freezes": {
+            "time": 200,
+            "target": [
+                0,
+                0,
+                340,
+                80
+            ]
+        }
+    },
+    "Sub_EnterSupplyPage": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Navigation/Home/EnterSupplyPage.png",
+        "roi": [
+            1012,
+            389,
+            184,
+            140
+        ],
+        "action": "Click"
+    },
+    "Sub_EnterArmadaPage": {
+        "is_sub": true,
+        "recognition": "OCR",
+        "text": [
+            "舰团"
+        ],
+        "roi": [
+            879,
+            661,
+            54,
+            29
+        ],
+        "action": "Click"
+    },
+    "Sub_EnterDormPage": {
+        "is_sub": true,
+        "recognition": "OCR",
+        "text": [
+            "家园"
+        ],
+        "roi": [
+            1005,
+            610,
+            155,
+            110
+        ],
+        "action": "Click",
+        "post_wait_freezes": {
+            "time": 200,
+            "target": [
+                0,
+                400,
+                380,
+                320
+            ]
+        }
+    },
+    "Sub_EnterMissionsPage": {
+        "is_sub": true,
+        "recognition": "OCR",
+        "text": [
+            "任务"
+        ],
+        "roi": [
+            92,
+            115,
+            54,
+            34
+        ],
+        "target": [
+            30,
+            108,
+            40,
+            32
+        ],
+        "action": "Click",
+        "post_wait_freezes": 1
+    }
+}

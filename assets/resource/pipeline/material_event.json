@@ -2,94 +2,32 @@
     "$schema": "../pipeline.schema.json",
     "MaterialEvent": {
         "next": [
-            "EnterAttack",
+            "MaterialEventFlag",
+            "Sub_CancelDownloadAudioFiles",
+            "Sub_EnterMaterialExpeditionPage",
+            "Sub_EnterAttackEventPage",
+            "Sub_EnterAttackPage",
             "Sub_StartUp"
         ]
     },
-    "EnterAttack": {
+    "MaterialEventFlag": {
         "recognition": "TemplateMatch",
-        "template": "MaterialEvent/EnterAttack.png",
+        "template": "MaterialEvent/MaterialEventFlag.png",
         "roi": [
-            1025,
-            77,
-            167,
-            163
-        ],
-        "action": "Click",
-        "post_wait_freezes": {
-            "time": 200,
-            "target": [
-                0,
-                0,
-                340,
-                80
-            ]
-        },
-        "next": [
-            "TipsForDownloadAudioResources",
-            "EnterMaterialEvent",
-            "Sub_AttackPageFlag"
-        ]
-    },
-    "TipsForDownloadAudioResources": {
-        "recognition": "OCR",
-        "text": [
-            "即将下载相关音频资源"
-        ],
-        "roi": [
-            298,
-            232,
-            669,
-            143
+            525,
+            40,
+            229,
+            141
         ],
         "next": [
-            "Sub_CancelButton",
-            "EnterAttack"
+            "QuickLITE",
+            "Sub_EnterMaterialEventPage",
+            "NoneQuickLITE"
         ]
     },
-    "Sub_AttackPageFlag": {
-        "is_sub": true,
+    "QuickLITE": {
         "recognition": "TemplateMatch",
-        "template": "MaterialEvent/AttackPageFlag.png",
-        "roi": [
-            0,
-            122,
-            135,
-            166
-        ],
-        "action": "Click"
-    },
-    "EnterMaterialEvent": {
-        "recognition": "TemplateMatch",
-        "template": "MaterialEvent/EnterMaterialEvent.png",
-        "roi": [
-            903,
-            356,
-            366,
-            307
-        ],
-        "action": "Click",
-        "next": [
-            "OneClickBurdenReduction",
-            "Sub_MaterialActivitiesPageFlag",
-            "NoOneClickBurdenReduction"
-        ]
-    },
-    "Sub_MaterialActivitiesPageFlag": {
-        "is_sub": true,
-        "recognition": "TemplateMatch",
-        "template": "MaterialEvent/MaterialActivitiesPageFlag.png",
-        "roi": [
-            0,
-            162,
-            137,
-            216
-        ],
-        "action": "Click"
-    },
-    "OneClickBurdenReduction": {
-        "recognition": "TemplateMatch",
-        "template": "MaterialEvent/OneClickBurdenReduction.png",
+        "template": "MaterialEvent/QuickLITE.png",
         "roi": [
             1037,
             598,
@@ -99,14 +37,14 @@
         "action": "Click",
         "post_wait_freezes": 200,
         "next": [
-            "BurdenReduction",
-            "MaterialEventNoLevelsToReduceReduction",
-            "OneClickBurdenReduction"
+            "LITE",
+            "MaterialEventNoneLevelsToLITE",
+            "QuickLITE"
         ]
     },
-    "NoOneClickBurdenReduction": {
+    "NoneQuickLITE": {
         "recognition": "TemplateMatch",
-        "template": "MaterialEvent/OneClickBurdenReduction.png",
+        "template": "MaterialEvent/QuickLITE.png",
         "roi": [
             1037,
             598,
@@ -119,9 +57,9 @@
             "HomeFlag"
         ]
     },
-    "BurdenReduction": {
+    "LITE": {
         "recognition": "TemplateMatch",
-        "template": "MaterialEvent/BurdenReduction.png",
+        "template": "MaterialEvent/LITE.png",
         "roi": [
             558,
             462,
@@ -130,7 +68,7 @@
         ],
         "action": "Click",
         "next": [
-            "BurdenReduction",
+            "LITE",
             "MaterialEventNotEnoughAP",
             "Sub_CloseDialogBox",
             "Sub_HomeButton",
@@ -168,13 +106,13 @@
         ],
         "action": "Click",
         "next": [
-            "BurdenReduction",
+            "QuickLITE",
             "Sub_CloseDialogBox",
             "Sub_HomeButton",
             "HomeFlag"
         ]
     },
-    "MaterialEventNoLevelsToReduceReduction": {
+    "MaterialEventNoneLevelsToLITE": {
         "recognition": "OCR",
         "text": "没有可减负的关卡",
         "roi": [

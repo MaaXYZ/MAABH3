@@ -1,0 +1,15 @@
+{
+    "$schema": "../../pipeline.schema.json",
+    "Sub_EnterMaterialEventPage": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Navigation/MaterialExpedition/EnterMaterialEventPage.png",
+        "roi": [
+            0,
+            162,
+            137,
+            216
+        ],
+        "action": "Click"
+    }
+}

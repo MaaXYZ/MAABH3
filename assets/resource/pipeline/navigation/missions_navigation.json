@@ -1,0 +1,15 @@
+{
+    "$schema": "../../pipeline.schema.json",
+    "Sub_EnterBPMissionsPage": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Navigation/Missions/EnterBPMissionsPage.png",
+        "roi": [
+            35,
+            64,
+            213,
+            143
+        ],
+        "action": "Click"
+    }
+}

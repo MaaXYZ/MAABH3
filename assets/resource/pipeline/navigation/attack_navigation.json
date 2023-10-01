@@ -1,0 +1,15 @@
+{
+    "$schema": "../../pipeline.schema.json",
+    "Sub_EnterAttackEventPage": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Navigation/Attack/EnterAttackEventPage.png",
+        "roi": [
+            0,
+            122,
+            135,
+            166
+        ],
+        "action": "Click"
+    }
+}

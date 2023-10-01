@@ -32,7 +32,7 @@ void print_version();
 
 MaaSize scanning_devices();
 
-json::value homeland_param();
+json::value dorm_param();
 
 json::value end_to_do_param();
 

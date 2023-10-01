@@ -1,0 +1,15 @@
+{
+    "$schema": "../../pipeline.schema.json",
+    "Sub_EnterCommissionsRewardsPage": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Navigation/Commissions/EnterCommissionsRewardsPage.png",
+        "roi": [
+            1095,
+            161,
+            185,
+            137
+        ],
+        "action": "Click"
+    }
+}

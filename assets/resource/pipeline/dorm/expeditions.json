@@ -1,49 +1,22 @@
 {
-    "$schema": "../pipeline.schema.json",
-    "StorySweep": {
+    "$schema": "../../pipeline.schema.json",
+    "Expeditions": {
         "next": [
-            "StorySweepEnterHomeland",
-            "EnterStorySweep",
+            "ExpeditionsPageFlag",
+            "Sub_EnterExpeditionsPage",
+            "Sub_EnterDormPage",
             "Sub_BackButton"
         ]
     },
-    "StorySweepEnterHomeland": {
+    "ExpeditionsPageFlag": {
         "recognition": "OCR",
-        "text": [
-            "家园"
-        ],
+        "text": "今日远征可用体力",
         "roi": [
-            1005,
-            610,
-            155,
-            110
+            33,
+            62,
+            286,
+            128
         ],
-        "action": "Click",
-        "post_wait_freezes": {
-            "time": 200,
-            "target": [
-                0,
-                400,
-                380,
-                320
-            ]
-        },
-        "next": [
-            "StorySweepEnterHomeland",
-            "EnterStorySweep",
-            "Sub_StartUp"
-        ]
-    },
-    "EnterStorySweep": {
-        "recognition": "TemplateMatch",
-        "template": "StorySweep/EnterStorySweep.png",
-        "roi": [
-            743,
-            596,
-            161,
-            124
-        ],
-        "action": "Click",
         "next": [
             "FragmentConfirm",
             "FragmentCompleted",
@@ -54,7 +27,7 @@
         "is_sub": true,
         "enabled": false,
         "recognition": "TemplateMatch",
-        "template": "StorySweep/SwitchToFragmentPage.png",
+        "template": "Dorm/SwitchToFragmentPage.png",
         "roi": [
             1038,
             36,
@@ -67,7 +40,7 @@
         "is_sub": true,
         "enabled": false,
         "recognition": "TemplateMatch",
-        "template": "StorySweep/SwitchToMaterialPage.png",
+        "template": "Dorm/SwitchToMaterialPage.png",
         "roi": [
             1038,
             117,
@@ -97,7 +70,7 @@
     },
     "FragmentConfirm": {
         "recognition": "TemplateMatch",
-        "template": "Homeland/Confirm.png",
+        "template": "Dorm/Confirm.png",
         "roi": [
             560,
             478,
@@ -113,7 +86,7 @@
     },
     "SwitchToMaterialPage": {
         "recognition": "TemplateMatch",
-        "template": "StorySweep/SwitchToMaterialPage.png",
+        "template": "Dorm/SwitchToMaterialPage.png",
         "roi": [
             1038,
             117,
@@ -160,13 +133,13 @@
         "inverse": true,
         "next": [
             "Sub_SwitchToFragmentPage",
-            "SelectFirstStorySweep",
-            "NoIdleStorySweep"
+            "SelectFirstExpeditions",
+            "NoIdleExpeditions"
         ]
     },
     "MaterialConfirm": {
         "recognition": "TemplateMatch",
-        "template": "Homeland/Confirm.png",
+        "template": "Dorm/Confirm.png",
         "roi": [
             560,
             478,
@@ -180,7 +153,7 @@
             "MaterialNoCompleted"
         ]
     },
-    "SelectFirstStorySweep": {
+    "SelectFirstExpeditions": {
         "recognition": "OCR",
         "text": [
             "开始远征"
@@ -193,13 +166,14 @@
         ],
         "action": "Click",
         "next": [
-            "StorySweepOneClickDispatch",
-            "StartStorySweep",
-            "NoIdleStorySweep",
-            "SelectFirstStorySweep"
+            "ExpeditionsQuickDispatch",
+            "StartExpeditions",
+            "NoIdleExpeditions",
+            "SelectFirstExpeditions"
         ]
     },
-    "NoIdleStorySweep": {
+    "NoIdleExpeditions": {
+        "inverse": true,
         "recognition": "OCR",
         "text": [
             "开始远征"
@@ -210,7 +184,6 @@
             203,
             573
         ],
-        "inverse": true,
         "action": "Swipe",
         "begin": [
             400,
@@ -235,15 +208,15 @@
             ]
         },
         "next": [
-            "SelectFirstStorySweep",
-            "StorySweepOneClickDispatch",
-            "StartStorySweep",
-            "NoIdleStorySweep"
+            "SelectFirstExpeditions",
+            "ExpeditionsQuickDispatch",
+            "StartExpeditions",
+            "NoIdleExpeditions"
         ]
     },
-    "StorySweepOneClickDispatch": {
+    "ExpeditionsQuickDispatch": {
         "recognition": "TemplateMatch",
-        "template": "Homeland/OneClickDispatch.png",
+        "template": "Dorm/QuickDispatch.png",
         "roi": [
             680,
             583,
@@ -252,13 +225,13 @@
         ],
         "action": "Click",
         "next": [
-            "StartStorySweep",
-            "StorySweepConsumptionLimit"
+            "StartExpeditions",
+            "ExpeditionsConsumptionLimit"
         ]
     },
-    "StartStorySweep": {
+    "StartExpeditions": {
         "recognition": "TemplateMatch",
-        "template": "StorySweep/StartStorySweep.png",
+        "template": "Dorm/StartExpeditions.png",
         "roi": [
             996,
             584,
@@ -276,16 +249,16 @@
             ]
         },
         "next": [
-            "SelectFirstStorySweep",
-            "StorySweepNotEnoughNumberOfLevels",
-            "StorySweepNotEnoughAP",
-            "StorySweepConsumptionLimit",
-            "StorySweepOneClickDispatch",
-            "StartStorySweep",
-            "NoIdleStorySweep"
+            "SelectFirstExpeditions",
+            "ExpeditionsNotEnoughNumberOfLevels",
+            "ExpeditionsNotEnoughAP",
+            "ExpeditionsConsumptionLimit",
+            "ExpeditionsQuickDispatch",
+            "StartExpeditions",
+            "NoIdleExpeditions"
         ]
     },
-    "StorySweepConsumptionLimit": {
+    "ExpeditionsConsumptionLimit": {
         "recognition": "OCR",
         "text": [
             "已达到",
@@ -299,7 +272,7 @@
             138
         ]
     },
-    "StorySweepNotEnoughAP": {
+    "ExpeditionsNotEnoughAP": {
         "recognition": "OCR",
         "text": [
             "所需体力不足"
@@ -313,14 +286,14 @@
         "action": "Click",
         "post_wait_freezes": 200,
         "next": [
-            "StorySweepNotEnoughAPToGetStoredAP",
-            "StorySweepConsumptionLimit",
+            "ExpeditionsNotEnoughAPToGetStoredAP",
+            "ExpeditionsConsumptionLimit",
             "Stop"
         ]
     },
-    "StorySweepNotEnoughAPToGetStoredAP": {
+    "ExpeditionsNotEnoughAPToGetStoredAP": {
         "recognition": "TemplateMatch",
-        "template": "Homeland/CollectAPButton.png",
+        "template": "Dorm/CollectAPButton.png",
         "roi": [
             647,
             492,
@@ -329,14 +302,14 @@
         ],
         "action": "Click",
         "next": [
-            "StartStorySweep",
-            "SelectFirstStorySweep",
-            "StorySweepConsumptionLimit",
-            "StorySweepOneClickDispatch",
-            "NoIdleStorySweep"
+            "StartExpeditions",
+            "SelectFirstExpeditions",
+            "ExpeditionsConsumptionLimit",
+            "ExpeditionsQuickDispatch",
+            "NoIdleExpeditions"
         ]
     },
-    "StorySweepNotEnoughNumberOfLevels": {
+    "ExpeditionsNotEnoughNumberOfLevels": {
         "recognition": "OCR",
         "text": [
             "所需关卡次数不足"

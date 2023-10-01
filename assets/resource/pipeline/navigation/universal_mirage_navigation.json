@@ -1,0 +1,55 @@
+{
+    "$schema": "../../pipeline.schema.json",
+    "Sub_EnterGlacialFencesPage": {
+        "enabled": false,
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Navigation/UniversalMirage/EnterGlacialFencesPage.png",
+        "roi": [
+            76,
+            428,
+            235,
+            140
+        ],
+        "action": "Click"
+    },
+    "Sub_EnterIlluminatedLandPage": {
+        "enabled": false,
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Navigation/UniversalMirage/EnterIlluminatedLandPage.png",
+        "roi": [
+            371,
+            428,
+            240,
+            140
+        ],
+        "action": "Click"
+    },
+    "Sub_EnterRoaringPalacePage": {
+        "enabled": false,
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Navigation/UniversalMirage/EnterRoaringPalacePage.png",
+        "roi": [
+            668,
+            428,
+            241,
+            140
+        ],
+        "action": "Click"
+    },
+    "Sub_EnterBladeGravePage": {
+        "enabled": false,
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Navigation/UniversalMirage/EnterBladeGravePage.png",
+        "roi": [
+            966,
+            427,
+            242,
+            142
+        ],
+        "action": "Click"
+    }
+}

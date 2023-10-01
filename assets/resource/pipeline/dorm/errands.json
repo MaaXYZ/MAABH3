@@ -1,0 +1,245 @@
+{
+    "$schema": "../../pipeline.schema.json",
+    "Errands": {
+        "next": [
+            "ErrandsPageFlag",
+            "Sub_EnterErrandsPage",
+            "Sub_EnterDormPage",
+            "Sub_BackButton"
+        ]
+    },
+    "ErrandsPageFlag": {
+        "recognition": "TemplateMatch",
+        "template": "Dorm/ErrandsPageFlag.png",
+        "roi": [
+            0,
+            17,
+            278,
+            250
+        ],
+        "next": [
+            "ErrandsConfirm",
+            "ErrandsUnfold",
+            "ErrandsCompleted",
+            "ErrandsNeed",
+            "ErrandsNoNeed"
+        ]
+    },
+    "ErrandsUnfold": {
+        "recognition": "TemplateMatch",
+        "template": "Dorm/ErrandsUnfold.png",
+        "roi": [
+            1185,
+            293,
+            95,
+            135
+        ],
+        "action": "Click",
+        "next": [
+            "ErrandsUnfold",
+            "ErrandsConfirm",
+            "ErrandsCompleted",
+            "ErrandsNeed",
+            "ErrandsNoNeed"
+        ]
+    },
+    "ErrandsCompleted": {
+        "recognition": "OCR",
+        "text": [
+            "完成"
+        ],
+        "roi": [
+            834,
+            0,
+            446,
+            720
+        ],
+        "action": "Click",
+        "next": [
+            "ErrandsConfirm",
+            "ErrandsCompleted",
+            "ErrandsNeed",
+            "ErrandsNoNeed"
+        ]
+    },
+    "ErrandsConfirm": {
+        "recognition": "TemplateMatch",
+        "template": "Dorm/Confirm.png",
+        "roi": [
+            560,
+            478,
+            159,
+            133
+        ],
+        "action": "Click",
+        "next": [
+            "ErrandsConfirm",
+            "ErrandsCompleted",
+            "ErrandsNeed",
+            "ErrandsNoNeed"
+        ]
+    },
+    "ErrandsNeed": {
+        "recognition": "OCR",
+        "text": [
+            "需要"
+        ],
+        "roi": [
+            1134,
+            0,
+            55,
+            720
+        ],
+        "action": "Click",
+        "next": [
+            "ErrandsQuickDispatch"
+        ]
+    },
+    "ErrandsNoNeed": {
+        "inverse": true,
+        "recognition": "OCR",
+        "text": [
+            "需要"
+        ],
+        "roi": [
+            1134,
+            0,
+            55,
+            720
+        ],
+        "next": [
+            "Expeditions",
+            "Stop"
+        ]
+    },
+    "ErrandsQuickDispatch": {
+        "recognition": "TemplateMatch",
+        "template": "Dorm/QuickDispatch.png",
+        "roi": [
+            763,
+            606,
+            219,
+            114
+        ],
+        "action": "Click",
+        "next": [
+            "NoEligibleRoles",
+            "StartErrands",
+            "NotEnoughRiceBalls"
+        ]
+    },
+    "NoEligibleRoles": {
+        "recognition": "OCR",
+        "text": [
+            "没有找到",
+            "合适的",
+            "推荐女武神"
+        ],
+        "roi": [
+            395,
+            284,
+            489,
+            145
+        ],
+        "action": "Click",
+        "next": [
+            "ErrandsRefresh"
+        ]
+    },
+    "ErrandsRefresh": {
+        "recognition": "TemplateMatch",
+        "template": "Dorm/ErrandsRefresh.png",
+        "roi": [
+            1117,
+            0,
+            163,
+            132
+        ],
+        "action": "Click",
+        "next": [
+            "NotEnoughRefreshes",
+            "ErrandsQuickDispatch"
+        ]
+    },
+    "NotEnoughRefreshes": {
+        "recognition": "OCR",
+        "text": [
+            "今日剩余",
+            "刷新次数不足"
+        ],
+        "roi": [
+            427,
+            286,
+            425,
+            143
+        ],
+        "action": "Click",
+        "next": [
+            "NextErrands",
+            "EndErrands"
+        ]
+    },
+    "NextErrands": {
+        "recognition": "TemplateMatch",
+        "template": "Dorm/NextErrands.png",
+        "roi": [
+            1157,
+            293,
+            123,
+            134
+        ],
+        "action": "Click",
+        "next": [
+            "ErrandsQuickDispatch"
+        ]
+    },
+    "EndErrands": {
+        "recognition": "TemplateMatch",
+        "template": "Dorm/NextErrands.png",
+        "roi": [
+            1157,
+            293,
+            123,
+            134
+        ],
+        "inverse": true,
+        "next": [
+            "Expeditions",
+            "Stop"
+        ]
+    },
+    "StartErrands": {
+        "recognition": "TemplateMatch",
+        "template": "Dorm/StartErrands.png",
+        "roi": [
+            1028,
+            610,
+            220,
+            110
+        ],
+        "action": "Click",
+        "next": [
+            "NotEnoughRiceBalls",
+            "ErrandsNeed",
+            "ErrandsNoNeed"
+        ]
+    },
+    "NotEnoughRiceBalls": {
+        "recognition": "OCR",
+        "text": [
+            "饭团不足",
+            "无法排遣",
+            "请稍后尝试"
+        ],
+        "roi": [
+            362,
+            287,
+            558,
+            141
+        ],
+        "next": [
+            "Expeditions",
+            "Stop"
+        ]
+    }
+}
