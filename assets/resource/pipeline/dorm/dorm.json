@@ -3,6 +3,8 @@
     "Dorm": {
         "next": [
             "DormPageFlag",
+            "Sub_AiPromptFlag",
+            "Sub_CancelDownloadAudioFiles",
             "Sub_EnterDormPage",
             "Sub_StartUp"
         ]

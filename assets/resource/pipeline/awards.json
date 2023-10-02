@@ -3,6 +3,8 @@
     "Awards": {
         "next": [
             "MissionsPageFlag",
+            "Sub_AiPromptFlag",
+            "Sub_CancelDownloadAudioFiles",
             "Sub_EnterMissionsPage",
             "Sub_StartUp"
         ]

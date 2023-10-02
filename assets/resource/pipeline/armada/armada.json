@@ -3,6 +3,8 @@
     "Armada": {
         "next": [
             "ArmadaPageFlag",
+            "Sub_AiPromptFlag",
+            "Sub_CancelDownloadAudioFiles",
             "Sub_EnterArmadaPage",
             "Sub_StartUp"
         ]

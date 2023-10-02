@@ -3,6 +3,7 @@
     "MaterialEvent": {
         "next": [
             "MaterialEventFlag",
+            "Sub_AiPromptFlag",
             "Sub_CancelDownloadAudioFiles",
             "Sub_EnterMaterialExpeditionPage",
             "Sub_EnterAttackEventPage",

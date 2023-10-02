@@ -3,6 +3,8 @@
     "Shop": {
         "next": [
             "DailyShopPageFlag",
+            "Sub_AiPromptFlag",
+            "Sub_CancelDownloadAudioFiles",
             "Sub_EnterShopPage",
             "Sub_EnterSupplyPage",
             "Sub_StartUp"
