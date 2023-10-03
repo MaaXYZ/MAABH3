@@ -10,6 +10,10 @@
             213,
             135
         ],
-        "action": "Click"
+        "action": "Click",
+        "post_wait_freezes": {
+            "time": 200,
+            "target": "Sub_EnterShopPage"
+        }
     }
 }
