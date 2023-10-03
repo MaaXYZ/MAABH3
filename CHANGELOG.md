@@ -1,14 +1,10 @@
-## v0.3.3
-
-### 改进
-
-- 重构tasks并拆分导航 @dongwlin
+## v0.3.4
 
 ### 修复
 
-- 再次修复卡爱酱教你玩游戏的问题 @dongwlin
+- 修复舰团贡献页判定失败的问题 @dongwlin
+- 修复导航卡进商店的问题 @dongwlin
 
 ### 其他
 
-- Update print_help @dongwlin
-- Update ppocr zh_cn model to ppocr v4 @dongwlin
+- ppocr det model rollback v3 @dongwlin
