@@ -9,13 +9,13 @@
         ]
     },
     "ContributionsPageFlag": {
-        "recognition": "OCR",
-        "text": "舰团贡献进度",
+        "recognition": "TemplateMatch",
+        "template": "Armada/ContributionsPageFlag.png",
         "roi": [
-            36,
-            59,
-            248,
-            132
+            0,
+            57,
+            140,
+            135
         ],
         "next": [
             "ClaimContributionRewards_0",
