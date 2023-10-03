@@ -1,6 +1,14 @@
-## v0.3.2
+## v0.3.3
+
+### 改进
+
+- 重构tasks并拆分导航 @dongwlin
 
 ### 修复
 
-- 修复进入商店页面时因为过渡动画点到商品卡住的问题 @dongwlin
-- 修复深渊结算模板为空的问题 @dongwlin
+- 再次修复卡爱酱教你玩游戏的问题 @dongwlin
+
+### 其他
+
+- Update print_help @dongwlin
+- Update ppocr zh_cn model to ppocr v4 @dongwlin
