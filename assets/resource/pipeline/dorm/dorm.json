@@ -2,6 +2,7 @@
     "$schema": "../../pipeline.schema.json",
     "Dorm": {
         "next": [
+            "Sub_ConfirmDormUpdate",
             "DormPageFlag",
             "Sub_AiPromptFlag",
             "Sub_CancelDownloadAudioFiles",
@@ -19,6 +20,7 @@
             131
         ],
         "next": [
+            "Sub_ConfirmDormUpdate",
             "CollectGold",
             "CollectAP",
             "Errands",
@@ -113,5 +115,17 @@
             "Expeditions",
             "Stop"
         ]
+    },
+    "Sub_ConfirmDormUpdate": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "StartUp/Confirm.png",
+        "roi": [
+            554,
+            518,
+            173,
+            136
+        ],
+        "action": "Click"
     }
 }
