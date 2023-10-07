@@ -45,7 +45,8 @@
             54,
             29
         ],
-        "action": "Click"
+        "action": "Click",
+        "post_delay": 2000
     },
     "Sub_EnterDormPage": {
         "is_sub": true,
