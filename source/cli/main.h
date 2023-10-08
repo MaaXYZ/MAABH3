@@ -9,6 +9,8 @@
 #include "MaaToolKit/MaaToolKitAPI.h"
 #include "meojson/json.hpp"
 
+#include "RegisterCustomAciton.h"
+
 struct Task
 {
     std::string name;

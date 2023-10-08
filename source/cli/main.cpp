@@ -91,6 +91,8 @@ int main(int argc, char** argv)
         return -1;
     }
 
+    register_custom_action(maa_handle);
+
     MaaTaskId task_id = 0;
     for (const auto& task : tasks) {
         if (!task.enabled)

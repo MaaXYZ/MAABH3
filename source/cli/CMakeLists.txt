@@ -8,7 +8,7 @@ endif ()
 set(CMAKE_BUILD_TYPE "Release")
 set(CMAKE_CONFIGURATION_TYPES "Release")
 
-add_executable(MAABH3_CLI main.cpp main.h)
+add_executable(MAABH3_CLI main.cpp main.h Combat.h Combat.cpp RegisterCustomAciton.h RegisterCustomAction.cpp)
 target_link_libraries(MAABH3_CLI PRIVATE MaaFramework MaaToolKit)
 
 add_dependencies(MAABH3_CLI AssetsResource)
