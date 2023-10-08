@@ -81,10 +81,10 @@ MaaBool combat_basic_ATK_charge_base(MaaSyncContextHandle sync_context, [[maybe_
 {
     std::random_device rd;
     std::mt19937 rng(rd());
-    std::uniform_int_distribution<int32_t> unix(1146, 1228);
-    std::uniform_int_distribution<int32_t> uniy(606, 670);
-    int32_t x = unix(rng);
-    int32_t y = uniy(rng);
+    std::uniform_int_distribution<int32_t> uni_x(1146, 1228);
+    std::uniform_int_distribution<int32_t> uni_y(606, 670);
+    int32_t x = uni_x(rng);
+    int32_t y = uni_y(rng);
 
     MaaSyncContextTouchDown(sync_context, 0, x, y, 0);
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
@@ -125,10 +125,10 @@ MaaBool combat_ultimate_charge_base(MaaSyncContextHandle sync_context, [[maybe_u
 {
     std::random_device rd;
     std::mt19937 rng(rd());
-    std::uniform_int_distribution<int32_t> unix(1145, 1227);
-    std::uniform_int_distribution<int32_t> uniy(424, 498);
-    int32_t x = unix(rng);
-    int32_t y = uniy(rng);
+    std::uniform_int_distribution<int32_t> uni_x(1145, 1227);
+    std::uniform_int_distribution<int32_t> uni_y(424, 498);
+    int32_t x = uni_x(rng);
+    int32_t y = uni_y(rng);
 
     MaaSyncContextTouchDown(sync_context, 0, x, y, 0);
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
