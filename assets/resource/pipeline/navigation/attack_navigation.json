@@ -11,5 +11,16 @@
             166
         ],
         "action": "Click"
+    },
+    "Sub_EnterChallengeEventPage": {
+        "recognition": "TemplateMatch",
+        "template": "Navigation/Attack/EnterChallengeEventPage.png",
+        "roi": [
+            0,
+            309,
+            137,
+            170
+        ],
+        "action": "Click"
     }
 }
