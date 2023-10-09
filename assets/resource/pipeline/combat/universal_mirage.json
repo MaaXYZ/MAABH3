@@ -1,0 +1,197 @@
+{
+    "$schema": "../../pipeline.schema.json",
+    "UniversalMirage": {
+        "next": [
+            "UniversalMiragePageFlag",
+            "Sub_AiPromptFlag",
+            "Sub_CancelDownloadAudioFiles",
+            "Sub_EnterUniversalMiragePage",
+            "Sub_EnterAttackPage",
+            "Sub_StartUp"
+        ]
+    },
+    "UniversalMiragePageFlag": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/UniversalMirage/UniversalMiragePageFlag.png",
+        "roi": [
+            526,
+            40,
+            228,
+            140
+        ],
+        "next": [
+            "UniversalMirageStageFlag",
+            "Sub_EnterGlacialFencesPage",
+            "Sub_EnterIlluminatedLandPage",
+            "Sub_EnterRoaringPalacePage",
+            "Sub_EnterBladeGravePage",
+            "Stop"
+        ]
+    },
+    "UniversalMirageStageFlag": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/UniversalMirage/UniversalMirageStageFlag.png",
+        "roi": [
+            1166,
+            64,
+            114,
+            133
+        ],
+        "pre_wait_freezes": {
+            "time": 200,
+            "target": "UniversalMirageStageFlag"
+        },
+        "next": [
+            "UniversalMirageStageF2",
+            "UniversalMirageStageF5",
+            "Stop"
+        ]
+    },
+    "UniversalMirageStageF2": {
+        "enabled": false,
+        "next": [
+            "UniversalMirageStageF2Flag",
+            "SelectUniversalMirageStageF2",
+            "Sub_UniversalMirageStageSwipeTop"
+        ]
+    },
+    "UniversalMirageStageF5": {
+        "task_doc": "todo",
+        "enabled": false,
+        "next": [
+            "Stop",
+            "UniversalMirageStageF5Flag",
+            "SelectUniversalMirageStageF5",
+            "Sub_UniversalMirageStageSwipeBottom"
+        ]
+    },
+    "Sub_UniversalMirageStageSwipeTop": {
+        "is_sub": true,
+        "action": "Swipe",
+        "begin": [
+            305, 87, 200, 45
+        ],
+        "end": [
+            305, 613, 200, 45
+        ]
+    },
+    "Sub_UniversalMirageStageSwipeBottom": {
+        "is_sub": true,
+        "action": "Swipe",
+        "begin": [
+            305, 613, 200, 45
+        ],
+        "end": [
+            305, 87, 200, 45
+        ]
+    },
+    "SelectUniversalMirageStageF2": {
+        "recognition": "OCR",
+        "text": "2",
+        "roi": [
+            200,
+            80,
+            370,
+            640
+        ],
+        "action": "Click",
+        "next": [
+            "UniversalMirageStageF2Flag",
+            "SelectUniversalMirageStageF2"
+        ]
+    },
+    "SelectUniversalMirageStageF5": {
+        "recognition": "OCR",
+        "text": "5",
+        "roi": [
+            200,
+            80,
+            370,
+            640
+        ],
+        "action": "Click",
+        "next": [
+            "UniversalMirageStageF5Flag",
+            "SelectUniversalMirageStageF5"
+        ]
+    },
+    "UniversalMirageStageF2Flag": {
+        "recognition": "OCR",
+        "text": "第2层",
+        "roi": [
+            765,
+            18,
+            170,
+            139
+        ],
+        "next": [
+            "UniversalMirageStageNoneValkyrja",
+            "Sub_UniversalMirageStageStart",
+            "Sub_UniversalMirageStagePrepare",
+            "Sub_UniversalMirageStageFightAlone"
+        ]
+    },
+    "UniversalMirageStageF5Flag": {
+        "recognition": "OCR",
+        "text": "第5层",
+        "roi": [
+            765,
+            18,
+            170,
+            139
+        ],
+        "next": [
+            "UniversalMirageStageNoneValkyrja",
+            "Sub_UniversalMirageStageStart",
+            "Sub_UniversalMirageStagePrepare",
+            "Sub_UniversalMirageStageFightAlone"
+        ]
+    },
+    "Sub_UniversalMirageStageFightAlone": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Combat/UniversalMirage/UniversalMirageStageFightAlone.png",
+        "roi": [
+            1004,
+            601,
+            226,
+            119
+        ],
+        "action": "Click"
+    },
+    "Sub_UniversalMirageStagePrepare": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Combat/UniversalMirage/UniversalMirageStagePrepare.png",
+        "roi": [
+            994,
+            602,
+            223,
+            118
+        ],
+        "action": "Click"
+    },
+    "Sub_UniversalMirageStageStart": {
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Combat/UniversalMirage/UniversalMirageStageStart.png",
+        "roi": [
+            1025,
+            589,
+            190,
+            131
+        ],
+        "action": "Click"
+    },
+    "UniversalMirageStageNoneValkyrja": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/UniversalMirage/UniversalMirageStageNoneValkyrja.png",
+        "roi": [
+            5,
+            371,
+            192,
+            132
+        ],
+        "next": "Stop"
+    }
+}
