@@ -13,6 +13,7 @@
         "action": "Click"
     },
     "Sub_EnterChallengeEventPage": {
+        "is_sub": true,
         "recognition": "TemplateMatch",
         "template": "Navigation/Attack/EnterChallengeEventPage.png",
         "roi": [
