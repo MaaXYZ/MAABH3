@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Combat.h"
-#include "CustomAction/CustomActionRegistrar.h"
+#include "CustomActionRegistrar.h"
 
 void custom_action_init(CustomActionRegistrar& registrar)
 {
