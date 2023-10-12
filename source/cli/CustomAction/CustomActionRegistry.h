@@ -27,9 +27,8 @@ void custom_action_init(CustomActionRegistrar& registrar)
     registrar.add_action("QTE2", combat_QTE2);
 }
 
-void register_custom_action(MaaInstanceHandle maa_handle)
+void register_custom_action(MaaInstanceHandle maa_handle, CustomActionRegistrar& registerar)
 {
-    CustomActionRegistrar registerar;
     custom_action_init(registerar);
     registerar.register_actions(maa_handle);
 }

@@ -91,7 +91,8 @@ int main(int argc, char** argv)
         return -1;
     }
 
-    register_custom_action(maa_handle);
+    CustomActionRegistrar registerar;
+    register_custom_action(maa_handle, registerar);
 
     MaaTaskId task_id = 0;
     for (const auto& task : tasks) {
