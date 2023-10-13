@@ -18,6 +18,8 @@ add_executable(MAABH3_CLI
     CustomAction/CustomAction.h 
     CustomAction/CustomAction.cpp 
     CustomAction/CustomActionRegistry.h
+    CustomAction/RandomPointGenerator.h
+    CustomAction/RandomPointGenerator.cpp
 )
 target_link_libraries(MAABH3_CLI PRIVATE MaaFramework MaaToolKit)
 
