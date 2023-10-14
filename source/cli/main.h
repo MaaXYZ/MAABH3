@@ -36,6 +36,8 @@ MaaSize scanning_devices();
 
 json::value dorm_param();
 
+json::value universal_mirage_param();
+
 json::value end_to_do_param();
 
 bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string& adb_address, int& client_type,

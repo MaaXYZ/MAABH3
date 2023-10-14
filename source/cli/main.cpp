@@ -232,6 +232,35 @@ json::value dorm_param()
 {
     json::value param;
     auto& diff = param["diff_task"];
+    auto& glacial_fences_doc = diff["Sub_EnterGlacialFencesPage"]["doc"];
+    auto& glacial_fences_enabled = diff["Sub_EnterGlacialFencesPage"]["enabled"];
+    auto& illuminated_land_doc = diff["Sub_EnterIlluminatedLandPage"]["doc"];
+    auto& illuminated_land_enabled = diff["Sub_EnterIlluminatedLandPage"]["enabled"];
+    auto& roaring_palace_doc = diff["Sub_EnterRoaringPalacePage"]["doc"];
+    auto& roaring_palace_enabled = diff["Sub_EnterRoaringPalacePage"]["enabled"];
+    auto& blade_grave_doc = diff["Sub_EnterBladeGravePage"]["doc"];
+    auto& blade_grave_enabled = diff["Sub_EnterBladeGravePage"]["enabled"];
+    auto& stage_f2_doc = diff["UniversalMirageStageF2"]["doc"];
+    auto& stage_f2_enabled = diff["UniversalMirageStageF2"]["enabled"];
+
+    glacial_fences_doc = "幽寒之槛";
+    glacial_fences_enabled = true;
+    illuminated_land_doc = "煌然之地";
+    illuminated_land_enabled = false;
+    roaring_palace_doc = "轰鸣之殿";
+    roaring_palace_enabled = false;
+    blade_grave_doc = "千刃之冢";
+    blade_grave_enabled = false;
+    stage_f2_doc = "第二层";
+    stage_f2_enabled = true;
+
+    return param;
+}
+
+json::value universal_mirage_param()
+{
+    json::value param;
+    auto& diff = param["diff_task"];
     auto& doc = diff["Sub_SwitchToFragmentPage"]["doc"];
     auto& enabled = diff["Sub_SwitchToFragmentPage"]["enabled"];
 
@@ -327,6 +356,7 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
                "  3. Armada\n"
                "  4. Shop\n"
                "  5. Awards\n"
+               "  6. UniversalMirage"
             << std::endl
             << "Please enter the task numbers to be executed: "
             << std::endl;
@@ -360,6 +390,10 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
                 break;
             case 5:
                 task_obj.type = "Awards";
+                break;
+            case 6:
+                task_obj.type = "UniversalMirage";
+                task_obj.param = universal_mirage_param();
                 break;
 
             default:
@@ -419,7 +453,7 @@ void save_config(const std::string& adb, const std::string& adb_address, const i
     }
 
     config["tasks"] = std::move(tasks_array);
-    config["tasks_Doc"] = "要执行的任务 Homeland, MaterialEvent, Armada, Shop, Awards";
+    config["tasks_Doc"] = "要执行的任务 Homeland, MaterialEvent, Armada, Shop, Awards, UniversalMirage";
 
     json::value after_task;
     after_task["enabled"] = false;

@@ -1,0 +1,732 @@
+{
+    "$schema": "../../pipeline.schema.json",
+    "UniversalMirageCombatGeneric": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/UniversalMirage/UniversalMirageStageStart.png",
+        "roi": [
+            1025,
+            589,
+            190,
+            131
+        ],
+        "next": [
+            "UniversalMirageCombatGenericStart"
+        ]
+    },
+    "UniversalMirageCombatGenericStart": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/UniversalMirage/UniversalMirageStageStart.png",
+        "roi": [
+            1025,
+            589,
+            190,
+            131
+        ],
+        "action": "Click",
+        "next": [
+            "UniversalMirageCombatGenericPreheat"
+        ]
+    },
+    "UniversalMirageCombatGenericPreheat": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "BasicATK",
+        "pre_delay": 500,
+        "post_delay": 1500,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_001"
+        ]
+    },
+    "UniversalMirageCombatGeneric_001": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "Backward",
+        "pre_delay": 0,
+        "post_delay": 50,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_002"
+        ]
+    },
+    "UniversalMirageCombatGeneric_002": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "Forward",
+        "pre_delay": 0,
+        "post_delay": 50,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_003"
+        ]
+    },
+    "UniversalMirageCombatGeneric_003": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "Left",
+        "pre_delay": 0,
+        "post_delay": 50,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_004"
+        ]
+    },
+    "UniversalMirageCombatGeneric_004": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "Right",
+        "pre_delay": 0,
+        "post_delay": 50,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_005"
+        ]
+    },
+    "UniversalMirageCombatGeneric_005": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "Evade",
+        "pre_delay": 0,
+        "post_delay": 150,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_006"
+        ]
+    },
+    "UniversalMirageCombatGeneric_006": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "BasicATK",
+        "pre_delay": 0,
+        "post_delay": 200,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_007"
+        ]
+    },
+    "UniversalMirageCombatGeneric_007": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "BasicATK",
+        "pre_delay": 0,
+        "post_delay": 200,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_008"
+        ]
+    },
+    "UniversalMirageCombatGeneric_008": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "BasicATK",
+        "pre_delay": 0,
+        "post_delay": 200,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_009"
+        ]
+    },
+    "UniversalMirageCombatGeneric_009": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "BasicATK",
+        "pre_delay": 0,
+        "post_delay": 200,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_010"
+        ]
+    },
+    "UniversalMirageCombatGeneric_010": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "BasicATK",
+        "pre_delay": 0,
+        "post_delay": 200,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_011"
+        ]
+    },
+    "UniversalMirageCombatGeneric_011": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "BasicATKCharge",
+        "pre_delay": 0,
+        "post_delay": 100,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_012"
+        ]
+    },
+    "UniversalMirageCombatGeneric_012": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "Evade",
+        "pre_delay": 0,
+        "post_delay": 150,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_013"
+        ]
+    },
+    "UniversalMirageCombatGeneric_013": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "BasicATK",
+        "pre_delay": 0,
+        "post_delay": 200,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_014"
+        ]
+    },
+    "UniversalMirageCombatGeneric_014": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "WeaponSkill",
+        "pre_delay": 0,
+        "post_delay": 150,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_015"
+        ]
+    },
+    "UniversalMirageCombatGeneric_015": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "BasicATK",
+        "pre_delay": 0,
+        "post_delay": 200,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_016"
+        ]
+    },
+    "UniversalMirageCombatGeneric_016": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "BasicATK",
+        "pre_delay": 0,
+        "post_delay": 200,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_017"
+        ]
+    },
+    "UniversalMirageCombatGeneric_017": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "BasicATK",
+        "pre_delay": 0,
+        "post_delay": 200,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_018"
+        ]
+    },
+    "UniversalMirageCombatGeneric_018": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "BasicATK",
+        "pre_delay": 0,
+        "post_delay": 200,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_019"
+        ]
+    },
+    "UniversalMirageCombatGeneric_019": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "BasicATK",
+        "pre_delay": 0,
+        "post_delay": 200,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_020"
+        ]
+    },
+    "UniversalMirageCombatGeneric_020": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "BasicATKCharge",
+        "pre_delay": 0,
+        "post_delay": 100,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_021"
+        ]
+    },
+    "UniversalMirageCombatGeneric_021": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "BasicATK",
+        "pre_delay": 0,
+        "post_delay": 200,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_022"
+        ]
+    },
+    "UniversalMirageCombatGeneric_022": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "Ultimate",
+        "pre_delay": 0,
+        "post_delay": 150,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_023"
+        ]
+    },
+    "UniversalMirageCombatGeneric_023": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "BasicATK",
+        "pre_delay": 0,
+        "post_delay": 200,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_024"
+        ]
+    },
+    "UniversalMirageCombatGeneric_024": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "ExtraSkill",
+        "pre_delay": 0,
+        "post_delay": 100,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_025"
+        ]
+    },
+    "UniversalMirageCombatGeneric_025": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "BasicATK",
+        "pre_delay": 0,
+        "post_delay": 200,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_026"
+        ]
+    },
+    "UniversalMirageCombatGeneric_026": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "Evade",
+        "pre_delay": 0,
+        "post_delay": 150,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_027"
+        ]
+    },
+    "UniversalMirageCombatGeneric_027": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "BasicATK",
+        "pre_delay": 0,
+        "post_delay": 200,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_028"
+        ]
+    },
+    "UniversalMirageCombatGeneric_028": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "ELFSkill",
+        "pre_delay": 0,
+        "post_delay": 150,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_029"
+        ]
+    },
+    "UniversalMirageCombatGeneric_029": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "BasicATK",
+        "pre_delay": 0,
+        "post_delay": 200,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_030"
+        ]
+    },
+    "UniversalMirageCombatGeneric_030": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "UltimateCharge",
+        "pre_delay": 0,
+        "post_delay": 100,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_031"
+        ]
+    },
+    "UniversalMirageCombatGeneric_031": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "BasicATK",
+        "pre_delay": 0,
+        "post_delay": 200,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_032"
+        ]
+    },
+    "UniversalMirageCombatGeneric_032": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "BasicATK",
+        "pre_delay": 0,
+        "post_delay": 200,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_033"
+        ]
+    },
+    "UniversalMirageCombatGeneric_033": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "BasicATK",
+        "pre_delay": 0,
+        "post_delay": 200,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_034"
+        ]
+    },
+    "UniversalMirageCombatGeneric_034": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "BasicATK",
+        "pre_delay": 0,
+        "post_delay": 200,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_035"
+        ]
+    },
+    "UniversalMirageCombatGeneric_035": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "BasicATK",
+        "pre_delay": 0,
+        "post_delay": 200,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_036"
+        ]
+    },
+    "UniversalMirageCombatGeneric_036": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "BasicATKCharge",
+        "pre_delay": 0,
+        "post_delay": 100,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_037"
+        ]
+    },
+    "UniversalMirageCombatGeneric_037": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "Evade",
+        "pre_delay": 0,
+        "post_delay": 150,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_038"
+        ]
+    },
+    "UniversalMirageCombatGeneric_038": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "BasicATK",
+        "pre_delay": 0,
+        "post_delay": 200,
+        "next": [
+            "UniversalMirageCombatFinish",
+            "UniversalMirageCombatGeneric_003"
+        ]
+    }
+}
