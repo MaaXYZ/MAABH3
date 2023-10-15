@@ -417,7 +417,10 @@
     "Sub_AiPromptFlag": {
         "is_sub": true,
         "recognition": "TemplateMatch",
-        "template": "StartUp/AiPromptFlag.png",
+        "template": [
+            "StartUp/AiPromptFlag_0.png",
+            "StartUp/AiPromptFlag_1.png"
+        ],
         "roi": [
             1030,
             479,
