@@ -356,7 +356,7 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
                "  3. Armada\n"
                "  4. Shop\n"
                "  5. Awards\n"
-               "  6. UniversalMirage"
+               "  6. UniversalMirage\n"
             << std::endl
             << "Please enter the task numbers to be executed: "
             << std::endl;
