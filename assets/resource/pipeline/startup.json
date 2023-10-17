@@ -8,6 +8,7 @@
             "Sub_BackText",
             "Sub_ObtainedAwards",
             "Sub_CollectDailyLoginReward",
+            "Sub_MonthlyCardCumulativeReward",
             "Download",
             "CloseVersionAnnouncement",
             "StartGame",
@@ -38,6 +39,7 @@
             "Sub_BackText",
             "Sub_ObtainedAwards",
             "Sub_CollectDailyLoginReward",
+            "Sub_MonthlyCardCumulativeReward",
             "Download",
             "CloseVersionAnnouncement",
             "StartGame",
@@ -84,6 +86,7 @@
             "Sub_BackText",
             "Sub_ObtainedAwards",
             "Sub_CollectDailyLoginReward",
+            "Sub_MonthlyCardCumulativeReward",
             "Download",
             "CloseVersionAnnouncement",
             "StartGame",
@@ -142,6 +145,7 @@
             "Sub_BackText",
             "Sub_ObtainedAwards",
             "Sub_CollectDailyLoginReward",
+            "Sub_MonthlyCardCumulativeReward",
             "Sub_CloseAnnouncement",
             "Sub_CloseActivityAnnouncement",
             "Sub_SuperstringDimensionSettlement",
@@ -174,6 +178,7 @@
             "Sub_BackText",
             "Sub_ObtainedAwards",
             "Sub_CollectDailyLoginReward",
+            "Sub_MonthlyCardCumulativeReward",
             "CloseVersionAnnouncement",
             "StartGame",
             "GameIdentifying",
@@ -481,6 +486,23 @@
             635,
             142,
             69
+        ]
+    },
+    "Sub_MonthlyCardCumulativeReward": {
+        "recognition": "OCR",
+        "text": "点击右侧水晶领取奖励",
+        "roi": [
+            561,
+            600,
+            374,
+            120
+        ],
+        "action": "Click",
+        "target": [
+            1173,
+            482,
+            79,
+            62
         ]
     }
 }
