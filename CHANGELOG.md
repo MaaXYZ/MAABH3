@@ -1,5 +1,5 @@
-## v0.4.3
+## v0.4.4
 
 ### 修复
 
-- 修复 `Dorm` 和 `UniversalMirage` 参数混乱问题 @dongwlin
+- 修复万象虚境导航在主页和出击页面反复横跳的问题 @dongwlin
