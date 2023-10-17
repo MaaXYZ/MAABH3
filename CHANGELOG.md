@@ -1,6 +1,9 @@
-## v0.4.1
+## v0.4.2
 
-### 其他
+### 改进
 
-- remove useless file @dongwlin
-- add a newline @dongwlin
+- 增加首页导航等待时间 @dongwlin
+
+### 修复
+
+- 修复启动卡月卡累计15天奖励的问题 @dongwlin
