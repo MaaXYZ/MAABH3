@@ -1,9 +1,5 @@
-## v0.4.2
-
-### 改进
-
-- 增加首页导航等待时间 @dongwlin
+## v0.4.3
 
 ### 修复
 
-- 修复启动卡月卡累计15天奖励的问题 @dongwlin
+- 修复 `Dorm` 和 `UniversalMirage` 参数混乱问题 @dongwlin
