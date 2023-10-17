@@ -232,6 +232,19 @@ json::value dorm_param()
 {
     json::value param;
     auto& diff = param["diff_task"];
+    auto& doc = diff["Sub_SwitchToFragmentPage"]["doc"];
+    auto& enabled = diff["Sub_SwitchToFragmentPage"]["enabled"];
+
+    doc = "切换刷最近碎片；默认false，刷最近材料";
+    enabled = false;
+
+    return param;
+}
+
+json::value universal_mirage_param()
+{
+    json::value param;
+    auto& diff = param["diff_task"];
     auto& glacial_fences_doc = diff["Sub_EnterGlacialFencesPage"]["doc"];
     auto& glacial_fences_enabled = diff["Sub_EnterGlacialFencesPage"]["enabled"];
     auto& illuminated_land_doc = diff["Sub_EnterIlluminatedLandPage"]["doc"];
@@ -253,19 +266,6 @@ json::value dorm_param()
     blade_grave_enabled = false;
     stage_f2_doc = "第二层";
     stage_f2_enabled = true;
-
-    return param;
-}
-
-json::value universal_mirage_param()
-{
-    json::value param;
-    auto& diff = param["diff_task"];
-    auto& doc = diff["Sub_SwitchToFragmentPage"]["doc"];
-    auto& enabled = diff["Sub_SwitchToFragmentPage"]["enabled"];
-
-    doc = "切换刷最近碎片；默认false，刷最近材料";
-    enabled = false;
 
     return param;
 }
