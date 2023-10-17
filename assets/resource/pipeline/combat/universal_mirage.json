@@ -6,6 +6,7 @@
             "Sub_AiPromptFlag",
             "Sub_CancelDownloadAudioFiles",
             "Sub_EnterUniversalMiragePage",
+            "Sub_EnterChallengeEventPage",
             "Sub_EnterAttackPage",
             "Sub_StartUp"
         ]
