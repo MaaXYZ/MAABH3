@@ -1,5 +1,10 @@
-## v0.4.4
+## v0.4.5
 
 ### 修复
 
-- 修复万象虚境导航在主页和出击页面反复横跳的问题 @dongwlin
+- 修复 `Dorm` 领取溢出体力时将提示误识别成体力达到上限的问题 @dongwlin
+
+### 其他
+
+- 默认使用maa touch @dongwlin
+- 适配 MaaFramework v1.1.0 @dongwlin
