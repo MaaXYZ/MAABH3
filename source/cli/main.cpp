@@ -287,7 +287,7 @@ json::value end_to_do_param() {
 bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string& adb_address, int& client_type,
                TaskList& tasks, AfterTask& after_task, MaaAdbControllerType& ctrl_type)
 {
-    int touch = 1;
+    int touch = 3;
     int key = 1;
     int screencap = 3;
 
