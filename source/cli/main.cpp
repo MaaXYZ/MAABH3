@@ -56,13 +56,15 @@ int main(int argc, char** argv)
     std::string debug_dir = (cur_dir / "debug").string();
     std::string resource_dir = (cur_dir / "resource").string();
     std::string adb_config = MaaToolKitGetDeviceAdbConfig(kIndex);
+    std::string agent_dir = (cur_dir / "MaaAgentBinary").string();
 
     MaaSetGlobalOption(MaaGlobalOption_Logging, (void*)debug_dir.c_str(), debug_dir.size());
     MaaSetGlobalOption(MaaGlobalOption_DebugMode, (void*)&debug, sizeof(bool));
 
     auto maa_handle = MaaCreate(nullptr, nullptr);
     auto resource_handle = MaaResourceCreate(nullptr, nullptr);
-    auto controller_handle = MaaAdbControllerCreate(adb.c_str(), adb_address.c_str(), control_type, adb_config.c_str(), nullptr, nullptr);
+    auto controller_handle = MaaAdbControllerCreateV2(adb.c_str(), adb_address.c_str(), control_type,
+                                                      adb_config.c_str(), agent_dir.c_str(), nullptr, nullptr);
 
     MaaBindResource(maa_handle, resource_handle);
     MaaBindController(maa_handle, controller_handle);
