@@ -23,6 +23,7 @@
             131
         ],
         "action": "Click",
+        "timeout": 120000,
         "next": [
             "UniversalMirageCombatGenericPreheat"
         ]
