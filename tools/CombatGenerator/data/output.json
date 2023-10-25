@@ -1,0 +1,199 @@
+{
+  "UniversalMirageCombatGenericPreheat": {
+    "recognition": "TemplateMatch",
+    "template": "Combat/StopCombat.png",
+    "roi": [
+      0,
+      0,
+      136,
+      140
+    ],
+    "action": "Custom",
+    "pre_delay": 500,
+    "post_delay": 1500,
+    "next": [
+      "UniversalMirageCombatFinish",
+      "UniversalMirageCombatGeneric_001"
+    ],
+    "custom_action": "Forward"
+  },
+  "UniversalMirageCombatGeneric_001": {
+    "recognition": "TemplateMatch",
+    "template": "Combat/StopCombat.png",
+    "roi": [
+      0,
+      0,
+      136,
+      140
+    ],
+    "action": "Custom",
+    "pre_delay": 0,
+    "post_delay": 50,
+    "next": [
+      "UniversalMirageCombatFinish",
+      "UniversalMirageCombatGeneric_002"
+    ],
+    "custom_action": "Backward"
+  },
+  "UniversalMirageCombatGeneric_002": {
+    "recognition": "TemplateMatch",
+    "template": "Combat/StopCombat.png",
+    "roi": [
+      0,
+      0,
+      136,
+      140
+    ],
+    "action": "Custom",
+    "pre_delay": 0,
+    "post_delay": 50,
+    "next": [
+      "UniversalMirageCombatFinish",
+      "UniversalMirageCombatGeneric_003"
+    ],
+    "custom_action": "Left"
+  },
+  "UniversalMirageCombatGeneric_003": {
+    "recognition": "TemplateMatch",
+    "template": "Combat/StopCombat.png",
+    "roi": [
+      0,
+      0,
+      136,
+      140
+    ],
+    "action": "Custom",
+    "pre_delay": 0,
+    "post_delay": 50,
+    "next": [
+      "UniversalMirageCombatFinish",
+      "UniversalMirageCombatGeneric_004"
+    ],
+    "custom_action": "Right"
+  },
+  "UniversalMirageCombatGeneric_004": {
+    "recognition": "TemplateMatch",
+    "template": "Combat/StopCombat.png",
+    "roi": [
+      0,
+      0,
+      136,
+      140
+    ],
+    "action": "Custom",
+    "pre_delay": 0,
+    "post_delay": 200,
+    "next": [
+      "UniversalMirageCombatFinish",
+      "UniversalMirageCombatGeneric_005"
+    ],
+    "custom_action": "BasicATK"
+  },
+  "UniversalMirageCombatGeneric_005": {
+    "recognition": "TemplateMatch",
+    "template": "Combat/StopCombat.png",
+    "roi": [
+      0,
+      0,
+      136,
+      140
+    ],
+    "action": "Custom",
+    "pre_delay": 0,
+    "post_delay": 30,
+    "next": [
+      "UniversalMirageCombatFinish",
+      "UniversalMirageCombatGeneric_006"
+    ],
+    "custom_action": "BasicATK"
+  },
+  "UniversalMirageCombatGeneric_006": {
+    "recognition": "TemplateMatch",
+    "template": "Combat/StopCombat.png",
+    "roi": [
+      0,
+      0,
+      136,
+      140
+    ],
+    "action": "Custom",
+    "pre_delay": 30,
+    "post_delay": 0,
+    "next": [
+      "UniversalMirageCombatFinish",
+      "UniversalMirageCombatGeneric_007"
+    ],
+    "custom_action": "ExtraSkill"
+  },
+  "UniversalMirageCombatGeneric_007": {
+    "recognition": "TemplateMatch",
+    "template": "Combat/StopCombat.png",
+    "roi": [
+      0,
+      0,
+      136,
+      140
+    ],
+    "action": "Custom",
+    "pre_delay": 0,
+    "post_delay": 50,
+    "next": [
+      "UniversalMirageCombatFinish",
+      "UniversalMirageCombatGeneric_008"
+    ],
+    "custom_action": "Forward"
+  },
+  "UniversalMirageCombatGeneric_008": {
+    "recognition": "TemplateMatch",
+    "template": "Combat/StopCombat.png",
+    "roi": [
+      0,
+      0,
+      136,
+      140
+    ],
+    "action": "Custom",
+    "pre_delay": 0,
+    "post_delay": 50,
+    "next": [
+      "UniversalMirageCombatFinish",
+      "UniversalMirageCombatGeneric_009"
+    ],
+    "custom_action": "Backward"
+  },
+  "UniversalMirageCombatGeneric_009": {
+    "recognition": "TemplateMatch",
+    "template": "Combat/StopCombat.png",
+    "roi": [
+      0,
+      0,
+      136,
+      140
+    ],
+    "action": "Custom",
+    "pre_delay": 0,
+    "post_delay": 50,
+    "next": [
+      "UniversalMirageCombatFinish",
+      "UniversalMirageCombatGeneric_010"
+    ],
+    "custom_action": "Left"
+  },
+  "UniversalMirageCombatGeneric_010": {
+    "recognition": "TemplateMatch",
+    "template": "Combat/StopCombat.png",
+    "roi": [
+      0,
+      0,
+      136,
+      140
+    ],
+    "action": "Custom",
+    "pre_delay": 0,
+    "post_delay": 50,
+    "next": [
+      "UniversalMirageCombatFinish"
+    ],
+    "custom_action": "Right"
+  }
+}
