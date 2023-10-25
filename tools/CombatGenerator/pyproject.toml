@@ -1,0 +1,19 @@
+[project]
+name = "CombatGenerator"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "BalconyJH", email = "balconyjh@gmail.com"},
+]
+dependencies = [
+    "pydantic>=2.4.2",
+    "rich>=13.6.0",
+    "coverage>=7.3.2",
+]
+requires-python = ">=3.9"
+readme = "README.md"
+license = {text = "AGPL-3.0"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"

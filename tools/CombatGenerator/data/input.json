@@ -1,0 +1,23 @@
+{
+  "role": "test",
+  "version": "2012-10-17",
+  "combat": [
+    "Forward",
+    "Backward",
+    "Left",
+    "Right",
+    "BasicATK",
+    {
+      "BasicATK": [
+        0,
+        30
+      ]
+    },
+    {
+      "ExtraSkill": [
+        30,
+        0
+      ]
+    }
+  ]
+}
