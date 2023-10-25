@@ -1,0 +1,107 @@
+{
+  "option": {
+    "expeditions": {
+      "name": "远征类型",
+      "type": "select_string",
+      "default": "material",
+      "case": [
+        {
+          "name": "碎片",
+          "value": "fragment",
+          "provide": {
+            "Sub_SwitchToFragmentPage": {
+              "enabled": true
+            }
+          }
+        },
+        {
+          "name": "材料",
+          "value": "material",
+          "provide": {
+            "Sub_SwitchToFragmentPage": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    "server": {
+      "name": "服务器",
+      "type": "select_string",
+      "default": "official",
+      "case": [
+        {
+          "name": "官服",
+          "value": "official",
+          "provide": {
+            "Sub_StartBH3": {
+              "package": "com.miHoYo.enterprise.NGHSoD/com.miHoYo.overridenativeactivity.OverrideNativeActivity"
+            },
+            "RestartBH3": {
+              "package": "com.miHoYo.enterprise.NGHSoD"
+            },
+            "CloseBH3": {
+              "package": "com.miHoYo.enterprise.NGHSoD"
+            }
+          }
+        },
+        {
+          "name": "B服",
+          "value": "bilibili",
+          "provide": {
+            "Sub_StartBH3": {
+              "package": "com.miHoYo.bh3.bilibili/com.miHoYo.overridenativeactivity.OverrideNativeActivity"
+            },
+            "RestartBH3": {
+              "package": "com.miHoYo.bh3.bilibili"
+            },
+            "CloseBH3": {
+              "package": "com.miHoYo.bh3.bilibili"
+            }
+          }
+        },
+        {
+          "name": "Vivo服",
+          "value": "vivo",
+          "provide": {
+            "Sub_StartBH3": {
+              "package": "com.miHoYo.bh3.vivo/com.miHoYo.overridenativeactivity.OverrideNativeActivity"
+            },
+            "RestartBH3": {
+              "package": "com.miHoYo.bh3.vivo"
+            },
+            "CloseBH3": {
+              "package": "com.miHoYo.bh3.vivo"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "global": {
+    "option": ["server"]
+  },
+  "entry": [
+    {
+      "name": "家园",
+      "task": "Dorm",
+      "option": ["expeditions"]
+    },
+    {
+      "name": "材料远征",
+      "task": "MaterialEvent"
+    },
+    {
+      "name": "舰团",
+      "task": "Armada"
+    },
+    {
+      "name": "商店",
+      "task": "Shop"
+    },
+    {
+      "name": "领取奖励",
+      "task": "Awards"
+    }
+  ]
+}
