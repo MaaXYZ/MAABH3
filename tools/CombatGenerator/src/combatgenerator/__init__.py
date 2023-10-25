@@ -130,27 +130,38 @@ def generate_json_from_combat(combat: List) -> Dict:
         # 更新 next_index
         next_index += 1
 
-    if generated_json:
-        last_step = f"UniversalMirageCombatGeneric_{str(next_index - 1).zfill(3)}"
-        generated_json[last_step]["next"] = ["UniversalMirageCombatFinish"]
+    try:
+        if generated_json:
+            last_step = f"UniversalMirageCombatGeneric_{str(next_index - 1).zfill(3)}"
+            generated_json[last_step]["next"] = ["UniversalMirageCombatFinish"]
+    except KeyError:
+        print("[bold red]生成 JSON 失败！[/bold red]")
+        print("[bold red]请检查输入的 JSON 是否符合要求。[/bold red]")
 
     return generated_json
 
 
-def read_file(path: Path) -> str:
+def read_file(path: Path) -> Optional[str]:
     """读取指定路径的文件内容。
 
     参数:
         path (Path): 文件路径。
 
     返回:
-        str: 文件内容。
+        Optional[str]: 文件内容，如果发生异常则返回 None。
+
+    异常:
+        如果文件不存在、无权限或其他I/O错误，函数将返回 None。
     """
-    with open(path, "r") as f:
-        return f.read()
+    try:
+        with open(path, "r") as f:
+            return f.read()
+    except (FileNotFoundError, PermissionError, IOError) as e:
+        print(f"读取文件失败：{e}")
+        return None
 
 
-def save_file(path: Path, content) -> None:
+def save_file(path: Path, content) -> bool:
     """将内容保存到指定路径的文件中。
 
     参数:
@@ -158,10 +169,19 @@ def save_file(path: Path, content) -> None:
         content: 要保存的内容。
 
     返回:
-        None
+        bool: 如果保存成功返回 True，否则返回 False。
+
+    异常:
+        如果没有写权限或其他I/O错误，函数将返回 False。
     """
-    with open(path, "w") as f:
-        json.dump(content, f)
+    try:
+        with open(path, "w") as f:
+            json.dump(content, f)
+            print(f"保存文件成功：{path}")
+        return True
+    except (PermissionError, IOError) as e:
+        print(f"保存文件失败：{e}")
+        return False
 
 
 if __name__ == "__main__":
