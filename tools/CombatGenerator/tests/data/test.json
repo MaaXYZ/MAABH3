@@ -1,0 +1,27 @@
+{
+  "role": "Elysian",
+  "version": "1.0.0",
+  "combat": [
+    "Forward",
+    "Backward",
+    "Left",
+    "Right",
+    "BasicATK",
+    {
+      "BasicATK": [
+        0,
+        30
+      ]
+    },
+    {
+      "ExtraSkill": [
+        30,
+        0
+      ]
+    },
+    "Forward",
+    "Backward",
+    "Left",
+    "Right"
+  ]
+}
