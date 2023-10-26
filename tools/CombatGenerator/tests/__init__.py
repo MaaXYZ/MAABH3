@@ -1,8 +1,11 @@
 import unittest
+from pathlib import Path
 
 from combatgenerator import (
     default_delay,
     generate_json_from_combat,
+    read_file,
+    Combat,
 )
 
 
@@ -41,16 +44,18 @@ class TestCombatMethods(unittest.TestCase):
             {"BasicATK": [0, 30]},
             {"ExtraSkill": [30, 0]},
         ]
-        generated_json = generate_json_from_combat(combat_list)
+        combat_path = Path(__file__).parent / "data" / "test.json"
+        data = Combat.model_validate_json(read_file(combat_path))
+        generated_json = generate_json_from_combat(data.combat, data.mode, data.role)
         self.assertIsNotNone(generated_json)
 
         # 检查 "UniversalMirageCombatGenericPreheat" 步骤
-        self.assertIn("UniversalMirageCombatGenericPreheat", generated_json)
+        self.assertIn(f"{data.mode}Combat{data.role}Preheat", generated_json)
         self.assertEqual(
-            generated_json["UniversalMirageCombatGenericPreheat"]["pre_delay"], 500
+            generated_json[f"{data.mode}Combat{data.role}Preheat"]["pre_delay"], 500
         )
         self.assertEqual(
-            generated_json["UniversalMirageCombatGenericPreheat"]["post_delay"], 1500
+            generated_json[f"{data.mode}Combat{data.role}Preheat"]["post_delay"], 1500
         )
 
         # 检查 "next" 字段和下一个步骤的键是否匹配
@@ -62,7 +67,7 @@ class TestCombatMethods(unittest.TestCase):
 
         # 检查最后一个步骤的 "next" 字段应该只包含 "UniversalMirageCombatFinish"
         self.assertEqual(
-            generated_json[keys[-1]]["next"], ["UniversalMirageCombatFinish"]
+            generated_json[keys[-1]]["next"], [f"{data.mode}Combat{data.role}Finish"]
         )
 
 
