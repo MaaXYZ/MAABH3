@@ -36,7 +36,63 @@
 | WeaponSkill    | 0         | 150        |
 | ELFSkill       | 0         | 150        |
 | ExtraSkill     | 0         | 100        |
+| QTE1           | 	0        | 	200       |
+| QTE2           | 	0        | 	200       |
+
+    {
+        "type": "[关卡类型]",
+        "role": "[女武神名称]",
+        "version": "[版本]",
+        "combat": [
+            "[Combat Action]",
+            {"[Combat Action]": ["[pre delay]","[post delay]"]},
+            "..."
+        ]
+    }
+
+`prefix`: [type]Combat[role]
+
+    {
+    "[prefix]Preheat": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "BasicATK",
+        "pre_delay": 500,
+        "post_delay": 1500,
+        "next": [
+            "[type]CombatFinish",
+            "[prefix]_001"
+        ]
+    },
+     "[prefix]_001": {
+        "recognition": "TemplateMatch",
+        "template": "Combat/StopCombat.png",
+        "roi": [
+            0,
+            0,
+            136,
+            140
+        ],
+        "action": "Custom",
+        "custom_action": "[Combat Action]",
+        "pre_delay": "[pre delay]",
+        "post_delay": "[post delay]",
+        "next": [
+            "[type]CombatFinish",
+            "[prefix]_002"
+        ]
+    },
+    "..."
+}
+
 ### 首项无论是什么延迟均为[500, 1500]
 
-
+具体样本可以去data下看
 
