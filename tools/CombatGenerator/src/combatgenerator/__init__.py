@@ -24,6 +24,7 @@ class Action(BaseModel):
 
 
 class Combat(BaseModel):
+    mode: str
     role: str
     version: str
     combat: List
@@ -78,7 +79,7 @@ def default_delay(data: str) -> Action:
         return Action(pre_delay=0, post_delay=100)
 
 
-def generate_json_from_combat(combat: List) -> Dict:
+def generate_json_from_combat(combat: List, mode: str, role: str) -> Dict:
     """
     根据传入的 "combat" 列表生成对应的 JSON 结构。
 
@@ -113,16 +114,16 @@ def generate_json_from_combat(combat: List) -> Dict:
                     data["post_delay"] = delay.post_delay
 
         # 设置 next 字段
-        next_step = f"UniversalMirageCombatGeneric_{str(next_index + 1).zfill(3)}"
-        data["next"] = ["UniversalMirageCombatFinish", next_step]
+        next_step = f"{mode}Combat{role}_{str(next_index + 1).zfill(3)}"
+        data["next"] = [f"{mode}Combat{role}Finish", next_step]
 
         # 对于第一个元素，特殊处理其名称
         if idx == 0:
-            current_step = "UniversalMirageCombatGenericPreheat"
+            current_step = f"{mode}Combat{role}Preheat"
             data["pre_delay"] = 500
             data["post_delay"] = 1500
         else:
-            current_step = f"UniversalMirageCombatGeneric_{str(next_index).zfill(3)}"
+            current_step = f"{mode}Combat{role}_{str(next_index).zfill(3)}"
 
         # 将新生成的 JSON 对象添加到 generated_json 中
         generated_json[current_step] = data
@@ -132,8 +133,8 @@ def generate_json_from_combat(combat: List) -> Dict:
 
     try:
         if generated_json:
-            last_step = f"UniversalMirageCombatGeneric_{str(next_index - 1).zfill(3)}"
-            generated_json[last_step]["next"] = ["UniversalMirageCombatFinish"]
+            last_step = f"{mode}Combat{role}_{str(next_index - 1).zfill(3)}"
+            generated_json[last_step]["next"] = [f"{mode}Combat{role}Finish"]
     except KeyError:
         print("[bold red]生成 JSON 失败！[/bold red]")
         print("[bold red]请检查输入的 JSON 是否符合要求。[/bold red]")
@@ -186,10 +187,11 @@ def save_file(path: Path, content) -> bool:
 
 if __name__ == "__main__":
     file = read_file(combat_path)
-    print(
-        f"角色名{Combat.model_validate_json(file).role}, 版本号{Combat.model_validate_json(file).version}"
-    )
+    input_model = Combat.model_validate_json(file)
+    print(f"角色名{input_model.role}, 版本号{input_model.version}")
     save_file(
         output_path,
-        generate_json_from_combat(Combat.model_validate_json(file).combat),
+        generate_json_from_combat(
+            input_model.combat, input_model.mode, input_model.role
+        ),
     )
