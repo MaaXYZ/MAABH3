@@ -40,7 +40,7 @@
 | QTE2           | 	0        | 	200       |
 
     {
-        "type": "[关卡类型]",
+        "mode": "[关卡类型]",
         "role": "[女武神名称]",
         "version": "[版本]",
         "combat": [
@@ -50,7 +50,7 @@
         ]
     }
 
-`prefix`: [type]Combat[role]
+`prefix`: [mode]Combat[role]
 
     {
     "[prefix]Preheat": {
