@@ -254,8 +254,23 @@
             "ExpeditionsNotEnoughAP",
             "ExpeditionsConsumptionLimit",
             "ExpeditionsQuickDispatch",
+            "NotMeetingExplorationRequirements",
             "StartExpeditions",
             "NoIdleExpeditions"
+        ]
+    },
+    "NotMeetingExplorationRequirements": {
+        "recognition": "OCR",
+        "text": "不满足探险要求",
+        "roi": [
+            388,
+            287,
+            503,
+            141
+        ],
+        "action": "Click",
+        "next": [
+            "ExpeditionsQuickDispatch"
         ]
     },
     "ExpeditionsConsumptionLimit": {
