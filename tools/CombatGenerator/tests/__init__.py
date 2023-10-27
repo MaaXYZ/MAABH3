@@ -38,12 +38,6 @@ class TestCombatMethods(unittest.TestCase):
 
     def test_generate_json_from_combat(self):
         """测试 generate_json_from_combat 函数是否返回正确的 JSON 结构。"""
-        combat_list = [
-            "Forward",
-            "Backward",
-            {"BasicATK": [0, 30]},
-            {"ExtraSkill": [30, 0]},
-        ]
         combat_path = Path(__file__).parent / "data" / "test.json"
         data = Combat.model_validate_json(read_file(combat_path))
         generated_json = generate_json_from_combat(data.combat, data.mode, data.role)

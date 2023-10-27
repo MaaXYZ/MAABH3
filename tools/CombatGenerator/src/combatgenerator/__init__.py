@@ -1,9 +1,9 @@
 import json
 from pathlib import Path
-from typing import Dict, List, Union, Optional
-from rich import print
+from typing import Dict, List, Optional
 
 from pydantic import BaseModel
+from rich import print
 
 combat_path = Path(__file__).parent.parent.parent / "data" / "input.json"
 output_path = Path(__file__).parent.parent.parent / "data" / "output.json"
@@ -49,7 +49,7 @@ def default_delay(data: str) -> Action:
         "Right Forward",
         "Right Backward",
     ]
-    qte = ["QTE1", "QTE2"]
+    qte = ["QTE1", "QTE2"]  # noqa
 
     if data in movement:
         return Action(pre_delay=0, post_delay=50)
