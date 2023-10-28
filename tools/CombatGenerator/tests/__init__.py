@@ -47,10 +47,10 @@ class TestCombatMethods(unittest.TestCase):
         # 检查 "UniversalMirageCombatGenericPreheat" 步骤
         self.assertIn(f"{data.mode}Combat{data.role}Preheat", generated_json)
         self.assertEqual(
-            generated_json[f"{data.mode}Combat{data.role}Preheat"]["pre_delay"], 500
+            generated_json[f"{data.mode}Combat{data.role}Preheat"]["pre_delay"], 1000
         )
         self.assertEqual(
-            generated_json[f"{data.mode}Combat{data.role}Preheat"]["post_delay"], 1500
+            generated_json[f"{data.mode}Combat{data.role}Preheat"]["post_delay"], 1000
         )
 
         # 检查 "next" 字段和下一个步骤的键是否匹配
@@ -61,9 +61,7 @@ class TestCombatMethods(unittest.TestCase):
             self.assertIn(next_key, generated_json[current_key]["next"])
 
         # 检查最后一个步骤的 "next" 字段应该只包含 "UniversalMirageCombatFinish"
-        self.assertEqual(
-            generated_json[keys[-1]]["next"], [f"{data.mode}Combat{data.role}Finish"]
-        )
+        self.assertEqual(generated_json[keys[-1]]["next"], [f"{data.mode}CombatFinish"])
 
 
 if __name__ == "__main__":
