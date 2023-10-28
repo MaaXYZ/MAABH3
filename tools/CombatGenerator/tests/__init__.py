@@ -32,9 +32,10 @@ class TestCombatMethods(unittest.TestCase):
         ]
 
         for test_case in test_cases:
-            action = default_delay(str(test_case["action"]))
-            self.assertEqual(action.pre_delay, test_case["pre_delay"])
-            self.assertEqual(action.post_delay, test_case["post_delay"])
+            with self.subTest(test_case=test_case):
+                action = default_delay(str(test_case["action"]))
+                self.assertEqual(action.pre_delay, test_case["pre_delay"])
+                self.assertEqual(action.post_delay, test_case["post_delay"])
 
     def test_generate_json_from_combat(self):
         """测试 generate_json_from_combat 函数是否返回正确的 JSON 结构。"""

@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, List
 
 from pydantic import BaseModel
 from rich import print
@@ -78,13 +78,17 @@ def default_delay(data: str) -> Action:
     elif data == "ExtraSkill":
         return Action(pre_delay=0, post_delay=100)
 
+    return Action(pre_delay=50, post_delay=50)
+
 
 def generate_json_from_combat(combat: List, mode: str, role: str) -> Dict:
     """
-    根据传入的 "combat" 列表生成对应的 JSON 结构。
+    根据 combat 列表生成 JSON 对象。
 
     参数:
         combat (List): 包含 "combat" 操作的列表。
+        mode (str): 模式名称。
+        role (str): 角色名称。
 
     返回:
         dict: 生成的 JSON 对象。
@@ -142,7 +146,7 @@ def generate_json_from_combat(combat: List, mode: str, role: str) -> Dict:
     return generated_json
 
 
-def read_file(path: Path) -> Optional[str]:
+def read_file(path: Path) -> str:
     """读取指定路径的文件内容。
 
     参数:
@@ -159,7 +163,7 @@ def read_file(path: Path) -> Optional[str]:
             return f.read()
     except (FileNotFoundError, PermissionError, IOError) as e:
         print(f"读取文件失败：{e}")
-        return None
+        raise e
 
 
 def save_file(path: Path, content) -> bool:
@@ -182,7 +186,7 @@ def save_file(path: Path, content) -> bool:
         return True
     except (PermissionError, IOError) as e:
         print(f"保存文件失败：{e}")
-        return False
+        raise e
 
 
 if __name__ == "__main__":
