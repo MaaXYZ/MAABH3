@@ -124,8 +124,8 @@ def generate_json_from_combat(combat: List, mode: str, role: str) -> Dict:
         # 对于第一个元素，特殊处理其名称
         if idx == 0:
             current_step = f"{mode}Combat{role}Preheat"
-            data["pre_delay"] = 500
-            data["post_delay"] = 1500
+            data["pre_delay"] = 1000
+            data["post_delay"] = 1000
         else:
             current_step = f"{mode}Combat{role}_{str(next_index).zfill(3)}"
 
@@ -138,7 +138,7 @@ def generate_json_from_combat(combat: List, mode: str, role: str) -> Dict:
     try:
         if generated_json:
             last_step = f"{mode}Combat{role}_{str(next_index - 1).zfill(3)}"
-            generated_json[last_step]["next"] = [f"{mode}Combat{role}Finish"]
+            generated_json[last_step]["next"] = [f"{mode}CombatFinish"]
     except KeyError:
         print("[bold red]生成 JSON 失败！[/bold red]")
         print("[bold red]请检查输入的 JSON 是否符合要求。[/bold red]")
