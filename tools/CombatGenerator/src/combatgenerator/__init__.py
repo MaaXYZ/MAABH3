@@ -1,3 +1,4 @@
+import argparse
 import json
 from pathlib import Path
 from typing import Dict, List
@@ -81,7 +82,7 @@ def default_delay(data: str) -> Action:
     return Action(pre_delay=50, post_delay=50)
 
 
-def generate_json_from_combat(combat: List, mode: str, role: str) -> Dict:
+def generate_from_combat(combat: List, mode: str, role: str) -> Dict:
     """
     根据 combat 列表生成 JSON 对象。
 
@@ -98,11 +99,10 @@ def generate_json_from_combat(combat: List, mode: str, role: str) -> Dict:
     next_index = 0
 
     for idx, item in enumerate(combat):
-        # 如果 item 是字符串，直接设置 custom_action
         data = json_template.copy()
         if isinstance(item, str):
             data["custom_action"] = item
-            delay = default_delay(item)  # 获取默认的 pre_delay 和 post_delay
+            delay = default_delay(item)
             data["pre_delay"] = delay.pre_delay
             data["post_delay"] = delay.post_delay
 
@@ -113,15 +113,13 @@ def generate_json_from_combat(combat: List, mode: str, role: str) -> Dict:
                     data["pre_delay"] = value[0]
                     data["post_delay"] = value[1]
                 else:
-                    delay = default_delay(key)  # 这里获取默认延迟
+                    delay = default_delay(key)
                     data["pre_delay"] = delay.pre_delay
                     data["post_delay"] = delay.post_delay
 
-        # 设置 next 字段
         next_step = f"{mode}Combat{role}_{str(next_index + 1).zfill(3)}"
         data["next"] = [f"{mode}Combat{role}Finish", next_step]
 
-        # 对于第一个元素，特殊处理其名称
         if idx == 0:
             current_step = f"{mode}Combat{role}Preheat"
             data["pre_delay"] = 1000
@@ -129,7 +127,6 @@ def generate_json_from_combat(combat: List, mode: str, role: str) -> Dict:
         else:
             current_step = f"{mode}Combat{role}_{str(next_index).zfill(3)}"
 
-        # 将新生成的 JSON 对象添加到 generated_json 中
         generated_json[current_step] = data
 
         # 更新 next_index
@@ -144,6 +141,10 @@ def generate_json_from_combat(combat: List, mode: str, role: str) -> Dict:
         print("[bold red]请检查输入的 JSON 是否符合要求。[/bold red]")
 
     return generated_json
+
+
+def reverse_to_combat(data: str) -> Combat:
+    pass
 
 
 def read_file(path: Path) -> str:
@@ -190,12 +191,18 @@ def save_file(path: Path, content) -> bool:
 
 
 if __name__ == "__main__":
-    file = read_file(combat_path)
-    input_model = Combat.model_validate_json(file)
-    print(f"角色名{input_model.role}, 版本号{input_model.version}")
-    save_file(
-        output_path,
-        generate_json_from_combat(
-            input_model.combat, input_model.mode, input_model.role
-        ),
-    )
+    parser = argparse.ArgumentParser(description="反序列化生成的Combat文件")
+    parser.add_argument("-p", "--param", action="store_true", help="反序列器")
+    args = parser.parse_args()
+    if args.param:
+        print("你触发了 -p 参数的相关行为")
+    else:
+        file = read_file(combat_path)
+        input_model = Combat.model_validate_json(file)
+        print(f"角色名{input_model.role}, 版本号{input_model.version}")
+        save_file(
+            output_path,
+            generate_from_combat(
+                input_model.combat, input_model.mode, input_model.role
+            ),
+        )
