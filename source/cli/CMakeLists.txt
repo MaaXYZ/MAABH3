@@ -11,12 +11,12 @@ set(CMAKE_CONFIGURATION_TYPES "Release")
 add_executable(MAABH3_CLI 
     main.cpp 
     main.h 
-    CustomAction/Combat.h 
-    CustomAction/Combat.cpp 
+    CustomAction/CombatAction.h 
+    CustomAction/CombatAction.cpp 
     CustomAction/CustomActionRegistrar.h 
     CustomAction/CustomActionRegistrar.cpp 
     CustomAction/CustomAction.h 
-    CustomAction/CustomAction.cpp 
+    CustomAction/CustomAction.cpp
     CustomAction/CustomActionRegistry.h
     CustomAction/RandomPointGenerator.h
     CustomAction/RandomPointGenerator.cpp

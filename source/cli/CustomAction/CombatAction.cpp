@@ -1,4 +1,4 @@
-#include "Combat.h"
+#include "CombatAction.h"
 
 void combat_move(MaaSyncContextHandle sync_context, [[maybe_unused]] MaaStringView custom_action_param,
                  int32_t target_x, int32_t target_y, int32_t target_w, int32_t target_h)
