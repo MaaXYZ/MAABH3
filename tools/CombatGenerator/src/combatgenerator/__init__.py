@@ -1,7 +1,8 @@
 import argparse
 import json
+import re
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, Union
 
 from pydantic import BaseModel
 from rich import print
@@ -17,6 +18,26 @@ json_template = {
     "post_delay": 0,
     "next": [],
 }
+default_pre_delay = 50
+default_post_delay = 50
+action_list = [
+    {"action": "Forward", "pre_delay": 0, "post_delay": 50},
+    {"action": "Backward", "pre_delay": 0, "post_delay": 50},
+    {"action": "Left", "pre_delay": 0, "post_delay": 50},
+    {"action": "Right", "pre_delay": 0, "post_delay": 50},
+    {"action": "Left Forward", "pre_delay": 0, "post_delay": 50},
+    {"action": "Left Backward", "pre_delay": 0, "post_delay": 50},
+    {"action": "Right Forward", "pre_delay": 0, "post_delay": 50},
+    {"action": "Right Backward", "pre_delay": 0, "post_delay": 50},
+    {"action": "BasicATK", "pre_delay": 0, "post_delay": 200},
+    {"action": "BasicATKCharge", "pre_delay": 0, "post_delay": 100},
+    {"action": "Evade", "pre_delay": 0, "post_delay": 150},
+    {"action": "Ultimate", "pre_delay": 0, "post_delay": 150},
+    {"action": "UltimateCharge", "pre_delay": 0, "post_delay": 100},
+    {"action": "WeaponSkill", "pre_delay": 0, "post_delay": 150},
+    {"action": "ELFSkill", "pre_delay": 0, "post_delay": 150},
+    {"action": "ExtraSkill", "pre_delay": 0, "post_delay": 100},
+]
 
 
 class Action(BaseModel):
@@ -28,7 +49,7 @@ class Combat(BaseModel):
     mode: str
     role: str
     version: str
-    combat: List
+    combat: List[Union[str, Dict[str, List[int]]]]
 
 
 def default_delay(data: str) -> Action:
@@ -40,46 +61,18 @@ def default_delay(data: str) -> Action:
     返回:
         Action: 包含预延迟和后延迟的对象
     """
-    movement = [
-        "Forward",
-        "Backward",
-        "Left",
-        "Right",
-        "Left Forward",
-        "Left Backward",
-        "Right Forward",
-        "Right Backward",
-    ]
-    qte = ["QTE1", "QTE2"]  # noqa
+    # movement = action_list[:8]
+    # qte = action_list[8:10]  # noqa: F841
+    # skills = action_list[10:]  # noqa: F841
 
-    if data in movement:
-        return Action(pre_delay=0, post_delay=50)
+    for action_dict in action_list:
+        if action_dict["action"] == data:
+            return Action(
+                pre_delay=action_dict["pre_delay"], post_delay=action_dict["post_delay"]
+            )
 
-    elif data == "BasicATK":
-        return Action(pre_delay=0, post_delay=200)
-
-    elif data == "BasicATKCharge":
-        return Action(pre_delay=0, post_delay=100)
-
-    elif data == "Evade":
-        return Action(pre_delay=0, post_delay=150)
-
-    elif data == "Ultimate":
-        return Action(pre_delay=0, post_delay=150)
-
-    elif data == "UltimateCharge":
-        return Action(pre_delay=0, post_delay=100)
-
-    elif data == "WeaponSkill":
-        return Action(pre_delay=0, post_delay=150)
-
-    elif data == "ELFSkill":
-        return Action(pre_delay=0, post_delay=150)
-
-    elif data == "ExtraSkill":
-        return Action(pre_delay=0, post_delay=100)
-
-    return Action(pre_delay=50, post_delay=50)
+    # 如果没有找到匹配的动作，返回默认值
+    return Action(pre_delay=default_pre_delay, post_delay=default_post_delay)
 
 
 def generate_from_combat(combat: List, mode: str, role: str) -> Dict:
@@ -143,11 +136,52 @@ def generate_from_combat(combat: List, mode: str, role: str) -> Dict:
     return generated_json
 
 
-def reverse_to_combat(data: str) -> Combat:
-    pass
+def reverse_to_combat(json_data: Dict) -> Combat:
+    """
+    将 JSON 对象解析为 Combat 对象。
+
+    参数:
+        json_data (Dict): 输入的 JSON 对象。
+
+    返回:
+        Combat: 解析后的 Combat 对象。
+    """
+    combat_list = []
+    mode = None
+    role = None
+
+    sorted_keys = sorted(json_data.keys())
+
+    for key in sorted_keys:
+        action_data = json_data[key]
+        custom_action = action_data["custom_action"]
+        pre_delay = action_data["pre_delay"]
+        post_delay = action_data["post_delay"]
+
+        # 解析 mode 和 role
+        if mode is None and role is None:
+            match = re.search(r"(.+)Combat(.+)Preheat", key)
+            if match:
+                mode, role = match.groups()
+
+        # 获取该动作的默认延迟值
+        default_action = default_delay(custom_action)
+
+        # 构建 combat_list
+        if (
+            pre_delay == default_action.pre_delay
+            and post_delay == default_action.post_delay
+        ):
+            combat_list.append(custom_action)
+        elif pre_delay == 1000 and post_delay == 1000:
+            combat_list.append(custom_action)
+        else:
+            combat_list.append({custom_action: [pre_delay, post_delay]})
+
+    return Combat(mode=mode, role=role, version="debug", combat=combat_list)
 
 
-def read_file(path: Path) -> str:
+def read_file(path: Path) -> Dict:
     """读取指定路径的文件内容。
 
     参数:
@@ -161,7 +195,7 @@ def read_file(path: Path) -> str:
     """
     try:
         with open(path, "r") as f:
-            return f.read()
+            return json.load(f)
     except (FileNotFoundError, PermissionError, IOError) as e:
         print(f"读取文件失败：{e}")
         raise e
@@ -195,10 +229,12 @@ if __name__ == "__main__":
     parser.add_argument("-p", "--param", action="store_true", help="反序列器")
     args = parser.parse_args()
     if args.param:
-        print("你触发了 -p 参数的相关行为")
+        output_model = reverse_to_combat(read_file(combat_path))
+        print(f"角色名{output_model.role}, 版本号{output_model.version}")
+        save_file(output_path, output_model.model_dump())
     else:
         file = read_file(combat_path)
-        input_model = Combat.model_validate_json(file)
+        input_model = Combat.model_validate(file)
         print(f"角色名{input_model.role}, 版本号{input_model.version}")
         save_file(
             output_path,
