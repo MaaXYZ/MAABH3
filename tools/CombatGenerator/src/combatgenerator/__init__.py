@@ -1,14 +1,23 @@
 import argparse
 import json
 import re
+import sys
+from json import JSONDecodeError
 from pathlib import Path
-from typing import Dict, List, Union
+from typing import Dict, List, Union, Optional
 
 from pydantic import BaseModel
-from rich import print
+from rich.console import Console
 
-combat_path = Path(__file__).parent.parent.parent / "data" / "input.json"
-output_path = Path(__file__).parent.parent.parent / "data" / "output.json"
+console = Console()
+
+default_input_path = Path(__file__).parent.parent.parent / "data" / "input.json"
+default_output_path = Path(__file__).parent.parent.parent / "data" / "output.json"
+default_pre_delay = 50
+default_post_delay = 50
+preheat_pre_delay = 1000
+preheat_post_delay = 1000
+
 json_template = {
     "recognition": "TemplateMatch",
     "template": "Combat/StopCombat.png",
@@ -18,8 +27,6 @@ json_template = {
     "post_delay": 0,
     "next": [],
 }
-default_pre_delay = 50
-default_post_delay = 50
 action_list = [
     {"action": "Forward", "pre_delay": 0, "post_delay": 50},
     {"action": "Backward", "pre_delay": 0, "post_delay": 50},
@@ -61,10 +68,6 @@ def default_delay(data: str) -> Action:
     返回:
         Action: 包含预延迟和后延迟的对象
     """
-    # movement = action_list[:8]
-    # qte = action_list[8:10]  # noqa: F841
-    # skills = action_list[10:]  # noqa: F841
-
     for action_dict in action_list:
         if action_dict["action"] == data:
             return Action(
@@ -75,7 +78,7 @@ def default_delay(data: str) -> Action:
     return Action(pre_delay=default_pre_delay, post_delay=default_post_delay)
 
 
-def generate_from_combat(combat: List, mode: str, role: str) -> Dict:
+def generate_from_combat(combat: List, mode: str, role: str, template: dict) -> Dict:
     """
     根据 combat 列表生成 JSON 对象。
 
@@ -87,42 +90,74 @@ def generate_from_combat(combat: List, mode: str, role: str) -> Dict:
     返回:
         dict: 生成的 JSON 对象。
     """
-    global json_template
+
+    def _process_string_action(action: str) -> Dict:
+        """
+        处理字符串类型的动作，并返回一个包含动作信息的字典。
+
+        参数:
+            action (str): 动作名称。
+
+        返回:
+            dict: 包含动作名称和延迟信息的字典。
+        """
+        _data = template.copy()
+        _data["custom_action"] = action
+        delay = default_delay(action)
+        _data["pre_delay"] = delay.pre_delay
+        _data["post_delay"] = delay.post_delay
+        return _data
+
+    def _process_dict_action(action: Dict) -> Dict:
+        """
+        处理字典类型的动作，并返回一个包含动作信息的字典。
+
+        参数:
+            action (Dict): 包含动作名称和延迟信息的字典。
+
+        返回:
+            dict: 包含动作名称和延迟信息的字典。
+        """
+        _data = template.copy()
+        for key, value in action.items():
+            _data["custom_action"] = key
+            if isinstance(value, list) and len(value) == 2:
+                _data["pre_delay"] = value[0]
+                _data["post_delay"] = value[1]
+            else:
+                delay = default_delay(key)
+                _data["pre_delay"] = delay.pre_delay
+                _data["post_delay"] = delay.post_delay
+        return _data
+
+    if template is None:
+        template = json_template
+
     generated_json = {}
     next_index = 0
 
     for idx, item in enumerate(combat):
-        data = json_template.copy()
+        data = None  # 初始化 data 变量
         if isinstance(item, str):
-            data["custom_action"] = item
-            delay = default_delay(item)
-            data["pre_delay"] = delay.pre_delay
-            data["post_delay"] = delay.post_delay
-
+            data = _process_string_action(item)
         elif isinstance(item, dict):
-            for key, value in item.items():
-                data["custom_action"] = key
-                if isinstance(value, list) and len(value) == 2:
-                    data["pre_delay"] = value[0]
-                    data["post_delay"] = value[1]
-                else:
-                    delay = default_delay(key)
-                    data["pre_delay"] = delay.pre_delay
-                    data["post_delay"] = delay.post_delay
+            data = _process_dict_action(item)
+        else:
+            console.print(f"[bold red]未知的 item 类型: {type(item)}[/bold red]")
+            continue
 
         next_step = f"{mode}Combat{role}_{str(next_index + 1).zfill(3)}"
         data["next"] = [f"{mode}Combat{role}Finish", next_step]
 
         if idx == 0:
             current_step = f"{mode}Combat{role}Preheat"
-            data["pre_delay"] = 1000
-            data["post_delay"] = 1000
+            data["pre_delay"] = preheat_pre_delay
+            data["post_delay"] = preheat_post_delay
         else:
             current_step = f"{mode}Combat{role}_{str(next_index).zfill(3)}"
 
         generated_json[current_step] = data
 
-        # 更新 next_index
         next_index += 1
 
     try:
@@ -130,8 +165,8 @@ def generate_from_combat(combat: List, mode: str, role: str) -> Dict:
             last_step = f"{mode}Combat{role}_{str(next_index - 1).zfill(3)}"
             generated_json[last_step]["next"] = [f"{mode}CombatFinish"]
     except KeyError:
-        print("[bold red]生成 JSON 失败！[/bold red]")
-        print("[bold red]请检查输入的 JSON 是否符合要求。[/bold red]")
+        console.print_exception()
+        sys.exit(1)
 
     return generated_json
 
@@ -147,10 +182,14 @@ def reverse_to_combat(json_data: Dict) -> Combat:
         Combat: 解析后的 Combat 对象。
     """
     combat_list = []
-    mode = None
-    role = None
 
     sorted_keys = sorted(json_data.keys())
+
+    first_key = sorted_keys[0]
+    match = re.search(r"(.+)Combat(.+)Preheat", first_key)
+    if match is None:
+        raise ValueError(f"无法从键 {first_key} 中解析模式和角色")
+    mode, role = match.groups()
 
     for key in sorted_keys:
         action_data = json_data[key]
@@ -158,22 +197,14 @@ def reverse_to_combat(json_data: Dict) -> Combat:
         pre_delay = action_data["pre_delay"]
         post_delay = action_data["post_delay"]
 
-        # 解析 mode 和 role
-        if mode is None and role is None:
-            match = re.search(r"(.+)Combat(.+)Preheat", key)
-            if match:
-                mode, role = match.groups()
-
-        # 获取该动作的默认延迟值
         default_action = default_delay(custom_action)
 
-        # 构建 combat_list
         if (
             pre_delay == default_action.pre_delay
             and post_delay == default_action.post_delay
         ):
             combat_list.append(custom_action)
-        elif pre_delay == 1000 and post_delay == 1000:
+        elif pre_delay == preheat_pre_delay and post_delay == preheat_post_delay:
             combat_list.append(custom_action)
         else:
             combat_list.append({custom_action: [pre_delay, post_delay]})
@@ -181,27 +212,39 @@ def reverse_to_combat(json_data: Dict) -> Combat:
     return Combat(mode=mode, role=role, version="debug", combat=combat_list)
 
 
-def read_file(path: Path) -> Dict:
+def load_file(path: Optional[Path]) -> Dict:
     """读取指定路径的文件内容。
 
     参数:
         path (Path): 文件路径。
 
     返回:
-        Optional[str]: 文件内容，如果发生异常则返回 None。
+        Optional[Dict]: 文件内容，如果发生异常则返回 None。
 
     异常:
         如果文件不存在、无权限或其他I/O错误，函数将返回 None。
     """
-    try:
-        with open(path, "r") as f:
-            return json.load(f)
-    except (FileNotFoundError, PermissionError, IOError) as e:
-        print(f"读取文件失败：{e}")
-        raise e
+
+    def read_file(file_path: Path) -> Dict:
+        """尝试读取指定的文件，返回文件内容或 None（如果发生错误）"""
+        try:
+            with file_path.open("r") as f:
+                return json.load(f)
+        except (FileNotFoundError, PermissionError, IOError, JSONDecodeError) as error:
+            console.print_exception()
+            sys.exit(1)
+
+    if isinstance(path, (str, Path)):
+        path = Path(path)
+        content = read_file(path)
+        if content is not None:
+            return content
+        console.print(f"[bold red]无法读取 {path}[/bold red]")
+    else:
+        console.print(f"传入路径不是一个有效的字符串或 Path 对象，尝试读取默认路径 {default_input_path}")
 
 
-def save_file(path: Path, content) -> bool:
+def save_file(path: Union[Path, str], content, file_name: str) -> bool:
     """将内容保存到指定路径的文件中。
 
     参数:
@@ -214,31 +257,59 @@ def save_file(path: Path, content) -> bool:
     异常:
         如果没有写权限或其他I/O错误，函数将返回 False。
     """
-    try:
-        with open(path, "w") as f:
-            json.dump(content, f)
-            print(f"保存文件成功：{path}")
-        return True
-    except (PermissionError, IOError) as e:
-        print(f"保存文件失败：{e}")
-        raise e
+
+    def write_file(file_path: Path) -> bool:
+        """尝试将内容写入指定的文件，返回操作是否成功"""
+        try:
+            with file_path.open("w") as f:
+                json.dump(content, f)
+                console.print(f"保存文件成功：{file_path}")
+            return True
+        except (PermissionError, IOError, FileNotFoundError) as error:
+            console.print_exception()
+            return False
+
+    if isinstance(path, (str, Path)):
+        path = Path(path)
+        if write_file(path):
+            return True
+        console.print(f"无法保存到 {path}，尝试保存到默认路径 {default_output_path}")
+        return write_file(default_output_path)
+    else:
+        console.print(f"传入路径{path}不是一个有效的字符串，尝试保存到默认路径 {default_output_path}")
+        return write_file(default_output_path)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="反序列化生成的Combat文件")
-    parser.add_argument("-p", "--param", action="store_true", help="反序列器")
+    parser.add_argument("-r", "--reverse", action="store_true", help="反序列器")
+    parser.add_argument(
+        "-i", "--input", type=str, help="输入字符串参数", default=default_input_path
+    )
+
+    parser.add_argument(
+        "-o", "--output", type=str, help="输出字符串参数", default=default_output_path
+    )
     args = parser.parse_args()
-    if args.param:
-        output_model = reverse_to_combat(read_file(combat_path))
-        print(f"角色名{output_model.role}, 版本号{output_model.version}")
-        save_file(output_path, output_model.model_dump())
-    else:
-        file = read_file(combat_path)
-        input_model = Combat.model_validate(file)
-        print(f"角色名{input_model.role}, 版本号{input_model.version}")
+    if args.reverse:
+        output_model = reverse_to_combat(load_file(args.input))
+        console.print(f"角色名{output_model.role}, 版本号{output_model.version}")
         save_file(
-            output_path,
+            args.output,
+            output_model.model_dump(),
+            f"{output_model.mode}{output_model.role}",
+        )
+    else:
+        file = load_file(args.input)
+        input_model = Combat.model_validate(file)
+        console.print(f"角色名{input_model.role}, 版本号{input_model.version}")
+        save_file(
+            args.output,
             generate_from_combat(
-                input_model.combat, input_model.mode, input_model.role
+                input_model.combat,
+                input_model.mode,
+                input_model.role,
+                json_template,
             ),
+            f"{input_model.mode}{input_model.role}",
         )
