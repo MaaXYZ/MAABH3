@@ -1,13 +1,7 @@
 {
   "UniversalMirageCombatElysianPreheat": {
-    "recognition": "TemplateMatch",
-    "template": "Combat/StopCombat.png",
-    "roi": [
-      0,
-      0,
-      136,
-      140
-    ],
+    "recognition": "Custom",
+    "custom_recognizer": "Combating",
     "action": "Custom",
     "pre_delay": 1000,
     "post_delay": 1000,
@@ -18,14 +12,8 @@
     "custom_action": "BasicATK"
   },
   "UniversalMirageCombatElysian_001": {
-    "recognition": "TemplateMatch",
-    "template": "Combat/StopCombat.png",
-    "roi": [
-      0,
-      0,
-      136,
-      140
-    ],
+    "recognition": "Custom",
+    "custom_recognizer": "Combating",
     "action": "Custom",
     "pre_delay": 0,
     "post_delay": 30,
@@ -36,14 +24,8 @@
     "custom_action": "BasicATK"
   },
   "UniversalMirageCombatElysian_002": {
-    "recognition": "TemplateMatch",
-    "template": "Combat/StopCombat.png",
-    "roi": [
-      0,
-      0,
-      136,
-      140
-    ],
+    "recognition": "Custom",
+    "custom_recognizer": "Combating",
     "action": "Custom",
     "pre_delay": 0,
     "post_delay": 100,
@@ -54,14 +36,8 @@
     "custom_action": "ExtraSkill"
   },
   "UniversalMirageCombatElysian_003": {
-    "recognition": "TemplateMatch",
-    "template": "Combat/StopCombat.png",
-    "roi": [
-      0,
-      0,
-      136,
-      140
-    ],
+    "recognition": "Custom",
+    "custom_recognizer": "Combating",
     "action": "Custom",
     "pre_delay": 30,
     "post_delay": 0,
@@ -72,14 +48,8 @@
     "custom_action": "ExtraSkill"
   },
   "UniversalMirageCombatElysian_004": {
-    "recognition": "TemplateMatch",
-    "template": "Combat/StopCombat.png",
-    "roi": [
-      0,
-      0,
-      136,
-      140
-    ],
+    "recognition": "Custom",
+    "custom_recognizer": "Combating",
     "action": "Custom",
     "pre_delay": 0,
     "post_delay": 50,
