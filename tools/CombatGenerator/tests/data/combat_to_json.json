@@ -1,12 +1,8 @@
 {
   "mode": "UniversalMirage",
   "role": "Elysian",
-  "version": "1.0.0",
+  "version": "debug",
   "combat": [
-    "Forward",
-    "Backward",
-    "Left",
-    "Right",
     "BasicATK",
     {
       "BasicATK": [
@@ -14,15 +10,13 @@
         30
       ]
     },
+    "ExtraSkill",
     {
       "ExtraSkill": [
         30,
         0
       ]
     },
-    "Forward",
-    "Backward",
-    "Left",
-    "Right"
+    "Forward"
   ]
 }
