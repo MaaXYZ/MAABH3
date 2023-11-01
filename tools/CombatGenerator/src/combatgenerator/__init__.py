@@ -188,6 +188,7 @@ def reverse_to_combat(json_data: Dict) -> Combat:
     match = re.search(r"(.+)Combat(.+)Preheat", first_key)
     if match is None:
         console.print(f"无法解析 {first_key}，请检查输入的 JSON 文件是否正确")
+        sys.exit(1)
     mode, role = match.groups()
 
     for key in sorted_keys:
@@ -237,7 +238,7 @@ def load_file(path: Optional[Path]) -> Dict:
         path = Path(path)
         return read_file(path)
     else:
-        console.print(f"传入路径不是一个有效的字符串或 Path 对象")
+        console.print("传入路径不是一个有效的字符串或 Path 对象")
         sys.exit(1)
 
 
@@ -262,7 +263,7 @@ def save_file(path: Union[Path, str], content) -> bool:
                 json.dump(content, f)
                 console.print(f"保存文件成功：{file_path}")
             return True
-        except (PermissionError, IOError, FileNotFoundError) as error:
+        except (PermissionError, IOError, FileNotFoundError):
             console.print_exception()
             return False
 
@@ -284,7 +285,7 @@ if __name__ == "__main__":
         "-i",
         "--input",
         type=str,
-        help="传入文件路径(绝对路径) e.g. F:\sth.json",
+        help="传入文件路径(绝对路径) e.g. F:\\sth.json",
         default=default_input_path,
     )
 
@@ -292,7 +293,7 @@ if __name__ == "__main__":
         "-o",
         "--output",
         type=str,
-        help="保存文件路径(绝对路径) e.g. F:\sth.json",
+        help="保存文件路径(绝对路径) e.g. F:\\sth.json",
         default=default_output_path,
     )
     args = parser.parse_args()
