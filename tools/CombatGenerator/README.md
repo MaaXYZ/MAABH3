@@ -10,6 +10,26 @@
 
 重启终端后，直接运行`CombatGenerator`下`__init__.py`即可。
 
+## 可选参数
+
+### 反序列器 将生成的combatJson反序列化为输入的结构体
+
+    -r
+
+### 传入路径
+
+    -i path/to/yourfile.json(绝对路径)
+
+### 输出路径
+
+    -o path/to/yourfile.json(绝对路径)
+
+### e.g.
+
+例如我想使用反序列器，传入路径为F:/1.json, 输出路径为F:/2.json
+
+    python __init__.py -r -i F:/1.json -o F:/2.json
+
 ## input说明
 
 `"BasicATK": [
@@ -53,44 +73,32 @@
 `prefix`: [mode]Combat[role]
 
     {
-    "[prefix]Preheat": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+    "UniversalMirageCombatElysianPreheat": {
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
-        "custom_action": "BasicATK",
-        "pre_delay": 500,
-        "post_delay": 1500,
+        "pre_delay": 1000,
+        "post_delay": 1000,
         "next": [
-            "[type]CombatFinish",
-            "[prefix]_001"
-        ]
+            "UniversalMirageCombatElysianFinish",
+            "UniversalMirageCombatElysian_001"
+        ],
+        "custom_action": "BasicATK"
     },
-     "[prefix]_001": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+    "UniversalMirageCombatElysian_001": {
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
-        "custom_action": "[Combat Action]",
-        "pre_delay": "[pre delay]",
-        "post_delay": "[post delay]",
+        "pre_delay": 0,
+        "post_delay": 30,
         "next": [
-            "[type]CombatFinish",
-            "[prefix]_002"
-        ]
+            "UniversalMirageCombatElysianFinish",
+            "UniversalMirageCombatElysian_002"
+        ],
+        "custom_action": "BasicATK"
     },
     "..."
-}
+    }
 
 ### 首项无论是什么延迟均为[1000, 1000]
 
