@@ -19,9 +19,8 @@ preheat_pre_delay = 1000
 preheat_post_delay = 1000
 
 json_template = {
-    "recognition": "TemplateMatch",
-    "template": "Combat/StopCombat.png",
-    "roi": [0, 0, 136, 140],
+    "recognition": "Custom",
+    "custom_recognizer": "Combating",
     "action": "Custom",
     "pre_delay": 0,
     "post_delay": 0,

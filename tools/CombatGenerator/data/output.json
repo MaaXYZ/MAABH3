@@ -1,199 +1,61 @@
 {
   "UniversalMirageCombatElysianPreheat": {
-    "recognition": "TemplateMatch",
-    "template": "Combat/StopCombat.png",
-    "roi": [
-      0,
-      0,
-      136,
-      140
-    ],
+    "recognition": "Custom",
+    "custom_recognizer": "Combating",
     "action": "Custom",
-    "pre_delay": 500,
-    "post_delay": 1500,
+    "pre_delay": 1000,
+    "post_delay": 1000,
     "next": [
       "UniversalMirageCombatElysianFinish",
       "UniversalMirageCombatElysian_001"
     ],
-    "custom_action": "Forward"
-  },
-  "UniversalMirageCombatElysian_001": {
-    "recognition": "TemplateMatch",
-    "template": "Combat/StopCombat.png",
-    "roi": [
-      0,
-      0,
-      136,
-      140
-    ],
-    "action": "Custom",
-    "pre_delay": 0,
-    "post_delay": 50,
-    "next": [
-      "UniversalMirageCombatElysianFinish",
-      "UniversalMirageCombatElysian_002"
-    ],
-    "custom_action": "Backward"
-  },
-  "UniversalMirageCombatElysian_002": {
-    "recognition": "TemplateMatch",
-    "template": "Combat/StopCombat.png",
-    "roi": [
-      0,
-      0,
-      136,
-      140
-    ],
-    "action": "Custom",
-    "pre_delay": 0,
-    "post_delay": 50,
-    "next": [
-      "UniversalMirageCombatElysianFinish",
-      "UniversalMirageCombatElysian_003"
-    ],
-    "custom_action": "Left"
-  },
-  "UniversalMirageCombatElysian_003": {
-    "recognition": "TemplateMatch",
-    "template": "Combat/StopCombat.png",
-    "roi": [
-      0,
-      0,
-      136,
-      140
-    ],
-    "action": "Custom",
-    "pre_delay": 0,
-    "post_delay": 50,
-    "next": [
-      "UniversalMirageCombatElysianFinish",
-      "UniversalMirageCombatElysian_004"
-    ],
-    "custom_action": "Right"
-  },
-  "UniversalMirageCombatElysian_004": {
-    "recognition": "TemplateMatch",
-    "template": "Combat/StopCombat.png",
-    "roi": [
-      0,
-      0,
-      136,
-      140
-    ],
-    "action": "Custom",
-    "pre_delay": 0,
-    "post_delay": 200,
-    "next": [
-      "UniversalMirageCombatElysianFinish",
-      "UniversalMirageCombatElysian_005"
-    ],
     "custom_action": "BasicATK"
   },
-  "UniversalMirageCombatElysian_005": {
-    "recognition": "TemplateMatch",
-    "template": "Combat/StopCombat.png",
-    "roi": [
-      0,
-      0,
-      136,
-      140
-    ],
+  "UniversalMirageCombatElysian_001": {
+    "recognition": "Custom",
+    "custom_recognizer": "Combating",
     "action": "Custom",
     "pre_delay": 0,
     "post_delay": 30,
     "next": [
       "UniversalMirageCombatElysianFinish",
-      "UniversalMirageCombatElysian_006"
+      "UniversalMirageCombatElysian_002"
     ],
     "custom_action": "BasicATK"
   },
-  "UniversalMirageCombatElysian_006": {
-    "recognition": "TemplateMatch",
-    "template": "Combat/StopCombat.png",
-    "roi": [
-      0,
-      0,
-      136,
-      140
+  "UniversalMirageCombatElysian_002": {
+    "recognition": "Custom",
+    "custom_recognizer": "Combating",
+    "action": "Custom",
+    "pre_delay": 0,
+    "post_delay": 100,
+    "next": [
+      "UniversalMirageCombatElysianFinish",
+      "UniversalMirageCombatElysian_003"
     ],
+    "custom_action": "ExtraSkill"
+  },
+  "UniversalMirageCombatElysian_003": {
+    "recognition": "Custom",
+    "custom_recognizer": "Combating",
     "action": "Custom",
     "pre_delay": 30,
     "post_delay": 0,
     "next": [
       "UniversalMirageCombatElysianFinish",
-      "UniversalMirageCombatElysian_007"
+      "UniversalMirageCombatElysian_004"
     ],
     "custom_action": "ExtraSkill"
   },
-  "UniversalMirageCombatElysian_007": {
-    "recognition": "TemplateMatch",
-    "template": "Combat/StopCombat.png",
-    "roi": [
-      0,
-      0,
-      136,
-      140
-    ],
+  "UniversalMirageCombatElysian_004": {
+    "recognition": "Custom",
+    "custom_recognizer": "Combating",
     "action": "Custom",
     "pre_delay": 0,
     "post_delay": 50,
     "next": [
-      "UniversalMirageCombatElysianFinish",
-      "UniversalMirageCombatElysian_008"
+      "UniversalMirageCombatFinish"
     ],
     "custom_action": "Forward"
-  },
-  "UniversalMirageCombatElysian_008": {
-    "recognition": "TemplateMatch",
-    "template": "Combat/StopCombat.png",
-    "roi": [
-      0,
-      0,
-      136,
-      140
-    ],
-    "action": "Custom",
-    "pre_delay": 0,
-    "post_delay": 50,
-    "next": [
-      "UniversalMirageCombatElysianFinish",
-      "UniversalMirageCombatElysian_009"
-    ],
-    "custom_action": "Backward"
-  },
-  "UniversalMirageCombatElysian_009": {
-    "recognition": "TemplateMatch",
-    "template": "Combat/StopCombat.png",
-    "roi": [
-      0,
-      0,
-      136,
-      140
-    ],
-    "action": "Custom",
-    "pre_delay": 0,
-    "post_delay": 50,
-    "next": [
-      "UniversalMirageCombatElysianFinish",
-      "UniversalMirageCombatElysian_010"
-    ],
-    "custom_action": "Left"
-  },
-  "UniversalMirageCombatElysian_010": {
-    "recognition": "TemplateMatch",
-    "template": "Combat/StopCombat.png",
-    "roi": [
-      0,
-      0,
-      136,
-      140
-    ],
-    "action": "Custom",
-    "pre_delay": 0,
-    "post_delay": 50,
-    "next": [
-      "UniversalMirageCombatElysianFinish"
-    ],
-    "custom_action": "Right"
   }
 }
