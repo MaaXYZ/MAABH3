@@ -20,6 +20,13 @@ add_executable(MAABH3_CLI
     CustomAction/CustomActionRegistry.h
     CustomAction/RandomPointGenerator.h
     CustomAction/RandomPointGenerator.cpp
+    CustomRecognizer/CustomRecognizer.cpp
+    CustomRecognizer/CustomRecognizer.h
+    CustomRecognizer/CustomRecognizerRegistrar.cpp
+    CustomRecognizer/CustomRecognizerRegistrar.h
+    CustomRecognizer/CustomRecognizerRegistry.h
+    CustomRecognizer/CombatRecognizer.h
+    CustomRecognizer/CombatRecognizer.cpp
 )
 target_link_libraries(MAABH3_CLI PRIVATE MaaFramework MaaToolKit)
 

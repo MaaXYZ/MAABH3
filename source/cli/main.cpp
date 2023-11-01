@@ -58,7 +58,7 @@ int main(int argc, char** argv)
     std::string adb_config = MaaToolKitGetDeviceAdbConfig(kIndex);
     std::string agent_dir = (cur_dir / "MaaAgentBinary").string();
 
-    MaaSetGlobalOption(MaaGlobalOption_Logging, (void*)debug_dir.c_str(), debug_dir.size());
+    MaaSetGlobalOption(MaaGlobalOption_LogDir, (void*)debug_dir.c_str(), debug_dir.size());
     MaaSetGlobalOption(MaaGlobalOption_DebugMode, (void*)&debug, sizeof(bool));
 
     auto maa_handle = MaaCreate(nullptr, nullptr);
@@ -93,8 +93,10 @@ int main(int argc, char** argv)
         return -1;
     }
 
-    CustomActionRegistrar registerar;
-    register_custom_action(maa_handle, registerar);
+    CustomActionRegistrar action_registerar;
+    CustomRecognizerRegistrar recognizer_registerar;
+    register_custom_action(maa_handle, action_registerar);
+    register_custom_recognizer(maa_handle, recognizer_registerar);
 
     MaaTaskId task_id = 0;
     for (const auto& task : tasks) {

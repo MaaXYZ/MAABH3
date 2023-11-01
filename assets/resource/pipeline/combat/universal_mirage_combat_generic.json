@@ -29,14 +29,8 @@
         ]
     },
     "UniversalMirageCombatGenericPreheat": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "BasicATK",
         "pre_delay": 500,
@@ -47,14 +41,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_001": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "Backward",
         "pre_delay": 0,
@@ -65,14 +53,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_002": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "Forward",
         "pre_delay": 0,
@@ -83,14 +65,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_003": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "Left",
         "pre_delay": 0,
@@ -101,14 +77,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_004": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "Right",
         "pre_delay": 0,
@@ -119,14 +89,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_005": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "Evade",
         "pre_delay": 0,
@@ -137,14 +101,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_006": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "BasicATK",
         "pre_delay": 0,
@@ -155,14 +113,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_007": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "BasicATK",
         "pre_delay": 0,
@@ -173,14 +125,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_008": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "BasicATK",
         "pre_delay": 0,
@@ -191,14 +137,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_009": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "BasicATK",
         "pre_delay": 0,
@@ -209,14 +149,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_010": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "BasicATK",
         "pre_delay": 0,
@@ -227,14 +161,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_011": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "BasicATKCharge",
         "pre_delay": 0,
@@ -245,14 +173,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_012": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "Evade",
         "pre_delay": 0,
@@ -263,14 +185,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_013": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "BasicATK",
         "pre_delay": 0,
@@ -281,14 +197,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_014": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "WeaponSkill",
         "pre_delay": 0,
@@ -299,14 +209,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_015": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "BasicATK",
         "pre_delay": 0,
@@ -317,14 +221,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_016": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "BasicATK",
         "pre_delay": 0,
@@ -335,14 +233,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_017": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "BasicATK",
         "pre_delay": 0,
@@ -353,14 +245,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_018": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "BasicATK",
         "pre_delay": 0,
@@ -371,14 +257,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_019": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "BasicATK",
         "pre_delay": 0,
@@ -389,14 +269,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_020": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "BasicATKCharge",
         "pre_delay": 0,
@@ -407,14 +281,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_021": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "BasicATK",
         "pre_delay": 0,
@@ -425,14 +293,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_022": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "Ultimate",
         "pre_delay": 0,
@@ -443,14 +305,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_023": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "BasicATK",
         "pre_delay": 0,
@@ -461,14 +317,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_024": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "ExtraSkill",
         "pre_delay": 0,
@@ -479,14 +329,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_025": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "BasicATK",
         "pre_delay": 0,
@@ -497,14 +341,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_026": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "Evade",
         "pre_delay": 0,
@@ -515,14 +353,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_027": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "BasicATK",
         "pre_delay": 0,
@@ -533,14 +365,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_028": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "ELFSkill",
         "pre_delay": 0,
@@ -551,14 +377,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_029": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "BasicATK",
         "pre_delay": 0,
@@ -569,14 +389,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_030": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "UltimateCharge",
         "pre_delay": 0,
@@ -587,14 +401,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_031": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "BasicATK",
         "pre_delay": 0,
@@ -605,14 +413,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_032": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "BasicATK",
         "pre_delay": 0,
@@ -623,14 +425,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_033": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "BasicATK",
         "pre_delay": 0,
@@ -641,14 +437,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_034": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "BasicATK",
         "pre_delay": 0,
@@ -659,14 +449,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_035": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "BasicATK",
         "pre_delay": 0,
@@ -677,14 +461,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_036": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "BasicATKCharge",
         "pre_delay": 0,
@@ -695,14 +473,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_037": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "Evade",
         "pre_delay": 0,
@@ -713,14 +485,8 @@
         ]
     },
     "UniversalMirageCombatGeneric_038": {
-        "recognition": "TemplateMatch",
-        "template": "Combat/StopCombat.png",
-        "roi": [
-            0,
-            0,
-            136,
-            140
-        ],
+        "recognition": "Custom",
+        "custom_recognizer": "Combating",
         "action": "Custom",
         "custom_action": "BasicATK",
         "pre_delay": 0,
