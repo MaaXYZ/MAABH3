@@ -1,0 +1,22 @@
+{
+  "mode": "UniversalMirage",
+  "role": "Elysian",
+  "version": "debug",
+  "combat": [
+    "BasicATK",
+    {
+      "BasicATK": [
+        0,
+        30
+      ]
+    },
+    "ExtraSkill",
+    {
+      "ExtraSkill": [
+        30,
+        0
+      ]
+    },
+    "Forward"
+  ]
+}

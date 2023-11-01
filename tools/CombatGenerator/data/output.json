@@ -1,0 +1,61 @@
+{
+  "UniversalMirageCombatElysianPreheat": {
+    "recognition": "Custom",
+    "custom_recognizer": "Combating",
+    "action": "Custom",
+    "pre_delay": 1000,
+    "post_delay": 1000,
+    "next": [
+      "UniversalMirageCombatElysianFinish",
+      "UniversalMirageCombatElysian_001"
+    ],
+    "custom_action": "BasicATK"
+  },
+  "UniversalMirageCombatElysian_001": {
+    "recognition": "Custom",
+    "custom_recognizer": "Combating",
+    "action": "Custom",
+    "pre_delay": 0,
+    "post_delay": 30,
+    "next": [
+      "UniversalMirageCombatElysianFinish",
+      "UniversalMirageCombatElysian_002"
+    ],
+    "custom_action": "BasicATK"
+  },
+  "UniversalMirageCombatElysian_002": {
+    "recognition": "Custom",
+    "custom_recognizer": "Combating",
+    "action": "Custom",
+    "pre_delay": 0,
+    "post_delay": 100,
+    "next": [
+      "UniversalMirageCombatElysianFinish",
+      "UniversalMirageCombatElysian_003"
+    ],
+    "custom_action": "ExtraSkill"
+  },
+  "UniversalMirageCombatElysian_003": {
+    "recognition": "Custom",
+    "custom_recognizer": "Combating",
+    "action": "Custom",
+    "pre_delay": 30,
+    "post_delay": 0,
+    "next": [
+      "UniversalMirageCombatElysianFinish",
+      "UniversalMirageCombatElysian_004"
+    ],
+    "custom_action": "ExtraSkill"
+  },
+  "UniversalMirageCombatElysian_004": {
+    "recognition": "Custom",
+    "custom_recognizer": "Combating",
+    "action": "Custom",
+    "pre_delay": 0,
+    "post_delay": 50,
+    "next": [
+      "UniversalMirageCombatFinish"
+    ],
+    "custom_action": "Forward"
+  }
+}
