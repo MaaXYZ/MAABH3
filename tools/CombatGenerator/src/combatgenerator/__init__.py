@@ -188,7 +188,7 @@ def reverse_to_combat(json_data: Dict) -> Combat:
     first_key = sorted_keys[0]
     match = re.search(r"(.+)Combat(.+)Preheat", first_key)
     if match is None:
-        raise ValueError(f"无法从键 {first_key} 中解析模式和角色")
+        console.print(f"无法解析 {first_key}，请检查输入的 JSON 文件是否正确")
     mode, role = match.groups()
 
     for key in sorted_keys:
@@ -236,15 +236,13 @@ def load_file(path: Optional[Path]) -> Dict:
 
     if isinstance(path, (str, Path)):
         path = Path(path)
-        content = read_file(path)
-        if content is not None:
-            return content
-        console.print(f"[bold red]无法读取 {path}[/bold red]")
+        return read_file(path)
     else:
-        console.print(f"传入路径不是一个有效的字符串或 Path 对象，尝试读取默认路径 {default_input_path}")
+        console.print(f"传入路径不是一个有效的字符串或 Path 对象")
+        sys.exit(1)
 
 
-def save_file(path: Union[Path, str], content, file_name: str) -> bool:
+def save_file(path: Union[Path, str], content) -> bool:
     """将内容保存到指定路径的文件中。
 
     参数:
@@ -273,7 +271,7 @@ def save_file(path: Union[Path, str], content, file_name: str) -> bool:
         path = Path(path)
         if write_file(path):
             return True
-        console.print(f"无法保存到 {path}，尝试保存到默认路径 {default_output_path}")
+        console.print(f"无法保存到 {path}，尝试保存到默认路径 {default_output_path}", style="red")
         return write_file(default_output_path)
     else:
         console.print(f"传入路径{path}不是一个有效的字符串，尝试保存到默认路径 {default_output_path}")
@@ -284,11 +282,19 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="反序列化生成的Combat文件")
     parser.add_argument("-r", "--reverse", action="store_true", help="反序列器")
     parser.add_argument(
-        "-i", "--input", type=str, help="输入字符串参数", default=default_input_path
+        "-i",
+        "--input",
+        type=str,
+        help="传入文件路径(绝对路径) e.g. F:\sth.json",
+        default=default_input_path,
     )
 
     parser.add_argument(
-        "-o", "--output", type=str, help="输出字符串参数", default=default_output_path
+        "-o",
+        "--output",
+        type=str,
+        help="保存文件路径(绝对路径) e.g. F:\sth.json",
+        default=default_output_path,
     )
     args = parser.parse_args()
     if args.reverse:
@@ -297,7 +303,6 @@ if __name__ == "__main__":
         save_file(
             args.output,
             output_model.model_dump(),
-            f"{output_model.mode}{output_model.role}",
         )
     else:
         file = load_file(args.input)
@@ -311,5 +316,4 @@ if __name__ == "__main__":
                 input_model.role,
                 json_template,
             ),
-            f"{input_model.mode}{input_model.role}",
         )
