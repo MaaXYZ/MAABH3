@@ -93,8 +93,10 @@ int main(int argc, char** argv)
         return -1;
     }
 
-    CustomActionRegistrar registerar;
-    register_custom_action(maa_handle, registerar);
+    CustomActionRegistrar action_registerar;
+    CustomRecognizerRegistrar recognizer_registerar;
+    register_custom_action(maa_handle, action_registerar);
+    register_custom_recognizer(maa_handle, recognizer_registerar);
 
     MaaTaskId task_id = 0;
     for (const auto& task : tasks) {

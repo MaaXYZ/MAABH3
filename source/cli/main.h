@@ -9,6 +9,7 @@
 #include "MaaToolKit/MaaToolKitAPI.h"
 #include "meojson/json.hpp"
 
+#include "CustomRecognizer/CustomRecognizerRegistry.h"
 #include "CustomAction/CustomActionRegistry.h"
 
 struct Task
