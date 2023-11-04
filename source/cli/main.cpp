@@ -59,7 +59,7 @@ int main(int argc, char** argv)
     std::string agent_dir = (cur_dir / "MaaAgentBinary").string();
 
     MaaSetGlobalOption(MaaGlobalOption_LogDir, (void*)debug_dir.c_str(), debug_dir.size());
-    MaaSetGlobalOption(MaaGlobalOption_DebugMode, (void*)&debug, sizeof(bool));
+    MaaSetGlobalOption(MaaGlobalOption_Recording, (void*)&debug, sizeof(bool));
 
     auto maa_handle = MaaCreate(nullptr, nullptr);
     auto resource_handle = MaaResourceCreate(nullptr, nullptr);
