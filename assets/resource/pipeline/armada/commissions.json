@@ -176,7 +176,6 @@
             141
         ],
         "action": "Click",
-        "post_wait_freezes": 200,
         "next": [
             "CommossionLimit",
             "SubmitCommission",
