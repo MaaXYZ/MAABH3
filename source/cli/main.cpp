@@ -249,6 +249,8 @@ json::value universal_mirage_param()
 {
     json::value param;
     auto& diff = param["diff_task"];
+    auto& costing_time_swirl_passes_doc = diff["UniversalMirageCostingTimeSwirlPasses"]["doc"];
+    auto& costing_time_swirl_passes_enabled = diff["UniversalMirageCostingTimeSwirlPasses"]["enabled"];
     auto& glacial_fences_doc = diff["Sub_EnterGlacialFencesPage"]["doc"];
     auto& glacial_fences_enabled = diff["Sub_EnterGlacialFencesPage"]["enabled"];
     auto& illuminated_land_doc = diff["Sub_EnterIlluminatedLandPage"]["doc"];
@@ -260,6 +262,8 @@ json::value universal_mirage_param()
     auto& stage_f2_doc = diff["UniversalMirageStageF2"]["doc"];
     auto& stage_f2_enabled = diff["UniversalMirageStageF2"]["enabled"];
 
+    costing_time_swirl_passes_doc = "花费时序通行证；默认false";
+    costing_time_swirl_passes_enabled = false;
     glacial_fences_doc = "幽寒之槛";
     glacial_fences_enabled = true;
     illuminated_land_doc = "煌然之地";

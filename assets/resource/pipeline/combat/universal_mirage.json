@@ -250,10 +250,12 @@
         "post_delay": 1000,
         "next": [
             "UniversalMirageCostingTimeSwirlPasses",
+            "UniversalMirageQuit",
             "UniversalMirageCombatFinish"
         ]
     },
     "UniversalMirageCostingTimeSwirlPasses": {
+        "enabled": false,
         "recognition": "TemplateMatch",
         "template": "Combat/UniversalMirage/UniversalMirageCostingTimeSwirlPasses.png",
         "roi": [
