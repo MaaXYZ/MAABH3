@@ -264,7 +264,37 @@
         ],
         "action": "Click",
         "next": [
+            "UniversalMirageNoneTimeSwirlPasses",
             "UniversalMirageCostingTimeSwirlPasses",
+            "Sub_CloseDialogBox",
+            "Stop"
+        ]
+    },
+    "UniversalMirageNoneTimeSwirlPasses": {
+        "recognition": "OCR",
+        "text": "您的时序通行证数量不足",
+        "roi": [
+            234,
+            286,
+            459,
+            142
+        ],
+        "next": [
+            "UniversalMirageQuit"
+        ]
+    },
+    "UniversalMirageQuit": {
+        "recognition": "OCR",
+        "text": "退出",
+        "roi": [
+            360,
+            551,
+            165,
+            137
+        ],
+        "action": "Click",
+        "next": [
+            "UniversalMirageQuit",
             "Sub_CloseDialogBox",
             "Stop"
         ]
