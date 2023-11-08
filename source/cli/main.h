@@ -41,7 +41,7 @@ json::value universal_mirage_param();
 
 json::value end_to_do_param();
 
-bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string& adb_address, int& client_type,
+bool proc_argv(int argc, char** argv, std::string& adb, std::string& adb_address, int& client_type,
                TaskList& tasks, AfterTask& after_task, MaaAdbControllerType& ctrl_type);
 
 bool app_package_and_activity(int client_type, std::string& package, std::string& activity);

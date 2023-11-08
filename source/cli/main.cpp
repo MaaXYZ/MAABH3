@@ -7,7 +7,6 @@ int main(int argc, char** argv)
 	print_help();
     print_version();
 
-    bool debug = false;
 	std::string adb;
 	std::string adb_address;
     int client_type = 1;
@@ -22,7 +21,7 @@ int main(int argc, char** argv)
         mpause();
         return -1;
     }
-    bool proced = proc_argv(argc, argv, debug, adb, adb_address, client_type, tasks, after_task, control_type);
+    bool proced = proc_argv(argc, argv, adb, adb_address, client_type, tasks, after_task, control_type);
     if (!proced) {
         std::cout << "Failed to parse argv" << std::endl;
         mpause();
@@ -53,13 +52,9 @@ int main(int argc, char** argv)
     }
 
     const auto cur_dir = std::filesystem::path(argv[0]).parent_path();
-    std::string debug_dir = (cur_dir / "debug").string();
     std::string resource_dir = (cur_dir / "resource").string();
     std::string adb_config = MaaToolKitGetDeviceAdbConfig(kIndex);
     std::string agent_dir = (cur_dir / "MaaAgentBinary").string();
-
-    MaaSetGlobalOption(MaaGlobalOption_LogDir, (void*)debug_dir.c_str(), debug_dir.size());
-    MaaSetGlobalOption(MaaGlobalOption_Recording, (void*)&debug, sizeof(bool));
 
     auto maa_handle = MaaCreate(nullptr, nullptr);
     auto resource_handle = MaaResourceCreate(nullptr, nullptr);
@@ -290,7 +285,7 @@ json::value end_to_do_param() {
     return param;
 }
 
-bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string& adb_address, int& client_type,
+bool proc_argv(int argc, char** argv, std::string& adb, std::string& adb_address, int& client_type,
                TaskList& tasks, AfterTask& after_task, MaaAdbControllerType& ctrl_type)
 {
     int touch = 3;
@@ -302,7 +297,6 @@ bool proc_argv(int argc, char** argv, bool& debug, std::string& adb, std::string
     if (auto config_opt = json::open("config.json")) {
         auto& confing = *config_opt;
 
-        debug = confing.get("debug", false);
         adb = confing["adb"].as_string();
         adb_address = confing["adb_address"].as_string();
         client_type = confing["client_type"].as_integer();
@@ -442,7 +436,6 @@ void save_config(const std::string& adb, const std::string& adb_address, const i
     MaaAdbControllerType ctrl_type)
 {
     json::value config;
-    config["debug"] = false;
     config["adb"] = adb;
     config["adb_Doc"] = "adb.exe 所在路径，相对绝对均可";
     config["adb_address"] = adb_address;
