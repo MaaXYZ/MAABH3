@@ -2,26 +2,26 @@
     "$schema": "../../pipeline.schema.json",
     "Sub_EnterAttackPage": {
         "is_sub": true,
-        "recognition": "TemplateMatch",
-        "template": "Navigation/Home/EnterAttackPage.png",
+        "recognition": "OCR",
+        "text": "出击",
         "roi": [
-            1025,
-            77,
-            167,
-            163
+            1082,
+            282,
+            192,
+            150
         ],
         "action": "Click",
         "post_delay": 1500
     },
     "Sub_EnterSupplyPage": {
         "is_sub": true,
-        "recognition": "TemplateMatch",
-        "template": "Navigation/Home/EnterSupplyPage.png",
+        "recognition": "OCR",
+        "text": "补给",
         "roi": [
-            1012,
-            389,
-            184,
-            140
+            1085,
+            510,
+            147,
+            126
         ],
         "action": "Click",
         "post_delay": 1500
@@ -33,10 +33,10 @@
             "舰团"
         ],
         "roi": [
-            879,
-            661,
-            54,
-            29
+            868,
+            611,
+            141,
+            109
         ],
         "action": "Click",
         "post_delay": 1500
@@ -48,9 +48,9 @@
             "家园"
         ],
         "roi": [
-            1005,
+            1071,
             610,
-            155,
+            141,
             110
         ],
         "action": "Click",
@@ -63,16 +63,16 @@
             "任务"
         ],
         "roi": [
-            92,
-            115,
-            54,
-            34
+            99,
+            89,
+            39,
+            23
         ],
         "target": [
-            30,
-            108,
-            40,
-            32
+            36,
+            83,
+            45,
+            36
         ],
         "action": "Click",
         "post_delay": 1500

@@ -209,10 +209,10 @@
         "template": "StartUp/HomeFlag.png",
         "threshold": 0.8,
         "roi": [
-            1129,
-            584,
-            141,
-            136
+            1175,
+            599,
+            105,
+            121
         ]
     },
     "Sub_CollectDailyLoginReward": {

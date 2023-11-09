@@ -5,11 +5,12 @@
         "recognition": "TemplateMatch",
         "template": "Navigation/AttackEvent/EnterMaterialExpeditionPage.png",
         "roi": [
-            903,
-            356,
-            366,
-            307
+            452,
+            574,
+            196,
+            130
         ],
-        "action": "Click"
+        "action": "Click",
+        "post_delay": 1500
     }
 }

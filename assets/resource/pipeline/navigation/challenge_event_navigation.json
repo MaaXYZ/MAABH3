@@ -5,10 +5,10 @@
         "recognition": "TemplateMatch",
         "template": "Navigation/ChallengeEvent/EnterUniversalMiragePage.png",
         "roi": [
-            646,
-            72,
-            264,
-            144
+            511,
+            541,
+            195,
+            132
         ],
         "action": "Click"
     }
