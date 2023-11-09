@@ -3,7 +3,6 @@
     "Sub_BackButton": {
         "is_sub": true,
         "recognition": "TemplateMatch",
-        "green_mask": true,
         "template": [
             "Utils/BackButton.png",
             "Utils/BackButton_1.png"
@@ -41,7 +40,6 @@
     "Sub_HomeButton": {
         "is_sub": true,
         "recognition": "TemplateMatch",
-        "green_mask": true,
         "template": [
             "Utils/HomeButton.png",
             "Utils/HomeButton_1.png"
