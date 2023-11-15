@@ -7,15 +7,15 @@ void CustomRecognizerRegistrar::add_recognizer(
                                   MaaTransparentArg recognizer_arg, MaaRectHandle out_box,
                                   MaaStringBufferHandle detail_buff))
 {
-    recognizers_.emplace_back(name, recognizer_analyze);
+    _recognizers.emplace_back(name, recognizer_analyze);
 }
 
 void CustomRecognizerRegistrar::register_recognizers(MaaInstanceHandle maa_handle)
 {
-    for (const auto& recognizer : recognizers_) {
+    for (const auto& recognizer : _recognizers) {
         std::shared_ptr<MaaCustomRecognizerAPI> custom_recognizer =
             std::make_shared<MaaCustomRecognizerAPI>(recognizer.get_custom_recognizer());
-        custom_recognizers_.push_back(custom_recognizer);
+        _custom_recognizers.push_back(custom_recognizer);
         MaaRegisterCustomRecognizer(maa_handle, recognizer.get_name().c_str(), custom_recognizer.get(), nullptr);
     }
 }

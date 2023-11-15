@@ -27,6 +27,6 @@ public:
     void register_actions(MaaInstanceHandle maa_handle);
 
 private:
-    std::vector<CustomAction> actions_;
-    std::vector<std::shared_ptr<MaaCustomActionAPI>> custom_actions_;
+    std::vector<CustomAction> _actions;
+    std::vector<std::shared_ptr<MaaCustomActionAPI>> _custom_actions;
 };

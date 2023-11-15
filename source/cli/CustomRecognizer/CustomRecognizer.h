@@ -19,6 +19,6 @@ public:
     MaaCustomRecognizerAPI get_custom_recognizer() const;
 
 private:
-    std::string name_;
-    MaaCustomRecognizerAPI custom_recognizer_;
+    std::string _name;
+    MaaCustomRecognizerAPI _custom_recognizer;
 };

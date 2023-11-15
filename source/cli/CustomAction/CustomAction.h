@@ -23,6 +23,6 @@ public:
     MaaCustomActionAPI get_custom_action() const;
 
 private:
-    std::string name_;
-    MaaCustomActionAPI custom_action_;
+    std::string _name;
+    MaaCustomActionAPI _custom_action;
 };

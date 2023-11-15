@@ -24,6 +24,6 @@ public:
     void register_recognizers(MaaInstanceHandle maa_handle);
 
 private:
-    std::vector<CustomRecognizer> recognizers_;
-    std::vector<std::shared_ptr<MaaCustomRecognizerAPI>> custom_recognizers_;
+    std::vector<CustomRecognizer> _recognizers;
+    std::vector<std::shared_ptr<MaaCustomRecognizerAPI>> _custom_recognizers;
 };

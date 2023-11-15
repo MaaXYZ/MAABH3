@@ -6,17 +6,17 @@ CustomRecognizer::CustomRecognizer(
                                   MaaStringView task_name, MaaStringView custom_recognition_param,
                                   MaaTransparentArg recognizer_arg, MaaRectHandle out_box,
                                   MaaStringBufferHandle detail_buff))
-    : name_(recognizer_name)
+    : _name(recognizer_name)
 {
-    custom_recognizer_.analyze = recognizer_analyze;
+    _custom_recognizer.analyze = recognizer_analyze;
 }
 
 std::string CustomRecognizer::get_name() const
 {
-    return name_;
+    return _name;
 }
 
 MaaCustomRecognizerAPI CustomRecognizer::get_custom_recognizer() const
 {
-    return custom_recognizer_;
+    return _custom_recognizer;
 }
