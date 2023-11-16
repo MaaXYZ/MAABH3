@@ -44,10 +44,10 @@
 | Backward       | 0         | 50         |
 | Left           | 0         | 50         |
 | Right          | 0         | 50         |
-| Left Forward   | 0         | 50         |
-| Left Backward  | 0         | 50         |
-| Right Forward  | 0         | 50         |
-| Right Backward | 0         | 50         |
+| LeftForward    | 0         | 50         |
+| LeftBackward   | 0         | 50         |
+| RightForward   | 0         | 50         |
+| RightBackward  | 0         | 50         |
 | BasicATK       | 0         | 200        |
 | BasicATKCharge | 0         | 100        |
 | Evade          | 0         | 150        |
