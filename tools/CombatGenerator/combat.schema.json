@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "$ref": "#/definitions/path_url"
+    },
+    "mode": {
+      "description": "模式",
+      "type": "string",
+      "default": ""
+    },
+    "role": {
+      "description": "角色",
+      "type": "string",
+      "default": ""
+    },
+    "version": {
+      "description": "版本",
+      "type": "string",
+      "default": "v0.1.0"
+    },
+    "combat": {
+      "description": "战斗",
+      "$ref": "#/definitions/combat_list"
+    }
+  },
+  "required": ["mode", "role", "version", "combat"],
+  "additionalProperties": false,
+  "definitions": {
+    "path_url": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^\\.\\./.*$"
+        },
+        {
+          "type": "string",
+          "pattern": "^/.*$"
+        },
+        {
+          "type": "string",
+          "format": "uri"
+        }
+      ]
+    },
+    "combat": {
+      "type": "string",
+      "enum": [
+        "Forward",
+        "Backward",
+        "Left",
+        "Right",
+        "LeftForward",
+        "LeftBackward",
+        "RightForward",
+        "RightBackward",
+        "BasicATK",
+        "BasicATKCharge",
+        "Evade",
+        "Ultimate",
+        "UltimateCharge",
+        "WeaponSkill",
+        "ELFSkill",
+        "ExtraSkill",
+        "QTE1",
+        "QTE2"
+      ],
+      "default": "BasicATK"
+    },
+    "combat_delay": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "combat_obj": {
+      "type": "object",
+      "properties": {
+        "Forward": {
+          "$ref": "#/definitions/combat_delay",
+          "default": [0, 50]
+        },
+        "Backward": {
+          "$ref": "#/definitions/combat_delay",
+          "default": [0, 50]
+        },
+        "Left": {
+          "$ref": "#/definitions/combat_delay",
+          "default": [0, 50]
+        },
+        "Right": {
+          "$ref": "#/definitions/combat_delay",
+          "default": [0, 50]
+        },
+        "LeftForward": {
+          "$ref": "#/definitions/combat_delay",
+          "default": [0, 50]
+        },
+        "LeftBackward": {
+          "$ref": "#/definitions/combat_delay",
+          "default": [0, 50]
+        },
+        "RightForward": {
+          "$ref": "#/definitions/combat_delay",
+          "default": [0, 50]
+        },
+        "RightBackward": {
+          "$ref": "#/definitions/combat_delay",
+          "default": [0, 50]
+        },
+        "BasicATK": {
+          "$ref": "#/definitions/combat_delay",
+          "default": [0, 200]
+        },
+        "BasicATKCharge": {
+          "$ref": "#/definitions/combat_delay",
+          "default": [0, 100]
+        },
+        "Evade": {
+          "$ref": "#/definitions/combat_delay",
+          "default": [0, 150]
+        },
+        "Ultimate": {
+          "$ref": "#/definitions/combat_delay",
+          "default": [0, 150]
+        },
+        "UltimateCharge": {
+          "$ref": "#/definitions/combat_delay",
+          "default": [0, 100]
+        },
+        "WeaponSkill": {
+          "$ref": "#/definitions/combat_delay",
+          "default": [0, 150]
+        },
+        "ELFSkill": {
+          "$ref": "#/definitions/combat_delay",
+          "default": [0, 150]
+        },
+        "ExtraSkill": {
+          "$ref": "#/definitions/combat_delay",
+          "default": [0, 100]
+        },
+        "QTE1": {
+          "$ref": "#/definitions/combat_delay",
+          "default": [0, 200]
+        },
+        "QTE2": {
+          "$ref": "#/definitions/combat_delay",
+          "default": [0, 200]
+        }
+      }
+    },
+    "combat_list": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/combat"
+          },
+          {
+            "$ref": "#/definitions/combat_obj"
+          }
+        ]
+      }
+    }
+  }
+}
