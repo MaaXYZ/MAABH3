@@ -31,6 +31,8 @@ add_executable(MAABH3_CLI
     Config/Config.cpp
     Config/ControlConfig.h
     Config/ControlConfig.cpp
+    Config/DeviceConfig.h
+    Config/DeviceConfig.cpp
 )
 target_link_libraries(MAABH3_CLI PRIVATE MaaFramework MaaToolKit)
 
