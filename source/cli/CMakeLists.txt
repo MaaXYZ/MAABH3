@@ -27,6 +27,10 @@ add_executable(MAABH3_CLI
     CustomRecognizer/CustomRecognizerRegistry.h
     CustomRecognizer/CombatRecognizer.h
     CustomRecognizer/CombatRecognizer.cpp
+    Config/Config.h
+    Config/Config.cpp
+    Config/ControlConfig.h
+    Config/ControlConfig.cpp
 )
 target_link_libraries(MAABH3_CLI PRIVATE MaaFramework MaaToolKit)
 
