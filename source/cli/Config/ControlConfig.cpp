@@ -14,46 +14,11 @@ bool ControlConfig::parse(const json::value& config_opt)
     return true;
 }
 
-bool ControlConfig::load()
-{
-    auto config_opt = json::open(_target_path);
-    if (!config_opt) {
-        std::cerr << "Failed to open control config file: " << _target_path << std::endl;
-        return false;
-    }
-
-    auto& config = *config_opt;
-    if (!config.is_object()) {
-        std::cerr << "Json is not an object: " << config << std::endl;
-        return false;
-    }
-
-    if (!parse(config)) {
-        std::cerr << "Failed to parse control: " << config << std::endl;
-        return false;
-    }
-
-    return true;
-}
-
 json::value ControlConfig::to_json()
 {
     json::value root;
     root = { { "server", _config_server }, { "screencap", _config_screencap }, { "touch", _config_touch } };
     return root;
-}
-
-bool ControlConfig::save(const json::value& root)
-{
-    std::filesystem::create_directories(config_dir);
-    std::ofstream ofs(_target_path, std::ios::out);
-    if (!ofs.is_open()) {
-        std::cerr << "Failed to open control config file: " << _target_path << std::endl;
-        return false;
-    }
-    ofs << root;
-    ofs.close();
-    return true;
 }
 
 void ControlConfig::set_config_server(int server)

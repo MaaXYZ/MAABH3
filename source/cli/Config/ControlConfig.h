@@ -18,9 +18,7 @@ public:
 
 public:
     bool parse(const json::value& config_json) override;
-    bool load() override;
     json::value to_json() override;
-    bool save(const json::value& root) override;
 
 public:
     void set_config_server(int server);

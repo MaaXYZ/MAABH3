@@ -1,5 +1,7 @@
 #pragma once
 
+#include <filesystem>
+#include <iostream>
 #include <string>
 
 #include "../meojson/json.hpp"
@@ -11,9 +13,9 @@ public:
 
 public:
     virtual bool parse(const json::value& config_json) = 0;
-    virtual bool load() = 0;
+    virtual bool load();
     virtual json::value to_json() = 0;
-    virtual bool save(const json::value& root) = 0;
+    virtual bool save(const json::value& root);
     bool dump();
 
 public:
@@ -24,4 +26,5 @@ private:
 
 protected:
     std::string _target = "default";
+    std::filesystem::path _target_path = ".";
 };

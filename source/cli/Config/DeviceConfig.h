@@ -18,9 +18,7 @@ public:
 
 public:
     bool parse(const json::value& config_opt) override;
-    bool load() override;
     json::value to_json() override;
-    bool save(const json::value& root) override;
 
 public:
     void set_config_device_name(std::string name);
