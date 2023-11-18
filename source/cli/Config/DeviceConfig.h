@@ -37,7 +37,4 @@ private:
     std::string _config_device_name;
     std::string _config_device_SN;
     std::string _config_adb;
-
-private:
-    std::filesystem::path _target_path;
 };

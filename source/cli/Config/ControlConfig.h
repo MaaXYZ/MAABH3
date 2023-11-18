@@ -37,7 +37,4 @@ private:
     int _config_server = 1;
     int _config_screencap = 3;
     int _config_touch = 3;
-
-private:
-    std::filesystem::path _target_path;
 };
