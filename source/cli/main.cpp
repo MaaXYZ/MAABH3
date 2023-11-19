@@ -191,7 +191,6 @@ bool select_server(int& server)
               << std::endl
               << "Please enter the server number: " << std::endl;
 
-    std::cin.sync();
     std::cin >> server;
 
     if (server < 1 || server > 3) {
@@ -233,7 +232,6 @@ bool select_device_index(const MaaSize& device_size, MaaSize& index)
     print_device_list(device_size);
     std::cout << std::endl << "Please enter the device number:" << std::endl;
 
-     std::cin.sync();
     std::cin >> index;
 
     if (index > device_size) {
@@ -278,7 +276,7 @@ bool select_tasks(std::vector<Task>& tasklist)
     std::vector<int> task_ids;
     std::string line;
 
-    std::cin.sync();
+    std::cin.ignore();
     std::getline(std::cin, line);
 
     std::istringstream iss(line);
