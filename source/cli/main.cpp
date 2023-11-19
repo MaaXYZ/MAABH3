@@ -47,7 +47,7 @@ int main([[maybe_unused]] int argc, char** argv)
 
     config.init();
 
-	std::vector<Task> tasklist = std::move(tasks.get_config_tasklist());
+	std::vector<Task> tasklist = tasks.get_config_tasklist();
 	
     bool identified = app_package_and_activity(control.get_config_server(), package, activity);
     if (!identified) {
