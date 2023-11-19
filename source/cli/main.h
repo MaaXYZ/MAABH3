@@ -55,8 +55,6 @@ MaaSize get_device_index(const MaaSize& device_size);
 void save_config(const std::string& adb, const std::string& adb_address, const int& client_type, const TaskList& tasks,
                  MaaAdbControllerType ctrl_type);
 
-std::string read_adb_config(const std::filesystem::path& cur_dir);
-
 std::string TaskStatus(MaaStatus status);
 
 void mpause();
