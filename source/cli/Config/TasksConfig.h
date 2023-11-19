@@ -20,7 +20,7 @@ public:
 
 public:
     inline static const std::filesystem::path local_dir = ".";
-    inline static const std::filesystem::path config_dir = local_dir / "config" / "tasks"; 
+    inline static const std::filesystem::path config_dir = local_dir / "config" / "tasks";
 
 public:
     bool parse(const json::value& config_opt) override;
