@@ -12,6 +12,7 @@ public:
     virtual ~Config() = default;
 
 public:
+    virtual bool exists();
     virtual bool parse(const json::value& config_json) = 0;
     virtual bool load();
     virtual json::value to_json() = 0;

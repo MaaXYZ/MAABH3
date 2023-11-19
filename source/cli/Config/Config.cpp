@@ -1,5 +1,10 @@
 #include "Config.h"
 
+bool Config::exists()
+{
+    return std::filesystem::exists(_target_path);
+}
+
 bool Config::load()
 {
     auto config_opt = json::open(_target_path);
