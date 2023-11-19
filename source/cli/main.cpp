@@ -1,65 +1,88 @@
 ﻿#include "main.h"
 
-int main(int argc, char** argv)
+int main([[maybe_unused]] int argc, char** argv)
 {
     MaaToolKitInit();
 
 	print_help();
     print_version();
 
-	std::string adb;
-	std::string adb_address;
-    int client_type = 1;
+    ConfigMgr& config = ConfigMgr::get_instance();
+    ControlConfig& control = config.get_control_config();
+    DeviceConfig& device = config.get_device_config();
+    TasksConfig& tasks = config.get_tasks_config();
+
     std::string package = "com.miHoYo.enterprise.NGHSoD";
     std::string activity = "com.miHoYo.enterprise.NGHSoD/com.miHoYo.overridenativeactivity.OverrideNativeActivity";
-	TaskList tasks;
-    AfterTask after_task;
-	MaaAdbControllerType control_type = 0;
+    MaaAdbControllerType ctrl_type = 0;
+    std::string adb_config;
 
     auto device_size = scanning_devices();
     if (device_size == 0) {
         mpause();
-        return -1;
+        return 1;
     }
-    bool proced = proc_argv(argc, argv, adb, adb_address, client_type, tasks, after_task, control_type);
-    if (!proced) {
-        std::cout << "Failed to parse argv" << std::endl;
-        mpause();
-        return -1;
+
+    if (!control.exists()) {
+        if (!default_control_init(control)) {
+            mpause();
+            return 1;
+        }
+        control.dump();
     }
-    bool identified = app_package_and_activity(client_type, package, activity);
+    if (!device.exists()) {
+        if (!default_device_init(device_size, device, adb_config)) {
+            mpause();
+            return 1;
+        }
+        device.dump();
+    }
+    if (!tasks.exists()) {
+        if (!default_tasks_init(tasks)) {
+            mpause();
+            return 1;
+        }
+        tasks.dump();
+    }
+
+    config.init();
+
+	std::vector<Task> tasklist = std::move(tasks.get_config_tasklist());
+	
+    bool identified = app_package_and_activity(control.get_config_server(), package, activity);
     if (!identified) {
         std::cout << "Failed to identify the client type" << std::endl;
         mpause();
-        return -1;
-    }
-    if (tasks.empty()) {
-        std::cout << "Task empty" << std::endl;
-        mpause();
-        return -1;
+        return 1;
     }
 
     bool matched = false;
     MaaSize kIndex = 0;
-    if (!adb.empty() && !adb_address.empty()) {
-        matched = match_adb_address(adb_address, kIndex, device_size);
-    }
+    matched = match_adb_address(device.get_config_device_SN(), kIndex, device_size);
     if (!matched) {
-        kIndex = get_device_index(device_size);
-        adb = MaaToolKitGetDeviceAdbPath(kIndex);
-        adb_address = MaaToolKitGetDeviceAdbSerial(kIndex);
-        save_config(adb, adb_address, client_type, tasks, control_type);
+        std::cerr << "Failed to match device" << std::endl;
+        return 1;
+    }
+    adb_config = MaaToolKitGetDeviceAdbConfig(kIndex);
+
+    if (tasklist.empty()) {
+        std::cout << "Task empty" << std::endl;
+        mpause();
+        return 1;
     }
 
     const auto cur_dir = std::filesystem::path(argv[0]).parent_path();
     std::string resource_dir = (cur_dir / "resource").string();
-    std::string adb_config = MaaToolKitGetDeviceAdbConfig(kIndex);
     std::string agent_dir = (cur_dir / "MaaAgentBinary").string();
+
+    int key = 1;
+    ctrl_type = control.get_config_touch() << 0 | key << 8 | control.get_config_screencap() << 16;
 
     auto maa_handle = MaaCreate(nullptr, nullptr);
     auto resource_handle = MaaResourceCreate(nullptr, nullptr);
-    auto controller_handle = MaaAdbControllerCreateV2(adb.c_str(), adb_address.c_str(), control_type,
-                                                      adb_config.c_str(), agent_dir.c_str(), nullptr, nullptr);
+    auto controller_handle =
+        MaaAdbControllerCreateV2(device.get_config_adb().c_str(), device.get_config_device_SN().c_str(), ctrl_type,
+                                 adb_config.c_str(), agent_dir.c_str(), nullptr, nullptr);
 
     MaaBindResource(maa_handle, resource_handle);
     MaaBindController(maa_handle, controller_handle);
@@ -94,8 +117,8 @@ int main(int argc, char** argv)
     register_custom_recognizer(maa_handle, recognizer_registerar);
 
     MaaTaskId task_id = 0;
-    for (const auto& task : tasks) {
-        if (!task.enabled)
+    for (const auto& task : tasklist) {
+        if (!task.status)
         {
             continue;
         }
@@ -105,15 +128,6 @@ int main(int argc, char** argv)
         auto end_status = MaaWaitTask(maa_handle, task_id);
         std::cout << task.type << " End" << std::endl 
                   << task.type << " Result: " << TaskStatus(end_status) << std::endl;
-    }
-
-    if (after_task.enabled && !after_task.type.empty()) {
-        std::cout << "EndTask Start" << std::endl;
-        task_id = MaaPostTask(maa_handle, after_task.type.c_str(), after_task.param.to_string().c_str());
-        std::cout << "EndTask Running..." << std::endl;
-        auto end_status = MaaWaitTask(maa_handle, task_id);
-        std::cout << "EndTask End" << std::endl 
-                  << "EndTask Result: " << TaskStatus(end_status) << std::endl;
     }
 
     std::cout << std::endl << "All Tasks Over" << std::endl;
@@ -152,10 +166,169 @@ MaaSize scanning_devices()
         std::cout << "No Devices Found" << std::endl;
         return 0;
     }
-    std::cout << "Scanning Finished"
-              << std::endl
-              << std::endl;
+    std::cout << "Scanning Finished" << std::endl;
     return device_size;
+}
+
+bool default_control_init(ControlConfig& control)
+{
+    int server = 0;
+    if (!select_server(server)) {
+        return false;
+    }
+    control.set_config_server(server);
+    return true;
+}
+
+bool select_server(int& server)
+{
+    std::cout << std::endl
+              << "Please select server number: " << std::endl
+              << std::endl
+              << "  1. Official(CN)\n"
+                 "  2. Bilibili\n"
+                 "  3. Vivo\n"
+              << std::endl
+              << "Please enter the server number: " << std::endl;
+
+    std::cin.sync();
+    std::cin >> server;
+
+    if (server < 1 || server > 3) {
+        std::cout << "Unknown server number: " << server << std::endl;
+        return false;
+    }
+
+    return true;
+}
+
+bool default_device_init(const MaaSize& device_size, DeviceConfig& device, std::string& adb_config)
+{
+    std::string name, SN, adb;
+    if (!select_device(device_size, name, SN, adb, adb_config)) {
+        return false;
+    }
+    device.set_config_device_name(name);
+    device.set_config_device_SN(SN);
+    device.set_config_adb(adb);
+    return true;
+}
+
+bool select_device(const MaaSize& device_size, std::string& name, std::string& SN, std::string& adb, std::string& adb_config)
+{
+    MaaSize device_index;
+    if (!select_device_index(device_size, device_index)) {
+        return false;
+    }
+    name = MaaToolKitGetDeviceName(device_index);
+    SN = MaaToolKitGetDeviceAdbSerial(device_index);
+    adb = MaaToolKitGetDeviceAdbPath(device_index);
+    adb_config = MaaToolKitGetDeviceAdbConfig(device_index);
+    return true;
+}
+
+bool select_device_index(const MaaSize& device_size, MaaSize& index)
+{
+    std::cout << std::endl << "Please select a device to connect:" << std::endl << std::endl;
+    print_device_list(device_size);
+    std::cout << std::endl << "Please enter the device number:" << std::endl;
+
+     std::cin.sync();
+    std::cin >> index;
+
+    if (index > device_size) {
+        std::cout << std::endl << "Unknown Device Number: " << index << std::endl;
+        return false;
+    }
+
+    return true;
+}
+
+void print_device_list(const MaaSize& device_size)
+{
+    for (MaaSize i = 0; i < device_size; i++) {
+        std::cout << "  " << i << ". " << MaaToolKitGetDeviceName(i) << " (" << MaaToolKitGetDeviceAdbSerial(i)
+                  << ")\n";
+    }
+}
+
+bool default_tasks_init(TasksConfig& tasks)
+{
+    std::vector<Task> tasklist;
+    if (!select_tasks(tasklist)) {
+        return false;
+    }
+    tasks.set_config_tasklist(tasklist);
+    return true;
+}
+
+bool select_tasks(std::vector<Task>& tasklist)
+{
+    std::cout << std::endl
+              << "Please select tasks: " << std::endl
+              << std::endl
+              << "  1. Dorm\n"
+                 "  2. MaterialEvent\n"
+                 "  3. Armada\n"
+                 "  4. Shop\n"
+                 "  5. Awards\n"
+                 "  6. UniversalMirage\n"
+              << std::endl
+              << "Please enter the task numbers to be executed: " << std::endl;
+    std::vector<int> task_ids;
+    std::string line;
+
+    std::cin.sync();
+    std::getline(std::cin, line);
+
+    std::istringstream iss(line);
+    int task_id;
+    while (iss >> task_id) {
+        task_ids.emplace_back(task_id);
+    }
+
+    int index = 1;
+    for (auto id : task_ids) {
+        Task task_obj;
+        task_obj.name = "MyTask" + std::to_string(index++);
+
+        switch (id) {
+        case 1:
+            task_obj.type = "Dorm";
+            task_obj.param = dorm_param();
+            break;
+        case 2:
+            task_obj.type = "MaterialEvent";
+            break;
+        case 3:
+            task_obj.type = "Armada";
+            break;
+        case 4:
+            task_obj.type = "Shop";
+            break;
+        case 5:
+            task_obj.type = "Awards";
+            break;
+        case 6:
+            task_obj.type = "UniversalMirage";
+            task_obj.param = universal_mirage_param();
+            break;
+
+        default:
+            std::cout << "Unknown task: " << id << std::endl;
+            return false;
+        }
+        tasklist.emplace_back(std::move(task_obj));
+    }
+    Task close_game_task;
+    close_game_task.name = "CloseGame";
+    close_game_task.status = false;
+    close_game_task.param = close_game_param();
+    close_game_task.type = "CloseBH3";
+
+    tasklist.emplace_back(std::move(close_game_task));
+
+    return true;
 }
 
 bool app_package_and_activity(int client_type, std::string& package, std::string& activity)
@@ -193,38 +366,6 @@ bool match_adb_address(const std::string& adb_address, MaaSize& index, const Maa
         }
     }
     return false;
-}
-
-void print_device_list(const MaaSize& device_size) {
-    for (MaaSize i = 0; i < device_size; i++) {
-        std::cout << "  " << i << ". " << MaaToolKitGetDeviceName(i) << " (" << MaaToolKitGetDeviceAdbSerial(i) << ")\n";
-    }
-}
-
-MaaSize get_device_index(const MaaSize& device_size)
-{
-    MaaSize index;
-    while (true) {
-        std::cout << std::endl
-                  << "Please Select a Device to Connect:"
-                  << std::endl
-                  << std::endl;
-        print_device_list(device_size);
-        std::cout << std::endl
-                  << "Please Enter the Device Number:" 
-                  << std::endl;
-        std::cin >> index;
-        if (index > device_size) {
-            std::cout << std::endl
-                      << "Unknown Device Number: " << index 
-                      << std::endl
-                      << std::endl;
-            continue;
-        }
-        std::cout << std::endl;
-        break;
-    }
-    return index;
 }
 
 json::value dorm_param()
@@ -273,7 +414,7 @@ json::value universal_mirage_param()
     return param;
 }
 
-json::value end_to_do_param() {
+json::value close_game_param() {
     json::value param;
     auto& diff = param["diff_task"];
     auto& close_bh3 = diff["CloseBH3"]["enabled"];
@@ -283,199 +424,6 @@ json::value end_to_do_param() {
     close_bh3_doc = "关闭崩坏3；默认false";
 
     return param;
-}
-
-bool proc_argv(int argc, char** argv, std::string& adb, std::string& adb_address, int& client_type,
-               TaskList& tasks, AfterTask& after_task, MaaAdbControllerType& ctrl_type)
-{
-    int touch = 3;
-    int key = 1;
-    int screencap = 3;
-
-    tasks.clear();
-
-    if (auto config_opt = json::open("config.json")) {
-        auto& confing = *config_opt;
-
-        adb = confing["adb"].as_string();
-        adb_address = confing["adb_address"].as_string();
-        client_type = confing["client_type"].as_integer();
-
-        int index = 1;
-        for (auto& task : confing["tasks"].as_array()) {
-            Task task_obj;
-            if (task.is_string()) {
-                task_obj.type = task.as_string();
-                task_obj.name = "MyTask" + std::to_string(index++);
-            }
-            else {
-                task_obj.enabled = task.get("enabled", true);
-                if (!task_obj.enabled) {
-                    continue;
-                }
-                task_obj.type = task["type"].as_string();
-                task_obj.name = task["name"].as_string();
-                task_obj.param = task["param"];
-            }
-            tasks.emplace_back(task_obj);
-        }
-
-        after_task.enabled = confing["tasks_completion_after"].get("enabled", false);
-        after_task.type = confing["tasks_completion_after"]["type"].as_string();
-        after_task.param = confing["tasks_completion_after"]["param"];
-
-        touch = confing.get("touch", touch);
-        key = confing.get("key", key);
-        screencap = confing.get("screencap", screencap);
-
-        ctrl_type = touch << 0 | key << 8 | screencap << 16;
-    }
-    else {
-        std::cout << std::endl
-            << "Please select client type: "
-            << std::endl
-            << std::endl
-            << "  1. Official(CN)\n"
-               "  2. Bilibili\n"
-               "  3. Vivo\n" 
-            << std::endl
-            << "Please enter the client type number: "
-            << std::endl;
-        std::string client_type_tmp;
-        std::getline(std::cin, client_type_tmp);
-        client_type = std::stoi(client_type_tmp);
-        if (client_type < 1 || client_type > 3) {
-            std::cout << "Unknown client type: " << client_type << std::endl;
-            return false;
-        }
-        std::cout << std::endl
-            << std::endl
-            << "Please select tasks: "
-            << std::endl
-            << std::endl
-            << "  1. Dorm\n"
-               "  2. MaterialEvent\n"
-               "  3. Armada\n"
-               "  4. Shop\n"
-               "  5. Awards\n"
-               "  6. UniversalMirage\n"
-            << std::endl
-            << "Please enter the task numbers to be executed: "
-            << std::endl;
-        std::vector<int> task_ids;
-        std::string line;
-        std::getline(std::cin, line);
-        std::istringstream iss(line);
-        int task_id;
-        while (iss >> task_id) {
-            task_ids.emplace_back(task_id);
-        }
-
-        int index = 1;
-        for (auto id : task_ids) {
-            Task task_obj;
-            task_obj.name = "MyTask" + std::to_string(index++);
-
-            switch (id) {
-            case 1:
-                task_obj.type = "Dorm";
-                task_obj.param = dorm_param();
-                break;
-            case 2:
-                task_obj.type = "MaterialEvent";
-                break;
-            case 3:
-                task_obj.type = "Armada";
-                break;
-            case 4:
-                task_obj.type = "Shop";
-                break;
-            case 5:
-                task_obj.type = "Awards";
-                break;
-            case 6:
-                task_obj.type = "UniversalMirage";
-                task_obj.param = universal_mirage_param();
-                break;
-
-            default:
-                std::cout << "Unknown task: " << id << std::endl;
-                return false;
-            }
-            tasks.emplace_back(std::move(task_obj));
-        }
-
-        ctrl_type = touch << 0 | key << 8 | screencap << 16;
-    }
-
-    if (argc >= 3) {
-        adb = argv[1];
-        adb_address = argv[2];
-
-        std::vector<std::string> task_names;
-        for (int i = 3; i < argc; ++i) {
-            task_names.emplace_back(argv[i]);
-        }
-        auto all_tasks = std::move(tasks);
-        tasks.clear();
-        for (auto& task_name : task_names) {
-            for (auto& task : all_tasks) {
-                if (task.name == task_name) {
-                    task.enabled = true;
-                    tasks.emplace_back(task);
-                    break;
-                }
-            }
-        }
-    }
-
-    return true;
-}
-
-void save_config(const std::string& adb, const std::string& adb_address, const int& client_type, const TaskList& tasks,
-    MaaAdbControllerType ctrl_type)
-{
-    json::value config;
-    config["adb"] = adb;
-    config["adb_Doc"] = "adb.exe 所在路径，相对绝对均可";
-    config["adb_address"] = adb_address;
-    config["adb_address_Doc"] = "adb 连接地址，例如 127.0.0.1:7555";
-    config["client_type"] = client_type;
-    config["client_type_Doc"] = "客户端类型：1: 官服, 2: Bilibili服, 3: Vivo服";
-
-    json::value tasks_array;
-    for (auto& task : tasks) {
-        json::value task_obj;
-        task_obj["enabled"] = task.enabled;
-        task_obj["type"] = task.type;
-        task_obj["name"] = task.name;
-        task_obj["param"] = task.param;
-        tasks_array.emplace(std::move(task_obj));
-    }
-
-    config["tasks"] = std::move(tasks_array);
-    config["tasks_Doc"] = "要执行的任务 Homeland, MaterialEvent, Armada, Shop, Awards, UniversalMirage";
-
-    json::value after_task;
-    after_task["enabled"] = false;
-    after_task["type"] = "EndToDo";
-    after_task["param"] = end_to_do_param();
-
-    config["tasks_completion_after"] = std::move(after_task);
-    config["tasks_completion_after_Doc"] = "任务完成后执行的操作";
-
-    config["touch"] = (ctrl_type & MaaAdbControllerType_Touch_Mask) >> 0;
-    config["touch_Doc"] = "点击方式：1: Adb, 2: MiniTouch, 3: MaaTouch";
-    // config["key"] = key;
-    // config["key_Doc"] = "按键方式：1: Adb, 2: MaaTouch";
-    config["screencap"] = (ctrl_type & MaaAdbControllerType_Screencap_Mask) >> 16;
-    config["screencap_Doc"] = "截图方式：1: 自动测速, 2: RawByNetcat, 3: RawWithGzip, 4: Encode, 5: EncodeToFile, 6: "
-        "MinicapDirect, 7: MinicapStream";
-    config["version"] = "v0.1.0";
-
-    std::ofstream ofs("config.json", std::ios::out);
-    ofs << config;
-    ofs.close();
 }
 
 std::string TaskStatus(MaaStatus status) {
