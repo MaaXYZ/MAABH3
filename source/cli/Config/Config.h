@@ -9,6 +9,7 @@
 class Config
 {
 public:
+    Config();
     virtual ~Config() = default;
 
 public:

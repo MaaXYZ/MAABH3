@@ -1,5 +1,12 @@
 #include "Config.h"
 
+Config::Config()
+{
+    if (!_target.ends_with(".json")) {
+        _target += ".json";
+    }
+}
+
 bool Config::exists()
 {
     return std::filesystem::exists(_target_path);
