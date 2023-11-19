@@ -443,8 +443,7 @@ std::string TaskStatus(MaaStatus status) {
         task_status = "Failed";
         break;
     default:
-        task_status = "Unkown";
-        break;
+        task_status = "Unknown";
     }
     return task_status;
 }
