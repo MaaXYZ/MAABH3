@@ -1,14 +1,39 @@
 # CombatGenerator
 
+## 环境
+
+需要 `python` 环境
+
+## 依赖
+
+### ⚠️在.tools/CombatGenerator目录下执行所有命令
+
+(如果已经安装过pipx和pdm可以跳过直接使用pdm install)
+
+```shell
+python -m pip install pipx
+pipx ensurepath
+```
+
+重启终端
+
+```shell
+pipx install pdm
+pdm install
+```
+
 ## 使用
 
-    cd path/to/CombatGenerator
-    pip install pipx
-    pipx ensurepath
-    pipx install pdm
-    pdm install
+输入文件需预先保存到 `.tools/CombatGenerator/data/` 路径下,
+产物如果没有使用可选参数将会使用默认值保存在 `.tools/CombatGenerator/data/output.json` 路径下
 
-重启终端后，直接运行`CombatGenerator`下`__init__.py`即可。
+打开cmd, 执行以下命令
+
+```shell
+.venv\Scripts\Activate.ps1
+cd src/combatgenerator
+pdm run python __init__.py
+```
 
 ## 可选参数
 
@@ -28,7 +53,7 @@
 
 例如我想使用反序列器，传入路径为F:/1.json, 输出路径为F:/2.json
 
-    python __init__.py -r -i F:/1.json -o F:/2.json
+    pdm run python __init__.py -r -i F:/1.json -o F:/2.json
 
 ## input说明
 
