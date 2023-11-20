@@ -11,10 +11,8 @@
 
 #include "Config/ConfigMgr.h"
 
-#include "CustomRecognizer/CustomRecognizerRegistry.h"
 #include "CustomAction/CustomActionRegistry.h"
-
-using TaskList = std::vector<Task>;
+#include "CustomRecognizer/CustomRecognizerRegistry.h"
 
 void print_help();
 
@@ -28,7 +26,8 @@ bool select_server(int& server);
 
 bool default_device_init(const MaaSize& device_size, DeviceConfig& device, std::string& adb_config);
 
-bool select_device(const MaaSize& device_size, std::string& name, std::string& SN, std::string& adb, std::string& adb_config);
+bool select_device(const MaaSize& device_size, std::string& name, std::string& SN, std::string& adb,
+                   std::string& adb_config);
 
 bool select_device_index(const MaaSize& device_size, MaaSize& index);
 
@@ -46,7 +45,7 @@ json::value close_game_param();
 
 bool app_package_and_activity(int client_type, std::string& package, std::string& activity);
 
-bool match_adb_address(const std::string& adb_address, MaaSize& index , const MaaSize& device_size);
+bool match_adb_address(const std::string& adb_address, MaaSize& index, const MaaSize& device_size);
 
 std::string TaskStatus(MaaStatus status);
 
