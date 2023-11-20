@@ -4,7 +4,7 @@ int main([[maybe_unused]] int argc, char** argv)
 {
     MaaToolKitInit();
 
-	print_help();
+    print_help();
     print_version();
 
     ConfigMgr& config = ConfigMgr::get_instance();
@@ -47,8 +47,8 @@ int main([[maybe_unused]] int argc, char** argv)
 
     config.init();
 
-	std::vector<Task> tasklist = tasks.get_config_tasklist();
-	
+    std::vector<Task> tasklist = tasks.get_config_tasklist();
+
     bool identified = app_package_and_activity(control.get_config_server(), package, activity);
     if (!identified) {
         std::cout << "Failed to identify the client type" << std::endl;
@@ -87,8 +87,10 @@ int main([[maybe_unused]] int argc, char** argv)
     MaaBindResource(maa_handle, resource_handle);
     MaaBindController(maa_handle, controller_handle);
     int height = 720;
-    MaaControllerSetOption(controller_handle, MaaCtrlOption_ScreenshotTargetShortSide, reinterpret_cast<void*>(&height), sizeof(int));
-    MaaControllerSetOption(controller_handle, MaaCtrlOption_DefaultAppPackageEntry, (void*)activity.c_str(), activity.size());
+    MaaControllerSetOption(controller_handle, MaaCtrlOption_ScreenshotTargetShortSide, reinterpret_cast<void*>(&height),
+                           sizeof(int));
+    MaaControllerSetOption(controller_handle, MaaCtrlOption_DefaultAppPackageEntry, (void*)activity.c_str(),
+                           activity.size());
     MaaControllerSetOption(controller_handle, MaaCtrlOption_DefaultAppPackage, (void*)package.c_str(), package.size());
 
     auto resource_id = MaaResourcePostPath(resource_handle, resource_dir.c_str());
@@ -106,7 +108,9 @@ int main([[maybe_unused]] int argc, char** argv)
 
     if (!MaaInited(maa_handle)) {
         destroy();
-        std::cout << "Failed to init Maa instance, a connection error or resource file corruption occurred, please refer to the log." << std::endl;
+        std::cout << "Failed to init Maa instance, a connection error or resource file corruption occurred, please "
+                     "refer to the log."
+                  << std::endl;
         mpause();
         return -1;
     }
@@ -118,15 +122,14 @@ int main([[maybe_unused]] int argc, char** argv)
 
     MaaTaskId task_id = 0;
     for (const auto& task : tasklist) {
-        if (!task.status)
-        {
+        if (!task.status) {
             continue;
         }
         std::cout << task.type << " Start" << std::endl;
         task_id = MaaPostTask(maa_handle, task.type.c_str(), task.param.to_string().c_str());
         std::cout << task.type << " Running..." << std::endl;
         auto end_status = MaaWaitTask(maa_handle, task_id);
-        std::cout << task.type << " End" << std::endl 
+        std::cout << task.type << " End" << std::endl
                   << task.type << " Result: " << TaskStatus(end_status) << std::endl;
     }
 
@@ -134,13 +137,13 @@ int main([[maybe_unused]] int argc, char** argv)
 
     destroy();
 
-	return 0;
+    return 0;
 }
 
 void print_help()
 {
-	std::cout <<
-		R"(MAA BH3 CLI, 
+    std::cout <<
+        R"(MAA BH3 CLI, 
 Github: https://github.com/MaaAssistantArknights/MAABH3
 
 Usage: MAABH3_CLI.exe [adb_path] [adb_address] [task_name]...
@@ -154,7 +157,7 @@ Welcome to come and create a GUI for us! :)
 void print_version()
 {
     std::cout << "MaaFramework Version: " << MaaVersion() << std::endl
-              << "MAABH3 Version: " << MAABH3_VERSION << std::endl 
+              << "MAABH3 Version: " << MAABH3_VERSION << std::endl
               << std::endl;
 }
 
@@ -213,7 +216,8 @@ bool default_device_init(const MaaSize& device_size, DeviceConfig& device, std::
     return true;
 }
 
-bool select_device(const MaaSize& device_size, std::string& name, std::string& SN, std::string& adb, std::string& adb_config)
+bool select_device(const MaaSize& device_size, std::string& name, std::string& SN, std::string& adb,
+                   std::string& adb_config)
 {
     MaaSize device_index;
     if (!select_device_index(device_size, device_index)) {
@@ -331,8 +335,7 @@ bool select_tasks(std::vector<Task>& tasklist)
 
 bool app_package_and_activity(int client_type, std::string& package, std::string& activity)
 {
-    switch (client_type)
-    {
+    switch (client_type) {
     case 1:
         // "1. Official(CN)\n"
         package = "com.miHoYo.enterprise.NGHSoD";
@@ -412,7 +415,8 @@ json::value universal_mirage_param()
     return param;
 }
 
-json::value close_game_param() {
+json::value close_game_param()
+{
     json::value param;
     auto& diff = param["diff_task"];
     auto& close_bh3 = diff["CloseBH3"]["enabled"];
@@ -424,7 +428,8 @@ json::value close_game_param() {
     return param;
 }
 
-std::string TaskStatus(MaaStatus status) {
+std::string TaskStatus(MaaStatus status)
+{
     std::string task_status;
     switch (status) {
     case MaaStatus_Invalid:
