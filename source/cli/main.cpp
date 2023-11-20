@@ -136,12 +136,12 @@ int main([[maybe_unused]] int argc, char** argv)
 void print_help()
 {
     std::cout <<
-        R"(MAA BH3 CLI, 
+        R"(MAABH3 CLI
 Github: https://github.com/MaaAssistantArknights/MAABH3
 
-Usage: MAABH3_CLI.exe [adb_path] [adb_address] [task_name]...
+Usage: MAABH3_CLI.exe
 
-Modify config.json to configure tasks.
+Modify ./config/tasks/default.json to configure tasks.
 
 Welcome to come and create a GUI for us! :)
 )" << std::endl;
