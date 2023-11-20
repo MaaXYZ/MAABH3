@@ -22,6 +22,7 @@ add_executable(MAABH3_CLI
     Config/DeviceConfig.cpp
     Config/TasksConfig.cpp
     Config/ConfigMgr.cpp
+    Cache/AdbConfigCache.cpp
 )
 target_link_libraries(MAABH3_CLI PRIVATE MaaFramework MaaToolKit)
 

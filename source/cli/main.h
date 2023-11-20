@@ -9,6 +9,7 @@
 #include "MaaToolKit/MaaToolKitAPI.h"
 #include "meojson/json.hpp"
 
+#include "Cache/AdbConfigCache.h"
 #include "Config/ConfigMgr.h"
 
 #include "CustomAction/CustomActionRegistry.h"
@@ -24,10 +25,9 @@ bool default_control_init(ControlConfig& control);
 
 bool select_server(int& server);
 
-bool default_device_init(const MaaSize& device_size, DeviceConfig& device, std::string& adb_config);
+bool default_device_init(DeviceConfig& device);
 
-bool select_device(const MaaSize& device_size, std::string& name, std::string& SN, std::string& adb,
-                   std::string& adb_config);
+bool select_device(std::string& name, std::string& SN, std::string& adb);
 
 bool select_device_index(const MaaSize& device_size, MaaSize& index);
 

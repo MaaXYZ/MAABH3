@@ -17,25 +17,19 @@ int main([[maybe_unused]] int argc, char** argv)
     MaaAdbControllerType ctrl_type = 0;
     std::string adb_config;
 
-    auto device_size = scanning_devices();
-    if (device_size == 0) {
-        mpause();
-        return 1;
+    if (!device.exists()) {
+        if (!default_device_init(device)) {
+            mpause();
+            return 1;
+        }
+        device.dump();
     }
-
     if (!control.exists()) {
         if (!default_control_init(control)) {
             mpause();
             return 1;
         }
         control.dump();
-    }
-    if (!device.exists()) {
-        if (!default_device_init(device_size, device, adb_config)) {
-            mpause();
-            return 1;
-        }
-        device.dump();
     }
     if (!tasks.exists()) {
         if (!default_tasks_init(tasks)) {
@@ -47,7 +41,13 @@ int main([[maybe_unused]] int argc, char** argv)
 
     config.init();
 
-    std::vector<Task> tasklist = tasks.get_config_tasklist();
+    AdbConfigCache adb_config_cache;
+    if (!adb_config_cache.has(device.get_config_device_name(), device.get_config_device_SN())) {
+        adb_config = adb_config_cache.get_default_adb_config();
+    }
+    else {
+        adb_config = adb_config_cache.get_adb_config(device.get_config_device_name(), device.get_config_device_SN());
+    }
 
     bool identified = app_package_and_activity(control.get_config_server(), package, activity);
     if (!identified) {
@@ -56,14 +56,7 @@ int main([[maybe_unused]] int argc, char** argv)
         return 1;
     }
 
-    bool matched = false;
-    MaaSize kIndex = 0;
-    matched = match_adb_address(device.get_config_device_SN(), kIndex, device_size);
-    if (!matched) {
-        std::cerr << "Failed to match device" << std::endl;
-        return 1;
-    }
-    adb_config = MaaToolKitGetDeviceAdbConfig(kIndex);
+    std::vector<Task> tasklist = tasks.get_config_tasklist();
 
     if (tasklist.empty()) {
         std::cout << "Task empty" << std::endl;
@@ -204,10 +197,10 @@ bool select_server(int& server)
     return true;
 }
 
-bool default_device_init(const MaaSize& device_size, DeviceConfig& device, std::string& adb_config)
+bool default_device_init(DeviceConfig& device)
 {
     std::string name, SN, adb;
-    if (!select_device(device_size, name, SN, adb, adb_config)) {
+    if (!select_device(name, SN, adb)) {
         return false;
     }
     device.set_config_device_name(name);
@@ -216,9 +209,13 @@ bool default_device_init(const MaaSize& device_size, DeviceConfig& device, std::
     return true;
 }
 
-bool select_device(const MaaSize& device_size, std::string& name, std::string& SN, std::string& adb,
-                   std::string& adb_config)
+bool select_device(std::string& name, std::string& SN, std::string& adb)
 {
+    auto device_size = scanning_devices();
+    if (device_size == 0) {
+        mpause();
+        return 1;
+    }
     MaaSize device_index;
     if (!select_device_index(device_size, device_index)) {
         return false;
@@ -226,7 +223,10 @@ bool select_device(const MaaSize& device_size, std::string& name, std::string& S
     name = MaaToolKitGetDeviceName(device_index);
     SN = MaaToolKitGetDeviceAdbSerial(device_index);
     adb = MaaToolKitGetDeviceAdbPath(device_index);
-    adb_config = MaaToolKitGetDeviceAdbConfig(device_index);
+    AdbConfigCache adb_config_cache;
+    if (!adb_config_cache.has(name, SN)) {
+        adb_config_cache.set_adb_config(name, SN, MaaToolKitGetDeviceAdbConfig(device_index));
+    }
     return true;
 }
 
