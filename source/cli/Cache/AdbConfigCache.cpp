@@ -42,9 +42,9 @@ std::string AdbConfigCache::get_default_adb_config()
 
     std::stringstream buffer;
     buffer << ifs.rdbuf();
-    std::string adb_config = buffer.str();
+    ifs.close();
 
-    return adb_config;
+    return buffer.str();
 }
 
 std::string AdbConfigCache::generate_cache_key(const std::string& device_name, const std::string& device_SN)
@@ -91,6 +91,7 @@ bool AdbConfigCache::load(const std::string& cache_key, std::string& adb_config)
     std::stringstream buffer;
     buffer << ifs.rdbuf();
     adb_config = buffer.str();
+    ifs.close();
 
     // Update cache map
     cache_map[cache_key] = adb_config;
