@@ -3,8 +3,7 @@
 bool AdbConfigCache::has(const std::string& device_name, const std::string& device_SN)
 {
     std::string cache_key = generate_cache_key(device_name, device_SN);
-    std::string filename = cache_key + ".json";
-    std::filesystem::path file_path = adb_config_cache_dir / filename;
+    std::filesystem::path file_path = adb_config_cache_dir / cache_key;
     if (!std::filesystem::exists(file_path)) {
         return false;
     }
@@ -58,8 +57,7 @@ std::string AdbConfigCache::generate_cache_key(const std::string& device_name, c
 bool AdbConfigCache::save(const std::string& cache_key, const std::string& adb_config)
 {
     std::filesystem::create_directories(adb_config_cache_dir);
-    std::string filename = cache_key + ".json";
-    std::filesystem::path file_path = adb_config_cache_dir / filename;
+    std::filesystem::path file_path = adb_config_cache_dir / cache_key;
     std::ofstream ofs(file_path, std::ios::out);
     if (!ofs.is_open()) {
         std::cerr << "Failed to open cache file: " << file_path << std::endl;
@@ -80,8 +78,7 @@ bool AdbConfigCache::load(const std::string& cache_key, std::string& adb_config)
         return true;
     }
 
-    std::string filename = cache_key + ".json";
-    std::filesystem::path file_path = adb_config_cache_dir / filename;
+    std::filesystem::path file_path = adb_config_cache_dir / cache_key;
     std::ifstream ifs(file_path, std::ios::in);
     if (!ifs.is_open()) {
         std::cerr << "Failed to open cache file: " << file_path << std::endl;
