@@ -4,7 +4,7 @@
         "next": [
             "MissionsPageFlag",
             "Sub_AiPromptFlag",
-            "Sub_CancelDownloadAudioFiles",
+            "Sub_CancelDownload",
             "Sub_EnterMissionsPage",
             "Sub_StartUp"
         ]

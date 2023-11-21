@@ -84,11 +84,12 @@
         ],
         "action": "Click"
     },
-    "Sub_CancelDownloadAudioFiles": {
+
+    "Sub_CancelDownload": {
         "is_sub": true,
         "recognition": "OCR",
         "text": [
-            "即将下载相关音频资源"
+            "即将下载"
         ],
         "roi": [
             298,

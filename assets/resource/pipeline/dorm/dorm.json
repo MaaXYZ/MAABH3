@@ -5,7 +5,7 @@
             "Sub_ConfirmDormUpdate",
             "DormPageFlag",
             "Sub_AiPromptFlag",
-            "Sub_CancelDownloadAudioFiles",
+            "Sub_CancelDownload",
             "Sub_EnterDormPage",
             "Sub_StartUp"
         ]
