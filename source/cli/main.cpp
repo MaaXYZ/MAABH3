@@ -212,14 +212,23 @@ bool default_device_init(DeviceConfig& device)
 bool select_device(std::string& name, std::string& SN, std::string& adb)
 {
     auto device_size = scanning_devices();
-    if (device_size == 0) {
-        mpause();
+    if (!device_size) {
+        if (!manually_enter_device_info(name, SN, adb)) {
+            return false;
+        }
+        return true;
+    }
+    int number = 0;
+    if (!select_device_number(device_size, number)) {
         return false;
     }
-    MaaSize device_index;
-    if (!select_device_index(device_size, device_index)) {
-        return false;
+    if (!number) {
+        if (!manually_enter_device_info(name, SN, adb)) {
+            return false;
+        }
+        return true;
     }
+    MaaSize device_index = number - 1;
     name = MaaToolKitGetDeviceName(device_index);
     SN = MaaToolKitGetDeviceAdbSerial(device_index);
     adb = MaaToolKitGetDeviceAdbPath(device_index);
@@ -230,16 +239,18 @@ bool select_device(std::string& name, std::string& SN, std::string& adb)
     return true;
 }
 
-bool select_device_index(const MaaSize& device_size, MaaSize& index)
+bool select_device_number(const MaaSize& device_size, int& number)
 {
-    std::cout << std::endl << "Please select a device to connect:" << std::endl << std::endl;
+    std::cout << std::endl << "Please select a device:" << std::endl << std::endl;
+    std::cout << "  0. Manual" << std::endl;
     print_device_list(device_size);
-    std::cout << std::endl << "Please enter the device number:" << std::endl;
+    std::cout << std::endl << "Please enter option number:" << std::endl;
 
-    std::cin >> index;
+    std::cin >> number;
+    std::cin.ignore();
 
-    if (index > device_size) {
-        std::cout << std::endl << "Unknown Device Number: " << index << std::endl;
+    if (number > device_size) {
+        std::cout << std::endl << "Unknown option number: " << number << std::endl;
         return false;
     }
 
@@ -249,9 +260,53 @@ bool select_device_index(const MaaSize& device_size, MaaSize& index)
 void print_device_list(const MaaSize& device_size)
 {
     for (MaaSize i = 0; i < device_size; i++) {
-        std::cout << "  " << i << ". " << MaaToolKitGetDeviceName(i) << " (" << MaaToolKitGetDeviceAdbSerial(i)
+        std::cout << "  " << i + 1 << ". " << MaaToolKitGetDeviceName(i) << " (" << MaaToolKitGetDeviceAdbSerial(i)
                   << ")\n";
     }
+}
+
+bool manually_enter_device_info(std::string& name, std::string& SN, std::string& adb)
+{
+    if (!manually_enter_device_name(name)) {
+        return false;
+    }
+    if (!manually_enter_device_SN(SN)) {
+        return false;
+    }
+    if (!manually_enter_device_adb(adb)) {
+        return false;
+    }
+    return true;
+}
+
+bool manually_enter_device_name(std::string& name)
+{
+    std::cout << std::endl << "Please enter device name: " << std::endl;
+    std::getline(std::cin, name);
+    if (name.empty()) {
+        return false;
+    }
+    return true;
+}
+
+bool manually_enter_device_SN(std::string& SN)
+{
+    std::cout << std::endl << "Please enter device serial number: " << std::endl;
+    std::getline(std::cin, SN);
+    if (SN.empty()) {
+        return false;
+    }
+    return true;
+}
+
+bool manually_enter_device_adb(std::string& adb)
+{
+    std::cout << std::endl << "Please enter adb path: " << std::endl;
+    std::getline(std::cin, adb);
+    if (adb.empty()) {
+        return false;
+    }
+    return true;
 }
 
 bool default_tasks_init(TasksConfig& tasks)
