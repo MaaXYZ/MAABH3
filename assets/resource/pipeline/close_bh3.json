@@ -1,0 +1,6 @@
+{
+    "$schema": "../pipeline.schema.json",
+    "CloseBH3": {
+        "action": "StopApp"
+    }
+}
