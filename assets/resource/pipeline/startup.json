@@ -123,7 +123,7 @@
             "Sub_AiPromptFlag",
             "HomeFlag"
         ],
-        "timeout": 30000,
+        "timeout": 10000,
         "timeout_next": [
             "RestartBH3"
         ]
