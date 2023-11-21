@@ -214,7 +214,7 @@ bool select_device(std::string& name, std::string& SN, std::string& adb)
     auto device_size = scanning_devices();
     if (device_size == 0) {
         mpause();
-        return 1;
+        return false;
     }
     MaaSize device_index;
     if (!select_device_index(device_size, device_index)) {
