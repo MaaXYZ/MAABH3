@@ -51,7 +51,7 @@ int main([[maybe_unused]] int argc, char** argv)
 
     bool identified = app_package_and_activity(control.get_config_server(), package, activity);
     if (!identified) {
-        std::cout << "Failed to identify the client type" << std::endl;
+        std::cerr << "Failed to identify the server type" << std::endl;
         mpause();
         return 1;
     }
@@ -59,7 +59,7 @@ int main([[maybe_unused]] int argc, char** argv)
     std::vector<Task> tasklist = tasks.get_config_tasklist();
 
     if (tasklist.empty()) {
-        std::cout << "Task empty" << std::endl;
+        std::cerr << "Task empty" << std::endl;
         mpause();
         return 1;
     }
