@@ -12,9 +12,12 @@ bool TasksConfig::parse(const json::value& config_opt)
         Task task;
         task.name = el.get("name", "");
         task.status = el.get("status", true);
+        if (!task.status) {
+            continue;
+        }
         task.param = el.get("param", json::object());
         task.type = el.get("type", "");
-        _config_tasklist.emplace_back(task);
+        _config_tasklist.emplace_back(std::move(task));
     }
 
     return true;
