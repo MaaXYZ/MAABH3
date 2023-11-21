@@ -21,6 +21,7 @@
             140
         ],
         "next": [
+            "Sub_CloseDialogBox",
             "UniversalMirageStageFlag",
             "Sub_EnterGlacialFencesPage",
             "Sub_EnterIlluminatedLandPage",
@@ -43,6 +44,7 @@
             "target": "UniversalMirageStageFlag"
         },
         "next": [
+            "Sub_CloseDialogBox",
             "UniversalMirageStageF2",
             "UniversalMirageStageF5",
             "Stop"
