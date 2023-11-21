@@ -59,7 +59,7 @@
 4. 在MAA `设置`-`连接设置`-`结束后脚本` 中填入 `finish.bat`
 5. 开始使用吧！
 
-## Task instructions
+## Task
 
 | 任务 | 说明 |
 | ---- | ---- |
@@ -77,6 +77,16 @@
    - 如果任务列表中同时包含 MaterialEvent 和 Dorm，先完成 MaterialEvent是一个更好的选择。这样做有助于确保有足够的体力来完成所有任务
    - 使用材料减负需要先三星通关一次对应关卡，有多个关卡的模块（如曜日材料）则会自动进行已完成挑战的最高一级关卡
    - 万象虚境需要先选好上场女武神
+
+## Config
+
+`./config/control` 目录下放置 control 相关配置
+
+`./config/device` 目录下放置 device 相关配置
+
+`./config/tasks` 目录下放置 tasks 相关配置
+
+详细见 [Config](./docs/config.md) 文档
 
 ## How to build
 
