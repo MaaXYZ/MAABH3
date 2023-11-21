@@ -59,9 +59,8 @@ int main([[maybe_unused]] int argc, char** argv)
     std::vector<Task> tasklist = tasks.get_config_tasklist();
 
     if (tasklist.empty()) {
-        std::cerr << "Task empty" << std::endl;
-        mpause();
-        return 1;
+        std::cout << "Tasklist Empty" << std::endl;
+        return 0;
     }
 
     const auto cur_dir = std::filesystem::path(argv[0]).parent_path();
