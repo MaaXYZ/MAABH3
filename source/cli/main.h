@@ -29,7 +29,7 @@ bool default_device_init(DeviceConfig& device);
 
 bool select_device(std::string& name, std::string& SN, std::string& adb);
 
-bool select_device_number(const MaaSize& device_size, int& number);
+bool select_device_number(const MaaSize& device_size, MaaSize& number);
 
 void print_device_list(const MaaSize& device_size);
 

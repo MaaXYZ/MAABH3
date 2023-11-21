@@ -218,7 +218,7 @@ bool select_device(std::string& name, std::string& SN, std::string& adb)
         }
         return true;
     }
-    int number = 0;
+    MaaSize number = 0;
     if (!select_device_number(device_size, number)) {
         return false;
     }
@@ -239,7 +239,7 @@ bool select_device(std::string& name, std::string& SN, std::string& adb)
     return true;
 }
 
-bool select_device_number(const MaaSize& device_size, int& number)
+bool select_device_number(const MaaSize& device_size, MaaSize& number)
 {
     std::cout << std::endl << "Please select a device:" << std::endl << std::endl;
     std::cout << "  0. Manual" << std::endl;
