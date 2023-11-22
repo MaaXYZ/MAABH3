@@ -99,7 +99,7 @@
     },
     "MaterialEventNotEnoughAPToGetStoredAP": {
         "recognition": "TemplateMatch",
-        "template": "Homeland/CollectAPButton.png",
+        "template": "Dorm/CollectAPButton.png",
         "roi": [
             647,
             492,
