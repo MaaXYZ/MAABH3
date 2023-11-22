@@ -208,7 +208,12 @@ void print_help()
         R"(MAABH3 CLI
 Github: https://github.com/MaaAssistantArknights/MAABH3
 
-Usage: MAABH3_CLI.exe
+Usage: MAABH3_CLI [option]
+
+Options:
+  --control [config]    Specify the control config
+  --device [config]     Specify the device config
+  --tasks [config]      Specify the tasks config
 
 Modify ./config/tasks/default.json to configure tasks.
 
