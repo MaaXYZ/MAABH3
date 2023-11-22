@@ -1,7 +1,12 @@
 ﻿#include "main.h"
 
-int main([[maybe_unused]] int argc, char** argv)
+int main(int argc, char** argv)
 {
+    std::unordered_map<std::string, std::string> args;
+    if (!parse_args(argc, argv, args)) {
+        return 0;
+    }
+
     MaaToolKitInit();
 
     print_help();
@@ -17,21 +22,50 @@ int main([[maybe_unused]] int argc, char** argv)
     MaaAdbControllerType ctrl_type = 0;
     std::string adb_config;
 
+    auto arg_device = args.find("device");
+    if (arg_device != args.end()) {
+        config.set_config_target(ConfigOption_Device, arg_device->second);
+    }
     if (!device.exists()) {
+        if (arg_device != args.end()) {
+            std::cerr << "device config: " << arg_device->second << std::endl;
+            return 1;
+        }
+
         if (!default_device_init(device)) {
             mpause();
             return 1;
         }
         device.dump();
     }
+
+    auto arg_control = args.find("control");
+    if (arg_control != args.end()) {
+        config.set_config_target(ConfigOption_Control, arg_control->second);
+    }
     if (!control.exists()) {
+        if (arg_control != args.end()) {
+            std::cerr << "control config: " << arg_control->second << std::endl;
+            return 1;
+        }
+
         if (!default_control_init(control)) {
             mpause();
             return 1;
         }
         control.dump();
     }
+
+    auto arg_tasks = args.find("tasks");
+    if (arg_tasks != args.end()) {
+        config.set_config_target(ConfigOption_Tasks, arg_tasks->second);
+    }
     if (!tasks.exists()) {
+        if (arg_tasks != args.end()) {
+            std::cerr << "tasks config: " << arg_tasks->second << std::endl;
+            return 1;
+        }
+
         if (!default_tasks_init(tasks)) {
             mpause();
             return 1;
@@ -130,6 +164,42 @@ int main([[maybe_unused]] int argc, char** argv)
     destroy();
 
     return 0;
+}
+
+bool parse_args(int argc, char** argv, std::unordered_map<std::string, std::string>& args)
+{
+    std::unordered_set<std::string> allowed_args = { "control", "device", "tasks" };
+
+    for (int i = 1; i < argc; i += 2) {
+        std::string arg = argv[i];
+
+        if (arg.size() < 2 || arg.substr(0, 2) != "--") {
+            std::cerr << "Invalid argument format: " << arg << std::endl;
+            return false;
+        }
+
+        std::string arg_name = arg.substr(2);
+
+        if (arg_name.empty()) {
+            std::cerr << "Invalid argument name: " << arg << std::endl;
+            return false;
+        }
+
+        if (allowed_args.count(arg_name) == 0) {
+            std::cerr << "Unknown argument: " << arg << std::endl;
+
+        }
+
+        if (i + 1 >= argc || argv[i + 1][0] == '-') {
+            std::cerr << "Missing argument value: " << arg << std::endl;
+            return false;
+        }
+
+        std::string arg_value = argv[i + 1];
+        args[arg_name] = arg_value;
+    }
+
+    return true;
 }
 
 void print_help()

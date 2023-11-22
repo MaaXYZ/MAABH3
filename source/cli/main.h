@@ -4,6 +4,8 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <unordered_map>
+#include <unordered_set>
 
 #include "MaaFramework/MaaAPI.h"
 #include "MaaToolKit/MaaToolKitAPI.h"
@@ -14,6 +16,8 @@
 
 #include "CustomAction/CustomActionRegistry.h"
 #include "CustomRecognizer/CustomRecognizerRegistry.h"
+
+bool parse_args(int argc, char** argv, std::unordered_map<std::string, std::string>& args);
 
 void print_help();
 
