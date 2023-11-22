@@ -57,8 +57,6 @@ json::value close_game_param();
 
 bool app_package_and_activity(int client_type, std::string& package, std::string& activity);
 
-bool match_adb_address(const std::string& adb_address, MaaSize& index, const MaaSize& device_size);
-
 std::string TaskStatus(MaaStatus status);
 
 void mpause();

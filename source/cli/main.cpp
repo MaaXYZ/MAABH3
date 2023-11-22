@@ -482,17 +482,6 @@ bool app_package_and_activity(int client_type, std::string& package, std::string
     return true;
 }
 
-bool match_adb_address(const std::string& adb_address, MaaSize& index, const MaaSize& device_size)
-{
-    for (MaaSize i = 0; i < device_size; i++) {
-        if (adb_address == MaaToolKitGetDeviceAdbSerial(i)) {
-            index = i;
-            return true;
-        }
-    }
-    return false;
-}
-
 json::value dorm_param()
 {
     json::value param;
