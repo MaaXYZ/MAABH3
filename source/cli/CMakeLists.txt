@@ -1,4 +1,4 @@
-include_directories(${CMAKE_SOURCE_DIR}/deps/include)
+﻿include_directories(${CMAKE_SOURCE_DIR}/deps/include)
 if (WIN32)
     link_directories(${CMAKE_SOURCE_DIR}/deps/lib)
 else ()
@@ -9,7 +9,10 @@ set(CMAKE_BUILD_TYPE "Release")
 set(CMAKE_CONFIGURATION_TYPES "Release")
 
 add_executable(MAABH3_CLI 
-    main.cpp  
+    main.cpp
+    control.cpp
+    device.cpp
+    tasks.cpp
     CustomAction/CustomAction.cpp
     CustomAction/CustomActionRegistrar.cpp  
     CustomAction/CombatAction.cpp 
