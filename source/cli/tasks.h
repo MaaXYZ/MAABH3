@@ -15,6 +15,4 @@ json::value universal_mirage_param();
 
 json::value close_game_param();
 
-bool app_package_and_activity(int client_type, std::string& package, std::string& activity);
-
 std::string TaskStatus(MaaStatus status);

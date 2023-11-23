@@ -79,31 +79,6 @@ bool select_tasks(std::vector<Task>& tasklist)
     return true;
 }
 
-bool app_package_and_activity(int client_type, std::string& package, std::string& activity)
-{
-    switch (client_type) {
-    case 1:
-        // "1. Official(CN)\n"
-        package = "com.miHoYo.enterprise.NGHSoD";
-        activity = "com.miHoYo.enterprise.NGHSoD/com.miHoYo.overridenativeactivity.OverrideNativeActivity";
-        break;
-    case 2:
-        // "2. Bilibili\n"
-        package = "com.miHoYo.bh3.bilibili";
-        activity = "com.miHoYo.bh3.bilibili/com.miHoYo.overridenativeactivity.OverrideNativeActivity";
-        break;
-    case 3:
-        // "2. Vivo\n"
-        package = "com.miHoYo.bh3.vivo";
-        activity = "com.miHoYo.bh3.vivo/com.miHoYo.overridenativeactivity.OverrideNativeActivity";
-        break;
-    default:
-        return false;
-    }
-
-    return true;
-}
-
 json::value dorm_param()
 {
     json::value param;
