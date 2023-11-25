@@ -86,7 +86,7 @@
 
 `./config/tasks` 目录下放置 tasks 相关配置
 
-详细见 [Config](./docs/Config.md) 文档
+详细见 [配置文档](./docs/配置文档.md)
 
 ## How to build
 
