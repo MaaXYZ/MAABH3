@@ -25,7 +25,7 @@ std::string AdbConfigCache::get_adb_config(const std::string& device_name, const
     std::string cache_key = generate_cache_key(device_name, device_SN);
     std::string adb_config;
     if (!load(cache_key, adb_config)) {
-        return std::string();
+        return get_default_adb_config();
     }
     return adb_config;
 }

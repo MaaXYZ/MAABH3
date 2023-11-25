@@ -76,12 +76,7 @@ int main(int argc, char** argv)
     config.init();
 
     AdbConfigCache adb_config_cache;
-    if (!adb_config_cache.has(device.get_config_device_name(), device.get_config_device_SN())) {
-        adb_config = adb_config_cache.get_default_adb_config();
-    }
-    else {
-        adb_config = adb_config_cache.get_adb_config(device.get_config_device_name(), device.get_config_device_SN());
-    }
+    adb_config = adb_config_cache.get_adb_config(device.get_config_device_name(), device.get_config_device_SN());
 
     bool identified = app_package_and_activity(control.get_config_server(), package, activity);
     if (!identified) {
