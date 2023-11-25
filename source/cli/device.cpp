@@ -48,9 +48,7 @@ bool select_device(std::string& name, std::string& SN, std::string& adb)
     SN = MaaToolKitGetDeviceAdbSerial(device_index);
     adb = MaaToolKitGetDeviceAdbPath(device_index);
     AdbConfigCache adb_config_cache;
-    if (!adb_config_cache.has(name, SN)) {
-        adb_config_cache.set_adb_config(name, SN, MaaToolKitGetDeviceAdbConfig(device_index));
-    }
+    adb_config_cache.set_adb_config(name, SN, MaaToolKitGetDeviceAdbConfig(device_index));
     return true;
 }
 
