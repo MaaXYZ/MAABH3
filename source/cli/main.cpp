@@ -8,6 +8,11 @@ int main(int argc, char** argv)
         return 1;
     }
 
+    if (flags["help"]) {
+        print_help();
+        return 0;
+    }
+
     MaaToolKitInit();
 
     print_help();
@@ -165,8 +170,8 @@ int main(int argc, char** argv)
 bool parse_param(int argc, char** argv, std::unordered_map<std::string, std::string>& options,
                  std::unordered_map<std::string, bool>& flags)
 {
-    std::unordered_set<std::string> allowed_param = { "control", "device", "tasks", "init" };
-    std::unordered_set<std::string> flags_key = { "init" };
+    std::unordered_set<std::string> allowed_param = { "control", "device", "tasks", "init", "help" };
+    std::unordered_set<std::string> flags_key = { "init", "help" };
     for (auto& key : flags_key) {
         flags[key] = false;
     }
@@ -221,6 +226,9 @@ Options:
   --control [config]    Specify the control config
   --device [config]     Specify the device config
   --tasks [config]      Specify the tasks config
+
+Flags:
+  --help                Display this help message
 
 Modify ./config/tasks/default.json to configure tasks.
 
