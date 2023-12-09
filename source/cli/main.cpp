@@ -162,7 +162,7 @@ int main(int argc, char** argv)
     return 0;
 }
 
-bool parse_param(const int argc, const char** argv, std::unordered_map<std::string, std::string>& options,
+bool parse_param(int argc, char** argv, std::unordered_map<std::string, std::string>& options,
                  std::unordered_map<std::string, bool> flags)
 {
     std::unordered_set<std::string> allowed_param = { "control", "device", "tasks", "init" };
