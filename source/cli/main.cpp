@@ -188,6 +188,7 @@ bool parse_param(int argc, char** argv, std::unordered_map<std::string, std::str
 
         if (allowed_param.count(arg_name) == 0) {
             std::cerr << "Unknown argument: " << arg << std::endl;
+            return false;
         }
 
         if (flags_key.count(arg_name)) {
