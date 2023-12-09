@@ -220,7 +220,7 @@ void print_help()
         R"(MAABH3 CLI
 Github: https://github.com/MaaAssistantArknights/MAABH3
 
-Usage: MAABH3_CLI [option]
+Usage: MAABH3_CLI [param]
 
 Options:
   --control [config]    Specify the control config
