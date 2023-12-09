@@ -163,7 +163,7 @@ int main(int argc, char** argv)
 }
 
 bool parse_param(int argc, char** argv, std::unordered_map<std::string, std::string>& options,
-                 std::unordered_map<std::string, bool> flags)
+                 std::unordered_map<std::string, bool>& flags)
 {
     std::unordered_set<std::string> allowed_param = { "control", "device", "tasks", "init" };
     std::unordered_set<std::string> flags_key = { "init" };

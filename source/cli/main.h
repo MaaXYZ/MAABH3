@@ -20,7 +20,7 @@
 #include "tasks.h"
 
 bool parse_param(int argc, char** argv, std::unordered_map<std::string, std::string>& options,
-                 std::unordered_map<std::string, bool> flags);
+                 std::unordered_map<std::string, bool>& flags);
 
 void print_help();
 
