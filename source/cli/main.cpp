@@ -5,7 +5,7 @@ int main(int argc, char** argv)
     std::unordered_map<std::string, std::string> options;
     std::unordered_map<std::string, bool> flags;
     if (!parse_param(argc, argv, options, flags)) {
-        return 0;
+        return 1;
     }
 
     MaaToolKitInit();
@@ -134,7 +134,7 @@ int main(int argc, char** argv)
                      "refer to the log."
                   << std::endl;
         mpause();
-        return -1;
+        return 1;
     }
 
     CustomActionRegistrar action_registerar;
