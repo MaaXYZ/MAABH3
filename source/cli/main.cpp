@@ -2,8 +2,9 @@
 
 int main(int argc, char** argv)
 {
-    std::unordered_map<std::string, std::string> args;
-    if (!parse_args(argc, argv, args)) {
+    std::unordered_map<std::string, std::string> options;
+    std::unordered_map<std::string, bool> flags;
+    if (!parse_param(argc, argv, options, flags)) {
         return 0;
     }
 
@@ -22,12 +23,12 @@ int main(int argc, char** argv)
     MaaAdbControllerType ctrl_type = 0;
     std::string adb_config;
 
-    auto arg_device = args.find("device");
-    if (arg_device != args.end()) {
+    auto arg_device = options.find("device");
+    if (arg_device != options.end()) {
         config.set_config_target(ConfigOption_Device, arg_device->second);
     }
     if (!device.exists()) {
-        if (arg_device != args.end()) {
+        if (arg_device != options.end()) {
             std::cerr << "device config: " << arg_device->second << std::endl;
             return 1;
         }
@@ -39,12 +40,12 @@ int main(int argc, char** argv)
         device.dump();
     }
 
-    auto arg_control = args.find("control");
-    if (arg_control != args.end()) {
+    auto arg_control = options.find("control");
+    if (arg_control != options.end()) {
         config.set_config_target(ConfigOption_Control, arg_control->second);
     }
     if (!control.exists()) {
-        if (arg_control != args.end()) {
+        if (arg_control != options.end()) {
             std::cerr << "control config: " << arg_control->second << std::endl;
             return 1;
         }
@@ -56,12 +57,12 @@ int main(int argc, char** argv)
         control.dump();
     }
 
-    auto arg_tasks = args.find("tasks");
-    if (arg_tasks != args.end()) {
+    auto arg_tasks = options.find("tasks");
+    if (arg_tasks != options.end()) {
         config.set_config_target(ConfigOption_Tasks, arg_tasks->second);
     }
     if (!tasks.exists()) {
-        if (arg_tasks != args.end()) {
+        if (arg_tasks != options.end()) {
             std::cerr << "tasks config: " << arg_tasks->second << std::endl;
             return 1;
         }
@@ -161,9 +162,14 @@ int main(int argc, char** argv)
     return 0;
 }
 
-bool parse_args(int argc, char** argv, std::unordered_map<std::string, std::string>& args)
+bool parse_param(const int argc, const char** argv, std::unordered_map<std::string, std::string>& options,
+                 std::unordered_map<std::string, bool> flags)
 {
-    std::unordered_set<std::string> allowed_args = { "control", "device", "tasks" };
+    std::unordered_set<std::string> allowed_param = { "control", "device", "tasks", "init" };
+    std::unordered_set<std::string> flags_key = { "init" };
+    for (auto& key : flags_key) {
+        flags[key] = false;
+    }
 
     for (int i = 1; i < argc; i += 2) {
         std::string arg = argv[i];
@@ -180,9 +186,14 @@ bool parse_args(int argc, char** argv, std::unordered_map<std::string, std::stri
             return false;
         }
 
-        if (allowed_args.count(arg_name) == 0) {
+        if (allowed_param.count(arg_name) == 0) {
             std::cerr << "Unknown argument: " << arg << std::endl;
+        }
 
+        if (flags_key.count(arg_name)) {
+            flags[arg_name] = true;
+            i--;
+            continue;
         }
 
         if (i + 1 >= argc || argv[i + 1][0] == '-') {
@@ -191,7 +202,7 @@ bool parse_args(int argc, char** argv, std::unordered_map<std::string, std::stri
         }
 
         std::string arg_value = argv[i + 1];
-        args[arg_name] = arg_value;
+        options[arg_name] = arg_value;
     }
 
     return true;

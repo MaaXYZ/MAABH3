@@ -19,7 +19,8 @@
 #include "device.h"
 #include "tasks.h"
 
-bool parse_args(int argc, char** argv, std::unordered_map<std::string, std::string>& args);
+bool parse_param(const int argc, const char** argv, std::unordered_map<std::string, std::string>& options,
+                 std::unordered_map<std::string, bool> flags);
 
 void print_help();
 
