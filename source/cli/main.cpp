@@ -8,6 +8,11 @@ int main(int argc, char** argv)
         return 1;
     }
 
+    if (flags["version"]) {
+        print_version();
+        return 0;
+    }
+
     if (flags["help"]) {
         print_help();
         return 0;
@@ -170,8 +175,8 @@ int main(int argc, char** argv)
 bool parse_param(int argc, char** argv, std::unordered_map<std::string, std::string>& options,
                  std::unordered_map<std::string, bool>& flags)
 {
-    std::unordered_set<std::string> allowed_param = { "control", "device", "tasks", "init", "help" };
-    std::unordered_set<std::string> flags_key = { "init", "help" };
+    std::unordered_set<std::string> allowed_param = { "control", "device", "tasks", "init", "help", "version" };
+    std::unordered_set<std::string> flags_key = { "init", "help", "version" };
     for (auto& key : flags_key) {
         flags[key] = false;
     }
