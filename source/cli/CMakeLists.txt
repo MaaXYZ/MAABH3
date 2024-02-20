@@ -27,7 +27,7 @@ add_executable(MAABH3_CLI
     Config/ConfigMgr.cpp
     Cache/AdbConfigCache.cpp
 )
-target_link_libraries(MAABH3_CLI PRIVATE MaaFramework MaaToolKit)
+target_link_libraries(MAABH3_CLI PRIVATE MaaFramework MaaToolkit)
 
 add_dependencies(MAABH3_CLI AssetsResource)
 
