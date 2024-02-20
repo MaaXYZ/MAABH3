@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include <MaaToolKit/MaaToolKitAPI.h>
+#include <MaaToolkit/MaaToolkitAPI.h>
 #include <MaaFramework/MaaDef.h>
 
 #include "Config/DeviceConfig.h"

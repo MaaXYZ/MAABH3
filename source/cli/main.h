@@ -7,7 +7,7 @@
 #include <unordered_set>
 
 #include <MaaFramework/MaaAPI.h>
-#include <MaaToolKit/MaaToolKitAPI.h>
+#include <MaaToolkit/MaaToolkitAPI.h>
 
 #include "Cache/AdbConfigCache.h"
 #include "Config/ConfigMgr.h"
