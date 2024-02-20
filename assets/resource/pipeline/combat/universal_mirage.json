@@ -195,10 +195,10 @@
         "recognition": "TemplateMatch",
         "template": "Combat/UniversalMirage/UniversalMirageStageStart.png",
         "roi": [
-            1025,
-            589,
-            190,
-            131
+            885,
+            604,
+            168,
+            116
         ],
         "next": [
             "UniversalMirageCombatGeneric"
