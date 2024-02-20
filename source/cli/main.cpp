@@ -18,7 +18,7 @@ int main(int argc, char** argv)
         return 0;
     }
 
-    MaaToolKitInit();
+    MaaToolkitInit();
 
     print_help();
     print_version();
@@ -135,7 +135,7 @@ int main(int argc, char** argv)
         MaaDestroy(maa_handle);
         MaaResourceDestroy(resource_handle);
         MaaControllerDestroy(controller_handle);
-        MaaToolKitUninit();
+        MaaToolkitUninit();
     };
 
     if (!MaaInited(maa_handle)) {

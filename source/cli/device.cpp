@@ -15,7 +15,7 @@ bool default_device_init(DeviceConfig& device)
 MaaSize scanning_devices()
 {
     std::cout << "Scanning for Devices..." << std::endl;
-    auto device_size = MaaToolKitFindDevice();
+    auto device_size = MaaToolkitFindDevice();
     if (device_size == 0) {
         std::cout << "No Devices Found" << std::endl;
         return 0;
@@ -44,11 +44,11 @@ bool select_device(std::string& name, std::string& SN, std::string& adb)
         return true;
     }
     MaaSize device_index = number - 1;
-    name = MaaToolKitGetDeviceName(device_index);
-    SN = MaaToolKitGetDeviceAdbSerial(device_index);
-    adb = MaaToolKitGetDeviceAdbPath(device_index);
+    name = MaaToolkitGetDeviceName(device_index);
+    SN = MaaToolkitGetDeviceAdbSerial(device_index);
+    adb = MaaToolkitGetDeviceAdbPath(device_index);
     AdbConfigCache adb_config_cache;
-    adb_config_cache.set_adb_config(name, SN, MaaToolKitGetDeviceAdbConfig(device_index));
+    adb_config_cache.set_adb_config(name, SN, MaaToolkitGetDeviceAdbConfig(device_index));
     return true;
 }
 
@@ -73,7 +73,7 @@ bool select_device_number(const MaaSize& device_size, MaaSize& number)
 void print_device_list(const MaaSize& device_size)
 {
     for (MaaSize i = 0; i < device_size; i++) {
-        std::cout << "  " << i + 1 << ". " << MaaToolKitGetDeviceName(i) << " (" << MaaToolKitGetDeviceAdbSerial(i)
+        std::cout << "  " << i + 1 << ". " << MaaToolkitGetDeviceName(i) << " (" << MaaToolkitGetDeviceAdbSerial(i)
                   << ")\n";
     }
 }
