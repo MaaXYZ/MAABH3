@@ -184,7 +184,6 @@ jobs:
 
   macos:
     needs: meta
-    runs-on: macos-latest
     strategy:
       matrix:
         include:
@@ -193,6 +192,7 @@ jobs:
           - os: macos-14
             arch: aarch64
       fail-fast: false
+    runs-on: ${{ matrix.os }}
 
     steps:
       - uses: actions/checkout@v3
