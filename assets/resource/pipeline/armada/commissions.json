@@ -100,7 +100,7 @@
     "CommissionSubmitButton": {
         "recognition": "TemplateMatch",
         "template": "Armada/CommissionSubmitButton.png",
-        "threshold": 0.95,
+        "threshold": 0.94,
         "roi": [
             860,
             579,
@@ -117,6 +117,7 @@
         "inverse": true,
         "recognition": "TemplateMatch",
         "template": "Armada/CommissionSubmitButton.png",
+        "threshold": 0.94,
         "roi": [
             860,
             579,
