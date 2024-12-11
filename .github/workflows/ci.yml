@@ -89,10 +89,10 @@ jobs:
           python3 .github/update_resource_version.py assets/resource/properties.json ${{ needs.meta.outputs.tag }}
 
       - name: Download MaaFramework
-        uses: robinraju/release-downloader@v1.8
+        uses: robinraju/release-downloader@v1.11
         with:
           repository: MaaAssistantArknights/MaaFramework
-          latest: true
+          tag: "v1.8.9"
           fileName: "MAA-win-${{ matrix.arch }}*"
           out-file-path: "deps"
           extract: true
@@ -154,10 +154,10 @@ jobs:
           python3 .github/update_resource_version.py assets/resource/properties.json ${{ needs.meta.outputs.tag }}
 
       - name: Download MaaFramework
-        uses: robinraju/release-downloader@v1.8
+        uses: robinraju/release-downloader@v1.11
         with:
           repository: MaaAssistantArknights/MaaFramework
-          latest: true
+          tag: "v1.8.9"
           fileName: "MAA-linux-${{ matrix.arch }}*"
           out-file-path: "deps"
           extract: true
@@ -210,10 +210,10 @@ jobs:
           python3 .github/update_resource_version.py assets/resource/properties.json ${{ needs.meta.outputs.tag }}
 
       - name: Download MaaFramework
-        uses: robinraju/release-downloader@v1.8
+        uses: robinraju/release-downloader@v1.11
         with:
           repository: MaaAssistantArknights/MaaFramework
-          latest: true
+          tag: "v1.8.9"
           fileName: "MAA-macos-${{ matrix.arch }}*"
           out-file-path: "deps"
           extract: true
