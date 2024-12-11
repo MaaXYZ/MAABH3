@@ -187,7 +187,11 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        arch: [aarch64, x86_64]
+        include:
+          - os: macos-13
+            arch: x86_64
+          - os: macos-14
+            arch: aarch64
       fail-fast: false
 
     steps:
