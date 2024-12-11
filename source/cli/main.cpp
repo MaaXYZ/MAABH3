@@ -232,6 +232,7 @@ Options:
 
 Flags:
   --help                Display this help message
+  --version             Display this version message
 
 Modify ./config/tasks/default.json to configure tasks.
 
