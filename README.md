@@ -7,18 +7,18 @@
 
 图像技术 + 模拟控制，解放双手！
 
-由 [MaaFramework](https://github.com/MaaAssistantArknights/MaaFramework) 强力驱动！
+由 [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 强力驱动！
 
 </div>
 
 ## How to use
 
-> 1. [下载](https://github.com/MaaAssistantArknights/MAABH3/releases) 对应平台的压缩包
+> 1. [下载](https://github.com/MaaXYZ/MAABH3/releases) 对应平台的压缩包
 > 2. 将压缩包解压到没有中文的目录下
 
 ### 基本说明
 
-1. 请根据 [模拟器支持情况](https://maa.plus/docs/1.3-模拟器支持.html)，进行对应的操作。
+1. 请根据 [模拟器支持情况](https://maa.plus/docs/zh-cn/manual/device/windows.html)，进行对应的操作。
 2. 修改模拟器分辨率为 `16:9` 比例，最低 `1280 * 720`，更高不限。
 
 ### 直接使用
@@ -91,11 +91,11 @@
 
 ## How to build
 
-**如果你要编译源码才看这节，否则直接 [下载](https://github.com/MaaAssistantArknights/MAABH3/releases) 即可**
+**如果你要编译源码才看这节，否则直接 [下载](https://github.com/MaaXYZ/MAABH3/releases) 即可**
 
 欢迎大佬们来带带~
 
-1. 下载 MaaFramework 的 [Release 包](https://github.com/MaaAssistantArknights/MaaFramework/releases)，解压到 `deps` 文件夹中
+1. 下载 MaaFramework 的 [Release 包](https://github.com/MaaXYZ/MaaFramework/releases)，解压到 `deps` 文件夹中
 2. 配置 cmake
 
     - Windows  
@@ -122,7 +122,7 @@
 ## 开发相关
 
 - `tools/CropRoi` 可以用来裁剪图片和获取 ROI
-- Pipeline 协议请参考 [MaaFramework 的文档](https://github.com/MaaAssistantArknights/MaaFramework/blob/main/docs/zh_cn/3.1-%E4%BB%BB%E5%8A%A1%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%8D%8F%E8%AE%AE.md)
+- Pipeline 协议请参考 [MaaFramework 的文档](https://github.com/MaaXYZ/MaaFramework/blob/main/docs/zh_cn/3.1-%E4%BB%BB%E5%8A%A1%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%8D%8F%E8%AE%AE.md)
 
 ## Join us
 
@@ -130,7 +130,7 @@ QQ 群：566868495
 
 ## 其他
 
-- 芝士[MAA1999](https://github.com/MaaAssistantArknights/MAA1999)，基于MAA全新架构的 亿韭韭韭 小助手。
+- 芝士[MAA1999](https://github.com/MaaXYZ/MAA1999)，基于MAA全新架构的 亿韭韭韭 小助手。
 
 ## Todo
 
