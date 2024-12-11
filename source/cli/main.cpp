@@ -86,8 +86,7 @@ int main(int argc, char** argv)
 
     config.init();
 
-    AdbConfigCache adb_config_cache;
-    adb_config = adb_config_cache.get_adb_config(device.get_config_device_name(), device.get_config_device_SN());
+    adb_config = get_default_adb_config();
 
     bool identified = app_package_and_activity(control.get_config_server(), package, activity);
     if (!identified) {
@@ -245,6 +244,23 @@ void print_version()
     std::cout << "MaaFramework Version: " << MaaVersion() << std::endl
               << "MAABH3 Version: " << MAABH3_VERSION << std::endl
               << std::endl;
+}
+
+std::string get_default_adb_config()
+{
+    const std::filesystem::path local_dir = ".";
+    std::filesystem::path file_path = local_dir / "resource" / "adb_config.json";
+    std::ifstream ifs(file_path, std::ios::in);
+    if (!ifs.is_open()) {
+        std::cerr << "Failed to open default adb config file: " << file_path << std::endl;
+        return std::string();
+    }
+
+    std::stringstream buffer;
+    buffer << ifs.rdbuf();
+    ifs.close();
+
+    return buffer.str();
 }
 
 void mpause()

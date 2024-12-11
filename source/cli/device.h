@@ -4,7 +4,6 @@
 #include <MaaFramework/MaaDef.h>
 
 #include "Config/DeviceConfig.h"
-#include "Cache/AdbConfigCache.h"
 
 bool default_device_init(DeviceConfig& device);
 

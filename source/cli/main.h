@@ -9,7 +9,6 @@
 #include <MaaFramework/MaaAPI.h>
 #include <MaaToolkit/MaaToolkitAPI.h>
 
-#include "Cache/AdbConfigCache.h"
 #include "Config/ConfigMgr.h"
 
 #include "CustomAction/CustomActionRegistry.h"
@@ -25,5 +24,7 @@ bool parse_param(int argc, char** argv, std::unordered_map<std::string, std::str
 void print_help();
 
 void print_version();
+
+std::string get_default_adb_config();
 
 void mpause();
