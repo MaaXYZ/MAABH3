@@ -223,7 +223,7 @@ jobs:
           CC: "/opt/homebrew/opt/llvm/bin/clang"
           CXX: "/opt/homebrew/opt/llvm/bin/clang++"
           LDFLAGS: "-L/opt/homebrew/opt/llvm/lib"
-          CPPFLAGS: "-I/opt/homebrew/opt/llvm/include
+          CPPFLAGS: "-I/opt/homebrew/opt/llvm/include"
         run: |
           cmake --preset 'NinjaMulti' \
             -DARCH='${{ matrix.arch == 'x86_64' && 'x64' || 'arm64' }}' \
