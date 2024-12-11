@@ -20,7 +20,6 @@
             "ApplyForANewCommission",
             "AcceptNewCommission",
             "CommissionItem",
-            "CommissionItemBuyMax",
             "CommissionItemBuy",
             "CommissionSubmitButton",
             "CommissionNoneSubmitButton"
@@ -41,7 +40,6 @@
             "ApplyForANewCommission",
             "AcceptNewCommission",
             "CommissionItem",
-            "CommissionItemBuyMax",
             "CommissionItemBuy",
             "CommissionSubmitButton"
         ]
@@ -61,7 +59,6 @@
         "next": [
             "AcceptNewCommission",
             "CommissionItem",
-            "CommissionItemBuyMax",
             "CommissionItemBuy",
             "CommissionSubmitButton"
         ]
@@ -79,25 +76,9 @@
         "action": "Click",
         "post_wait_freezes": 200,
         "next": [
-            "CommissionItemBuyMax",
             "CommissionItemBuy",
             "CommissionSubmitButton",
             "CommissionItem"
-        ]
-    },
-    "CommissionItemBuyMax": {
-        "recognition": "TemplateMatch",
-        "template": "Armada/CommissionItemBuyMax.png",
-        "roi": [
-            565,
-            500,
-            158,
-            133
-        ],
-        "action": "Click",
-        "next": [
-            "CommissionItemBuy",
-            "CommissionSubmitButton"
         ]
     },
     "CommissionItemBuy": {
@@ -180,7 +161,6 @@
             "SubmitCommission",
             "Sub_CloseDialogBox",
             "CommissionItem",
-            "CommissionItemBuyMax",
             "CommissionItemBuy",
             "CommissionSubmitButton",
             "CommissionNoneSubmitButton"
