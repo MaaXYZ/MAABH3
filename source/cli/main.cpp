@@ -221,7 +221,7 @@ void print_help()
 {
     std::cout <<
         R"(MAABH3 CLI
-Github: https://github.com/MaaAssistantArknights/MAABH3
+Github: https://github.com/MaaXYZ/MAABH3
 
 Usage: MAABH3_CLI [param]
 
