@@ -26,7 +26,9 @@ bool select_tasks(std::vector<Task>& tasklist)
     std::vector<int> task_ids;
     std::string line;
 
-    std::cin.ignore();
+    if (std::cin.rdbuf()->in_avail() > 0) {
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
     std::getline(std::cin, line);
 
     std::istringstream iss(line);
