@@ -15,7 +15,8 @@ bool default_device_init(DeviceConfig& device)
 MaaSize scanning_devices()
 {
     std::cout << "Scanning for Devices..." << std::endl;
-    auto device_size = MaaToolkitPostFindDevice();
+    MaaToolkitPostFindDevice();
+    auto device_size = MaaToolkitWaitForFindDeviceToComplete();
     if (device_size == 0) {
         std::cout << "No Devices Found" << std::endl;
         return 0;
