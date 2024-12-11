@@ -14,6 +14,6 @@ MaaBool combat_combating(MaaSyncContextHandle sync_context, const MaaImageBuffer
     std::string task_param_str = task_param.to_string();
 
     MaaBool result =
-        MaaSyncContextRunRecognizer(sync_context, image, "Combating", task_param_str.c_str(), out_box, detail_buff);
+        MaaSyncContextRunRecognition(sync_context, image, "Combating", task_param_str.c_str(), out_box, detail_buff);
     return result;
 }
