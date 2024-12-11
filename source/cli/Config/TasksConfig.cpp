@@ -7,6 +7,7 @@ TasksConfig::TasksConfig()
 
 bool TasksConfig::parse(const json::value& config_opt)
 {
+    _config_tasklist.clear();
     auto arr = config_opt.as_array();
     for (auto& el : arr) {
         Task task;
