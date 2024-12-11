@@ -1,5 +1,4 @@
 {
-    "$schema": "../../pipeline.schema.json",
     "Expeditions": {
         "next": [
             "ExpeditionsPageFlag",
@@ -10,7 +9,7 @@
     },
     "ExpeditionsPageFlag": {
         "recognition": "OCR",
-        "text": "今日远征可用体力",
+        "expected": "今日远征可用体力",
         "roi": [
             33,
             62,
@@ -51,7 +50,7 @@
     },
     "FragmentCompleted": {
         "recognition": "OCR",
-        "text": [
+        "expected": [
             "完成远征"
         ],
         "roi": [
@@ -102,7 +101,7 @@
     },
     "MaterialCompleted": {
         "recognition": "OCR",
-        "text": [
+        "expected": [
             "完成远征"
         ],
         "roi": [
@@ -121,7 +120,7 @@
     },
     "MaterialNoCompleted": {
         "recognition": "OCR",
-        "text": [
+        "expected": [
             "完成远征"
         ],
         "roi": [
@@ -155,7 +154,7 @@
     },
     "SelectFirstExpeditions": {
         "recognition": "OCR",
-        "text": [
+        "expected": [
             "开始远征"
         ],
         "roi": [
@@ -175,7 +174,7 @@
     "NoIdleExpeditions": {
         "inverse": true,
         "recognition": "OCR",
-        "text": [
+        "expected": [
             "开始远征"
         ],
         "roi": [
@@ -261,7 +260,7 @@
     },
     "NotMeetingExplorationRequirements": {
         "recognition": "OCR",
-        "text": "不满足探险要求",
+        "expected": "不满足探险要求",
         "roi": [
             388,
             287,
@@ -275,7 +274,7 @@
     },
     "ExpeditionsConsumptionLimit": {
         "recognition": "OCR",
-        "text": [
+        "expected": [
             "已达到",
             "今日远征作战",
             "消耗体力上限"
@@ -289,7 +288,7 @@
     },
     "ExpeditionsNotEnoughAP": {
         "recognition": "OCR",
-        "text": [
+        "expected": [
             "所需体力不足"
         ],
         "roi": [
@@ -326,7 +325,7 @@
     },
     "ExpeditionsNotEnoughNumberOfLevels": {
         "recognition": "OCR",
-        "text": [
+        "expected": [
             "所需关卡次数不足"
         ],
         "roi": [

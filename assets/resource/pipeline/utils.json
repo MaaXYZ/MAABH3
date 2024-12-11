@@ -1,12 +1,11 @@
 {
-    "$schema": "../pipeline.schema.json",
     "Sub_BackButton": {
         "is_sub": true,
         "recognition": "TemplateMatch",
         "template": [
             "Utils/BackButton.png",
             "Utils/BackButton_1.png"
-        ], 
+        ],
         "roi": [
             [
                 0,
@@ -26,7 +25,7 @@
     "Sub_BackText": {
         "is_sub": true,
         "recognition": "OCR",
-        "text": [
+        "expected": [
             "返回"
         ],
         "roi": [
@@ -84,11 +83,10 @@
         ],
         "action": "Click"
     },
-
     "Sub_CancelDownload": {
         "is_sub": true,
         "recognition": "OCR",
-        "text": [
+        "expected": [
             "即将下载"
         ],
         "roi": [

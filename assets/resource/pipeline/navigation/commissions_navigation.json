@@ -1,5 +1,4 @@
 {
-    "$schema": "../../pipeline.schema.json",
     "Sub_EnterCommissionsRewardsPage": {
         "is_sub": true,
         "recognition": "TemplateMatch",

@@ -1,5 +1,4 @@
 {
-    "$schema": "../../pipeline.schema.json",
     "Sub_EnterGlacialFencesPage": {
         "enabled": false,
         "is_sub": true,

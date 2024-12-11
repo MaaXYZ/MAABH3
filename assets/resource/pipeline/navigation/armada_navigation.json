@@ -1,5 +1,4 @@
 {
-    "$schema": "../../pipeline.schema.json",
     "Sub_EnterCommissionsPage": {
         "is_sub": true,
         "recognition": "TemplateMatch",
@@ -12,7 +11,7 @@
         ],
         "action": "Click"
     },
-    "Sub_EnterContributionsPage":{
+    "Sub_EnterContributionsPage": {
         "is_sub": true,
         "recognition": "TemplateMatch",
         "template": "Navigation/Armada/EnterArmadaContribution.png",

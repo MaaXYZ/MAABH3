@@ -1,5 +1,4 @@
 {
-    "$schema": "../pipeline.schema.json",
     "Sub_StartUp": {
         "is_sub": true,
         "next": [
@@ -199,7 +198,7 @@
             325,
             138
         ],
-        "text": [
+        "expected": [
             "点击任意处",
             "进入游戏"
         ]
@@ -276,7 +275,7 @@
             137
         ],
         "action": "Click",
-        "next":[
+        "next": [
             "Downloading",
             "Checking",
             "Downloaded",
@@ -286,7 +285,7 @@
     },
     "Downloading": {
         "recognition": "OCR",
-        "text": [
+        "expected": [
             "下载中"
         ],
         "roi": [
@@ -312,7 +311,7 @@
     },
     "Checking": {
         "recognition": "OCR",
-        "text": [
+        "expected": [
             "校验中"
         ],
         "roi": [
@@ -337,7 +336,7 @@
     },
     "Downloaded": {
         "recognition": "OCR",
-        "text": [
+        "expected": [
             "下载完成"
         ],
         "roi": [
@@ -406,7 +405,7 @@
     "Sub_CloseActivityAnnouncement": {
         "is_sub": true,
         "recognition": "OCR",
-        "text": "点击空白区域关闭",
+        "expected": "点击空白区域关闭",
         "roi": [
             514,
             603,
@@ -490,7 +489,7 @@
     },
     "Sub_MonthlyCardCumulativeReward": {
         "recognition": "OCR",
-        "text": "点击右侧水晶领取奖励",
+        "expected": "点击右侧水晶领取奖励",
         "roi": [
             561,
             600,

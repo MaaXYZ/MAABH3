@@ -1,5 +1,4 @@
 {
-    "$schema": "../../pipeline.schema.json",
     "Contributions": {
         "next": [
             "ContributionsPageFlag",
@@ -27,7 +26,7 @@
             "ClaimedContributionRewards_3700",
             "ClaimedContributionRewards_2500",
             "ClaimedContributionRewards_1200",
-            "ClaimedContributionRewards_0" 
+            "ClaimedContributionRewards_0"
         ]
     },
     "ClaimContributionRewards_0": {

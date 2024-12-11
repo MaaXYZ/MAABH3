@@ -1,5 +1,4 @@
 {
-    "$schema": "../../pipeline.schema.json",
     "UniversalMirageCombatGeneric": {
         "recognition": "TemplateMatch",
         "template": "Combat/UniversalMirage/UniversalMirageStageStart.png",

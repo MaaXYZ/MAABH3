@@ -1,5 +1,4 @@
 {
-    "$schema": "../../pipeline.schema.json",
     "Armada": {
         "next": [
             "ArmadaPageFlag",

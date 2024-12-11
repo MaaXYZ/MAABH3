@@ -1,5 +1,4 @@
 {
-    "$schema": "../../pipeline.schema.json",
     "Errands": {
         "next": [
             "ErrandsPageFlag",
@@ -45,7 +44,7 @@
     },
     "ErrandsCompleted": {
         "recognition": "OCR",
-        "text": [
+        "expected": [
             "完成"
         ],
         "roi": [
@@ -81,7 +80,7 @@
     },
     "ErrandsNeed": {
         "recognition": "OCR",
-        "text": [
+        "expected": [
             "需要"
         ],
         "roi": [
@@ -98,7 +97,7 @@
     "ErrandsNoNeed": {
         "inverse": true,
         "recognition": "OCR",
-        "text": [
+        "expected": [
             "需要"
         ],
         "roi": [
@@ -130,7 +129,7 @@
     },
     "NoEligibleRoles": {
         "recognition": "OCR",
-        "text": [
+        "expected": [
             "没有找到",
             "合适的",
             "推荐女武神"
@@ -163,7 +162,7 @@
     },
     "NotEnoughRefreshes": {
         "recognition": "OCR",
-        "text": [
+        "expected": [
             "今日剩余",
             "刷新次数不足"
         ],
@@ -226,7 +225,7 @@
     },
     "NotEnoughRiceBalls": {
         "recognition": "OCR",
-        "text": [
+        "expected": [
             "饭团不足",
             "无法排遣",
             "请稍后尝试"

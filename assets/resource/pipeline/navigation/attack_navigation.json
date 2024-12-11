@@ -1,5 +1,4 @@
 {
-    "$schema": "../../pipeline.schema.json",
     "Sub_EnterAttackEventPage": {
         "is_sub": true,
         "recognition": "TemplateMatch",

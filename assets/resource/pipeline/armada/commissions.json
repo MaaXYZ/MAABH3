@@ -1,5 +1,4 @@
 {
-    "$schema": "../../pipeline.schema.json",
     "Commissions": {
         "next": [
             "CommissionsPageFlag",
@@ -49,7 +48,7 @@
     },
     "AcceptNewCommission": {
         "recognition": "OCR",
-        "text": [
+        "expected": [
             "接受"
         ],
         "roi": [
@@ -150,7 +149,7 @@
     },
     "CommossionLimit": {
         "recognition": "OCR",
-        "text": [
+        "expected": [
             "回收委托次数已经耗尽"
         ],
         "roi": [

@@ -1,5 +1,4 @@
 {
-    "$schema": "../pipeline.schema.json",
     "Shop": {
         "next": [
             "DailyShopPageFlag",
@@ -117,7 +116,7 @@
     },
     "LogisticsTerminalBuyCharacterFragmentByGoldSuccess": {
         "recognition": "OCR",
-        "text": "您已购买成功",
+        "expected": "您已购买成功",
         "roi": [
             490,
             288,
@@ -187,7 +186,7 @@
     },
     "MirageStoreBuyTimeSwirlPassesBy1AsteriteSuccess": {
         "recognition": "OCR",
-        "text": "您已购买成功",
+        "expected": "您已购买成功",
         "roi": [
             490,
             288,

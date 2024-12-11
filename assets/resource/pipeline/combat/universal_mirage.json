@@ -1,5 +1,4 @@
 {
-    "$schema": "../../pipeline.schema.json",
     "UniversalMirage": {
         "next": [
             "UniversalMiragePageFlag",
@@ -76,7 +75,6 @@
             100,
             80,
             50
-
         ],
         "end": [
             400,
@@ -105,7 +103,7 @@
     },
     "SelectUniversalMirageStageF2": {
         "recognition": "OCR",
-        "text": "2",
+        "expected": "2",
         "roi": [
             200,
             80,
@@ -120,7 +118,7 @@
     },
     "SelectUniversalMirageStageF5": {
         "recognition": "OCR",
-        "text": "5",
+        "expected": "5",
         "roi": [
             200,
             80,
@@ -135,7 +133,7 @@
     },
     "UniversalMirageStageF2Flag": {
         "recognition": "OCR",
-        "text": "第2层",
+        "expected": "第2层",
         "roi": [
             765,
             18,
@@ -152,7 +150,7 @@
     },
     "UniversalMirageStageF5Flag": {
         "recognition": "OCR",
-        "text": "第5层",
+        "expected": "第5层",
         "roi": [
             765,
             18,
@@ -219,7 +217,7 @@
     },
     "UniversalMirageNoneInviteOfMirage": {
         "recognition": "OCR",
-        "text": "虚境挑战书不足",
+        "expected": "虚境挑战书不足",
         "roi": [
             362,
             287,
@@ -241,7 +239,7 @@
     },
     "UniversalMirageCombatFinish": {
         "recognition": "OCR",
-        "text": "战斗耗时",
+        "expected": "战斗耗时",
         "roi": [
             738,
             360,
@@ -276,7 +274,7 @@
     },
     "UniversalMirageNoneTimeSwirlPasses": {
         "recognition": "OCR",
-        "text": "您的时序通行证数量不足",
+        "expected": "您的时序通行证数量不足",
         "roi": [
             234,
             286,
@@ -289,7 +287,7 @@
     },
     "UniversalMirageQuit": {
         "recognition": "OCR",
-        "text": "退出",
+        "expected": "退出",
         "roi": [
             360,
             551,

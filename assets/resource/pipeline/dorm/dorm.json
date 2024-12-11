@@ -1,5 +1,4 @@
 {
-    "$schema": "../../pipeline.schema.json",
     "Dorm": {
         "next": [
             "Sub_ConfirmDormUpdate",
@@ -12,7 +11,7 @@
     },
     "DormPageFlag": {
         "recognition": "OCR",
-        "text": "家园小队",
+        "expected": "家园小队",
         "roi": [
             28,
             589,
@@ -84,7 +83,7 @@
     },
     "APMax": {
         "recognition": "OCR",
-        "text": "已经达到体力上限",
+        "expected": "已经达到体力上限",
         "roi": [
             461,
             289,

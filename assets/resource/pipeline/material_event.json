@@ -1,5 +1,4 @@
 {
-    "$schema": "../pipeline.schema.json",
     "MaterialEvent": {
         "next": [
             "MaterialEventFlag",
@@ -79,7 +78,7 @@
     },
     "MaterialEventNotEnoughAP": {
         "recognition": "OCR",
-        "text": [
+        "expected": [
             "没有足够体力"
         ],
         "roi": [
@@ -116,7 +115,7 @@
     },
     "MaterialEventNoneLevelsToLITE": {
         "recognition": "OCR",
-        "text": "没有可减负的关卡",
+        "expected": "没有可减负的关卡",
         "roi": [
             457,
             283,

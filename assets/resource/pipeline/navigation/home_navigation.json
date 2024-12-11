@@ -1,9 +1,8 @@
 {
-    "$schema": "../../pipeline.schema.json",
     "Sub_EnterAttackPage": {
         "is_sub": true,
         "recognition": "OCR",
-        "text": "出击",
+        "expected": "出击",
         "roi": [
             1082,
             282,
@@ -16,7 +15,7 @@
     "Sub_EnterSupplyPage": {
         "is_sub": true,
         "recognition": "OCR",
-        "text": "补给",
+        "expected": "补给",
         "roi": [
             1085,
             510,
@@ -29,7 +28,7 @@
     "Sub_EnterArmadaPage": {
         "is_sub": true,
         "recognition": "OCR",
-        "text": [
+        "expected": [
             "舰团"
         ],
         "roi": [
@@ -44,7 +43,7 @@
     "Sub_EnterDormPage": {
         "is_sub": true,
         "recognition": "OCR",
-        "text": [
+        "expected": [
             "家园"
         ],
         "roi": [
@@ -59,7 +58,7 @@
     "Sub_EnterMissionsPage": {
         "is_sub": true,
         "recognition": "OCR",
-        "text": [
+        "expected": [
             "任务"
         ],
         "roi": [

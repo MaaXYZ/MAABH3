@@ -1,5 +1,4 @@
 {
-    "$schema": "../pipeline.schema.json",
     "Awards": {
         "next": [
             "MissionsPageFlag",
@@ -11,7 +10,7 @@
     },
     "MissionsPageFlag": {
         "recognition": "OCR",
-        "text": "作战任务",
+        "expected": "作战任务",
         "roi": [
             0,
             60,
