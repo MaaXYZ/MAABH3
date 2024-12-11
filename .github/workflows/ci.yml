@@ -220,8 +220,8 @@ jobs:
 
       - name: Build MAABH3
         env:
-          CC: "/usr/local/opt/llvm/bin/clang"
-          CXX: "/usr/local/opt/llvm/bin/clang++"
+          CC: "$(brew --prefix llvm)/bin/clang"
+          CXX: "$(brew --prefix llvm)/bin/clang++"
         run: |
           cmake --preset 'NinjaMulti' \
             -DARCH='${{ matrix.arch == 'x86_64' && 'x64' || 'arm64' }}' \
