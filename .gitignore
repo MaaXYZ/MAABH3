@@ -444,5 +444,5 @@ deps
 build
 install
 
-# Tools
-tools/CropRoi/**/*.png
+# maa_pi_config
+config/maa_pi_config.json
