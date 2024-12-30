@@ -55,6 +55,14 @@ jobs:
         run: |
           go mod download
 
+      - name: Download MaaFramework
+        run: |
+          go run ./scripts/download -token=${{ secrets.GITHUB_TOKEN }} --all
+
+      - name: Build
+        run: |
+          go run ./scripts/build -version=${{ needs.meta.outputs.tag }} --all
+
   # release:
   #   if: ${{ needs.meta.outputs.is_release == 'true' }}
   #   needs: [meta, build]
