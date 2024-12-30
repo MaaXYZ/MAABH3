@@ -13,6 +13,9 @@ on:
       - '.github/workflows/meta.yml'
       - '.github/workflows/build.yml'
       - 'assets/**'
+      - 'cmd/**'
+      - 'internal/**'
+      - 'main.go'
   pull_request:
     branches:
       - '**'
@@ -20,6 +23,9 @@ on:
       - '.github/workflows/meta.yml'
       - '.github/workflows/build.yml'
       - 'assets/**'
+      - 'cmd/**'
+      - 'internal/**'
+      - 'main.go'
   workflow_dispatch:
 
 jobs:
