@@ -9,6 +9,8 @@ require (
 )
 
 require (
+	github.com/MaaXYZ/maa-framework-go v1.7.0 // indirect
+	github.com/ebitengine/purego v0.8.1 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect

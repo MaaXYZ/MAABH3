@@ -3,7 +3,7 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/MaaXYZ/maa-boom-aid/internal/config"
+	"github.com/MaaXYZ/maa-boom-aid/internal/logic"
 	"github.com/spf13/cobra"
 )
 
@@ -16,9 +16,11 @@ var versionCmd = &cobra.Command{
 }
 
 func version() {
-	fmt.Println("Build At:", config.BuildAt)
-	fmt.Println("Go Version:", config.GoVersion)
-	fmt.Println("Version:", config.Version)
+	versionLogic := logic.NewVersionLogic()
+	fmt.Println("Build At:", versionLogic.GetBuildAt())
+	fmt.Println("Go Version:", versionLogic.GetGoVersion())
+	fmt.Println("Version:", versionLogic.GetElfAidMagicVersion())
+	fmt.Println("Maa Framework Version:", versionLogic.GetMaaFrameworkVersion())
 }
 
 func init() {
