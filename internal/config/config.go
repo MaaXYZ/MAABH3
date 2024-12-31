@@ -11,7 +11,16 @@ import (
 )
 
 type Config struct {
+	Log     *LogConfig      `mapstructure:"log" toml:"log"`
 	Taskers []*TaskerConfig `mapstructure:"taskers" toml:"taskers"`
+}
+
+type LogConfig struct {
+	Level      string `mapstructure:"level" toml:"level"`
+	MaxSize    int    `mapstructure:"max_size" toml:"max_size"`
+	MaxBackups int    `mapstructure:"max_backups" toml:"max_backups"`
+	MaxAge     int    `mapstructure:"max_age" toml:"max_age"`
+	Compress   bool   `mapstructure:"compress" toml:"compress"`
 }
 
 type TaskerConfig struct {

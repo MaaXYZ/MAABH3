@@ -8,7 +8,9 @@ require (
 	github.com/pelletier/go-toml/v2 v2.2.3
 	github.com/spf13/cobra v1.8.1
 	github.com/spf13/viper v1.19.0
+	go.uber.org/zap v1.27.0
 	golang.org/x/oauth2 v0.24.0
+	gopkg.in/natefinch/lumberjack.v2 v2.2.1
 )
 
 require (
@@ -26,8 +28,7 @@ require (
 	github.com/spf13/cast v1.6.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/subosito/gotenv v1.6.0 // indirect
-	go.uber.org/atomic v1.9.0 // indirect
-	go.uber.org/multierr v1.9.0 // indirect
+	go.uber.org/multierr v1.10.0 // indirect
 	golang.org/x/exp v0.0.0-20230905200255-921286631fa9 // indirect
 	golang.org/x/sys v0.18.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
