@@ -12,6 +12,7 @@ import (
 
 type Config struct {
 	Log     *LogConfig      `mapstructure:"log" toml:"log"`
+	AdbPath string          `mapstructure:"adb_path" toml:"adb_path"`
 	Taskers []*TaskerConfig `mapstructure:"taskers" toml:"taskers"`
 }
 
