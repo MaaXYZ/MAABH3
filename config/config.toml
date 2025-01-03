@@ -1,0 +1,32 @@
+adb_path = "/path/to/adb"
+
+[log]
+level = "info"
+max_size = 5
+max_backups = 10
+max_age = 30
+compress = true
+
+
+[[taskers]]
+id = "f99bba5c-7a24-4590-a328-a998b215f6cd"
+name = "Tasker-1"
+ctrl_type = "adb"
+
+[taskers.win32_window]
+screencap = "GDI"
+input = "Seize"
+
+[taskers.adb_device]
+serial_number = "127.0.0.1:5555"
+screencap = "Default"
+input = "Default"
+
+[taskers.adb_device.config.extras.mumu]
+enable = false
+index = 0
+path = "/path/to/MuMuPlayer-12.0"
+
+[[taskers.tasks]]
+entry = ""
+param = {}
