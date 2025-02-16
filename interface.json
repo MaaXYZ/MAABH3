@@ -9,7 +9,7 @@
     ],
     "resource": [
         {
-            "name": "Offical",
+            "name": "Res",
             "path": [
                 "{PROJECT_DIR}/assets/resource"
             ]
