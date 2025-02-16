@@ -5,7 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/MaaXYZ/maa-framework-go"
+	"github.com/MaaXYZ/maa-framework-go/v2"
 	"github.com/pelletier/go-toml/v2"
 	"github.com/spf13/viper"
 )

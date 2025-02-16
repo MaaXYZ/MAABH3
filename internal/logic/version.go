@@ -2,7 +2,7 @@ package logic
 
 import (
 	"github.com/MaaXYZ/maa-boom-aid/internal/config"
-	"github.com/MaaXYZ/maa-framework-go"
+	"github.com/MaaXYZ/maa-framework-go/v2"
 )
 
 type Version struct{}
