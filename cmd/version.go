@@ -16,7 +16,7 @@ var versionCmd = &cobra.Command{
 }
 
 func version() {
-	versionLogic := logic.NewVersionLogic()
+	versionLogic := logic.NewVersion()
 	fmt.Println("Build At:", versionLogic.GetBuildAt())
 	fmt.Println("Go Version:", versionLogic.GetGoVersion())
 	fmt.Println("Version:", versionLogic.GetElfAidMagicVersion())

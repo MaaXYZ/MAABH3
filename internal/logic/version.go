@@ -5,24 +5,24 @@ import (
 	"github.com/MaaXYZ/maa-framework-go"
 )
 
-type VersionLogic struct{}
+type Version struct{}
 
-func NewVersionLogic() *VersionLogic {
-	return &VersionLogic{}
+func NewVersion() *Version {
+	return &Version{}
 }
 
-func (l *VersionLogic) GetMaaFrameworkVersion() string {
+func (l *Version) GetMaaFrameworkVersion() string {
 	return maa.Version()
 }
 
-func (l *VersionLogic) GetElfAidMagicVersion() string {
+func (l *Version) GetElfAidMagicVersion() string {
 	return config.Version
 }
 
-func (l *VersionLogic) GetGoVersion() string {
+func (l *Version) GetGoVersion() string {
 	return config.GoVersion
 }
 
-func (l *VersionLogic) GetBuildAt() string {
+func (l *Version) GetBuildAt() string {
 	return config.BuildAt
 }
