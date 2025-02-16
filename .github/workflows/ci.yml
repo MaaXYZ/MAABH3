@@ -62,7 +62,7 @@ jobs:
           echo >> CHANGELOG.md
           echo "**Full Changelog**: [$last_tag -> $this_tag](https://github.com/MaaAssistantArknights/MAABH3/compare/${last_tag}...${this_tag})" >> CHANGELOG.md
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: ${{ startsWith(github.ref, 'refs/tags/v') }}
         with:
           name: changelog
