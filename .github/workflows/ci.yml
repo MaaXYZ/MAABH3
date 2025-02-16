@@ -108,7 +108,7 @@ jobs:
         run: |
           cmake --install build --prefix install
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: MAABH3-win-${{ matrix.arch }}
           path: "install"
@@ -177,7 +177,7 @@ jobs:
         run: |
           cmake --install build --prefix install
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: MAABH3-linux-${{ matrix.arch }}
           path: "install"
@@ -236,7 +236,7 @@ jobs:
         run: |
           cmake --install build --prefix install
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: MAABH3-macos-${{ matrix.arch }}
           path: "install"
@@ -246,7 +246,7 @@ jobs:
     needs: [meta, windows, ubuntu, macos]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           path: assets
       - run: |
