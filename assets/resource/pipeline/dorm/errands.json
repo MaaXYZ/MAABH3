@@ -50,7 +50,7 @@
         ],
         "action": "Click",
         "next": [
-            "Rewards_claim",
+            "Rewards_claim1",
             "One_click2",
             "One_click1"
         ]
@@ -67,8 +67,7 @@
         "next": [
             "Close",
             "One_click2",
-            "One_click1",
-            "Close"
+            "One_click1"
         ]
     },
     "Close": {
