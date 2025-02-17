@@ -2,11 +2,6 @@ adb_path = "/path/to/adb"
 
 [log]
 level = "info"
-max_size = 5
-max_backups = 10
-max_age = 30
-compress = true
-
 
 [[taskers]]
 id = "f99bba5c-7a24-4590-a328-a998b215f6cd"

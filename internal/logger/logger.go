@@ -3,73 +3,55 @@ package logger
 import (
 	"os"
 	"path/filepath"
+	"time"
 
 	"github.com/MaaXYZ/maa-boom-aid/internal/config"
-	"go.uber.org/zap"
-	"go.uber.org/zap/zapcore"
+	"github.com/rs/zerolog"
+	"github.com/rs/zerolog/log"
 	"gopkg.in/natefinch/lumberjack.v2"
 )
 
-func New(conf *config.Config) *zap.Logger {
+func Init(conf *config.Config) {
 	exePath, err := os.Executable()
 	if err != nil {
-		return nil
-	}
-	exeDir := filepath.Dir(exePath)
-	logPath := filepath.Join(exeDir, "debug", "log.jsonl")
-	hook := lumberjack.Logger{
-		Filename:   logPath,
-		MaxSize:    conf.Log.MaxSize,
-		MaxBackups: conf.Log.MaxBackups,
-		MaxAge:     conf.Log.MaxAge,
-		Compress:   conf.Log.Compress,
+		log.Fatal().
+			Err(err).
+			Msg("failed to get executable path")
 	}
 
-	encoder := getJsonEncoder()
-	core := zapcore.NewCore(
-		encoder,
-		zapcore.AddSync(&hook),
-		getLevel(conf.Log.Level),
+	level, err := zerolog.ParseLevel(conf.Log.Level)
+	if err != nil {
+		log.Fatal().
+			Err(err).
+			Msg("failed to parse log level")
+	}
+
+	exeDir := filepath.Dir(exePath)
+	logPath := filepath.Join(exeDir, "debug", "mba.log")
+
+	writer := zerolog.MultiLevelWriter(
+		&lumberjack.Logger{
+			Filename:   logPath,
+			MaxSize:    16, // megabytes
+			MaxBackups: 3,  // files
+			MaxAge:     90, // days
+			Compress:   true,
+		},
+		zerolog.ConsoleWriter{
+			Out:        os.Stdout,
+			TimeFormat: time.RFC3339Nano,
+		},
 	)
-	return zap.New(core, zap.AddCaller(), zap.AddStacktrace(zap.ErrorLevel))
+
+	log.Logger = zerolog.New(writer).
+		With().
+		Timestamp().
+		Caller().
+		Logger().
+		Level(level)
 }
 
-func getLevel(level string) zapcore.Level {
-	switch level {
-	case "debug":
-		return zap.DebugLevel
-	case "info":
-		return zap.InfoLevel
-	case "warn":
-		return zap.WarnLevel
-	case "error":
-		return zap.ErrorLevel
-	case "fatal":
-		return zap.FatalLevel
-	default:
-		return zap.InfoLevel
-	}
-}
-
-func getLumberjackLogger(conf *config.Config) (lumberjack.Logger, error) {
-	exePath, err := os.Executable()
-	if err != nil {
-		return lumberjack.Logger{}, err
-	}
-	exeDir := filepath.Dir(exePath)
-	logPath := filepath.Join(exeDir, "debug", "log.jsonl")
-	return lumberjack.Logger{
-		Filename:   logPath,
-		MaxSize:    conf.Log.MaxSize,
-		MaxBackups: conf.Log.MaxBackups,
-		MaxAge:     conf.Log.MaxAge,
-		Compress:   conf.Log.Compress,
-	}, nil
-}
-
-func getJsonEncoder() zapcore.Encoder {
-	conf := zap.NewProductionEncoderConfig()
-	conf.TimeKey = "time"
-	conf.EncodeTime = zapcore.ISO8601TimeEncoder
-	return zapcore.NewJSONEncoder(conf)
+func init() {
+	zerolog.TimeFieldFormat = time.RFC3339Nano
+	zerolog.DurationFieldUnit = time.Nanosecond
 }
