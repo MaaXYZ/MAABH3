@@ -18,10 +18,7 @@
             "Sub_AbyssSettlement",
             "Sub_AiPromptFlag",
             "Sub_CancelDownload",
-            "GameLoading",
-            "HomeFlag",
-            "MiHoYoLogo",
-            "Sub_StartBH3"
+            "GameLoading"
         ]
     },
     "Sub_StartBH3": {
@@ -258,9 +255,12 @@
         ],
         "next": [
             "DownloadConfirm",
-            "Downloading",
-            "Checking",
-            "Downloaded",
+            "Downloading1",
+            "Downloading2",
+            "Checking1",
+            "Checking2",
+            "Downloaded1",
+            "Downloaded2",
             "DownloadedConfirm",
             "Download"
         ]
@@ -276,82 +276,121 @@
         ],
         "action": "Click",
         "next": [
-            "Downloading",
-            "Checking",
-            "Downloaded",
+            "Downloading1",
+            "Downloading2",
+            "Checking1",
+            "Checking2",
+            "Downloaded1",
+            "Downloaded2",
             "DownloadedConfirm",
             "Download"
         ]
     },
-    "Downloading": {
+    "Downloading1": {
         "recognition": "OCR",
         "expected": [
             "下载中"
         ],
         "roi": [
-            [
-                1067,
-                593,
-                169,
-                127
-            ],
-            [
-                17,
-                567,
-                175,
-                137
-            ]
+            1067,
+            593,
+            169,
+            127
         ],
         "next": [
-            "Downloading",
-            "Checking",
-            "Downloaded",
+            "Downloading1",
+            "Downloading2",
+            "Checking1",
+            "Checking2",
+            "Downloaded1",
+            "Downloaded2",
             "DownloadedConfirm"
         ]
     },
-    "Checking": {
+    "Downloading2": {
+        "recognition": "OCR",
+        "expected": [
+            "下载中"
+        ],
+        "roi": [
+            17,
+            567,
+            175,
+            137
+        ],
+        "next": [
+            "Downloading2",
+            "Downloading1",
+            "Checking1",
+            "Checking2",
+            "Downloaded1",
+            "Downloaded2",
+            "DownloadedConfirm"
+        ]
+    },
+    "Checking1": {
         "recognition": "OCR",
         "expected": [
             "校验中"
         ],
         "roi": [
-            [
-                1067,
-                593,
-                168,
-                127
-            ],
-            [
-                17,
-                567,
-                175,
-                137
-            ]
+            1067,
+            593,
+            168,
+            127
         ],
         "next": [
-            "Checking",
-            "Downloaded",
+            "Checking1",
+            "Checking2",
+            "Downloaded1",
+            "Downloaded2",
             "DownloadedConfirm"
         ]
     },
-    "Downloaded": {
+    "Checking2": {
+        "recognition": "OCR",
+        "expected": [
+            "校验中"
+        ],
+        "roi": [
+            17,
+            567,
+            175,
+            137
+        ],
+        "next": [
+            "Checking2",
+            "Checking1",
+            "Downloaded1",
+            "Downloaded2",
+            "DownloadedConfirm"
+        ]
+    },
+    "Downloaded1": {
         "recognition": "OCR",
         "expected": [
             "下载完成"
         ],
         "roi": [
-            [
-                1049,
-                594,
-                186,
-                126
-            ],
-            [
-                19,
-                571,
-                197,
-                131
-            ]
+            1049,
+            594,
+            186,
+            126
+        ],
+        "next": [
+            "DownloadedConfirm"
+        ]
+    },
+    "Downloaded2": {
+        "recognition": "OCR",
+        "expected": [
+            "下载完成"
+        ],
+        "roi": [
+            19,
+            571,
+            197,
+            131
         ],
         "next": [
             "DownloadedConfirm"
