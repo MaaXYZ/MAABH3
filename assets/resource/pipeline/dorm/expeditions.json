@@ -4,7 +4,8 @@
             "ExpeditionsPageFlag",
             "Sub_EnterExpeditionsPage",
             "Sub_EnterDormPage",
-            "Sub_BackButton"
+            "Sub_BackButton1",
+            "Sub_BackButton2"
         ]
     },
     "ExpeditionsPageFlag": {
