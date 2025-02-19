@@ -24,6 +24,9 @@ func run() {
 	conf := config.New()
 	logger.Init(conf)
 
+	log.Info().
+		Msg("start")
+
 	tasker := maa.NewTasker(nil)
 	if tasker == nil {
 		log.Fatal().
@@ -125,6 +128,12 @@ func run() {
 	}
 
 	for _, task := range taskList {
+		if task.Entry == "" {
+			log.Warn().
+				Msg("task entry is empty")
+			continue
+		}
+
 		log.Info().
 			Str("task", task.Entry).
 			Msg("start task")
@@ -138,6 +147,9 @@ func run() {
 				Msg("task post failed")
 		}
 	}
+
+	log.Info().
+		Msg("done")
 
 }
 
