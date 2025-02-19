@@ -4,6 +4,7 @@ go 1.23.1
 
 require (
 	github.com/MaaXYZ/maa-framework-go/v2 v2.0.0
+	github.com/bytedance/sonic v1.12.8
 	github.com/google/go-github/v67 v67.0.0
 	github.com/pelletier/go-toml/v2 v2.2.3
 	github.com/rs/zerolog v1.33.0
@@ -14,7 +15,6 @@ require (
 )
 
 require (
-	github.com/bytedance/sonic v1.12.8 // indirect
 	github.com/bytedance/sonic/loader v0.2.2 // indirect
 	github.com/cloudwego/base64x v0.1.5 // indirect
 	github.com/ebitengine/purego v0.8.1 // indirect
