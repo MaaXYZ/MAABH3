@@ -72,7 +72,8 @@
             "DailyBPRewardsClaim_100",
             "DailyBPRewardsPreview",
             "Sub_CloseDialogBox",
-            "Sub_BackButton",
+            "Sub_BackButton1",
+            "Sub_BackButton2",
             "HomeFlag"
         ]
     },
@@ -89,7 +90,8 @@
             "DailyBPRewardsPreview",
             "DailyBPRewards_100",
             "Sub_CloseDialogBox",
-            "Sub_BackButton",
+            "Sub_BackButton1",
+            "Sub_BackButton2",
             "HomeFlag"
         ]
     },
@@ -114,7 +116,8 @@
             "DailyBPRewardsClaim_200",
             "DailyBPRewardsPreview",
             "Sub_CloseDialogBox",
-            "Sub_BackButton",
+            "Sub_BackButton1",
+            "Sub_BackButton2",
             "HomeFlag"
         ]
     },
@@ -131,7 +134,8 @@
             "DailyBPRewardsPreview",
             "DailyBPRewards_200",
             "Sub_CloseDialogBox",
-            "Sub_BackButton",
+            "Sub_BackButton1",
+            "Sub_BackButton2",
             "HomeFlag"
         ]
     },
@@ -156,7 +160,8 @@
             "DailyBPRewardsClaim_300",
             "DailyBPRewardsPreview",
             "Sub_CloseDialogBox",
-            "Sub_BackButton",
+            "Sub_BackButton1",
+            "Sub_BackButton2",
             "HomeFlag"
         ]
     },
@@ -173,7 +178,8 @@
             "DailyBPRewardsPreview",
             "DailyBPRewards_300",
             "Sub_CloseDialogBox",
-            "Sub_BackButton",
+            "Sub_BackButton1",
+            "Sub_BackButton2",
             "HomeFlag"
         ]
     },
@@ -198,7 +204,8 @@
             "DailyBPRewardsClaim_450",
             "DailyBPRewardsPreview",
             "Sub_CloseDialogBox",
-            "Sub_BackButton",
+            "Sub_BackButton1",
+            "Sub_BackButton2",
             "HomeFlag"
         ]
     },
@@ -215,7 +222,8 @@
             "DailyBPRewardsPreview",
             "DailyBPRewards_450",
             "Sub_CloseDialogBox",
-            "Sub_BackButton",
+            "Sub_BackButton1",
+            "Sub_BackButton2",
             "HomeFlag"
         ]
     },
@@ -240,7 +248,8 @@
             "DailyBPRewardsClaim_600",
             "DailyBPRewardsPreview",
             "Sub_CloseDialogBox",
-            "Sub_BackButton",
+            "Sub_BackButton1",
+            "Sub_BackButton2",
             "HomeFlag"
         ]
     },
@@ -257,7 +266,8 @@
             "DailyBPRewardsPreview",
             "DailyBPRewards_600",
             "Sub_CloseDialogBox",
-            "Sub_BackButton",
+            "Sub_BackButton1",
+            "Sub_BackButton2",
             "HomeFlag"
         ]
     },
@@ -272,7 +282,8 @@
         ],
         "next": [
             "Sub_CloseDialogBox",
-            "Sub_BackButton",
+            "Sub_BackButton1",
+            "Sub_BackButton2",
             "HomeFlag"
         ]
     },
@@ -286,7 +297,8 @@
             123
         ],
         "next": [
-            "Sub_BackButton",
+            "Sub_BackButton1",
+            "Sub_BackButton2",
             "HomeFlag"
         ]
     }

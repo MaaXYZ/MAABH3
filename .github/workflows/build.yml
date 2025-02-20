@@ -1,0 +1,125 @@
+name: build
+
+permissions:
+  contents: write
+
+on:
+  push:
+    tags:
+      - 'v*'
+    branches:
+      - '**'
+    paths:
+      - '.github/workflows/meta.yml'
+      - '.github/workflows/build.yml'
+      - 'assets/**'
+      - 'cmd/**'
+      - 'internal/**'
+      - 'main.go'
+  pull_request:
+    branches:
+      - '**'
+    paths:
+      - '.github/workflows/meta.yml'
+      - '.github/workflows/build.yml'
+      - 'assets/**'
+      - 'cmd/**'
+      - 'internal/**'
+      - 'main.go'
+  workflow_dispatch:
+
+jobs:
+  meta:
+    uses: ./.github/workflows/meta.yml
+
+  build:
+    needs: meta
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+
+      - name: Cache Go modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
+      - name: Download Go modules
+        run: |
+          go mod download
+
+      - name: Download MaaFramework
+        run: |
+          go run ./scripts/download -token=${{ secrets.GITHUB_TOKEN }} --all
+
+      - name: Build
+        run: |
+          go run ./scripts/build -version=${{ needs.meta.outputs.tag }} --all
+
+      - name: Install
+        run: |
+         go run ./scripts/install --all
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mba-linux-amd64
+          path: "install/linux-amd64"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mba-linux-arm64
+          path: "install/linux-arm64"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mba-windows-amd64
+          path: "install/windows-amd64"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mba-windows-arm64
+          path: "install/windows-arm64"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mba-darwin-amd64
+          path: "install/darwin-amd64"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mba-darwin-arm64
+          path: "install/darwin-arm64"
+
+  # release:
+  #   if: ${{ needs.meta.outputs.is_release == 'true' }}
+  #   needs: [meta, build]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/download-artifact@v4
+  #       with:
+  #         path: assets
+  #     - run: |
+  #         mv -vf assets/changelog/* .
+  #         rm -rf assets/changelog
+  #         cd assets
+  #         for f in *; do
+  #           (cd $f && zip -r ../$f-${{ needs.meta.outputs.tag }}.zip .)
+  #         done
+  #     - uses: softprops/action-gh-release@v1
+  #       with:
+  #         body_path: CHANGELOG.md
+  #         files: assets/*
+  #         tag_name: ${{ needs.meta.outputs.tag }}

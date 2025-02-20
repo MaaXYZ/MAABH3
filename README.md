@@ -79,49 +79,34 @@
 - 使用材料减负需要先三星通关一次对应关卡，有多个关卡的模块（如曜日材料）则会自动进行已完成挑战的最高一级关卡
 - 万象虚境需要先选好上场女武神
 
-## Config
-
-`./config/control` 目录下放置 control 相关配置
-
-`./config/device` 目录下放置 device 相关配置
-
-`./config/tasks` 目录下放置 tasks 相关配置
-
-详细见 [配置文档](./docs/配置文档.md)
-
 ## How to build
 
 **如果你要编译源码才看这节，否则直接 [下载](https://github.com/MaaXYZ/MAABH3/releases) 即可**
 
 欢迎大佬们来带带~
 
-1. 下载 MaaFramework 的 [Release 包](https://github.com/MaaXYZ/MaaFramework/releases)，解压到 `deps` 文件夹中
-2. 配置 cmake
-
-    - Windows  
+1. 下载 MaaFramework 的 [Release 包](https://github.com/MaaXYZ/MaaFramework/releases)
 
     ```bash
-    cmake --preset "MSVC 2022"
+    make download
     ```
 
-    - Linux / macOS
+2. 编译二进制文件
 
     ```bash
-    cmake --preset "NinjaMulti"
+    make build
     ```
 
-3. 使用 cmake 构建工程  
+3. 安装
 
     ```bash
-    cmake --build build --config Release
-    cmake --install build --prefix install
+    make intall
     ```
 
-    生成的二进制及相关资源文件在 `install` 目录下
+生成的二进制及相关资源文件在 `install` 目录下
 
 ## 开发相关
 
-- `tools/CropRoi` 可以用来裁剪图片和获取 ROI
 - Pipeline 协议请参考 [MaaFramework 的文档](https://github.com/MaaXYZ/MaaFramework/blob/main/docs/zh_cn/3.1-%E4%BB%BB%E5%8A%A1%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%8D%8F%E8%AE%AE.md)
 
 ## Join us

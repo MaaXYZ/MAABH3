@@ -1,0 +1,20 @@
+{
+    "version": "dev",
+    "message": "This is intended solely for use with the MAA Support Extension.",
+    "controller": [
+        {
+            "name": "Android",
+            "type": "Adb"
+        }
+    ],
+    "resource": [
+        {
+            "name": "Res",
+            "path": [
+                "{PROJECT_DIR}/assets/resource"
+            ]
+        }
+    ],
+    "task": [],
+    "option": {}
+}
