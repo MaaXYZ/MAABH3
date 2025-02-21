@@ -8,6 +8,10 @@ id = "f99bba5c-7a24-4590-a328-a998b215f6cd"
 name = "Tasker-1"
 ctrl_type = "adb"
 
+bundles = [
+    "{PROJECT_DIR}/resource"
+]
+
 [taskers.win32_window]
 screencap = "GDI"
 input = "Seize"

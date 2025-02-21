@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/MaaXYZ/maa-framework-go/v2"
 	"github.com/pelletier/go-toml/v2"
@@ -24,6 +25,7 @@ type TaskerConfig struct {
 	ID          string            `mapstructure:"id" toml:"id"`
 	Name        string            `mapstructure:"name" toml:"name"`
 	CtrlType    string            `mapstructure:"ctrl_type" toml:"ctrl_type"`
+	Bundles     []string          `mapstructure:"bundles" toml:"bundles"`
 	Win32Window Win32WindowConfig `mapstructure:"win32_window" toml:"win32_window"`
 	AdbDevice   AdbDeviceConfig   `mapstructure:"adb_device" toml:"adb_device"`
 	Tasks       []Task            `mapstructure:"tasks" toml:"tasks"`
@@ -87,6 +89,13 @@ func New() *Config {
 	if err := v.Unmarshal(&config); err != nil {
 		log.Fatalf("Failed to unmarshal config file, %v", err)
 	}
+
+	for _, tasker := range config.Taskers {
+		for i, bundle := range tasker.Bundles {
+			tasker.Bundles[i] = strings.Replace(bundle, "{PROJECT_DIR}", exeDir, -1)
+		}
+	}
+
 	return &config
 }
 

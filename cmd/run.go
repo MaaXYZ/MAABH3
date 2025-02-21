@@ -27,6 +27,11 @@ func run() {
 	log.Info().
 		Msg("start")
 
+	if len(conf.Taskers) == 0 {
+		log.Fatal().
+			Msg("no taskers found")
+	}
+
 	tasker := maa.NewTasker(nil)
 	if tasker == nil {
 		log.Fatal().
@@ -40,28 +45,19 @@ func run() {
 	}
 	defer res.Destroy()
 
-	exePath, err := os.Executable()
-	if err != nil {
-		log.Fatal().
-			Err(err).
-			Msg("failed to get executable path")
-	}
-	exeDir := filepath.Dir(exePath)
-	bundlePath := filepath.Join(exeDir, "resource")
-	if res.PostBundle(bundlePath).Wait().Success() {
-		log.Info().
-			Str("path", bundlePath).
-			Msg("bundle post success")
-	} else {
-		log.Fatal().
-			Str("path", bundlePath).
-			Msg("bundle post failed")
-	}
-
-	if len(conf.Taskers) == 0 {
-		log.Fatal().
-			Err(err).
-			Msg("no taskers found")
+	bundles := conf.Taskers[0].Bundles
+	for i, bundle := range bundles {
+		if res.PostBundle(bundle).Wait().Success() {
+			log.Info().
+				Int("index", i).
+				Str("path", bundle).
+				Msg("bundle post success")
+		} else {
+			log.Fatal().
+				Int("index", i).
+				Str("path", bundle).
+				Msg("bundle post failed")
+		}
 	}
 
 	if tasker.BindResource(res) {
@@ -87,6 +83,13 @@ func run() {
 		adbConfigStr = string(adbConfigData)
 	}
 
+	exePath, err := os.Executable()
+	if err != nil {
+		log.Fatal().
+			Err(err).
+			Msg("failed to get executable path")
+	}
+	exeDir := filepath.Dir(exePath)
 	maaAgentBinaryDir := filepath.Join(exeDir, "MaaAgentBinary")
 
 	ctrl := maa.NewAdbController(
