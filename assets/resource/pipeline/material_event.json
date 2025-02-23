@@ -7,8 +7,7 @@
             "Sub_EnterMaterialExpeditionPage",
             "Sub_EnterAttackEventPage",
             "Sub_EnterAttackPage",
-            "Sub_BackButton1",
-            "Sub_BackButton2",
+            "Sub_BackButton",
             "Sub_StartUp"
         ]
     },
@@ -55,8 +54,7 @@
         ],
         "inverse": true,
         "next": [
-            "Sub_HomeButton1",
-            "Sub_HomeButton2",
+            "Sub_HomeButton",
             "HomeFlag"
         ]
     },
@@ -74,8 +72,7 @@
             "LITE",
             "MaterialEventNotEnoughAP",
             "Sub_CloseDialogBox",
-            "Sub_HomeButton1",
-            "Sub_HomeButton2",
+            "Sub_HomeButton",
             "HomeFlag"
         ]
     },
@@ -95,8 +92,7 @@
         "next": [
             "MaterialEventNotEnoughAPToGetStoredAP",
             "Sub_CloseDialogBox",
-            "Sub_HomeButton1",
-            "Sub_HomeButton2",
+            "Sub_HomeButton",
             "HomeFlag"
         ]
     },
@@ -113,8 +109,7 @@
         "next": [
             "QuickLITE",
             "Sub_CloseDialogBox",
-            "Sub_HomeButton1",
-            "Sub_HomeButton2",
+            "Sub_HomeButton",
             "HomeFlag"
         ]
     },
@@ -129,8 +124,7 @@
         ],
         "action": "Click",
         "next": [
-            "Sub_HomeButton1",
-            "Sub_HomeButton2",
+            "Sub_HomeButton",
             "HomeFlag"
         ]
     }

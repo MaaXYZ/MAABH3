@@ -4,8 +4,7 @@
             "ErrandsPageFlag",
             "Sub_EnterErrandsPage",
             "Sub_EnterDormPage",
-            "Sub_BackButton1",
-            "Sub_BackButton2"
+            "Sub_BackButton"
         ]
     },
     "ErrandsPageFlag": {
@@ -24,15 +23,13 @@
         ]
     },
     "ErrandsUnfold": {
-        "recognition": "OCR",
-        "expected": [
-            "一键打工"
-        ],
+        "recognition": "TemplateMatch",
+        "template": "Dorm/yijiandagong.png",
         "roi": [
-            878,
-            612,
-            247,
-            108
+            891,
+            605,
+            223,
+            115
         ],
         "action": "Click",
         "next": [
@@ -43,6 +40,7 @@
     "One_click1": {
         "recognition": "TemplateMatch",
         "template": "Dorm/available.png",
+        "threshold": 0.85,
         "roi": [
             611,
             545,
@@ -73,12 +71,12 @@
     },
     "Close": {
         "recognition": "TemplateMatch",
-        "template": "Dorm/Close.png",
+        "template": "Dorm/Cancel.png",
         "roi": [
-            1059,
-            3,
-            137,
-            133
+            378,
+            556,
+            162,
+            132
         ],
         "action": "Click",
         "next": [
@@ -90,6 +88,7 @@
     "Rewards_claim1": {
         "recognition": "TemplateMatch",
         "template": "Dorm/Collection_available.png",
+        "threshold": 0.85,
         "roi": [
             1051,
             610,
@@ -106,6 +105,7 @@
     "Rewards_claim2": {
         "recognition": "TemplateMatch",
         "template": "Dorm/Collection_forbidden.png",
+        "threshold": 0.85,
         "roi": [
             1053,
             611,
