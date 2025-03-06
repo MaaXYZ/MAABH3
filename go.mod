@@ -3,7 +3,7 @@ module github.com/MaaXYZ/maa-boom-aid
 go 1.23.1
 
 require (
-	github.com/MaaXYZ/maa-framework-go/v2 v2.0.0
+	github.com/MaaXYZ/maa-framework-go/v2 v2.1.0
 	github.com/bytedance/sonic v1.12.8
 	github.com/google/go-github/v67 v67.0.0
 	github.com/pelletier/go-toml/v2 v2.2.3

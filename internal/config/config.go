@@ -6,7 +6,6 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/MaaXYZ/maa-framework-go/v2"
 	"github.com/pelletier/go-toml/v2"
 	"github.com/spf13/viper"
 )
@@ -36,27 +35,11 @@ type Win32WindowConfig struct {
 	Input     string `mapstructure:"intpu" toml:"intpu"`
 }
 
-func (w *Win32WindowConfig) GetScreencapMethod() maa.Win32ScreencapMethod {
-	return strToWin32CtrlScreencapMethod(w.Screencap)
-}
-
-func (w *Win32WindowConfig) GetInputMethod() maa.Win32InputMethod {
-	return strToWin32CtrlInputMethod(w.Input)
-}
-
 type AdbDeviceConfig struct {
 	SerialNumber string                 `mapstructure:"serial_number" toml:"serial_number"`
 	Screencap    string                 `mapstructure:"screencap" toml:"screencap"`
 	Input        string                 `mapstructure:"input" toml:"input"`
 	Config       map[string]interface{} `mapstructure:"config" toml:"config"`
-}
-
-func (a *AdbDeviceConfig) GetScreencapMethod() maa.AdbScreencapMethod {
-	return strToAdbCtrlScreencapMethod(a.Screencap)
-}
-
-func (a *AdbDeviceConfig) GetInputMethod() maa.AdbInputMethod {
-	return strToAdbCtrlInputMethod(a.Input)
 }
 
 type Task struct {
@@ -117,68 +100,4 @@ func (c *Config) Save() error {
 	encode := toml.NewEncoder(file)
 
 	return encode.Encode(c)
-}
-
-func strToAdbCtrlScreencapMethod(method string) maa.AdbScreencapMethod {
-	switch method {
-	case "Default":
-		return maa.AdbScreencapMethodDefault
-	case "EncodeToFileAndPull":
-		return maa.AdbScreencapMethodEncodeToFileAndPull
-	case "Encode":
-		return maa.AdbScreencapMethodEncode
-	case "RawWithGzip":
-		return maa.AdbScreencapMethodRawWithGzip
-	case "RawByNetcat":
-		return maa.AdbScreencapMethodRawByNetcat
-	case "MinicapDirect":
-		return maa.AdbScreencapMethodMinicapDirect
-	case "MinicapStream":
-		return maa.AdbScreencapMethodMinicapStream
-	case "EmulatorExtras":
-		return maa.AdbScreencapMethodEmulatorExtras
-	default:
-		return maa.AdbScreencapMethodNone
-	}
-}
-
-func strToAdbCtrlInputMethod(method string) maa.AdbInputMethod {
-	switch method {
-	case "Default":
-		return maa.AdbInputMethodDefault
-	case "AdbShell":
-		return maa.AdbInputMethodAdbShell
-	case "MinitouchAndAdbKey":
-		return maa.AdbInputMethodMinitouchAndAdbKey
-	case "Maatouch":
-		return maa.AdbInputMethodMaatouch
-	case "EmulatorExtras":
-		return maa.AdbInputMethodEmulatorExtras
-	default:
-		return maa.AdbInputMethodNone
-	}
-}
-
-func strToWin32CtrlScreencapMethod(method string) maa.Win32ScreencapMethod {
-	switch method {
-	case "GDI":
-		return maa.Win32ScreencapMethodGDI
-	case "FramePool":
-		return maa.Win32ScreencapMethodFramePool
-	case "DXGIDesktopDup":
-		return maa.Win32ScreencapMethodDXGIDesktopDup
-	default:
-		return maa.Win32ScreencapMethodNone
-	}
-}
-
-func strToWin32CtrlInputMethod(method string) maa.Win32InputMethod {
-	switch method {
-	case "Seize":
-		return maa.Win32InputMethodSeize
-	case "SendMessage":
-		return maa.Win32InputMethodSendMessage
-	default:
-		return maa.Win32InputMethodNone
-	}
 }

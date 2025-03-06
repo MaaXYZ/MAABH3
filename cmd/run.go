@@ -83,6 +83,20 @@ func run() {
 		adbConfigStr = string(adbConfigData)
 	}
 
+	adbScreencap, err := maa.ParseAdbScreencapMethod(device.Screencap)
+	if err != nil {
+		log.Fatal().
+			Err(err).
+			Msg("failed to parse adb screencap method")
+	}
+
+	adbInput, err := maa.ParseAdbInputMethod(device.Input)
+	if err != nil {
+		log.Fatal().
+			Err(err).
+			Msg("failed to parse adb input method")
+	}
+
 	exePath, err := os.Executable()
 	if err != nil {
 		log.Fatal().
@@ -95,8 +109,8 @@ func run() {
 	ctrl := maa.NewAdbController(
 		conf.AdbPath,
 		device.SerialNumber,
-		device.GetScreencapMethod(),
-		device.GetInputMethod(),
+		adbScreencap,
+		adbInput,
 		adbConfigStr,
 		maaAgentBinaryDir,
 		nil,
