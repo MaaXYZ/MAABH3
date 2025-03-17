@@ -1,5 +1,5 @@
 {
-    "Sub_BackButton1": {
+    "Sub_BackButton": {
         "is_sub": true,
         "recognition": "TemplateMatch",
         "template": [
@@ -7,27 +7,21 @@
             "Utils/BackButton_1.png"
         ],
         "roi": [
-            0,
-            0,
-            180,
-            133
+            [
+                0,
+                0,
+                180,
+                133
+            ],
+            [
+                60,
+                0,
+                124,
+                132
+            ]
         ],
-        "action": "Click"
-    },
-    "Sub_BackButton2": {
-        "is_sub": true,
-        "recognition": "TemplateMatch",
-        "template": [
-            "Utils/BackButton.png",
-            "Utils/BackButton_1.png"
-        ],
-        "roi": [
-            60,
-            0,
-            124,
-            132
-        ],
-        "action": "Click"
+        "action": "Click",
+        "post_delay": 1500
     },
     "Sub_BackText": {
         "is_sub": true,
@@ -41,9 +35,10 @@
             220,
             160
         ],
-        "action": "Click"
+        "action": "Click",
+        "post_delay": 1500
     },
-    "Sub_HomeButton1": {
+    "Sub_HomeButton": {
         "is_sub": true,
         "recognition": "TemplateMatch",
         "template": [
@@ -51,27 +46,21 @@
             "Utils/HomeButton_1.png"
         ],
         "roi": [
-            126,
-            0,
-            212,
-            134
+            [
+                126,
+                0,
+                212,
+                134
+            ],
+            [
+                136,
+                0,
+                133,
+                132
+            ]
         ],
-        "action": "Click"
-    },
-    "Sub_HomeButton2": {
-        "is_sub": true,
-        "recognition": "TemplateMatch",
-        "template": [
-            "Utils/HomeButton.png",
-            "Utils/HomeButton_1.png"
-        ],
-        "roi": [
-            136,
-            0,
-            133,
-            132
-        ],
-        "action": "Click"
+        "action": "Click",
+        "post_delay": 2500
     },
     "Sub_CancelButton": {
         "is_sub": true,

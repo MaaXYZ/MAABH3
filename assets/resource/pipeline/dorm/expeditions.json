@@ -4,8 +4,7 @@
             "ExpeditionsPageFlag",
             "Sub_EnterExpeditionsPage",
             "Sub_EnterDormPage",
-            "Sub_BackButton1",
-            "Sub_BackButton2"
+            "Sub_BackButton"
         ]
     },
     "ExpeditionsPageFlag": {
@@ -61,7 +60,7 @@
             573
         ],
         "action": "Click",
-        "post_wait_freezes": 200,
+        "post_wait_freezes": 1000,
         "next": [
             "FragmentConfirm",
             "FragmentCompleted",
@@ -112,7 +111,7 @@
             573
         ],
         "action": "Click",
-        "post_wait_freezes": 200,
+        "post_wait_freezes": 1000,
         "next": [
             "MaterialConfirm",
             "MaterialCompleted",
@@ -133,7 +132,7 @@
         "inverse": true,
         "next": [
             "Sub_SwitchToFragmentPage",
-            "SelectFirstExpeditions",
+            "One_click_to_start_expeditions",
             "NoIdleExpeditions"
         ]
     },
@@ -151,6 +150,52 @@
             "MaterialConfirm",
             "MaterialCompleted",
             "MaterialNoCompleted"
+        ]
+    },
+    "One_click_to_start_expeditions": {
+        "recognition": "TemplateMatch",
+        "template": "Dorm/One_click_to_start_expeditions.png",
+        "roi": [
+            1057,
+            594,
+            212,
+            126
+        ],
+        "action": "Click",
+        "post_wait_freezes": 1000,
+        "next": [
+            "ExpeditionsStart",
+            "ExpeditionsNotEnoughAP"
+        ]
+    },
+    "ExpeditionsStart": {
+        "recognition": "TemplateMatch",
+        "template": "Dorm/ExpeditionsStart.png",
+        "roi": [
+            712,
+            544,
+            225,
+            152
+        ],
+        "action": "Click",
+        "next": [
+            "ExpeditionsConfirm",
+            "ExpeditionsNotEnoughNumberOfLevelsQuick",
+            "ExpeditionsNotEnoughAP"
+        ]
+    },
+    "ExpeditionsConfirm": {
+        "recognition": "TemplateMatch",
+        "template": "Dorm/ExpeditionsConfirm.png",
+        "roi": [
+            853,
+            177,
+            183,
+            136
+        ],
+        "next": [
+            "Stop",
+            "ExpeditionsNotEnoughAP"
         ]
     },
     "SelectFirstExpeditions": {
@@ -250,7 +295,7 @@
         },
         "next": [
             "SelectFirstExpeditions",
-            "ExpeditionsNotEnoughNumberOfLevels",
+            "ExpeditionsNotEnoughNumberOfLevelsNormal",
             "ExpeditionsNotEnoughAP",
             "ExpeditionsConsumptionLimit",
             "ExpeditionsQuickDispatch",
@@ -290,41 +335,54 @@
     "ExpeditionsNotEnoughAP": {
         "recognition": "OCR",
         "expected": [
-            "所需体力不足"
+            "体力补充"
         ],
         "roi": [
-            312,
-            286,
-            658,
-            145
+            521,
+            62,
+            237,
+            142
         ],
         "action": "Click",
         "post_wait_freezes": 200,
         "next": [
-            "ExpeditionsNotEnoughAPToGetStoredAP",
+            "ClosecollectAP",
             "ExpeditionsConsumptionLimit",
             "Stop"
         ]
     },
-    "ExpeditionsNotEnoughAPToGetStoredAP": {
+    "ClosecollectAP": {
         "recognition": "TemplateMatch",
-        "template": "Dorm/CollectAPButton.png",
+        "template": "Dorm/ClosecollectAP.png",
         "roi": [
-            647,
-            492,
-            221,
-            137
+            1018,
+            60,
+            135,
+            135
         ],
         "action": "Click",
         "next": [
-            "StartExpeditions",
+            "CloseOneclick"
+        ]
+    },
+    "CloseOneclick": {
+        "recognition": "TemplateMatch",
+        "template": "Dorm/CloseOneclick.png",
+        "roi": [
+            953,
+            0,
+            143,
+            135
+        ],
+        "action": "Click",
+        "next": [
             "SelectFirstExpeditions",
             "ExpeditionsConsumptionLimit",
             "ExpeditionsQuickDispatch",
             "NoIdleExpeditions"
         ]
     },
-    "ExpeditionsNotEnoughNumberOfLevels": {
+    "ExpeditionsNotEnoughNumberOfLevelsNormal": {
         "recognition": "OCR",
         "expected": [
             "所需关卡次数不足"
@@ -334,6 +392,22 @@
             286,
             658,
             145
+        ],
+        "action": "Click",
+        "next": [
+            "Stop"
+        ]
+    },
+    "ExpeditionsNotEnoughNumberOfLevelsQuick": {
+        "recognition": "OCR",
+        "expected": [
+            "所需关卡次数不足"
+        ],
+        "roi": [
+            490,
+            266,
+            328,
+            142
         ],
         "action": "Click",
         "next": [

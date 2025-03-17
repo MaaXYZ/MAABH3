@@ -4,8 +4,7 @@
             "CommissionsPageFlag",
             "Sub_EnterCommissionsPage",
             "Sub_EnterArmadaPage",
-            "Sub_BackButton1",
-            "Sub_BackButton2"
+            "Sub_BackButton"
         ]
     },
     "CommissionsPageFlag": {

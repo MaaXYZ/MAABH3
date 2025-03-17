@@ -10,7 +10,7 @@
             150
         ],
         "action": "Click",
-        "post_delay": 1500
+        "post_delay": 2500
     },
     "Sub_EnterSupplyPage": {
         "is_sub": true,
@@ -23,7 +23,7 @@
             126
         ],
         "action": "Click",
-        "post_delay": 1500
+        "post_delay": 2500
     },
     "Sub_EnterArmadaPage": {
         "is_sub": true,
@@ -38,7 +38,7 @@
             109
         ],
         "action": "Click",
-        "post_delay": 1500
+        "post_delay": 2500
     },
     "Sub_EnterDormPage": {
         "is_sub": true,
@@ -53,7 +53,7 @@
             30
         ],
         "action": "Click",
-        "post_delay": 1500
+        "post_delay": 2500
     },
     "Sub_EnterMissionsPage": {
         "is_sub": true,
@@ -74,6 +74,6 @@
             14,
             14
         ],
-        "post_delay": 1500
+        "post_delay": 2500
     }
 }

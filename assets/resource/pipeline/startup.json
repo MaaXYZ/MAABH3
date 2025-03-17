@@ -2,10 +2,8 @@
     "Sub_StartUp": {
         "is_sub": true,
         "next": [
-            "Sub_HomeButton1",
-            "Sub_HomeButton2",
-            "Sub_BackButton1",
-            "Sub_BackButton2",
+            "Sub_HomeButton",
+            "Sub_BackButton",
             "Sub_BackText",
             "Sub_ObtainedAwards",
             "Sub_CollectDailyLoginReward",
@@ -20,7 +18,10 @@
             "Sub_AbyssSettlement",
             "Sub_AiPromptFlag",
             "Sub_CancelDownload",
-            "GameLoading"
+            "GameLoading",
+            "HomeFlag",
+            "MiHoYoLogo",
+            "Sub_StartBH3"
         ]
     },
     "Sub_StartBH3": {
@@ -32,10 +33,8 @@
         "action": "StopApp",
         "package_doc": "set in code.",
         "next": [
-            "Sub_HomeButton1",
-            "Sub_HomeButton2",
-            "Sub_BackButton1",
-            "Sub_BackButton2",
+            "Sub_HomeButton",
+            "Sub_BackButton",
             "Sub_BackText",
             "Sub_ObtainedAwards",
             "Sub_CollectDailyLoginReward",
@@ -81,10 +80,8 @@
             218
         ],
         "next": [
-            "Sub_HomeButton1",
-            "Sub_HomeButton2",
-            "Sub_BackButton1",
-            "Sub_BackButton2",
+            "Sub_HomeButton",
+            "Sub_BackButton",
             "Sub_BackText",
             "Sub_ObtainedAwards",
             "Sub_CollectDailyLoginReward",
@@ -143,8 +140,7 @@
             "CloseVersionAnnouncement",
             "StartGame",
             "GameIdentifying",
-            "Sub_BackButton1",
-            "Sub_BackButton2",
+            "Sub_BackButton",
             "Sub_BackText",
             "Sub_ObtainedAwards",
             "Sub_CollectDailyLoginReward",
@@ -177,8 +173,7 @@
         "recognition": "OCR",
         "action": "Click",
         "next": [
-            "Sub_BackButton1",
-            "Sub_BackButton2",
+            "Sub_BackButton",
             "Sub_BackText",
             "Sub_ObtainedAwards",
             "Sub_CollectDailyLoginReward",
@@ -263,12 +258,9 @@
         ],
         "next": [
             "DownloadConfirm",
-            "Downloading1",
-            "Downloading2",
-            "Checking1",
-            "Checking2",
-            "Downloaded1",
-            "Downloaded2",
+            "Downloading",
+            "Checking",
+            "Downloaded",
             "DownloadedConfirm",
             "Download"
         ]
@@ -284,121 +276,82 @@
         ],
         "action": "Click",
         "next": [
-            "Downloading1",
-            "Downloading2",
-            "Checking1",
-            "Checking2",
-            "Downloaded1",
-            "Downloaded2",
+            "Downloading",
+            "Checking",
+            "Downloaded",
             "DownloadedConfirm",
             "Download"
         ]
     },
-    "Downloading1": {
+    "Downloading": {
         "recognition": "OCR",
         "expected": [
             "下载中"
         ],
         "roi": [
-            1067,
-            593,
-            169,
-            127
+            [
+                1067,
+                593,
+                169,
+                127
+            ],
+            [
+                17,
+                567,
+                175,
+                137
+            ]
         ],
         "next": [
-            "Downloading1",
-            "Downloading2",
-            "Checking1",
-            "Checking2",
-            "Downloaded1",
-            "Downloaded2",
+            "Downloading",
+            "Checking",
+            "Downloaded",
             "DownloadedConfirm"
         ]
     },
-    "Downloading2": {
-        "recognition": "OCR",
-        "expected": [
-            "下载中"
-        ],
-        "roi": [
-            17,
-            567,
-            175,
-            137
-        ],
-        "next": [
-            "Downloading2",
-            "Downloading1",
-            "Checking1",
-            "Checking2",
-            "Downloaded1",
-            "Downloaded2",
-            "DownloadedConfirm"
-        ]
-    },
-    "Checking1": {
+    "Checking": {
         "recognition": "OCR",
         "expected": [
             "校验中"
         ],
         "roi": [
-            1067,
-            593,
-            168,
-            127
+            [
+                1067,
+                593,
+                168,
+                127
+            ],
+            [
+                17,
+                567,
+                175,
+                137
+            ]
         ],
         "next": [
-            "Checking1",
-            "Checking2",
-            "Downloaded1",
-            "Downloaded2",
+            "Checking",
+            "Downloaded",
             "DownloadedConfirm"
         ]
     },
-    "Checking2": {
-        "recognition": "OCR",
-        "expected": [
-            "校验中"
-        ],
-        "roi": [
-            17,
-            567,
-            175,
-            137
-        ],
-        "next": [
-            "Checking2",
-            "Checking1",
-            "Downloaded1",
-            "Downloaded2",
-            "DownloadedConfirm"
-        ]
-    },
-    "Downloaded1": {
+    "Downloaded": {
         "recognition": "OCR",
         "expected": [
             "下载完成"
         ],
         "roi": [
-            1049,
-            594,
-            186,
-            126
-        ],
-        "next": [
-            "DownloadedConfirm"
-        ]
-    },
-    "Downloaded2": {
-        "recognition": "OCR",
-        "expected": [
-            "下载完成"
-        ],
-        "roi": [
-            19,
-            571,
-            197,
-            131
+            [
+                1049,
+                594,
+                186,
+                126
+            ],
+            [
+                19,
+                571,
+                197,
+                131
+            ]
         ],
         "next": [
             "DownloadedConfirm"
@@ -439,8 +392,7 @@
             "CloseVersionAnnouncement",
             "StartGame",
             "GameIdentifying",
-            "Sub_BackButton1",
-            "Sub_BackButton2",
+            "Sub_BackButton",
             "Sub_BackText",
             "Sub_CloseAnnouncement",
             "Sub_CloseActivityAnnouncement",
